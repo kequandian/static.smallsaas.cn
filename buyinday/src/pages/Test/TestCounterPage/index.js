@@ -11,9 +11,9 @@ export default function index(props) {
     return (
         <ChakraProvider>
             <HCenter>
-                {/* <CssCart backgroundColor='#f4f5f7' width='400PX' height='100%'> */}
+                <CssCart backgroundColor='#f4f5f7' width='100%' height='100%'>
                     <CounterPage />
-                {/* </CssCart> */}
+                </CssCart>
             </HCenter>
         </ChakraProvider>
     )

@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 
 export default function Index(props) {
 
-    const { size = '30',fill='#E1E4E8' } = props;
+    const { size = '30',fill='#999999' } = props;
 
     const baseStyle = {
         textAlign: 'center',

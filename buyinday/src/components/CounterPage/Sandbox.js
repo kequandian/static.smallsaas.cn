@@ -4,13 +4,11 @@ import CounterPage from './index';
 import Cart from 'zero-element-boot/lib/components/cart/Cart';
 import { Flex, Box } from '@chakra-ui/react'
 import VStack from 'zero-element-boot/lib/components/layout/VStack'
-import Avatar from '@/components/presenter/Avatar'
-import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/Text/PrimaryTitle';
-import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/Text/PrimarySubtitle';
+import Avatar from 'zero-element-boot/lib/components/presenter/Avatar'
+import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/test/PrimaryTitle';
+import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/test/PrimarySubtitle';
 import HistoryIcon from '@/components/presenter/HistoryIcon';
-// import ContainerInactiveTitle from '@/components/Text/ContainerInactiveTitle';
-import ContainerInactiveTitle from '@/components/ContainerInactiveTitle';
-
+import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import Button from 'zero-element-boot/lib/components/presenter/button/Button'
 const promiseAjax = require('zero-element-boot/lib/components/utils/request');
@@ -20,7 +18,7 @@ export default function (props) {
 
     // let endpoint='http://app1.console.smallsaas.cn:8001'
 
-    const { onRemark, number = '2', amountPaid = '242', purchased = '4' } = props
+    const { onRemark, amountPaid = '242', purchased = '4' } = props
 
     const api = '/api/pub/product/products?category=Food'
 

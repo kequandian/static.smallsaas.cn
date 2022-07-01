@@ -3,9 +3,9 @@ import Cart from 'zero-element-boot/lib/components/cart/Cart';
 import { Flex, Box } from '@chakra-ui/react'
 import Counter from 'zero-element-boot/lib/components/presenter/Counter'
 import { getEndpoint } from 'zero-element-boot/lib/components/config/common';
-import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/Text/ItemTitle';
-import ItemSubitle from 'zero-element-boot-plugin-theme/lib/components/Text/ItemSubitle';
-import ItemAccent from 'zero-element-boot-plugin-theme/lib/components/Text/ItemAccent';
+import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/test/ItemTitle';
+import ItemSubitle from 'zero-element-boot-plugin-theme/lib/components/test/ItemSubitle';
+import ItemAccent from 'zero-element-boot-plugin-theme/lib/components/test/ItemAccent';
 import BackgroundImage from '@/components/presenter/backgroundImage';
 
 const endpoint = getEndpoint()
