@@ -4,7 +4,7 @@ import HCenter from 'zero-element-boot/lib/components/cart/HCenter';
 import CounterPage from '@/components/CounterPage/Sandbox';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Radio, RadioGroup, Button, Flex, Stack, ChakraProvider } from '@chakra-ui/react'
-import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/Text/PrimaryTitle';
+import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 
 
 export default function index(props) {
