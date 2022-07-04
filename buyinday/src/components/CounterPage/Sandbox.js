@@ -189,7 +189,7 @@ export default function (props) {
                 </Cart>
              
 
-                <div style={{ width: '100%', margin: '2px 4px 0 6px', backgroundColor: 'transparent' }}>
+                <div style={{ width: '100%', margin: '2px 4px 10px 6px', backgroundColor: 'transparent' }}>
                     <Button solid color='#c86963'>
                         发给Ta
                     </Button>
