@@ -90,16 +90,16 @@ export default function (props) {
     return (
         <ChakraProvider>
             <VStack>
-                <Cart fill='#ffffff' linewidth='0' corner='12px' margin='10px 10px 10px 0' padding='10px 8px 0 8px'>
+                <Cart fill='#ffffff' linewidth='0' corner='12px' margin='10px' padding='10px 8px 10px 8px'>
                     <VStack>
                         <Flex w='100%'>
                             <Avatar size='30'  url = ''  />
                             <Flex w='100%'>
-                                <PrimaryTitle >
+                                <PrimaryTitle  fontSize='14px'>
                                     肖生
                                 </PrimaryTitle>
 
-                                <PrimarySubtitle  >
+                                <PrimarySubtitle fontSize='14px' >
                                 黄荆小区
                                 </PrimarySubtitle>
                             </Flex>
@@ -115,7 +115,7 @@ export default function (props) {
                                     {purchased}
                                 </PrimarySubtitle>
 
-                                <ContainerInactiveTitle>
+                                <ContainerInactiveTitle fontSize='14px'>
                                     已团
                                 </ContainerInactiveTitle>
                             </Box>
@@ -127,7 +127,7 @@ export default function (props) {
                                 </PrimarySubtitle>
 
 
-                                <ContainerInactiveTitle >
+                                <ContainerInactiveTitle  fontSize='14px'>
                                     今日应付
                                 </ContainerInactiveTitle>
                             </Box>
@@ -136,7 +136,7 @@ export default function (props) {
                                     <Flex> ￥--</Flex>
                                 </PrimarySubtitle>
 
-                                <ContainerInactiveTitle>
+                                <ContainerInactiveTitle fontSize='14px'>
                                     已付
                                 </ContainerInactiveTitle>
                             </Box>
@@ -157,14 +157,14 @@ export default function (props) {
                             padding: '6px '
                         }}>
                             <Flex >
-                                <PrimarySubtitle fontSize='12px' color='#7d7d7d' margin='8px 0 auto 4px'>
+                                <PrimarySubtitle fontSize='12px' color='#7d7d7d' margin='8px 0 14px 4px'>
                                     共{productCount} 件
                                 </PrimarySubtitle>
-                                <PrimaryTitle fontSize='12px' margin='8px 0 auto 4px'>
+                                <PrimaryTitle fontSize='12px' margin='8px 0 14px 4px'>
                                     合计：
                                 </PrimaryTitle>
 
-                                <PrimaryTitle fontSize='20px' margin='0 8px 4px 4px' color='#ff0000'>
+                                <PrimaryTitle fontSize='20px' margin='0 8px 12px 4px' color='#ff0000'>
                                     <Flex>  ￥{productTotal}</Flex>
                                 </PrimaryTitle>
                             </Flex>
@@ -175,13 +175,13 @@ export default function (props) {
 
                 <Cart fill='#ffffff' linewidth='0' corner='12px' margin='2px 10px' padding='2px'>
                     <Flex>
-                        <PrimaryTitle fontSize='14px' margin='14px 4px -3px 10px' fontWeight='bold'>
+                        <PrimaryTitle fontSize='14px' margin='16px 4px -3px 14px' fontWeight='bold'>
                             订单备注
                        </PrimaryTitle>
 
                         <div onClick={onRemark} style={{
-                            display: 'flex', justifyContent: 'flex-end', alignItems: 'center', margin: '14px 10px -3px 4px',
-                            fontSize: '14px', height: '100%', color: '#cdcdcd', width: '65%'
+                            display: 'flex', justifyContent: 'flex-end', alignItems: 'center', margin: '16px 2px -3px 4px',
+                            fontSize: '14px', height: '100%', color: '#cdcdcd', width: '75%'
                         }}>选填，输入备注内容 ></div>
                      
 

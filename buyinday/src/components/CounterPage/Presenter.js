@@ -32,7 +32,7 @@ export default function index(props) {
                         </>
                     </ItemTitle>
 
-                    <ItemAccent fontSize='16px' width='30%' margin='12px 14px auto 14px' >
+                    <ItemAccent fontSize='14px' width='30%' margin='12px 14px auto 14px' >
                         <>
                             已团{viewCount}
                         </>
