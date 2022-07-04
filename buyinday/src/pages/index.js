@@ -11,10 +11,10 @@ export default function index (props) {
   return (
 
   //  <div>Hello world</div>
-  // <TestCounterPage />
+  <TestCounterPage />
   // <TestAvatar />
   // <TextPrimaryTitle />
-  <TestHistoricalOrders />
+  // <TestHistoricalOrders />
   )
 
 
