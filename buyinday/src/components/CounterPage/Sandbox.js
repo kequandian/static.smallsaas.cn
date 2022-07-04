@@ -20,8 +20,8 @@ export default function (props) {
 
     const { onRemark, amountPaid = '242', purchased = '4' } = props
 
-    // const api = '/api/pub/product/products?category=Food'
-    const api = '/api/productsData'
+    const api = '/api/pub/product/products?category=Food'
+    // const api = '/api/productsData'
    
 
     const [productList, setProductList] = useState([])
