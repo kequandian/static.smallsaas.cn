@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GoodHouse from './index';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
+import Cart from 'zero-element-boot/lib/components/cart/Cart';
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import PageSectionTitle from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
 import { Flex, Box } from '@chakra-ui/react'
@@ -20,9 +21,9 @@ export default function (props) {
     return (
         <CssCart width='100%' padding='0 0 10px 0 ' backgroundColor='#f5f5f5'>
             <div >
-                <div style={{ backgroundImage: `url(${url})`, backgroundSize: '100% 100%', width: '100%', height: '300px' }}>
+                <div style={{ backgroundImage: `url(${url})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
                 </div>
-                <PageModuleContainer>
+                <Cart fill='#ffffff' margin='10px' padding='2px' > 
                     <>
                         <PageSectionTitle>详情</PageSectionTitle>
                         <Flex>
@@ -58,11 +59,11 @@ export default function (props) {
                         </Flex>
 
                         <PageSectionTitle>户型图</PageSectionTitle>
-                        <div style={{ backgroundImage: `url(${FloorPlan})`, backgroundSize: '100% 100%', width: '100%', height: '300px' }}>
+                        <div style={{ backgroundImage: `url(${FloorPlan})`, backgroundSize: '100% 100%', width: '100%', height: '250px' }}>
                         </div>
                         <GoodHouse />
                     </>
-                </PageModuleContainer>
+                </Cart>
 
             </div>
         </CssCart>
