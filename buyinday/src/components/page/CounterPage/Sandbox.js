@@ -4,7 +4,7 @@ import CounterPage from './index';
 import Cart from 'zero-element-boot/lib/components/cart/Cart';
 import { Flex, Box } from '@chakra-ui/react'
 import VStack from 'zero-element-boot/lib/components/layout/VStack'
-import Avatar from 'zero-element-boot/lib/components/presenter/Avatar'
+import Avatar from '@/components/presenter/Avatar'
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import HistoryIcon from '@/components/presenter/HistoryIcon';

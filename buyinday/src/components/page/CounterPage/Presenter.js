@@ -27,9 +27,9 @@ export default function index(props) {
             <Box w='100%' >
                 <Flex w='100%' padding='0'>
                     <div style={{ margin: '12px 0 0 0', width: '100%' }}>
-                        <ItemTitle fontSize='14px'>
+                        <ItemTitle fontSize='18px'>
                             <>
-                            center 约{weight}g
+                            {name} 约{weight}g
                         </>
                         </ItemTitle>
                     </div>
