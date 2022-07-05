@@ -22,15 +22,17 @@ export default function index(props) {
     const { onRemark, id, viewCount, name = '【烧卖：原味】', suggestedPrice = '14.9', unit = '包', weight, cover, callBackData } = props
 
     return (
-        <Flex w='100%' h='100%' bg='' >
+        <Flex w='100%' h='100%' borderBottom='#f5f5f5 1px solid'  bg='' >
             <BackgroundImage backgroundImage={`url(${endpoint}${cover})`} />
             <Box w='100%' >
                 <Flex w='100%' padding='0'>
-                    <ItemTitle fontSize='14px'>
-                        <>
-                            {name} 约{weight}g
+                    <div style={{ margin: '12px 0 0 0', width: '100%' }}>
+                        <ItemTitle fontSize='14px'>
+                            <>
+                            center 约{weight}g
                         </>
-                    </ItemTitle>
+                        </ItemTitle>
+                    </div>
 
                     <ItemAccent fontSize='14px' width='30%' margin='12px 14px auto 14px' >
                         <>
@@ -40,7 +42,7 @@ export default function index(props) {
                 </Flex>
                 <Flex>
 
-                    <ItemAccent  fontSize='18px' width='56%' justifyContent='flex-start' >
+                    <ItemAccent fontSize='18px' width='56%' justifyContent='flex-start' >
                         <>
                             ￥{suggestedPrice}/{unit}
                         </>

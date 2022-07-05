@@ -9,15 +9,6 @@ export default function index(props) {
   const { productList,callBackData } = props;
   
 
-//   // let api = '/api/AutoDomeData'
-
-// //   const api =endpoint +'/api/u/asset/user/userAsset'
-
-//   const api = '/api/pub/product/products?category=Food '
-
-
-
-//   const [data] = useTokenRequest({ api });
 
 
   /**

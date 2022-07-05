@@ -4,13 +4,15 @@ import CounterPage from './index';
 import Cart from 'zero-element-boot/lib/components/cart/Cart';
 import { Flex, Box } from '@chakra-ui/react'
 import VStack from 'zero-element-boot/lib/components/layout/VStack'
-import Avatar from '@/components/presenter/Avatar'
+import Avatar from 'zero-element-boot/lib/components/presenter/Avatar'
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import HistoryIcon from '@/components/presenter/HistoryIcon';
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import Button from 'zero-element-boot/lib/components/presenter/button/Button'
+import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
+import Price from 'zero-element-boot-plugin-theme/lib/components/text/Price'
 const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 
 
@@ -22,7 +24,8 @@ export default function (props) {
 
     const api = '/api/pub/product/products?category=Food'
     // const api = '/api/productsData'
-   
+    // const api = '/api/u/order'
+
 
     const [productList, setProductList] = useState([])
     const [productCount, setProductCount] = useState([])
@@ -93,14 +96,14 @@ export default function (props) {
                 <Cart fill='#ffffff' linewidth='0' corner='12px' margin='10px' padding='10px 8px 10px 8px'>
                     <VStack>
                         <Flex w='100%'>
-                            <Avatar size='30'  url = ''  />
+                            <Avatar size='30' url='' />
                             <Flex w='100%'>
-                                <PrimaryTitle  fontSize='14px'>
+                                <PrimaryTitle fontSize='14px'>
                                     肖生
                                 </PrimaryTitle>
 
                                 <PrimarySubtitle fontSize='14px' >
-                                黄荆小区
+                                    黄荆小区
                                 </PrimarySubtitle>
                             </Flex>
 
@@ -127,7 +130,7 @@ export default function (props) {
                                 </PrimarySubtitle>
 
 
-                                <ContainerInactiveTitle  fontSize='14px'>
+                                <ContainerInactiveTitle fontSize='14px'>
                                     今日应付
                                 </ContainerInactiveTitle>
                             </Box>
@@ -145,33 +148,39 @@ export default function (props) {
                     </VStack>
                 </Cart>
 
-                <CssCart backgroundColor='#ffffff' width='100%' padding='0 10px 10px 10px ' borderRadius='12px' margin='0 10px 10px 10px'>
+                {/* <CssCart backgroundColor='#ffffff' width='100%' padding='0 10px 10px 10px ' borderRadius='12px' margin='0 10px 10px 10px'> */}
+                <PageModuleContainer>
                     <Box h='' bg='' >
                         <CounterPage productList={productList} callBackData={callback} />
                         <div style={{
                             display: 'flex',
                             justifyContent: 'flex-end',
                             alignItems: 'center',
-                            borderTop: '1px solid #f5f5f5',
-                            margin: '10px auto -26px auto',
+                            // borderTop: '1px solid #f5f5f5',
+                            margin: '0 auto -0 auto',
                             padding: '6px '
                         }}>
                             <Flex >
-                                <PrimarySubtitle fontSize='12px' color='#7d7d7d' margin='8px 0 14px 4px'>
+                                <PrimarySubtitle fontSize='12px' color='#7d7d7d' margin='10px 0 0 4px'>
                                     共{productCount} 件
                                 </PrimarySubtitle>
-                                <PrimaryTitle fontSize='12px' margin='8px 0 14px 4px'>
-                                    合计：
+                                <div style={{ width: '40px' }}>
+                                    <PrimaryTitle fontSize='12px' margin='14px 0 0 4px'>
+                                        合计：
                                 </PrimaryTitle>
+                                </div>
 
-                                <PrimaryTitle fontSize='20px' margin='0 8px 12px 4px' color='#ff0000'>
-                                    <Flex>  ￥{productTotal}</Flex>
-                                </PrimaryTitle>
+                                <div style={{ width: '60px', margin:'0' }}>
+                                    <Price >
+                                        <Flex>  ￥{productTotal}</Flex>
+                                    </Price>
+                                </div>
+
                             </Flex>
                         </div>
                     </Box>
-
-                </CssCart>
+                    </PageModuleContainer>
+                {/* </CssCart> */}
 
                 <Cart fill='#ffffff' linewidth='0' corner='12px' margin='2px 10px' padding='2px'>
                     <Flex>
@@ -183,11 +192,11 @@ export default function (props) {
                             display: 'flex', justifyContent: 'flex-end', alignItems: 'center', margin: '16px 2px -3px 4px',
                             fontSize: '14px', height: '100%', color: '#cdcdcd', width: '75%'
                         }}>选填，输入备注内容 ></div>
-                     
+
 
                     </Flex>
                 </Cart>
-             
+
 
                 <div style={{ width: '100%', margin: '2px 4px 10px 6px', backgroundColor: 'transparent' }}>
                     <Button solid color='#c86963'>
