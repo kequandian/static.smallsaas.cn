@@ -5,6 +5,7 @@ import TextPrimaryTitle from '@/pages/Test/TextPrimaryTitle'
 import HistoricalOrders from '@/components/page/HistoricalOrders/Presenter'
 import TestHistoricalOrders from '@/pages/Test/TestHistoricalOrders'
 import OrderDetails from '@/components/page/OrderDetails/Sandbox'
+import GoodHouse from '@/pages/goodHouse/Sanbox'
 
 
 export default function index (props) {
@@ -12,11 +13,12 @@ export default function index (props) {
   return (
 
   //  <div>Hello world</div>
-  <TestCounterPage />
+  // <TestCounterPage />
   // <TestAvatar />
   // <TextPrimaryTitle />
   // <TestHistoricalOrders />
   // <OrderDetails />
+  <GoodHouse />
   )
 
 
