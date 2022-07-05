@@ -1,6 +1,6 @@
 import React from 'react';
 import { AutoLayout } from 'zero-element-boot';
-import Presenter from './Presenter';
+import Presenter from './presenter';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
 
