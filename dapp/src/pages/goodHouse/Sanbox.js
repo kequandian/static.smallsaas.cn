@@ -23,7 +23,7 @@ export default function (props) {
             <div >
                 <div style={{ backgroundImage: `url(${url})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
                 </div>
-                <Cart fill='#ffffff' margin='10px' padding='2px' > 
+                <Cart fill='#ffffff' margin='10px' padding='2px' linewidth='0' corner='2px'  > 
                     <>
                         <PageSectionTitle>详情</PageSectionTitle>
                         <Flex>
