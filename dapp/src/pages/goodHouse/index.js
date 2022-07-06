@@ -44,10 +44,10 @@ export default function (props) {
     function handleVrSnapshotUrl(value) {
         if (value) {
 
-            if (process.env.NODE_ENV == 'development') {
+            // if (process.env.NODE_ENV == 'development') {
                 return 'http://app1.console.smallsaas.cn:8001' + JSON.parse(value)[0].url
-            }
-            return JSON.parse(value)[0].url
+            // }
+            // return JSON.parse(value)[0].url
         }
     }
 
@@ -104,7 +104,8 @@ export default function (props) {
                         <PageSectionTitle>户型图</PageSectionTitle>
                         <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(houseTypePicture)})`, backgroundSize: '100% 100%', width: '100%', height: '250px' }}>
                         </div>
-                        <GoodHouse list={detail.productList} />
+                        {/* <GoodHouse list={detail.productList} /> */}
+                        <div dangerouslySetInnerHTML={{__html: '<div>hello world</div>'}}></div>
                     </>
                 </Cart>
 
