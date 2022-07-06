@@ -7,6 +7,7 @@ import PageSectionTitle from 'zero-element-boot-plugin-theme/lib/components/text
 import { Flex, Box } from '@chakra-ui/react'
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle';
 import { getEndpoint } from 'zero-element-boot/lib/components/config/common';
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 const endpoint = getEndpoint()
 
 
@@ -14,6 +15,10 @@ export default function (props) {
 
     // let endpoint='http://app1.console.smallsaas.cn:8001/openapi'
     // /api/goodHouseData
+    
+    console.log('页面 props == ', props)
+    const urlQuery = useQuery(props)
+    console.log('路由参数 urlQuery == ', urlQuery)
 
     const {  DetailType = '户型fwefwgrfeghtghrtg', DetailTowards = '朝向vfehrthtrhtrb', DetailFloor = '楼层efbethetfbefb', DetailArea = '面积regtegreg',
   
