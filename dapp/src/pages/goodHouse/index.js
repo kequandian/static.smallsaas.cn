@@ -6,23 +6,25 @@ import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequ
 
 export default function index(props) {
 
-  
-  const {endpoint, callBackData } = props;
-  
 
-  let api =  '/api/goodHouseData'  
+  const { endpoint, callBackData, list=[] } = props;
+
+  // let api =  '/api/goodHouseData'
+
+  // let api = '/api/u/asset/user/rent/details/1'
+
   // const api =endpoint +'/api/u/asset/user/userAsset'
 
- 
 
-  const [data] = useTokenRequest({ api });
+
+  // const [data] = useTokenRequest({ api });
 
   /**
    * 页面配置
    */
 
   const config = {
-    items: data.length > 0 ? data : [],
+    items: list.length > 0 ? list : [],
     layout: {
       xname: 'Gridbox',
       props: {
@@ -35,7 +37,7 @@ export default function index(props) {
 
   return (
     <AutoLayout {...config} >
-      <Presenter callBackData={callBackData}/>
+      <Presenter callBackData={callBackData} />
     </AutoLayout>
 
   )

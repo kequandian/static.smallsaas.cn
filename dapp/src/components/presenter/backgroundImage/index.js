@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 
 export default function Index(props) {
 
-    const {backgroundImage,width='70px',height='60px' } = props;
+    const {backgroundImage,borderRadius='4px',width='70px',height='60px' } = props;
 
 
     const baseStyle = {
@@ -17,7 +17,7 @@ export default function Index(props) {
         height: `${height}`,
         margin: '12px 4px 12px 8px',
         backgroundSize: '100% 100%',
-        borderRadius: '4px',
+        borderRadius: `${borderRadius}`,
         backgroundImage:`${backgroundImage}`
     }
 
