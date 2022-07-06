@@ -1,0 +1,44 @@
+import React from 'react';
+import { AutoLayout } from 'zero-element-boot';
+import Presenter from './presenter';
+import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
+
+
+export default function index(props) {
+
+
+  const { endpoint, callBackData, list=[] } = props;
+
+  // let api =  '/api/goodHouseData'
+
+  // let api = '/api/u/asset/user/rent/details/1'
+
+  // const api =endpoint +'/api/u/asset/user/userAsset'
+
+
+
+  // const [data] = useTokenRequest({ api });
+
+  /**
+   * 页面配置
+   */
+
+  const config = {
+    items: list.length > 0 ? list : [],
+    layout: {
+      xname: 'Gridbox',
+      props: {
+        columns: 1
+      },
+      container: 'PlainList'
+    },
+    ...props
+  };
+
+  return (
+    <AutoLayout {...config} >
+      <Presenter callBackData={callBackData} />
+    </AutoLayout>
+
+  )
+}
