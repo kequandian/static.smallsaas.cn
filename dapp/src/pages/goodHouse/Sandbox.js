@@ -6,6 +6,8 @@ import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/C
 import PageSectionTitle from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
 import { Flex, Box } from '@chakra-ui/react'
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle';
+import { getEndpoint } from 'zero-element-boot/lib/components/config/common';
+const endpoint = getEndpoint()
 
 
 export default function (props) {
@@ -14,20 +16,23 @@ export default function (props) {
     // /api/goodHouseData
 
     const {  DetailType = '户型fwefwgrfeghtghrtg', DetailTowards = '朝向vfehrthtrhtrb', DetailFloor = '楼层efbethetfbefb', DetailArea = '面积regtegreg',
-        url = 'https://qhrenderpicoss.kujiale.com/r/2022/04/03/L3D222S21ENDP5LFG4AUWF6H6LUF3P3WU888.0_6000x1000.jpg',
+  
+   url='http://app1.console.smallsaas.cn:8001/attachments//56d5906f-43e3-4278-9b94-dd33ce0abcc3.jpg',
+
+    // url = 'https://qhrenderpicoss.kujiale.com/r/2022/04/03/L3D222S21ENDP5LFG4AUWF6H6LUF3P3WU888.0_6000x1000.jpg',
         FloorPlan = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimgwcs2.soufunimg.com%2Fhouse%2F2021_03%2F30%2F3dc01457-0b2b-4e7b-b242-11a1160cb403.jpg&refer=http%3A%2F%2Fimgwcs2.soufunimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1659596709&t=469f6a58b169eb329027ff565354b461'
     } = props;
 
     return (
         <CssCart width='100%' padding='0 0 10px 0 ' backgroundColor='#f5f5f5'>
             <div >
-                <div style={{ backgroundImage: `url(${url})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
+                <div style={{ backgroundImage:`url(${url})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
                 </div>
                 <Cart fill='#ffffff' margin='4px' padding='2px' linewidth='0' corner='2px'  > 
                     <>
                         <PageSectionTitle>详情</PageSectionTitle>
                         <Flex>
-                            <div style={{margin: '8px 0 0 0', width: '50%', height: '', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}>
+                            <div style={{margin: '8px 0 0 40px', width: '50%', height: '', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}>
                                 <svg t="1657003667123" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7827" width="20" height="20"><path d="M766.196 352.827H615.439V235.055c0-35.795-25.165-64.869-56.125-64.869h-301.51c-30.995 0-56.092 29.074-56.092 64.869v553.889c0 35.794 25.097 64.869 56.092 64.869h508.392c30.959 0 56.091-29.075 56.091-64.869V417.662c0-35.76-25.132-64.835-56.091-64.835z m20.434 408.037c0 33.326-18.789 54.479-46.285 54.479H281.427c-27.532 0-43.92-23.04-43.92-56.365l-0.103-489.878c0-2.469-5.109-60.343 47.074-60.343l248.607-0.068c27.498 0 46.663 22.389 46.663 55.715v166.835h35.691v-39.874l124.527-0.034c27.496 0 46.663 22.389 46.663 55.714v313.819z" p-id="7828" fill="#949494"></path><path d="M579.611 594.234h35.691v229.372h-35.691zM227.255 524.188h229.373v41.178H227.255zM528.388 419.444h138.104v41.178H528.388z" p-id="7829" fill="#949494"></path></svg>
                                 <ContainerInactiveTitle fontSize = '12px'>
                                     {DetailType}
@@ -43,7 +48,7 @@ export default function (props) {
                         </Flex>
                         <Flex>
 
-                            <div style={{ margin: '8px 0 20px 0', width: '50%', height: '', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}>
+                            <div style={{ margin: '8px 0 20px 40px', width: '50%', height: '', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', }}>
                                 <svg t="1657004321668" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9575" width="20" height="20"><path d="M861.76 836.16H249.12V635.04h137.12v-137.12h137.12v-137.12h137.28V224h201.12z m-548.64-64h484.64V288h-73.12v137.12h-137.28v137.12h-137.12v137.12h-137.12z" fill="#949494" p-id="9576"></path><path d="M96 781.28h765.76v54.88H96z" fill="#707000" p-id="9577"></path><path d="M154.08 224H256v27.68h-68.8v43.36h59.04v27.68H187.2v67.36H154.08z" p-id="9578" fill="#949494"></path></svg>
                                 <ContainerInactiveTitle fontSize = '12px'>
                                     {DetailFloor}

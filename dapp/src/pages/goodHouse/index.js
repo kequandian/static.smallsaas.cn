@@ -10,7 +10,9 @@ export default function index(props) {
   const {endpoint, callBackData } = props;
   
 
-  let api =  '/api/goodHouseData'
+  let api =  '/api/goodHouseData'  
+  // const api =endpoint +'/api/u/asset/user/userAsset'
+
  
 
   const [data] = useTokenRequest({ api });
