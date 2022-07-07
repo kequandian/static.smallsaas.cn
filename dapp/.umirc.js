@@ -1,7 +1,7 @@
 
 // ref: https://umijs.org/config/
 export default {
-  title: '房屋详情',
+  title: ' ',
   hash: true,
   history: {
     type: 'hash',
