@@ -100,7 +100,7 @@ export default function (props) {
                             <Avatar size='30' url='' />
                             <Flex w='100%'>
                                 <PrimaryTitle fontSize='14px'>
-                                    肖生
+                                    肖生111
                                 </PrimaryTitle>
 
                                 <PrimarySubtitle fontSize='14px' >
