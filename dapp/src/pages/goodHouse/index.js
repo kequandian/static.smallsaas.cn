@@ -58,7 +58,7 @@ export default function (props) {
     console.log(detail, '==detail')
 
 
-    const { houseType, direction, floor, unitArea, houseTypePicture } = detail
+    const { houseType, direction, floor, unitArea, houseTypePicture,rentDescribe } = detail
 
     return (
         <CssCart width='100%' padding='0 0 10px 0 ' backgroundColor='#f5f5f5'>
@@ -105,7 +105,7 @@ export default function (props) {
                         <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(houseTypePicture)})`, backgroundSize: '100% 100%', width: '100%', height: '250px' }}>
                         </div>
                         {/* <GoodHouse list={detail.productList} /> */}
-                        <div dangerouslySetInnerHTML={{__html: '<div>hello world</div>'}}></div>
+                        <div dangerouslySetInnerHTML={{__html:`${rentDescribe}`}}></div>
                     </>
                 </Cart>
 

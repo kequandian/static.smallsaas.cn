@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import GoodHouse from './config';
-import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import PageSectionTitle from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
 import { Flex, Box } from '@chakra-ui/react'
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle';
-import Linktitle from 'zero-element-boot-plugin-theme/lib/components/text/Linktitle';
 import BackgroundImage from '@/components/presenter/backgroundImage';
 
 
@@ -14,15 +11,18 @@ export default function (props) {
     // let endpoint='http://app1.console.smallsaas.cn:8001/openapi'
 
 
-    const { title = '客厅', url = ''
-    } = props;
+    
+
+
+    // const { title = '客厅', url = ''
+    // } = props;
 
     return (
         <PageModuleContainer >
             <>
                 <Flex>
                     <div style={{ borderTop:'1px #cecece solid', padding:'10px 0 0 0', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '50%' }}>
-                        <PageSectionTitle>{title}</PageSectionTitle>
+                        <PageSectionTitle>{detail.title}</PageSectionTitle>
                     </div>
 
                     <div style={{borderTop:'1px #cecece solid', padding:'10px 0 0 0', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '50%' }}>
@@ -31,7 +31,7 @@ export default function (props) {
                     </div>
                 </Flex>
                
-                <BackgroundImage backgroundImage={`url(${url})`} width='100%' height= '260px'  />
+                <BackgroundImage backgroundImage={`url(${detail.url})`} width='100%' height= '260px'  />
             </>
         </PageModuleContainer>
 

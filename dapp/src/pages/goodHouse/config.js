@@ -9,15 +9,11 @@ export default function index(props) {
 
   const { endpoint, callBackData, list=[] } = props;
 
-  // let api =  '/api/goodHouseData'
+  
 
-  // let api = '/api/u/asset/user/rent/details/1'
+  const api = '/api/u/asset/user/rent/list'
 
-  // const api =endpoint +'/api/u/asset/user/userAsset'
-
-
-
-  // const [data] = useTokenRequest({ api });
+  const [detail] = useTokenRequest({ api });
 
   /**
    * 页面配置
@@ -34,10 +30,11 @@ export default function index(props) {
     },
     ...props
   };
+console.log('list === ',list);
 
   return (
     <AutoLayout {...config} >
-      <Presenter callBackData={callBackData} />
+      <Presenter callBackData={callBackData} list={detail} />
     </AutoLayout>
 
   )
