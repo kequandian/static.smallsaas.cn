@@ -93,8 +93,10 @@ export default function (props) {
 
 
     return (
+        <>
+        <SetBarTitle text='下单'/>
+
         <ChakraProvider>
-            <SetBarTitle text='下单'/>
             <VStack>
                 <Cart fill='#ffffff' linewidth='0' corner='12px' margin='10px' padding='10px 8px 10px 8px'>
                     <VStack>
@@ -208,5 +210,6 @@ export default function (props) {
                 </div>
             </VStack>
         </ChakraProvider>
+        </>
     )
 }
