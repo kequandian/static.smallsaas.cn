@@ -13,7 +13,6 @@ import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import Button from 'zero-element-boot/lib/components/presenter/button/Button'
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import Price from 'zero-element-boot-plugin-theme/lib/components/text/Price'
-import SetBarTitle from '@/components/setBarTitle'
 
 const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 
@@ -94,9 +93,6 @@ export default function (props) {
 
     return (
         <>
-        <SetBarTitle text='下单'/>
-
-        <ChakraProvider>
             <VStack>
                 <Cart fill='#ffffff' linewidth='0' corner='12px' margin='10px' padding='10px 8px 10px 8px'>
                     <VStack>
@@ -209,7 +205,6 @@ export default function (props) {
                     </Button>
                 </div>
             </VStack>
-        </ChakraProvider>
         </>
     )
 }
