@@ -1,7 +1,7 @@
 
 // ref: https://umijs.org/config/
 export default {
-  title: 'buyinday',
+  title: '房屋详情',
   hash: true,
   history: {
     type: 'hash',

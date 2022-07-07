@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import GoodHouse from './index';
+import GoodHouse from './config';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import PageSectionTitle from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';

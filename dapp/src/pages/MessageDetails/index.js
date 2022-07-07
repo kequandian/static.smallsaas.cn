@@ -13,21 +13,17 @@ import BackgroundImage from '@/components/presenter/backgroundImage';
 export default function (props) {
 
 
-    const { title = 'fwefwgrfeghtghrtg', time = '5天前', content = '消息内容', DetailArea = '面积regtegreg',
+    const { title = '消息标题fwefwgrfeghtghrtg', time = '5天前', content = '消息内容', DetailArea = '面积regtegreg',
 
-    url = 'https://qhrenderpicoss.kujiale.com/r/2022/04/03/L3D222S21ENDP5LFG4AUWF6H6LUF3P3WU888.0_6000x1000.jpg',
     } = props;
 
     return (
         <PageModuleContainer>
-            <h1>{title}</h1>
-            <div style={{width:'100%' ,display:'flex',justifyContent:'flex-start',alignItems:'center'}}>
-            <ContainerInactiveTitle>{time}</ContainerInactiveTitle>
+            <div style={{fontSize:'26px'}}>{title}</div>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <ContainerInactiveTitle>{time}</ContainerInactiveTitle>
             </div>
-            <PrimarySubtitle>
-                {content}
-            </PrimarySubtitle>
-            <div style={{ backgroundImage:`url(${url})`, width:'100%' ,height: '260px' }}/>
+            <div dangerouslySetInnerHTML={{__html: '<div>hello world</div>'}}></div>
         </PageModuleContainer>
     )
 }

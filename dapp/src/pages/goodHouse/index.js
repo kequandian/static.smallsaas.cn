@@ -58,7 +58,7 @@ export default function (props) {
     console.log(detail, '==detail')
 
 
-    const { houseType, rentDescribe, floor, unitArea, houseTypePicture } = detail
+    const { houseType, direction, floor, unitArea, houseTypePicture } = detail
 
     return (
         <CssCart width='100%' padding='0 0 10px 0 ' backgroundColor='#f5f5f5'>
@@ -82,7 +82,7 @@ export default function (props) {
                                     <svg t="1657004231434" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8957" width="20" height="20">
                                         <path d="M469.333333 810.666667v42.666666a42.666667 42.666667 0 0 0 85.333334 0v-42.666666h-85.333334z m170.666667-85.333334v128a128 128 0 0 1-256 0v-128h256z m-170.666667-341.333333v85.333333h85.333334V384h-85.333334z m170.666667-85.333333v256H384V298.666667h256z" p-id="8958" fill="#949494"></path><path d="M248.661333 128l-85.333333 85.333333 85.333333 85.333334H896V128H248.661333zM981.333333 42.666667v341.333333H213.333333L42.666667 213.333333l170.666666-170.666666h768zM860.672 640l-85.333333-85.333333H128v170.666666h647.338667l85.333333-85.333333zM42.666667 469.333333h768l170.666666 170.666667-170.666666 170.666667H42.666667v-341.333334z" p-id="8959" fill="#949494"></path></svg>
                                     <ContainerInactiveTitle fontSize='12px'>
-                                        {rentDescribe}
+                                        {direction}
                                     </ContainerInactiveTitle>
                                 </ContainerInactiveTitle>
                                 <ContainerInactiveTitle fontSize='12px'>
