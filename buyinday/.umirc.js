@@ -1,7 +1,7 @@
 
 // ref: https://umijs.org/config/
 export default {
-  title: 'buyinday',
+  title: ' ',
   hash: true,
   history: {
     type: 'hash',
