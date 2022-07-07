@@ -25,14 +25,15 @@ export default function Index(props) {
 
     return (
         <ChakraProvider>
-            <PageCart  >
                 <VStack >
+                        <Text fontSize='5xl'>设计</Text>
                     <Flex >
-                        <Box w='150px' h='150px' bg={hightlight} margin=''/>
-               
 
-                        < Center w='150px'>
-                            <Text fontSize='3xl'>{hightlight}</Text>
+                        <Box w='100px' h='100px' bg={hightlight} margin='' />
+
+
+                        < Center w='120px'>
+                            <Text fontSize='2xl'>{hightlight}</Text>
                         </Center>
                     </Flex>
 
@@ -43,26 +44,25 @@ export default function Index(props) {
                     <Spacer />
 
                     <Flex >
-                        <Box w='150px' h='150px' bg={light} />
-                        < Center w='150px'>
-                            <Text fontSize='3xl'>{light}</Text>
+                        <Box w='100px' h='100px' bg={light} />
+                        < Center w='120px'>
+                            <Text fontSize='2xl'>{light}</Text>
                         </Center>
                     </Flex>
                     <Flex >
-                        <Box w='150px' h='150px' bg={lightdark} />
-                        < Center w='150px'>
-                            <Text fontSize='3xl'>{lightdark}</Text>
+                        <Box w='100px' h='100px' bg={lightdark} />
+                        < Center w='120px'>
+                            <Text fontSize='2xl'>{lightdark}</Text>
                         </Center>
                     </Flex>
                     <Flex>
-                        <Box w='150px' h='150px' bg={dark} />
-                        < Center w='150px'>
-                            <Text fontSize='3xl'>{dark}</Text>
+                        <Box w='100px' h='100px' bg={dark} />
+                        < Center w='120px'>
+                            <Text fontSize='2xl'>{dark}</Text>
                         </Center>
                     </Flex>
 
                 </VStack>
-            </PageCart>
         </ChakraProvider>
     )
 }

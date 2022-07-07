@@ -7,12 +7,12 @@ import ColorShow from '@/components/presenter/ColorShow'
 
 
 export default function index (props) {
-  history.push('/goodHouse?id=1')
+  // history.push('/goodHouse?id=1')
   return (
   // <GoodHouse />
   // < Hello />
-  // <ColorShow />
-  <></>
+  <ColorShow />
+  // <></>
   )
 
 
