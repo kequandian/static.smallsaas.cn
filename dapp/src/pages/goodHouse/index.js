@@ -7,7 +7,7 @@ import Container from 'zero-element-boot/lib/components/container/Container';
 import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import PageSectionTitle from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSectionTitle';
-import { Flex, Box, Spacer } from '@chakra-ui/react'
+import { Flex, Box, Spacer, ChakraProvider } from '@chakra-ui/react'
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle';
 import { getEndpoint } from 'zero-element-boot/lib/components/config/common';
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
@@ -44,8 +44,13 @@ export default function (props) {
 
     const { houseType, direction, floor, unitArea, houseTypePicture, rentDescribe } = detail
 
+    const formatHtmlString = rentDescribe.replace(/src="/g, `src="${endpoint}`)
+
+    console.log('formatHtmlString == ', formatHtmlString)
+
+
     return (
-        <>
+        <ChakraProvider>
 
             <SetBarTitle text='房屋详情' />
             <PageModuleContainer>
@@ -57,7 +62,7 @@ export default function (props) {
                         <>
                             <PageSectionTitle>详情</PageSectionTitle>
 
-                            <Cart fill='#f5f5f560' linewidth='0' margin='0'>
+                            <Cart fill='#f5f5f560' linewidth='0' margin='10px 0 20px 0' padding='10px 10px 10px 40px'>
                                 <Container>
                                     <Gridbox columns='2' >
                                         <ContainerInactiveTitle fontSize='12px'>
@@ -93,11 +98,11 @@ export default function (props) {
                             </Cart>
                             <Spacer />
                             <PageSectionTitle>户型图</PageSectionTitle>
-                            <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(houseTypePicture)})`, backgroundSize: '100% 100%', width: '100%', height: '250px', margin: "0 0 20px 0" }}>
+                            <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(houseTypePicture)})`, backgroundSize: '100% 100%', width: '100%', height: '250px', margin: "10px 0 20px 0" }}>
                             </div>
                             {/* <GoodHouse list={detail.productList} /> */}
                             <CssCart width='100%'>
-                            <div dangerouslySetInnerHTML={{ __html: `${rentDescribe}` }}></div>
+                                <div dangerouslySetInnerHTML={{ __html: `${formatHtmlString}` }}></div>
                             </CssCart>
                         </>
                     </Cart>
@@ -105,6 +110,6 @@ export default function (props) {
                 {/* </CssCart> */}
             </PageModuleContainer>
 
-        </>
+        </ChakraProvider>
     )
 }
