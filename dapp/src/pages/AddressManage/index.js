@@ -1,6 +1,6 @@
 import React from 'react';
 import Config from './config';
-import CssCart from 'zero-element-boot/lib/components/Cart/CssCart';
+import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 // import WxPage from 'zero-element-boot/lib/components/container/WxPage'
 import { ChakraProvider } from '@chakra-ui/react'
 import Button from 'zero-element-boot/lib/components/presenter/button/Button'

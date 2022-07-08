@@ -1,5 +1,5 @@
 import React from 'react';
-import CssCart from 'zero-element-boot/lib/components/Cart/CssCart';
+import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Flex } from '@chakra-ui/react'
 import NamedCart from 'zero-element-boot/lib/components/NamedCart'
 
