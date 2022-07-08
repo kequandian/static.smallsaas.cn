@@ -13,7 +13,7 @@ import SetBarTitle from '@/components/setBarTitle'
 export default function (props) {
 
 
-    let endpoint = 'http://app1.console.smallsaas.cn:8001'
+    // let endpoint = 'http://app1.console.smallsaas.cn:8001'
 
 
     const onHandleItemClick = (item) => {
@@ -26,7 +26,7 @@ export default function (props) {
         <ChakraProvider>
             <div style={{ backgroundColor:'#f2f4f8' ,height:'100%'}}>
                 <CssCart padding='10px 10px 100% 10px' height='100%' width='100%'  >
-                    <Config onItemClick={onHandleItemClick} endpoint={endpoint} />
+                    <Config onItemClick={onHandleItemClick} />
                 </CssCart>
 
                 <div style={{ position: 'fixed', bottom: '0', width: '100%', height: '', padding: '1px 10px ', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5) ', margin: '10px 0 0 0', backgroundColor: '#ffffff' }}>

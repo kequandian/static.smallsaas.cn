@@ -16,7 +16,7 @@ export default function index(props) {
 
   // let api = '/api/AutoDomeData'
 
-  const api =endpoint+'/api/u/asset/user/userAsset'
+  const api ='/api/u/asset/user/userAsset'
 
 
   const [data] = useTokenRequest({ api });
