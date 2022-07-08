@@ -3,6 +3,7 @@ import { history } from 'umi'
 import GoodHouse from '@/pages/goodHouse'
 // import Hello from '@/pages/hello'
 import ColorShow from '@/components/presenter/ColorShow'
+import AddressManage from '@/pages/AddressManage'
 
 
 
@@ -11,7 +12,8 @@ export default function index (props) {
   return (
   // <GoodHouse />
   // < Hello />
-  <ColorShow />
+  // <ColorShow />
+  <AddressManage />
   // <></>
   )
 
