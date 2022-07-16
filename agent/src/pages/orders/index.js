@@ -10,10 +10,15 @@ import OrderedList from './OrdersList/config';
 import SalesStatistic from './SalesStatistic/config';
 import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
+import { history } from 'umi';
 
 
 
 export default function index(props) {
+
+  function myPages() {
+    history.push('/my/ManagingDirector')
+  }
 
   const api = '/api/SalesStatisticData'
 
@@ -22,7 +27,9 @@ export default function index(props) {
   return (
     <CssCart backgroundColor='#ffffff' padding='20px'>
       <>
-        <Avatar size='36px' />
+        <div onClick={myPages}>
+          <Avatar size='36px' />
+        </div>
         <CssCart width='100%' height='130px' margin='10px auto' padding='16px' border='#48beb3 2px solid'>
           <>
             <Flex >

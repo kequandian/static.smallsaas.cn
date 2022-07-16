@@ -31,7 +31,7 @@ export default function index(props) {
     },
     ...props
   };
-console.log('list ==',list);
+// console.log('list ==',list);
 
   return (
     <AutoLayout {...config} >

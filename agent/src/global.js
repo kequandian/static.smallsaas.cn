@@ -3,7 +3,7 @@ import { set as NamedIndicatorSet } from 'zero-element-boot/lib/components/confi
 import { set as NamedPresenterSet } from 'zero-element-boot/lib/components/config/NamedPresenterConfig';
 // import { set as FormItemTypeSet } from 'zero-element-boot/lib/components/config/formItemTypeConfig';
 
-import { setEndpoint, setToken } from 'zero-element-boot/lib/components/config/common';
+import { setEndpoint, setToken,getToken } from 'zero-element-boot/lib/components/config/common';
 import { Cart, Circle,HightlightCart,HoverShadowCart,Rectangle,Round,SelectCart} from 'zero-element-boot/lib/components/cart/';
 
 

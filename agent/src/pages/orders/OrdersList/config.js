@@ -21,9 +21,10 @@ export default function index(props) {
   const config = {
     items: data || data.length > 0 ? data.records : [],
     layout: {
-      xname: 'Flexbox',
+      xname: 'Gridbox',
       props: {
-          direction: 'column',
+        columns: 1,
+        space:1
       },
       container: 'PlainList'
     },

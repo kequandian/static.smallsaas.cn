@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Testlogin from '@/pages/test/Testlogin'
 import Testorders from '@/pages/test/Testorders'
 import TestManagingDirector from '@/pages/test/testMy/TestManagingDirector'
-
+import TestFrom from '@/pages/test/Testfrom'
+import { history } from 'umi';
+import ProxyDetails from '@/pages/my/ProxyDetails'
 
 
 
 export default function index(props) {
-  // history.push('/goodHouse?id=1')
+  // history.push('/Testlogin')
   return (
-    // <Testlogin />
+    <Testlogin />
     // <Testorders />
-    <TestManagingDirector />
+    // <TestManagingDirector />
+    // <TestFrom />
     // <h1>hello</h1>
+    // <ProxyDetails />
+    // <></>
   )
 
 

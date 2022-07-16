@@ -17,7 +17,7 @@ export default function (props) {
 
 
     const onHandleItemClick = (item) => {
-        console.log(item, ' ======== item')
+        // console.log(item, ' ======== item')
     }
 
     return (

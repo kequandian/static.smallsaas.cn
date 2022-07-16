@@ -39,7 +39,7 @@ export default function (props) {
         return (<div></div>)
     }
 
-    console.log(detail, '==detail')
+    // console.log(detail, '==detail')
 
 
     const { houseType, direction, floor, unitArea, houseTypePicture, rentDescribe } = detail

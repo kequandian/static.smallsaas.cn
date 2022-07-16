@@ -12,7 +12,7 @@ import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/
 export default function index(props) {
     const { code, createdTime, productName, agentName } = props
     return (
-        <CssCart backgroundColor='' padding='10px 8px' width='100%'>
+        <CssCart backgroundColor='' padding='2px 8px' width='100%'>
             <Container>
                 <Flex w='100%'>
                     <Box w='80%' bg=''>
