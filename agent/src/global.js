@@ -8,11 +8,11 @@ import { Cart, Circle,HightlightCart,HoverShadowCart,Rectangle,Round,SelectCart}
 
 
 if (process.env.NODE_ENV == 'development') {
-  // setEndpoint('https://house.cloud.smallsaas.cn');
+  setEndpoint('https://house.cloud.smallsaas.cn');
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
 
   // setEndpoint('http://demo.smallsaas.cn:80');
-  // setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NTM4NzU4NjcsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY1NDEzNTA2N30.SqSK5gZTaeoaLbqLK5les8DLLSoYeOldL-1ndwXRkfo8bvNgkB5KT4EaiZrw7FF-bLk5ttBseTaxKdRK9BL3RQ')
+  setToken("eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzgsInVzZXJJZCI6MzI2LCJhY2NvdW50IjoiYmE5MGZiYTYwOGEyNDZkYWEyNWI5NDQ0NWE4NzA0YTgiLCJkb21haW5Vc2VySWQiOiIiLCJpYXQiOjE2NTgyMTgwMDIsImp0aSI6IjMyNiIsInN1YiI6ImJhOTBmYmE2MDhhMjQ2ZGFhMjViOTQ0NDVhODcwNGE4IiwiZXhwIjoxNjU4NDc3MjAyfQ.YCkpp2p_aJuOWvOAWhA4Sws5Nus_a2I0gMrnjJ8N7Byv0NmO8BojdBIdsNS8TIXLVB3_z47hL70tOTFmAPrDvQ")
 } else {
   // setEndpoint('https://app1.console.smallsaas.cn:8001');
   setEndpoint('https://house.cloud.smallsaas.cn');

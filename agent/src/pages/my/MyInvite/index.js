@@ -6,8 +6,9 @@ import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import PageModuleContainer from '@/components/Container/PageModuleContainer';
-import MyInvite from './MyInviteRouter';
+import MyInvite from './config';
 import Avatar from '@/components/presenter/Avatar'
+import ContainerSubtitle from '@/components/text/ContainerSubtitle';
 
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
@@ -26,19 +27,20 @@ export default function index(props) {
 
     // const { avatar, name, preStoragePoint } = items
 
-    
+
     return (
         <>
             <PageModuleContainer>
-                <PrimaryTitle>
-                    代理授权（我的新邀请）
-            </PrimaryTitle>
-                {items && Array.isArray(items) && items.length > 0 ? (
-
-                    <CssCart backgroundColor=''>
-                        <MyInvite items={items} />
-                    </CssCart>
-                ) : <></>}
+                <>
+                    <ContainerSubtitle>
+                        代理授权（我的新邀请）
+                    </ContainerSubtitle>
+                    {items && Array.isArray(items) && items.length > 0 ? (
+                        <CssCart backgroundColor='' margin='8px 0 0 0'>
+                            <MyInvite items={items} />
+                        </CssCart>
+                    ) : <></>}
+                </>
             </PageModuleContainer>
         </>
     )

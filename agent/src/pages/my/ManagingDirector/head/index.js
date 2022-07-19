@@ -7,70 +7,23 @@ import Container from 'zero-element-boot/lib/components/container/Container'
 import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import HCenter from 'zero-element-boot/lib/components/cart/HCenter';
+import RouterBox from '@/components/presenter/card/RouterBox';
 
 
 
 export default function index(props) {
-    const { secondaryAgentCount = '', point, secondaryAgentAmount, tertiaryAgentAmount } = props
+    const { list } = props
+// console.log(props,'==props');
 
     return (
-        <>
-            <Flex margin='' w='100%'h='74px'  bg=''>
-                <Stack w='36px'h='33px' bg='#33333320'>
-                    <HCenter>
-                        <PrimarySubtitle fontSize='18px' >
-                            {secondaryAgentCount}
-                        </PrimarySubtitle>
-                        <Text>二级</Text>
-                    </HCenter>
-                </Stack>
-                <Spacer />
+        <RouterBox columns='5' items={[
+            { "title": "二级", "value": `${list.secondaryAgentCount}` },
+            { "title": "三级", "value": `${list.tertiaryAgentAmount}` },
+            { "title": "直推", "value": `￥${list.point}` },
+            { "title": "二级贡献", "value": `￥${list.secondaryAgentAmount}` },
+            { "title": "三级贡献", "value": `￥${list.tertiaryAgentAmount}` },
+        ]} />
 
-
-                <Stack w='40px'h='33px' bg='#33333330'>
-                    <HCenter>
-                        <PrimarySubtitle fontSize='18px' >
-                            {tertiaryAgentAmount}
-                        </PrimarySubtitle>
-                        <Text>三级</Text>
-                    </HCenter>
-                </Stack>
-
-                <Spacer />
-
-
-                <Stack w='44px'h='33px' bg='#33333330'>
-                    <HCenter>
-                        <PrimarySubtitle fontSize='18px' >
-                            <>   ￥{point}</>
-                        </PrimarySubtitle>
-                        <Text>直推</Text>
-                    </HCenter>
-                </Stack>
-
-                <Spacer />
-
-
-                <Stack w='56px' h='33px'bg='#33333330'>
-                    <HCenter>
-                        <PrimarySubtitle fontSize='18px' >
-                            <>   ￥{secondaryAgentAmount}</>
-                        </PrimarySubtitle>
-                        <Text>二级贡献</Text>
-                    </HCenter>
-                </Stack>
-                <Spacer />
-
-                <Stack w='56px'h='33px' bg='#33333330'>
-                    <HCenter>
-                        <PrimarySubtitle fontSize='18px' >
-                            <>   ￥{tertiaryAgentAmount}</>
-                        </PrimarySubtitle>
-                        <Text>二级</Text>
-                    </HCenter>
-                </Stack>
-            </Flex>
-        </>
     )
 
 

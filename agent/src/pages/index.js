@@ -6,6 +6,7 @@ import TestFrom from '@/pages/test/Testfrom'
 import { history } from 'umi';
 import ProxyDetails from '@/pages/my/ProxyDetails'
 
+import Popover from '@/components/presenter/Popover'
 
 
 export default function index(props) {
@@ -18,6 +19,7 @@ export default function index(props) {
     // <h1>hello</h1>
     // <ProxyDetails />
     // <></>
+    // <Popover />
   )
 
 

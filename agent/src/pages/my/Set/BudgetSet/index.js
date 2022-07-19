@@ -5,12 +5,14 @@ import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/Pri
 import Item from './Item/config'
 import { Flex, Box, Spacer, ChakraProvider } from '@chakra-ui/react'
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
+import ContainerSubtitle from '@/components/text/ContainerSubtitle';
 
 
 
 export default function index(props) {
 
-    const api = '/api/pointListSettingData'
+    const api = '/api/u/saasAgent/pointSetting/byType/charges' 
+    // const api = '/api/pointListSettingData'
 
     const [data] = useTokenRequest({ api });
 
@@ -18,10 +20,14 @@ export default function index(props) {
     return (
         <ChakraProvider>
             <PageModuleContainer>
-                <PrimaryTitle>预算款分成设置</PrimaryTitle>
-                <CssCart backgroundColor=''>
+                <>
+                <ContainerSubtitle>预算款分成设置</ContainerSubtitle>
+                <Spacer />
+
+                <CssCart backgroundColor='' margin='8px 0 0 0'>
                     <Item list={data.records} />
                 </CssCart>
+                </>
             </PageModuleContainer>
         </ChakraProvider>
     )

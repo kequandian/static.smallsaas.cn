@@ -5,8 +5,10 @@ import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
 import Avatar from 'zero-element-boot/lib/components/presenter/Avatar'
 import Round from 'zero-element-boot/lib/components/layout/Round';
 import ItemTitleBold from '@/components/text/ItemTitleBold';
-import ItemTitle from '@/components/text/ItemTitle';
+import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitle';
+import ItemSubitle from '@/components/text/ItemSubitle';
 import Container from 'zero-element-boot/lib/components/container/Container'
+import ContainerInactiveTitle from '@/components/text/ContainerInactiveTitle';
 
 /**
  * 
@@ -29,12 +31,12 @@ export default function index(props) {
                             <Avatar size={size} url={avatar} />
                         </Stack>
                         <Stack>
-                            <ItemTitleBold>
-                                {title}
-                            </ItemTitleBold>
                             <ItemTitle>
-                                {subtitle}
+                                {title}
                             </ItemTitle>
+                            <ItemSubitle>
+                                {subtitle}
+                            </ItemSubitle>
                         </Stack>
                     </Flexbox>
 

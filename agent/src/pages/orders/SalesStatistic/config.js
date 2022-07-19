@@ -32,8 +32,6 @@ export default function index(props) {
       },
       ...props
     };
-    // console.log(data,' ==data11');
-    // console.log(props,' ==props11');
 
     return(
     <AutoLayout { ...config } >

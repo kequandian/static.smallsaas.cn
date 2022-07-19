@@ -2,14 +2,17 @@
 import { set as NamedIndicatorSet } from 'zero-element-boot/lib/components/config/NamedIndicatorConfig';
 import { set as NamedPresenterSet } from 'zero-element-boot/lib/components/config/NamedPresenterConfig';
 // import { set as FormItemTypeSet } from 'zero-element-boot/lib/components/config/formItemTypeConfig';
+import { set as NamedCartConfig } from 'zero-element-boot/lib/components/config/NamedCartConfig';
+import { set as NamedListConfig } from 'zero-element-boot/lib/components/config/NamedListConfig';
 
 import { setEndpoint, setToken } from 'zero-element-boot/lib/components/config/common';
 import { Cart, Circle,HightlightCart,HoverShadowCart,Rectangle,Round,SelectCart} from 'zero-element-boot/lib/components/cart/';
 import OnDeleteIndicator from 'zero-element-boot/lib/components/indicator/OnDeleteIndicator'
+import GroupedList from '@/components/list/GroupedList';
 
 
 if (process.env.NODE_ENV == 'development') {
-  setEndpoint('https://house.cloud.smallsaas.cn');
+  // setEndpoint('https://house.cloud.smallsaas.cn');
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
 
   // setEndpoint('http://demo.smallsaas.cn:80');
@@ -30,9 +33,11 @@ NamedIndicatorSet({
 })
 
 NamedPresenterSet({
-
 })
 
+NamedListConfig({
+  GroupedList
+})
 // FormItemTypeSet({
 //   "Select-fetch1": SelectFetch
 // })

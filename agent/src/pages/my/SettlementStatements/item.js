@@ -13,32 +13,32 @@ export default function index(props) {
     const { orderNumber='', settlementTime='', productName='', preStorage='',commission='' } = props
 
     return (
-        <CssCart backgroundColor='' padding='2px 8px' width='100%'>
+        <CssCart backgroundColor='' padding='0px 8px' width='100%' >
             <Container>
-                <Flex w='100%'>
-                    <Box w='80%' bg=''>
+                <Flex w='100%' borderBottom='1px solid #f0f0f0'>
+                    <Box w='15%' bg=''>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                            {orderNumber}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='120%'>
+                    <Box w='46%'>
                         <PrimarySubtitle fontSize='14px' color='#8c99a5'>
                            {settlementTime}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='80%'>
+                    <Box w='15%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                             {productName}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='80%'>
+                    <Box w='15%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                         <>
                         ￥  {preStorage}
                         </> 
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='80%'>
+                    <Box w='15%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                           <>
                           ￥  {commission}

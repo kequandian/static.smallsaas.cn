@@ -5,6 +5,7 @@ import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import { history } from 'umi';
 import ItemTitleBold from '@/components/text/ItemTitleBold';
 import ItemTitle from '@/components/text/ItemTitle';
+import ContainerInactiveTitle from '@/components/text/ContainerInactiveTitle';
 
 /**
  * 
@@ -18,7 +19,7 @@ import ItemTitle from '@/components/text/ItemTitle';
 
 export default function index(props) {
 
-    const { icon = '', title = '', navigation, nextIcon = '',text='', space = '16px' } = props
+    const { icon = '', title = '', navigation, nextIcon = '', text = '', space = '16px' } = props
 
     // console.log('props === ', props)
 
@@ -35,8 +36,8 @@ export default function index(props) {
     return (
 
         (!space || title) ? (
-            <CssCart backgroundColor='#f7f9fa' height='52px' width='100%' margin='1px 0 0  0 ' >
-                <Flex padding='13px 8px' >
+            <CssCart backgroundColor='#ffffff'    height='52px' width='100%' margin='1px 0 0  0 ' >
+                <Flex padding='12px 8px' >
                     <Flex w='100%'  >
                         {
                             icon ? (
@@ -54,21 +55,29 @@ export default function index(props) {
                                     </ItemTitleBold>
                                 )
                         }
-
                     </Flex>
-
-
                     {
                         nextIcon ? (
                             <>
-                                <div style={{ width: '36px' }} onClick={onnextClick}>
-                                    <img src={nextIcon} width='16px' height='16px' />
-                                </div>
+                                <Flex h='100%' onClick={onnextClick} >
+                                    <ContainerInactiveTitle>
+                                        {text}
+                                    </ContainerInactiveTitle>
+                                    <Center >
+                                        <div style={{ width: '12px',height:'27px' }} onClick={onnextClick}>
+                                            <img src={nextIcon} width='12px'  />
+                                        </div>
+                                    </Center>
+
+                                </Flex>
+
                             </>
                         ) : (
-                                <ItemTitle>
-                                    {text}
-                                </ItemTitle>
+                                <Center>
+                                    <ContainerInactiveTitle>
+                                        {text}
+                                    </ContainerInactiveTitle>
+                                </Center>
                             )
                     }
 

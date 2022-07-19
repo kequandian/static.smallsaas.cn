@@ -7,7 +7,7 @@ import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequ
 export default function index(props) {
 
   
-  const { list=[] } = props;
+  const { list} = props;
   
   // const api ='/api/MyDirectorData'
 
@@ -21,7 +21,7 @@ export default function index(props) {
    */
 
   const config = {
-    items:  list &&  list.length  > 0 ? list : [],
+    items:  list ? [list] : [],
     layout: {
       xname: 'Gridbox',
       props: {
@@ -31,7 +31,7 @@ export default function index(props) {
     },
     ...props
   };
-// console.log('list ==',list);
+console.log('list ==',list);
 
   return (
     <AutoLayout {...config} >

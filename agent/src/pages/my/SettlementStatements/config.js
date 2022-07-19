@@ -7,7 +7,8 @@ import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequ
 export default function index(props) {
 
 
-  const api = '/api/settlementStatementData'
+  // const api = '/api/settlementStatementData'
+  const api = 'api/u/saasAgent/settlementOrderList'
 
 
   const [data] = useTokenRequest({ api });
@@ -24,7 +25,7 @@ export default function index(props) {
       xname: 'Gridbox',
       props: {
         columns: 1,
-        space: 1
+        space: 0,
       },
       container: 'PlainList'
     },

@@ -20,15 +20,18 @@ export default function index(props) {
     history.push('/my/ManagingDirector')
   }
 
-  const api = '/api/SalesStatisticData'
+  // const api = '/api/SalesStatisticData'
+  const api = '/api/u/saasAgent/salesVolume?month=7'
 
   const [saleData] = useTokenRequest({ api });
-
+console.log(saleData,' == saleData')
   return (
-    <CssCart backgroundColor='#ffffff' padding='20px'>
+    <>
+
+    <CssCart backgroundColor='#78d2c1' padding='20px'>
       <>
         <div onClick={myPages}>
-          <Avatar size='36px' />
+          <Avatar size='46px' />
         </div>
         <CssCart width='100%' height='130px' margin='10px auto' padding='16px' border='#48beb3 2px solid'>
           <>
@@ -39,29 +42,34 @@ export default function index(props) {
                 {saleData.month ? `${saleData.month}月` : ''}
               </PrimaryTitle>
             </Flex>
-            <SalesStatistic list={saleData.salesList} />
+            <SalesStatistic list={saleData} />
           </>
         </CssCart>
+      </>
+
+    </CssCart>
+
+        <CssCart  width='100%' height='34px' margin='0 auto' padding='2px 10px' backgroundColor=''>
         <PrimaryTitle fontSize='16PX' margin='0'>订单</PrimaryTitle>
-        <CssCart border='#aebac6 2px solid' width='100%' height='34px' margin='0 auto' padding='2px 10px' backgroundColor='#dfe6ed'>
+
           <Flex w='100%'>
-            <Box w='80%' bg=''>
+            <Box w='60%' bg=''>
               <PrimarySubtitle fontSize='14px'>
                 单号
               </PrimarySubtitle>
             </Box>
-            <Box w='120%'>
+            <Box w='80%'>
               < PrimarySubtitle fontSize='14px'>
-                下单时间
+                交易价格
                </PrimarySubtitle>
             </Box>
-            <Box w='80%'>
+            <Box w='60%'>
 
               <PrimarySubtitle fontSize='14px'>
                 产品
               </PrimarySubtitle>
             </Box>
-            <Box w='80%'>
+            <Box w='130%'>
               <PrimarySubtitle fontSize='14px'>
                 代理
              </PrimarySubtitle>
@@ -70,7 +78,6 @@ export default function index(props) {
         </CssCart>
         <OrderedList />
       </>
-    </CssCart>
   )
 
 
