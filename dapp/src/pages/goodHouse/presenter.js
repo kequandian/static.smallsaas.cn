@@ -27,7 +27,7 @@ export default function (props) {
 
                     <div style={{borderTop:'1px #cecece solid', padding:'10px 0 0 0', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', width: '50%' }}>
 
-                        <Linktitle>模型清单 ></Linktitle>
+                        <Linktitle>模型清单</Linktitle>
                     </div>
                 </Flex>
                
