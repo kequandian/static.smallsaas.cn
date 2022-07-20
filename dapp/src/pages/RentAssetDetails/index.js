@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel } from 'antd'
+import { Carousel, Tag } from 'antd'
 import { Spacer } from '@chakra-ui/layout'
 import { getEndpoint } from 'zero-element-boot/lib/components/config/common'
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
@@ -33,6 +33,12 @@ export default function RentAssetDetails(props) {
   const { cover = '', extra = '', cadPicture = '', houseTypePicture = '',
   introducePicture = '', slide= '' 
   } = detail
+
+  const convertStrToObj = str => {
+    if (str) {
+      return JSON.parse(str)
+    }
+  }
 
   const handleUrl = str => {
     if (str) {
@@ -101,6 +107,11 @@ export default function RentAssetDetails(props) {
           </Gridbox>
         </Container>
       </Cart>
+      <Container>
+        {/* {
+          convertStrToObj(extra).tags.map(item => <Tag>{item.tagName}</Tag>)
+        } */}
+      </Container>
       <Spacer/>
       <PageSectionTitle>房屋情况</PageSectionTitle>
       <Container>
