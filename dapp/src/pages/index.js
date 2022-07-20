@@ -6,18 +6,20 @@ import ColorShow from '@/components/presenter/ColorShow'
 import ColorMonth from '@/components/presenter/ColorMonth'
 import AddressManage from '@/pages/AddressManage'
 import Login from '@/pages/login'
+import RentAssetDetails from '@/pages/RentAssetDetails'
 
 
 
 
 export default function index(props) {
-  history.push('/goodHouse?id=1969')
+  history.push('/RentAssetDetails?id=1969')
   return (
     // <GoodHouse />
     // < Hello />
     // <ColorMonth />
     // <AddressManage />
     // <Login />
+    // <RentAssetDetails />
     <></>
   )
 
