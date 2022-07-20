@@ -11,14 +11,14 @@ import Login from '@/pages/login'
 
 
 export default function index(props) {
-  // history.push('/goodHouse?id=1')
+  history.push('/goodHouse?id=1969')
   return (
     // <GoodHouse />
     // < Hello />
-    <ColorMonth />
+    // <ColorMonth />
     // <AddressManage />
     // <Login />
-    // <></>
+    <></>
   )
 
 

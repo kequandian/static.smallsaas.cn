@@ -23,7 +23,7 @@ export default function (props) {
 
     const urlQuery = useQuery(props)
 
-    const api = `/api/u/asset/user/rent/details/${urlQuery.query.id}`
+    const api = `/api/u/house/rent/rentCommon/userRentAssetDetails/${urlQuery.query.id}`
 
     const [detail] = useTokenRequest({ api });
 
