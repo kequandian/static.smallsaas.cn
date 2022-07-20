@@ -10,6 +10,7 @@ import HCenter from 'zero-element-boot/lib/components/cart/HCenter';
 import RouterBox from '@/components/presenter/card/RouterBox';
 
 
+// --我的页面头部列表
 
 export default function index(props) {
     const { list } = props

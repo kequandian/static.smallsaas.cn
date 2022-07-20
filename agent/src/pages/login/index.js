@@ -22,8 +22,7 @@ const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 import { history } from 'umi';
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 
-
-
+// --登录页面
 export default function index(props) {
 
     const { phone, validateCode, password } = props
@@ -73,6 +72,7 @@ export default function index(props) {
                     <Text fontSize='40px' color='#d3455b'>5G</Text>
                 </Center>
 
+                {/* // --登录页面 登录or注册 */}
                 {showPhoneLogin ? (
                     <>
                         <CssCart width='160px' margin='auto'>
@@ -124,17 +124,17 @@ export default function index(props) {
                                     </InputGroup>
 
                                     <InputGroup size='md'>
-                                        <InputLeftAddon children={<VerificationCode />} />
+                                        <InputLeftAddon children={<QRCode />} />
                                         <Input placeholder='请输入手机动态码' value={validateCode}
                                             {...register('validateCode', {
                                             })}
                                         />
                                     </InputGroup>
-                                    {/* <InputGroup size='md'>
-                                        <InputLeftAddon children={<QRCode />} />
-                                        <Input placeholder='输入邀请码' value={password}
+                                    <InputGroup size='md'>
+                                        <InputLeftAddon children={<VerificationCode />} />
+                                        <Input placeholder='密码' value={password}
                                             {...register('password', {})} />
-                                    </InputGroup> */}
+                                    </InputGroup>
                                     <Spacer />
                                     {/* <Button solid color='#0e639c' navigation>登录</Button> */}
                                     <Button width='100%' height='40px' colorScheme='teal' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >

@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 
 export default function Index(props) {
 
-    const { color = '', fontSize = '10px', children, margin = '2px' } = props;
+    const { color = '', fontSize = '10px', children, margin = '' } = props;
 
 
     const baseStyle = {

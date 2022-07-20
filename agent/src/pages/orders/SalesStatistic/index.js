@@ -6,8 +6,7 @@ import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
 import Container from 'zero-element-boot/lib/components/container/Container'
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 
-
-
+// --首页销量列表
 export default function index(props) {
   const { count, productName } = props
   return (

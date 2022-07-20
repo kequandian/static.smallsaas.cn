@@ -12,7 +12,7 @@ import AvatarCard from '@/components/presenter/card/AvatarCard';
 
 export default function index(props) {
 
-    const { items } = props
+    const { items, cb } = props
     // console.log(props, ' == props')
 
 
@@ -27,7 +27,7 @@ export default function index(props) {
 
     return items && items.map((item, i) => (
 
-        <MyInviteItem  {...item} key={i} />
+        <MyInviteItem  {...item} key={i} cb={cb}/>
 
 
     )

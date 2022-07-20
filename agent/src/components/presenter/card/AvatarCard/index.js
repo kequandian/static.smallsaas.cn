@@ -21,7 +21,7 @@ export default function index(props) {
 
     return React.Children.map(children, child => {
         return (
-            <CssCart width='' height='' backgroundColor='' padding=''>
+            <CssCart width='100%' height='' backgroundColor='' padding=''>
                <Container>
                 <Flexbox direction='row'  align='start-with-last-end' >
                     <Flexbox justify='center' direction='row' align='center' >
@@ -38,7 +38,7 @@ export default function index(props) {
                         </Stack>
                     </Flexbox>
 
-                    <Center h='100%' w='100%'>
+                    <Center h='100%' w=''>
                         {child}
                     </Center>
                 </Flexbox>

@@ -8,7 +8,7 @@ export default function index(props) {
 
 
   // const api = '/api/settlementStatementData'
-  const api = 'api/u/saasAgent/settlementOrderList'
+  const api = '/api/u/saasAgent/settlementOrderList'
 
 
   const [data] = useTokenRequest({ api });
