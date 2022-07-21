@@ -1,6 +1,5 @@
 import React from 'react';
 import MyInviteItem from '../MyInviteItem';
-import AvatarCard from '@/components/presenter/card/AvatarCard';
 
 
 /**

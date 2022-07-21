@@ -2,19 +2,10 @@ import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 import { Flex, Box, Spacer, Stack, ChakraProvider, Text, Center ,Popover,PopoverTrigger,PopoverContent,PopoverArrow,PopoverHeader,
     PopoverBody,PopoverCloseButton } from '@chakra-ui/react'
-import Avatar from '@/components/presenter/Avatar'
-import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
-import Container from 'zero-element-boot/lib/components/container/Container'
-import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
-import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
-import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
-import PageModuleContainer from '@/components/Container/PageModuleContainer';
-import UserInformation from '../UserInformation.js';
 import Head from './head/config';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
-import Router from '@/components/presenter/card/Router';
+import Router from 'zero-element-boot-presenter/lib/components/presenter/card/Router';
 import AvatarCard from '@/components/presenter/card/AvatarCard';
-import MyInvitationCode from '../myInvitationCode';
 
 import { history } from 'umi';
 
@@ -31,7 +22,7 @@ export default function index(props) {
 
 
     const [data] = useTokenRequest({ api });
-    console.log(data, '===data')
+    // console.log(data, '===data')
     return (
         <ChakraProvider>
             {data ? (

@@ -1,17 +1,11 @@
 import React from 'react';
-import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
-import Cart from 'zero-element-boot/lib/components/cart/Cart';
-import HCenter from 'zero-element-boot/lib/components/cart/HCenter';
-import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import { Flex, Box, Spacer, Center, ChakraProvider, Text, Stack } from '@chakra-ui/react'
-import PageModuleContainer from '@/components/Container/PageModuleContainer';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 import QRCode from 'qrcode.react';
 import { history } from 'umi';
-import ContainerSubtitle from '@/components/text/ContainerSubtitle';
-import DarkBackgroundTitle from '@/components/text/DarkBackgroundTitle';
+import DarkBackgroundTitle from 'zero-element-boot-plugin-theme/lib/components/text/DarkBackgroundTitle';
 
 
 
@@ -46,7 +40,7 @@ export default function index(props) {
         <ChakraProvider>
             <CssCart position='fixed' width='100%'  height='100%' padding='40px 20px ' margin='0 0 10px 0' backgroundColor='#020407' >
                 <>
-                <CssCart padding='40px 20px ' margin='0 0 10px 0' backgroundColor='#1a2748' >
+                <CssCart padding='40px 20px ' margin='0 0 20px 0' backgroundColor='#1a2748' >
 <>
                     <Center>
                         <DarkBackgroundTitle fontSize='15px'>
@@ -55,14 +49,14 @@ export default function index(props) {
                     </Center>
 
                      <Stack>
-                        <Center border='1px #3156bd solid' padding='4px 30px' margin='10px 20px 20px 20px '>
+                        <Center border='1px #3156bd solid' padding='4px 10px' margin='20px 40px ' borderRadius='2px'>
                             <DarkBackgroundTitle>
                                 {data}
                             </DarkBackgroundTitle>
                          </Center>
 
-                            <Center borderTop='2px #2e3f64 solid' width='' padding='30px 62px'  bg='' >
-                                 <CssCart  padding='8px ' margin='0 0 10px 0'  backgroundColor='#ffffff'  borderRadius='2px'>
+                            <Center borderTop='2px #2e3f64 solid' width='' padding='50px 62px'  bg='' >
+                                 <CssCart  padding='8px '  backgroundColor='#ffffff'  borderRadius='2px'>
                                      <QRCode value="/my/Set/CallsSet" />
                                 </CssCart>
 

@@ -1,21 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 import { Flex, Box, Spacer, ChakraProvider, Text } from '@chakra-ui/react'
-import Avatar from '@/components/presenter/Avatar'
-import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
-import Container from 'zero-element-boot/lib/components/container/Container'
+import Avatar from 'zero-element-boot/lib/components/presenter/Avatar'
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import OrderedList from './OrdersList/config';
 import SalesStatistic from './SalesStatistic/config';
-import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 import { history } from 'umi';
 
 
+import type, { DatePickerProps } from 'antd';
+import { DatePicker, Space } from 'antd';
+
+// const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+//   console.log(date, dateString);
+// };
+
+// const App: React.FC = () => (
+// <Space direction="vertical">
+//   <DatePicker onChange={onChange} />
+//   <DatePicker onChange={onChange} picker="week" />
+//   <DatePicker onChange={onChange} picker="month" />
+//   <DatePicker onChange={onChange} picker="quarter" />
+//   <DatePicker onChange={onChange} picker="year" />
+// </Space>
+// );
+
+// export default App;
+
+
+
 // --首页
 export default function index(props) {
-  const { month } = props
+  const { onChange } = props
 
   function myPages() {
     history.push('/my/ManagingDirector')
@@ -29,7 +47,7 @@ export default function index(props) {
   const api = `/api/u/saasAgent/salesVolume?month=${res}`
 
   const [saleData] = useTokenRequest({ api });
-  console.log(saleData, ' == saleData')
+  // console.log(saleData, ' == saleData')
 
 
 
@@ -41,11 +59,15 @@ export default function index(props) {
           <div onClick={myPages}>
             <Avatar size='46px' />
           </div>
-          <CssCart width='100%' height='130px' margin='10px auto' padding='16px' border='#48beb3 2px solid'>
+          <CssCart width='100%' height='130px' margin='10px auto' padding='16px 10px 16px 16px' border='#48beb3 2px solid'>
             <>
               <Flex >
                 <PrimaryTitle fontSize='18PX'>销量</PrimaryTitle>
                 <Spacer />
+
+
+                {/* <DatePicker onChange={onChange} picker="month" w='80px' /> */}
+
                 <PrimaryTitle fontSize='18px'>
                   {res}月
                 </PrimaryTitle>

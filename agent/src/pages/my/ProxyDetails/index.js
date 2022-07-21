@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import PageModuleContainer from '@/components/Container/PageModuleContainer';
-import Router from '@/components/presenter/card/Router';
+import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
+import Router from 'zero-element-boot-presenter/lib/components/presenter/card/Router';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
 

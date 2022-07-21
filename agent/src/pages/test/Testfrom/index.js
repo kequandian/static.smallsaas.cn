@@ -34,7 +34,7 @@ export default function FormikExample() {
 
       return new Promise((resolve) => {
         setTimeout(() => {
-          console.log('values =', values)
+          // console.log('values =', values)
           resolve()
         }, 100)
       })

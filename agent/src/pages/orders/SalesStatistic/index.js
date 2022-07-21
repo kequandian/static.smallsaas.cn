@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 import { Flex, Stack, Box, Spacer, ChakraProvider, Center } from '@chakra-ui/react'
-import Avatar from '@/components/presenter/Avatar'
-import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
-import Container from 'zero-element-boot/lib/components/container/Container'
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 
 // --首页销量列表

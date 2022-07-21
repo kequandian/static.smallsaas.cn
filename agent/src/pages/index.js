@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Testlogin from '@/pages/test/Testlogin'
-import Testorders from '@/pages/test/Testorders'
 import TestManagingDirector from '@/pages/test/testMy/TestManagingDirector'
-import TestFrom from '@/pages/test/Testfrom'
 import { history } from 'umi';
-import ProxyDetails from '@/pages/my/ProxyDetails'
 
-import Popover from '@/components/presenter/Popover'
-import TripleOption from '@/components/presenter/card/TripleOption'
-import TestTripleOption from '@/pages/test/TestTripleOption'
 
 
 export default function index(props) {
@@ -22,6 +16,7 @@ export default function index(props) {
     // <ProxyDetails />
     // <></>
     // <TestTripleOption />
+    // <Copy />
   )
 
 

@@ -2,12 +2,12 @@ import React from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 import { Flex, Center, Progress } from '@chakra-ui/react'
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
-import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
 
 /**
  * 
  */
 
+ // --话费分成设置item
 export default function index(props) {
 
     const { children, name = '', point = '' } = props

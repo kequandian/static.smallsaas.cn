@@ -7,20 +7,15 @@ import {
 } from '@chakra-ui/react'
 import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
 import Container from 'zero-element-boot/lib/components/container/Container'
-import PageModuleContainer from '@/components/Container/PageModuleContainer';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 import Number from './image/Number'
 import VerificationCode from './image/VerificationCode'
 import QRCode from './image/QRCode'
 import Account from './image/Account'
 import Name from './image/Name'
-import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
-import ButtonBoot from 'zero-element-boot/lib/components/presenter/button/Button';
 import { useForm } from 'react-hook-form';
-import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 import { history } from 'umi';
-import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 
 // --登录页面
 export default function index(props) {
@@ -44,7 +39,7 @@ export default function index(props) {
         // console.log('values = ', values)
 
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
-            console.log('resp data = ', resp)
+            // console.log('resp data = ', resp)
             if (resp && resp.code === 200) {
                 history.push('/orders')
                 // setToken(resp.data.accessToken)

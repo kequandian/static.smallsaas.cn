@@ -1,17 +1,6 @@
 import React, { useState } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import Cart from 'zero-element-boot/lib/components/cart/Cart'
 import { Flex, Center, Stack,ChakraProvider } from '@chakra-ui/react'
-import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
-import { history } from 'umi';
-import ItemTitleBold from '@/components/text/ItemTitleBold';
-import ItemTitle from '@/components/text/ItemTitle';
-import ItemSubitle from '@/components/text/ItemSubitle';
-import Avatar from '@/components/presenter/Avatar'
-import Button from 'zero-element-boot/lib/components/presenter/button/Button'
-import Switch from '../../Switch'
-import ItemAccent from 'zero-element-boot-plugin-theme/lib/components/text/ItemAccent';
-import ItemTag from '@/components/text/ItemTag';
 import AvatarCard from '@/components/presenter/card/AvatarCard';
 import TripleOption from '@/components/presenter/card/TripleOption'
 

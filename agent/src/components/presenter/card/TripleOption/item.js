@@ -26,7 +26,7 @@ export default function index(props) {
 
     function onClick(e) {
         // setNames(e.target.name)
-        console.log('onClickName = ', e.target.name)
+        // console.log('onClickName = ', e.target.name)
         if(callBack){
             callBack(id, e.target.name)
         }

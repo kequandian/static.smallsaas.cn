@@ -1,14 +1,9 @@
 import React from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import Cart from 'zero-element-boot/lib/components/cart/Cart'
 import { Flex, Center, Stack } from '@chakra-ui/react'
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import { history } from 'umi';
-import ItemTitleBold from '@/components/text/ItemTitleBold';
-import ItemTitle from '@/components/text/ItemTitle';
-import ItemSubitle from '@/components/text/ItemSubitle';
-import Avatar from '@/components/presenter/Avatar'
-import Button from 'zero-element-boot/lib/components/presenter/button/Button'
+import ItemSubitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemSubitle';
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle';
 
 

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import {history} from 'umi'
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import PageModuleContainer from '@/components/Container/PageModuleContainer';
-import Settings from 'zero-element-boot-presenter/lib/components/presenter/card/Settings';
-import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
-import ItemTitle from '@/components/text/ItemTitle';
+import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitle';
 import { Flex, Box, Spacer,Center, ChakraProvider } from '@chakra-ui/react'
-import HCenter from 'zero-element-boot/lib/components/cart/HCenter';
 import Button from 'zero-element-boot/lib/components/presenter/button/Button';
-
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 
+
+
+//--设置修改页面
 export default function index(props) {
 
     const {title, navigation, percentage} =props
@@ -21,7 +18,7 @@ export default function index(props) {
 
 
     function changeValue(e){
-        console.log('change value = ', e.target.value)
+        // console.log('change value = ', e.target.value)
         setSecondaryAgentPoint(e.target.value)
     }   
 
@@ -42,7 +39,7 @@ export default function index(props) {
                 <Center w='100%' bg='' margin='10px 0 0 0'> 
                     <from   style={{width:'90%'}} >
                         <input type='text' value={secondaryAgentPoint}
-                         style={{border:'0' ,fontSize:'18px', borderBottom:'1px solid #8dd7cf',width:'100%'}}  
+                         style={{border:'0' ,fontSize:'20px', fontWeight:'', borderBottom:'1px solid #8dd7cf',width:'100%'}}  
                          onChange={(e)=>changeValue(e)}
                          />
                     </from>
