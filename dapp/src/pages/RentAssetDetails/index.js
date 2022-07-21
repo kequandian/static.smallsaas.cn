@@ -31,25 +31,23 @@ export default function RentAssetDetails(props) {
 
   // 需要先转换
   const { cover = '', extra = '', cadPicture = '', houseTypePicture = '',
-  introducePicture = '', slide= '' 
+    introducePicture = '', slide= '' 
   } = detail
   // 已转换的数据
   let convertedExtra = convertStrToObj(extra)
-  let convertedSlides = convertStrToImgUrlArr(slide)
+  let convertedSlidesArr = convertStrToImgUrlArr(slide, endpoint)
 
 
   return (
     <PageModuleContainer>
       <Carousel>
         {
-          // convertStrToImgUrlArr(detail.slice).map((item, index) => {
-          //   return (
-          //     <div>
-          //       {/* <image src={item.url}/> */}
-          //       <h3>{item.url}</h3>
-          //     </div>
-          //   )
-          // })
+          convertedSlidesArr && convertedSlidesArr.map((item, index) => <div key={index}>
+          <img src={item} style={{
+            width: '100%',
+            height: '200px'
+          }}/>
+        </div>)
         }
       </Carousel>
       <Container>
@@ -131,15 +129,14 @@ const convertStrToObj = str => {
   }
 }
 
-const handleUrl = str => {
-  if (str) {
-    return endpoint + JSON.parse(str)[0].url
-  }
-}
+const handleUrl = (str, endpoint) => endpoint + str
 
-const convertStrToImgUrlArr = str => {
+// 将图片字段的字符串转成Url数组
+const convertStrToImgUrlArr = (str, endpoint) => {
   if (str) {
-    let url = JSON.parse
-    return url
+    let trimmed = str.slice(1, -1)
+    let arr = trimmed.split(',')
+    let objArr = arr.map(item => JSON.parse(item))
+    return objArr.map(item => endpoint + item.url)
   }
 }
