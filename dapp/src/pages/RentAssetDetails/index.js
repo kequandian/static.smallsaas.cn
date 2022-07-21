@@ -19,9 +19,9 @@ export default function RentAssetDetails(props) {
   const api = `/api/u/house/rent/rentCommon/userRentAssetDetails/${urlQuery.query.id}`
 
   const [detail] = useTokenRequest({ api })
-  // if (detail === undefined || detail.length === 0) {
-  //   return <div></div>
-  // }
+  if (detail === undefined || detail.length === 0) {
+    return <div></div>
+  }
 
   const { title = '', price = 0, area = 0, houseAssetModel = {},
     rentDescribe = ''
@@ -29,14 +29,15 @@ export default function RentAssetDetails(props) {
   const { houseType ='', floor = 0, direction = '', communityName = ''
   } = houseAssetModel
 
-  // 需要先转换
-  const { cover = '', extra = '', cadPicture = '', houseTypePicture = '',
+  // 需要转换的数据
+  const { cover = '', extra = '', houseTypePicture = '',
     introducePicture = '', slide= '' 
   } = detail
+  const { cadPicture = '' } = houseAssetModel
   // 已转换的数据
   let convertedExtra = convertStrToObj(extra)
   let convertedSlidesArr = convertStrToImgUrlArr(slide, endpoint)
-
+  let convertedCadPicture = convertStrToImgUrlArr(cadPicture, endpoint)
 
   return (
     <PageModuleContainer>
@@ -95,29 +96,28 @@ export default function RentAssetDetails(props) {
           convertedExtra && convertedExtra.tags.map((item, index) => <Tag key={index}>{item.tagName}</Tag>)
         }
       </Container>
-      <Spacer/>
       <PageSectionTitle>房屋情况</PageSectionTitle>
       <Container>
-        {/* <div>
-          小区：{communityName}
-        </div> */}
         <div>
           介绍：{rentDescribe}
         </div>
       </Container>
-      <PageSectionTitle>户型图</PageSectionTitle>
+      {/* <PageSectionTitle>户型图</PageSectionTitle>
       <Container>
-        <div style={{ backgroundImage: `url(${handleUrl(houseTypePicture)})`, width: '100%', height: '250px', margin: "10px 0 20px 0" }}>
+        <div>
+          <img src={convertedCadPicture[0]} style={{
+            width: '150px',
+            height: '150px'
+          }}/>
         </div>
-      </Container>
-      <PageSectionTitle>小区·{communityName}</PageSectionTitle>
+        {
+          console.log('convertedCadPicture' + convertedCadPicture)
+        }
+      </Container> */}
+      <PageSectionTitle>
+        <div>小区·{communityName}</div>
+      </PageSectionTitle>
     </PageModuleContainer>
-    // <div>
-    //   <button onClick={() => {
-    //     console.log(detail)
-    //     console.log(houseAssetModel)
-    //   }}>测试</button>
-    // </div>
   )
 }
 
@@ -131,12 +131,20 @@ const convertStrToObj = str => {
 
 const handleUrl = (str, endpoint) => endpoint + str
 
+// 将图片字段的字符串转成Url
+const convertStrToImgUrl = (str, endpoint) => {
+  if (str) {
+    let trimmed = str.slice(1, -1)
+    return endpoint + trimmed
+  }
+}
 // 将图片字段的字符串转成Url数组
 const convertStrToImgUrlArr = (str, endpoint) => {
   if (str) {
     let trimmed = str.slice(1, -1)
     let arr = trimmed.split(',')
     let objArr = arr.map(item => JSON.parse(item))
+    console.log('trimmed', trimmed)
     return objArr.map(item => endpoint + item.url)
   }
 }
