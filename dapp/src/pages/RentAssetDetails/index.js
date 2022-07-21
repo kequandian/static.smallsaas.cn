@@ -33,25 +33,10 @@ export default function RentAssetDetails(props) {
   const { cover = '', extra = '', cadPicture = '', houseTypePicture = '',
   introducePicture = '', slide= '' 
   } = detail
+  // 已转换的数据
+  let convertedExtra = convertStrToObj(extra)
+  let convertedSlides = convertStrToImgUrlArr(slide)
 
-  const convertStrToObj = str => {
-    if (str) {
-      return JSON.parse(str)
-    }
-  }
-
-  const handleUrl = str => {
-    if (str) {
-      return endpoint + JSON.parse(str)[0].url
-    }
-  }
-
-  const convertStrToImgUrlArr = str => {
-    if (str) {
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
-      return JSON.parse(str)
-    }
-  }
 
   return (
     <PageModuleContainer>
@@ -108,9 +93,9 @@ export default function RentAssetDetails(props) {
         </Container>
       </Cart>
       <Container>
-        {/* {
-          convertStrToObj(extra).tags.map(item => <Tag>{item.tagName}</Tag>)
-        } */}
+        {
+          convertedExtra && convertedExtra.tags.map((item, index) => <Tag key={index}>{item.tagName}</Tag>)
+        }
       </Container>
       <Spacer/>
       <PageSectionTitle>房屋情况</PageSectionTitle>
@@ -136,4 +121,25 @@ export default function RentAssetDetails(props) {
     //   }}>测试</button>
     // </div>
   )
+}
+
+
+const convertStrToObj = str => {
+  if (str) {
+    let newObj = JSON.parse(str)
+    return newObj
+  }
+}
+
+const handleUrl = str => {
+  if (str) {
+    return endpoint + JSON.parse(str)[0].url
+  }
+}
+
+const convertStrToImgUrlArr = str => {
+  if (str) {
+    let url = JSON.parse
+    return url
+  }
 }
