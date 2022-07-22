@@ -12,7 +12,7 @@ import RentAssetDetails from '@/pages/RentAssetDetails'
 
 
 export default function index(props) {
-  history.push('/RentAssetDetails?id=1969')
+  history.push('/RentAssetDetails?id=1')
   return (
     // <GoodHouse />
     // < Hello />

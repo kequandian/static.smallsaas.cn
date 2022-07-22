@@ -24,7 +24,7 @@ export default function RentAssetDetails(props) {
   }
 
   const { title = '', price = 0, area = 0, houseAssetModel = {},
-    rentDescribe = ''
+    rentDescribe = '', serverAvatar = '', serverName = '', serverPhone = ''
   } = detail
   const { houseType ='', floor = 0, direction = '', communityName = ''
   } = houseAssetModel
@@ -115,6 +115,38 @@ export default function RentAssetDetails(props) {
         }
       </Container> */}
       <PageSectionTitle>
+        <div>置业顾问</div>
+      </PageSectionTitle>
+      <Container>
+        <div style={{
+          display: 'flex'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            overflow: 'hidden'
+          }}>
+            <img src={serverAvatar}/>
+          </div>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginLeft: '20px'
+          }}>
+            <div style={{
+              fontSize: '14px'
+            }}>{serverName}</div>
+            <div style={{
+              fontSize: '12px'
+            }}>{serverPhone}</div>
+          </div>
+        </div>
+      </Container>
+      <PageSectionTitle>
         <div>小区·{communityName}</div>
       </PageSectionTitle>
     </PageModuleContainer>
@@ -144,7 +176,6 @@ const convertStrToImgUrlArr = (str, endpoint) => {
     let trimmed = str.slice(1, -1)
     let arr = trimmed.split(',')
     let objArr = arr.map(item => JSON.parse(item))
-    console.log('trimmed', trimmed)
     return objArr.map(item => endpoint + item.url)
   }
 }
