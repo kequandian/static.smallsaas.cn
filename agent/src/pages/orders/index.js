@@ -53,8 +53,7 @@ export default function index(props) {
 
   return (
     <>
-
-      <CssCart backgroundColor='#78d2c1' padding='20px'>
+      <CssCart background='linear-gradient(141deg, rgba(88, 85, 232)1%,rgba(62, 196, 160)80%)' padding='20px'>
         <>
           <div onClick={myPages}>
             <Avatar size='46px' />
