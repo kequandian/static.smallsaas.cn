@@ -9,10 +9,10 @@ import TopBar from '@/components/presenter/TopBar'
 
 
 
- // --话费分成设置item
+// --话费分成设置item
 export default function index(props) {
 
-    const api = '/api/u/saasAgent/pointSetting/byType/bonus' 
+    const api = '/api/u/saasAgent/pointSetting/byType/bonus'
 
     const [data] = useTokenRequest({ api });
 
@@ -22,12 +22,12 @@ export default function index(props) {
             <TopBar>
                 <>
 
-                  <CssCart margin='6px 0 10px 40px' >
-                 <ContainerSubtitle>话费分成设置</ContainerSubtitle>
-               </CssCart>
-                <CssCart backgroundColor='' margin='8px 0 0 0'>
-                    <Item list={data.records} />
-                </CssCart>
+                    <CssCart margin='6px 0 10px 40px' >
+                        <ContainerSubtitle>话费分成设置</ContainerSubtitle>
+                    </CssCart>
+                    <CssCart backgroundColor='' margin='8px 0 0 0'>
+                        <Item list={data.records} />
+                    </CssCart>
                 </>
             </TopBar>
         </ChakraProvider>

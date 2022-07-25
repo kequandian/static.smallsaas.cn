@@ -7,7 +7,8 @@ import Round from 'zero-element-boot/lib/components/layout/Round';
 import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
 import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitle';
 import Container from 'zero-element-boot/lib/components/container/Container'
-
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
+import { history } from 'umi';
 /**
  * 
  * @param {title} title 标题、名字
@@ -15,9 +16,23 @@ import Container from 'zero-element-boot/lib/components/container/Container'
  * @param {avatar} avatar 头像
  * 
  */
+
+
+
 export default function index(props) {
 
-    const { children, title='', subtitle='', avatar ,size='60px'  } = props
+    const { children, title='', subtitle='', avatar ,size='60px' ,navigation } = props
+
+
+    const queryData = useQuery(props.navigation)
+    // console.log('queryData === ', queryData)
+
+    const path = () => {
+        history.push(queryData)
+        
+    }
+
+    const onnextClick = navigation ? path : null
 
     return React.Children.map(children, child => {
         return (
@@ -25,7 +40,7 @@ export default function index(props) {
                <Container>
                 <Flexbox direction='row'  align='start-with-last-end' >
                     <Flexbox justify='center' direction='row' align='center' >
-                        <Stack>
+                        <Stack onClick={()=>{onnextClick()}}>
                             <Avatar size={size} url={avatar} />
                         </Stack>
                         <Stack>

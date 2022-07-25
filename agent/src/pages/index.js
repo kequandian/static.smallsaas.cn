@@ -4,14 +4,16 @@ import Testorders from '@/pages/test/Testorders'
 import TestManagingDirector from '@/pages/test/testMy/TestManagingDirector'
 import { history } from 'umi';
 import TopBar from '@/components/presenter/TopBar'
+import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 
 
 
 export default function index(props) {
+
   // history.push('/Testlogin')
   return (
-    <Testlogin />
-    // <Testorders />
+    // <Testlogin />
+    <Testorders />
     // <TestManagingDirector />
     // <TestFrom />
     // <h1>hello</h1>

@@ -68,7 +68,7 @@ export default function index(props) {
     return (
         <ChakraProvider>
             <TopBar>
-                <CssCart position='fixed' width='100%' height='100%' padding='16px' background='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'>
+                <CssCart position='fixed' width='100%' height='100%' padding='16px' >
 
                     {/* <CssCart position='fixed' width='100%' height='100%'  backgroundColor='#ff0000' padding='16px'> */}
                     <Stack spacing={6}>
@@ -82,7 +82,7 @@ export default function index(props) {
                                 <CssCart width='260px' margin='auto'>
                                     <Container>
                                         <Flexbox justify='start' direction='row' align='start-with-last-end' >
-                                            <Text fontSize='16px' color='#ffffff' onClick={() => swtichClick(true)}>手机号登录</Text>
+                                            <Text fontSize='16px' color='#333333' onClick={() => swtichClick(true)}>手机号登录</Text>
                                             <Text fontSize='16px' color='#33333350' onClick={() => swtichClick(false)}>账号密码登录</Text>
                                         </Flexbox>
                                     </Container>
@@ -147,7 +147,7 @@ export default function index(props) {
                                     <Container>
                                         <Flexbox justify='start' direction='row' align='start-with-last-end' >
                                             <Text fontSize='16px' color='#33333350' onClick={() => swtichClick(true)}>手机号登录</Text>
-                                            <Text fontSize='16px' color='#ffffff' onClick={() => swtichClick(false)}>账号密码登录</Text>
+                                            <Text fontSize='16px' color='#333333' onClick={() => swtichClick(false)}>账号密码登录</Text>
                                         </Flexbox>
                                     </Container>
                                 </CssCart>
@@ -188,7 +188,7 @@ export default function index(props) {
                                 </form>
                             </>}
                         < Center h='50px' w='100%' bg='' onClick={enroll}>
-                            <Text fontSize='10px' color='#ffffff'>还没有账号？去注册 ></Text>
+                            <Text fontSize='10px' color='#333333'>还没有账号？去注册 ></Text>
                         </Center>
                     </Stack>
                 </CssCart>

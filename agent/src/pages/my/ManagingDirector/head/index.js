@@ -10,11 +10,11 @@ export default function index(props) {
 
     return (
         <RouterBox columns='5' items={[
-            { "title": "二级", "value": `${list.secondaryAgentCount}` },
-            { "title": "三级", "value": `${list.tertiaryAgentAmount}` },
-            { "title": "直推", "value": `￥${list.point}` },
-            { "title": "二级贡献", "value": `￥${list.secondaryAgentAmount}` },
-            { "title": "三级贡献", "value": `￥${list.tertiaryAgentAmount}` },
+            { "title": "二级", "value": `${list.secondaryAgentCount || '0'}` },
+            { "title": "三级", "value": `${list.tertiaryAgentAmount || '0'}` },
+            { "title": "直推", "value": `￥${list.point || '0'}` },
+            { "title": "二级贡献", "value": `￥${list.secondaryAgentAmount || '0'}` },
+            { "title": "三级贡献", "value": `￥${list.tertiaryAgentAmount || '0'}` },
         ]} />
 
     )

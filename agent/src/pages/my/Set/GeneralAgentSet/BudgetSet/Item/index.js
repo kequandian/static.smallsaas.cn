@@ -7,14 +7,14 @@ import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/
  * 
  */
 
- // --话费分成设置item
+ // --预算分成设置item
 export default function index(props) {
 
     const { children, name = '', point = '' } = props
 
 
     return (
-        <CssCart backgroundColor='#f7f9fa' height='30px' width='100%' padding='4px' margin='1px 0 0  0 ' >
+        <CssCart backgroundColor='#f7f9fa' height='30px' width='100%' padding='4px 10px' margin='1px 0 0  0 ' >
             <>
                 <Flex>
                     <Flex w='100%' bg=''>

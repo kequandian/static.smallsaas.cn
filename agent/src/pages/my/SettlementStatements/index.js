@@ -12,12 +12,12 @@ import TopBar from '@/components/presenter/TopBar'
 export default function index(props) {
   return (
     <TopBar>
-    <CssCart position='fixed' width='100%' height='100%' background='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'>
+    <CssCart position='fixed' width='100%' height='100%' background='#23a7b260'>
     <>
-      <Center h='40px'>
+      <Center h='40px' bg='#23a7b2'>
         <DarkBackgroundTitle>结算报表</DarkBackgroundTitle>
       </Center>
-      <CssCart borderTop='1px solid #f5f5f5' width='100%' height='34px' margin=' 0' padding='6px 10px' backgroundColor=''>
+      <CssCart borderTop='1px solid #f5f5f5' width='100%' height='34px' margin=' 0' padding='6px 10px' backgroundColor='#23a7b2'>
         <Flex w='100%'>
           <Box w='15%' bg=''>
             <PrimarySubtitle color='#ffffff' fontSize='14px'>
@@ -48,15 +48,7 @@ export default function index(props) {
         </Flex>
       </CssCart>
       <Item />
-      {/* <CssCart borderBottom='1px #f5f5f5 solid' width='100%' height='40px' background='#ffffff'>
-      11
-      </CssCart>
-      <CssCart  borderBottom='1px #f5f5f5 solid' width='100%' height='40px' background='#ffffff'>
-      11
-      </CssCart>
-       <CssCart  borderBottom='1px #f5f5f5 solid' width='100%' height='40px' background='#ffffff'>
-      11
-      </CssCart> */}
+      
       </>
     </CssCart>
     </TopBar>

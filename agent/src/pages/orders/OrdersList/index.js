@@ -19,22 +19,22 @@ export default function index(props) {
                     <Box w='60%' bg=''>
 
                         <PrimarySubtitle>
-                            {userId}
+                            {userId || ''}
                         </PrimarySubtitle>
                     </Box>
                     <Box w='80%'>
                         <PrimarySubtitle>
-                            {price}
+                            {price || ''}
                         </PrimarySubtitle>
                     </Box>
                     <Box w='60%'>
                         <PrimarySubtitle>
-                            {productName}
+                            {productName || ''}
                         </PrimarySubtitle>
                     </Box>
                     <Box w='130%'>
                         <PrimarySubtitle >
-                            {agentName}
+                            {agentName || ''}
                         </PrimarySubtitle>
                     </Box>
                 </Flex>

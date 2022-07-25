@@ -61,7 +61,7 @@ export default function index(props) {
     return (
         <ChakraProvider>
             <TopBar>
-                <CssCart position='fixed' width='100%' height='100%' padding='16px' background='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'>
+                <CssCart position='fixed' width='100%' height='100%' padding='16px'>
 
                     {/* <CssCart position='fixed' width='100%' height='100%'  backgroundColor='#ff0000' padding='16px'> */}
                     <Stack spacing={6}>

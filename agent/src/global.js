@@ -12,7 +12,7 @@ if (process.env.NODE_ENV == 'development') {
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
 
   // setEndpoint('http://demo.smallsaas.cn:80');
-  setToken("eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzgsInVzZXJJZCI6MzI2LCJhY2NvdW50IjoiYmE5MGZiYTYwOGEyNDZkYWEyNWI5NDQ0NWE4NzA0YTgiLCJkb21haW5Vc2VySWQiOiIiLCJpYXQiOjE2NTg0NzkzMzAsImp0aSI6IjMyNiIsInN1YiI6ImJhOTBmYmE2MDhhMjQ2ZGFhMjViOTQ0NDVhODcwNGE4IiwiZXhwIjoxNjU4NzM4NTMwfQ.kFVkEP2Xlv4kLC7uTIxQvRY70hrNyY1fZCs-OcbHtzZnJ_HyuomaInkqOB-oe_ABFMxyzUMGRIioY5lKks04-g")
+  setToken("eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzgsInVzZXJJZCI6MzI2LCJhY2NvdW50IjoiYmE5MGZiYTYwOGEyNDZkYWEyNWI5NDQ0NWE4NzA0YTgiLCJkb21haW5Vc2VySWQiOiIiLCJpYXQiOjE2NTg3NDI3MzAsImp0aSI6IjMyNiIsInN1YiI6ImJhOTBmYmE2MDhhMjQ2ZGFhMjViOTQ0NDVhODcwNGE4IiwiZXhwIjoxNjU5MDAxOTMwfQ.dhREQeLjuLl6MZvoiol0CNXWvAJbzl_kY-S7NoQ7IY8whQwdubyj8a0xqSahK_Nz4qWFp4TiceTRWVj71zV1Aw")
 } else {
   // setEndpoint('https://app1.console.smallsaas.cn:8001');
   setEndpoint('https://house.cloud.smallsaas.cn');

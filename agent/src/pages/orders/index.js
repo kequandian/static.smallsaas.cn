@@ -9,6 +9,7 @@ import SalesStatistic from './SalesStatistic/config';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 import { history } from 'umi';
 import TopBar from '@/components/presenter/TopBar'
+import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 
 
 import type, { DatePickerProps } from 'antd';
@@ -37,11 +38,14 @@ export default function index(props) {
   const { onChange } = props
 
   function myPages() {
-    // if () {
+    // if (getToken()) {
       history.push('/my/ManagingDirector')
+      // console.log('getToken() = ', getToken());
+      
 
     // } else {
     //   history.push('/login')
+    //   console.log('2222');
 
     // }
 
