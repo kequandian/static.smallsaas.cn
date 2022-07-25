@@ -3,6 +3,8 @@ import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/C
 import MyInvite from './config';
 import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerSubtitle';
 import promiseAjax from 'zero-element-boot/lib/components/utils/request';
+import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
+import TopBar from '@/components/presenter/TopBar'
 
 
 export default function index(props) {
@@ -56,17 +58,19 @@ export default function index(props) {
     }
 
     return (
+        <TopBar>
         <>
-            <PageModuleContainer >
+            <CssCart margin='6px 0 10px 40px' >
                 <ContainerSubtitle>
                     代理授权（我的新邀请）
                 </ContainerSubtitle>
-            </PageModuleContainer>
+            </CssCart>
 
             {items && Array.isArray(items) && items.length > 0 ? (
                 <MyInvite items={items} cb={cb} />
             ) : <></>}
         </>
+        </TopBar>
     )
 
 

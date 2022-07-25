@@ -13,27 +13,27 @@ export default function index(props) {
     price='', 
         productName='', agentName='' } = props
     return (
-        <CssCart backgroundColor='' padding='2px 8px' width='100%'>
+        <CssCart  borderBottom='1px #f5f5f5 solid' backgroundColor='' padding='1px 8px' width='100%'>
             <Container>
                 <Flex w='100%'>
                     <Box w='60%' bg=''>
 
-                        <PrimarySubtitle fontSize='14px' color='#333333'>
+                        <PrimarySubtitle>
                             {userId}
                         </PrimarySubtitle>
                     </Box>
                     <Box w='80%'>
-                        <PrimarySubtitle fontSize='14px' color='#8c99a5'>
+                        <PrimarySubtitle>
                             {price}
                         </PrimarySubtitle>
                     </Box>
                     <Box w='60%'>
-                        <PrimarySubtitle fontSize='14px' color='#333333'>
+                        <PrimarySubtitle>
                             {productName}
                         </PrimarySubtitle>
                     </Box>
                     <Box w='130%'>
-                        <PrimarySubtitle fontSize='14px' color='#333333'>
+                        <PrimarySubtitle >
                             {agentName}
                         </PrimarySubtitle>
                     </Box>

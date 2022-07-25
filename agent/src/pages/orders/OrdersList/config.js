@@ -2,6 +2,7 @@ import React from 'react';
 import { AutoLayout } from 'zero-element-boot';
 import Presenter from './index';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
+import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 
 
 export default function index(props) {
@@ -34,9 +35,11 @@ export default function index(props) {
 // console.log(data,' ==data');
 
   return (
-    <AutoLayout {...config} data={data} >
-      <Presenter />
-    </AutoLayout>
+    <CssCart background='#f0ffff'>
+      <AutoLayout {...config} data={data} >
+        <Presenter />
+      </AutoLayout>
+    </CssCart>
 
   )
 }

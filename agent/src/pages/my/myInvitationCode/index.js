@@ -7,6 +7,7 @@ import QRCode from 'qrcode.react';
 import { history } from 'umi';
 import DarkBackgroundTitle from 'zero-element-boot-plugin-theme/lib/components/text/DarkBackgroundTitle';
 
+import TopBar from '@/components/presenter/TopBar'
 
 
 // --我的邀请码页面
@@ -38,7 +39,11 @@ export default function index(props) {
 
     return (
         <ChakraProvider>
-            <CssCart position='fixed' width='100%'  height='100%' padding='40px 20px ' margin='0 0 10px 0' backgroundColor='#020407' >
+            <TopBar>
+            <CssCart position='fixed' width='100%'  height='100%' padding='40px 20px ' margin='0 0 10px 0'
+            //  backgroundColor='#020407'
+             background='linear-gradient(141deg, rgba(98, 98, 125)1%,rgba(2, 4, 7)100%)'
+              >
                 <>
                 <CssCart padding='40px 20px ' margin='0 0 20px 0' backgroundColor='#1a2748' >
 <>
@@ -73,7 +78,7 @@ export default function index(props) {
                     </Center>
                   </>
             </CssCart>
-           
+           </TopBar>
         </ChakraProvider>
     )
 

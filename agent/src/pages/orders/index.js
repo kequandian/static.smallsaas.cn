@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import { Flex, Box, Spacer, ChakraProvider, Text } from '@chakra-ui/react'
+import { Flex, Box, Spacer, Center, ChakraProvider, Text } from '@chakra-ui/react'
 import Avatar from 'zero-element-boot/lib/components/presenter/Avatar'
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
@@ -8,6 +8,7 @@ import OrderedList from './OrdersList/config';
 import SalesStatistic from './SalesStatistic/config';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 import { history } from 'umi';
+import TopBar from '@/components/presenter/TopBar'
 
 
 import type, { DatePickerProps } from 'antd';
@@ -36,7 +37,14 @@ export default function index(props) {
   const { onChange } = props
 
   function myPages() {
-    history.push('/my/ManagingDirector')
+    // if () {
+      history.push('/my/ManagingDirector')
+
+    // } else {
+    //   history.push('/login')
+
+    // }
+
   }
 
   const ct = new Date()
@@ -52,15 +60,20 @@ export default function index(props) {
 
 
   return (
-    <>
+    <TopBar>
+      <>
       <CssCart background='linear-gradient(141deg, rgba(88, 85, 232)1%,rgba(62, 196, 160)80%)' padding='20px'>
         <>
-          <div onClick={myPages}>
+          <Flex onClick={myPages} bg='' w='40%'>
             <Avatar size='46px' />
-          </div>
-          <CssCart width='100%' height='130px' margin='10px auto' padding='16px 10px 16px 16px' border='#48beb3 2px solid'>
+            < Center h='50px' w='' bg=''>
+              <Text fontSize='10px' color='#ffffff'>我的主页</Text>
+            </Center>
+          </Flex>
+
+          <CssCart width='100%' background='#f5f5f530' height='130px' margin='10px auto' padding='16px 10px 16px 16px' border='#48beb3 2px '>
             <>
-              <Flex >
+              <Flex padding='4px' >
                 <PrimaryTitle fontSize='18PX'>销量</PrimaryTitle>
                 <Spacer />
 
@@ -77,39 +90,40 @@ export default function index(props) {
         </>
       </CssCart>
 
-      <CssCart width='100%' height='44px' margin='0 auto' padding='8px 20px' backgroundColor=''>
+      <CssCart width='100%' height='44px' margin='0 auto' padding='14px 20px 4px 20px' backgroundColor=''>
         <PrimaryTitle fontSize='16PX' margin='0'>订单</PrimaryTitle>
       </CssCart>
 
-      <CssCart width='100%' height='34px' margin='0 auto' padding='2px 10px' backgroundColor=''>
+      {/* <CssCart width='100%' height='34px' margin='0 auto' padding='2px 10px' backgroundColor='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'> */}
+      <CssCart width='100%' height='' background='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'>
 
         <Flex w='100%'>
           <Box w='60%' bg=''>
-            <PrimarySubtitle fontSize='14px'>
+            <PrimarySubtitle color='#ffffff' fontSize='14px'>
               单号
               </PrimarySubtitle>
           </Box>
           <Box w='80%'>
-            < PrimarySubtitle fontSize='14px'>
+            < PrimarySubtitle color='#ffffff' fontSize='14px'>
               交易价格
                </PrimarySubtitle>
           </Box>
           <Box w='60%'>
 
-            <PrimarySubtitle fontSize='14px'>
+            <PrimarySubtitle color='#ffffff' fontSize='14px'>
               产品
               </PrimarySubtitle>
           </Box>
           <Box w='130%'>
-            <PrimarySubtitle fontSize='14px'>
+            <PrimarySubtitle color='#ffffff' fontSize='14px'>
               代理
              </PrimarySubtitle>
           </Box>
         </Flex>
       </CssCart>
       <OrderedList />
-    </>
+      </>
+    </TopBar>
   )
-
 
 }

@@ -3,6 +3,7 @@ import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 import Settings from 'zero-element-boot-presenter/lib/components/presenter/card/Settings';
 import Containertitle from 'zero-element-boot-plugin-theme/lib/components/text/Containertitle';
 import { Flex, Box, Spacer, ChakraProvider } from '@chakra-ui/react'
+import TopBar from '@/components/presenter/TopBar'
 
 
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
@@ -17,9 +18,13 @@ export default function index(props) {
     const [data] = useTokenRequest({ api });
 
     return (
-        <CssCart backgroundColor='#f4f6f8'  height='100%'  width='100%'  position='fixed' padding='10px'>
+        <TopBar>
+        <CssCart backgroundColor='#f4f6f8'  height='100%'  width='100%'  position='fixed' padding='0 10px'>
             <>
-                <Containertitle>设置</Containertitle>
+
+                 <CssCart margin='2px 0 10px 40px' >
+                 <Containertitle>设置</Containertitle>
+               </CssCart>
                 <Spacer />
 
                     <Settings items={[
@@ -35,6 +40,7 @@ export default function index(props) {
                     ]} />
             </>
         </CssCart>
+        </TopBar>
     )
 
 

@@ -8,7 +8,7 @@ import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/
 
 // --结算报表item
 export default function index(props) {
-    const { orderNumber='', settlementTime='', productName='', preStorage='',commission='' } = props
+    const { orderNumber='', price='', profit='', orgId='',userId='' } = props
 
     return (
         <CssCart backgroundColor='' padding='0px 8px' width='100%' >
@@ -19,27 +19,27 @@ export default function index(props) {
                            {orderNumber}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='46%'>
+                    <Box w='26%'>
                         <PrimarySubtitle fontSize='14px' color='#8c99a5'>
-                           {settlementTime}
+                           {price}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='15%'>
+                    <Box w='20%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
-                            {productName}
+                            {profit}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='15%'>
+                    <Box w='20%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                         <>
-                        ￥  {preStorage}
+                        ￥  {orgId}
                         </> 
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='15%'>
+                    <Box w='20%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                           <>
-                          ￥  {commission}
+                          ￥  {userId}
                         </> 
                         </PrimarySubtitle>
                     </Box>

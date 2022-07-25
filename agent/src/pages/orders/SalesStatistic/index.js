@@ -10,9 +10,9 @@ export default function index(props) {
     <CssCart backgroundColor='' padding='10px 2px' width='100%'>
         <Stack >
           <Center>
-              <PrimarySubtitle fontSize='16px' color='#333333'>  {count}</PrimarySubtitle>
+              <PrimarySubtitle fontSize='16px' color='#ffffff'>  {count}</PrimarySubtitle>
           </Center>
-          <PrimarySubtitle fontSize='16px' color='#8c99a5'> {productName}</PrimarySubtitle>
+          <PrimarySubtitle fontSize='16px' color='#ffffff'> {productName}</PrimarySubtitle>
         </Stack>
     </CssCart>
   )
