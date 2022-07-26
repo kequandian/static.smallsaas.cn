@@ -9,7 +9,7 @@ require('./index.less');
 const colorMap = {
     'TERTIARY_AGENT': 'TertiaryAgent',
     'SECONDARY_AGENT': 'SecomdaryAgent',
-    "null": 'Unauthorized',
+    null: 'Unauthorized',
 }
 
 /**
@@ -35,7 +35,6 @@ export default function index(props) {
     return (
 
         <CssCart padding='' margin='0 1px' linewidth='0'  background='#ffffff'>
-             {/* <Center padding='4px 20px' bg={bg} >{name} </Center> */}
             <input className={defaultValue == value ? `${colorMap[defaultValue]}`: 'default'}
             //   ref={ref}
               type='button' 

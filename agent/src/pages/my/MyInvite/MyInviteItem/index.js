@@ -19,7 +19,7 @@ export default function index(props) {
         (!space || name) ? (
         <ChakraProvider>
 
-            <CssCart backgroundColor='#f7f9fa' height='58px' width='100%' margin='1px 0 0  0 ' padding='2px' >
+            <CssCart backgroundColor='#ffffff' height='58px' width='100%' margin='1px 0 0  0 ' padding='2px' >
                 <>
                     <Flex  >
                         <AvatarCard size='30px' Avatar={icon} title={name} subtitle={phone} >

@@ -42,7 +42,7 @@ export default function index(props) {
                             </div>
                         </AvatarCard>
                     </CssCart>
-                    <CssCart backgroundColor='#f2f2f6' height='100%' width='100%' position='fixed' padding='10px'>
+                    <CssCart backgroundColor='' height='100%' width='100%' position='fixed' padding='10px'>
                         <>
                             <Head list={data} />
                             <CssCart padding=' 0' boxShadow='0 2px 4px rgba(0, 0, 0, 0.08)' borderRadius='10px' margin='8px 0 16px 0' overflow='hidden'>
