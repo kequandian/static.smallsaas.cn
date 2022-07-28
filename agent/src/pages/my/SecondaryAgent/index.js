@@ -19,13 +19,16 @@ export default function index(props) {
 
 
     return (
+        <>
         <TopBar>
-            <>
-            <CssCart margin='6px 0 10px 40px' >
+        二级代理
+        </TopBar>
+
+            {/* <CssCart margin='6px 0 10px 40px' >
                 <ContainerSubtitle>
                     二级代理
                 </ContainerSubtitle>
-            </CssCart>
+            </CssCart> */}
 
             {items && Array.isArray(items) && items.length > 0 ? (
                 <CssCart backgroundColor='#ffffff' margin=''>
@@ -35,9 +38,7 @@ export default function index(props) {
                 </CssCart>
 
             ) : <></>}
-            </>
-        </TopBar>
-
+</>
     )
 
 

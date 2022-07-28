@@ -32,14 +32,14 @@ export default function index(props) {
                     <Box w='20%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                         <>
-                        ￥  {orgId}
+                        ￥{orgId}
                         </> 
                         </PrimarySubtitle>
                     </Box>
                     <Box w='20%'>
                         <PrimarySubtitle fontSize='14px' color='#333333'>
                           <>
-                          ￥  {userId}
+                          ￥{userId}
                         </> 
                         </PrimarySubtitle>
                     </Box>

@@ -14,22 +14,20 @@ import Item from './item';
  */
 export default function index(props) {
 
-    const { defaultValue, options, callBack, id} = props
+    const { defaultValue, defaultStatus, options, callBack, id } = props
 
     return (
 
-        // <CssCart  backgroundColor='#f5f5f5' padding='4px' margin='' width=''>
-            <Center>
-                <Flex>
-                    {
-                        options && options.map((item, i) => (
-                           <Item id={id} callBack={callBack} defaultValue={defaultValue}  {...item} key={i} />
-                        )
-                        )
-                    }
-                </Flex>
-            </Center>
-        // </CssCart>
+        <Center>
+            <Flex>
+                {
+                    options && options.map((item, i) => (
+                        <Item id={id} callBack={callBack} defaultValue={defaultValue} defaultStatus={defaultStatus}  {...item} key={i} />
+                    )
+                    )
+                }
+            </Flex>
+        </Center>
 
 
     )

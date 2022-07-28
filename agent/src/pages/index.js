@@ -5,6 +5,7 @@ import TestManagingDirector from '@/pages/test/testMy/TestManagingDirector'
 import { history } from 'umi';
 import TopBar from '@/components/presenter/TopBar'
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
+import CallingCard from '@/pages/CallingCard'
 
 
 
@@ -14,6 +15,7 @@ export default function index(props) {
   return (
     // <Testlogin />
     <Testorders />
+    // <CallingCard />
     // <TestManagingDirector />
     // <TestFrom />
     // <h1>hello</h1>

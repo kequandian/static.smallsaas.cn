@@ -9,7 +9,7 @@ require('./index.less');
 const colorMap = {
     'TERTIARY_AGENT': 'TertiaryAgent',
     'SECONDARY_AGENT': 'SecomdaryAgent',
-    null: 'Unauthorized',
+    'UNAUTHORIZED_LEVEL': 'default',
 }
 
 /**
@@ -17,9 +17,10 @@ const colorMap = {
  * @param {data} items 数据
  * 
  */
+
 export default function index(props) {
 
-    const { id, defaultValue, callBack, name = '',  value = '',bg='', color = '', size = 30 } = props
+    const { id, defaultValue, defaultStatus, callBack, name = '', value = '', bg = '', color = '', size = 30 } = props
     // const [names, setNames] = useState(value)
 
     let ref = React.createRef()
@@ -27,29 +28,32 @@ export default function index(props) {
     function onClick(e) {
         // setNames(e.target.name)
         // console.log('onClickName = ', e.target.name)
-        if(callBack){
+        if (callBack) {
             callBack(id, e.target.name)
+            if (value == null) {
+                callBack(defaultStatus == 'Unauthorized')
+                // ref.current.style.backgroundColor = '#e9e9ea'
+            }
         }
-        // ref.current.style.backgroundColor = '#ffffff'
     }
     return (
 
-        <CssCart padding='' margin='0 1px' linewidth='0'  background='#ffffff'>
-            <input className={defaultValue == value ? `${colorMap[defaultValue]}`: 'default'}
-            //   ref={ref}
-              type='button' 
-              value={name}
-              name={value}
-              style={{ 
+        <CssCart padding='' margin='0 1px' linewidth='0' background='#ffffff'>
+            <input className={defaultValue == value ? `${colorMap[defaultValue]}` : 'default'}
+                //   ref={ref}
+                type='button'
+                value={name}
+                name={value}
+                style={{
                     // color: `${color}`,
-                    padding: '4px 10px', 
+                    padding: '4px 10px',
                     fontSize: `${0.4 * size}px`,
-                    width: `${3 * size} px`, 
-                    height: `${size} px` ,
-                    background:`${bg}`
-                }} 
-              onClick={(e) => onClick(e)} />
-         </CssCart>
+                    width: `${3 * size} px`,
+                    height: `${size} px`,
+                    background: `${bg}`
+                }}
+                onClick={(e) => onClick(e)} />
+        </CssCart>
 
 
     )

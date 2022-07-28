@@ -1,49 +1,57 @@
 import React, { useState } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import { Flex, Center, Stack,ChakraProvider } from '@chakra-ui/react'
+import { Flex, Center, Stack, ChakraProvider } from '@chakra-ui/react'
 import AvatarCard from '@/components/presenter/card/AvatarCard';
 import TripleOption from '@/components/presenter/card/TripleOption'
+import Switch from '@/pages/my/Switch'
+import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
+import ItemCart from '@/components/presenter/ItemCart'
 
 /**
  * 
- * @param {icon} icon 图片
  * 
  */
 
 export default function index(props) {
 
-    const { cb, id, level, status, icon = '', name = '', space = '16px', phone = '' } = props
+    const { cb, id, level, status, icon = '', name = '',  phone = '' } = props
+    // const useLevel = ''
+    // console.log('useLevel ==', useLevel);
+
+    const api = '/api/u/saasAgent/myAgentInfo'
+
+    const [data] = useTokenRequest({ api });
 
     return (
-        (!space || name) ? (
-        <ChakraProvider>
+            <ChakraProvider>
+                <CssCart backgroundColor='#ffffff' height='62px' width='100%' margin='1px 0 0  0 '  >
+                    <>
+                        <Flex  >
+                            <AvatarCard size='34px' Avatar={icon} title={name} subtitle={phone} >
+                                <CssCart background='#ffffff' padding='4px ' margin='4px'>
+                                    {(data.level == 'GENERAL_AGENT') ? (
+                                        <TripleOption
+                                            id={id}
+                                            defaultValue={level}
+                                            defaultStatus={status}
+                                            options={[{ "value": "UNAUTHORIZED_LEVEL", "name": "无效" }, { "value": "TERTIARY_AGENT", "name": "二级" }, { "value": "SECONDARY_AGENT", "name": "三级" }]}
+                                            callBack={cb}
+                                        />
+                                    ) : (data.level == 'SECONDARY_AGENT') ?
+                                    (
+                                            <Switch />
+                                        ):(
+                                            <></>
+                                        )
+                                    }
+                                </CssCart>
+                            </AvatarCard>
+                        </Flex>
+                    </>
+                </CssCart>
+            </ChakraProvider>
 
-            <CssCart backgroundColor='#ffffff' height='58px' width='100%' margin='1px 0 0  0 ' padding='2px' >
-                <>
-                    <Flex  >
-                        <AvatarCard size='30px' Avatar={icon} title={name} subtitle={phone} >
-                        <CssCart background='#ffffff' padding='4px ' margin='4px'>
-                            <TripleOption 
-                                id={id}
-                                defaultValue={level} 
-                                options={[{ "value": "null", "name": "无效" },{ "value": "TERTIARY_AGENT", "name": "二级" }, { "value": "SECONDARY_AGENT", "name": "三级" }]}
-                                callBack={cb}
-                            />
-                        </CssCart>
-                       
-                        
-                        </AvatarCard>
-
-                    </Flex>
-                </>
-            </CssCart>
-</ChakraProvider>
-
-        ) : (
-                <>
-                </>
-            )
 
 
 

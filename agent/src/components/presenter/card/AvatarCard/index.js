@@ -9,6 +9,9 @@ import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTi
 import Container from 'zero-element-boot/lib/components/container/Container'
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import { history } from 'umi';
+import { getEndpoint, getToken } from 'zero-element-boot/lib/components/config/common';
+
+
 /**
  * 
  * @param {title} title 标题、名字
@@ -32,16 +35,20 @@ export default function index(props) {
         
     }
 
+    const endpoint = getEndpoint()
+    
+    const urls=endpoint+avatar
+
     const onnextClick = navigation ? path : null
 
     return React.Children.map(children, child => {
         return (
-            <CssCart width='100%' height='' backgroundColor='' padding=''>
+            <CssCart width='100%' height='' backgroundColor='' padding='6px'>
                <Container>
                 <Flexbox direction='row'  align='start-with-last-end' >
                     <Flexbox justify='center' direction='row' align='center' >
                         <Stack onClick={()=>{onnextClick()}}>
-                            <Avatar size={size} url={avatar} />
+                            <Avatar size={size} url= {urls} />
                         </Stack>
                         <Stack>
                             <ItemTitleBold>

@@ -4,6 +4,7 @@ import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Flex, Center, Stack } from '@chakra-ui/react'
 import Container from 'zero-element-boot/lib/components/container/Container'
 import Item from './item';
+import ItemCart from '@/components/presenter/ItemCart'
 
 /**
  * 
@@ -12,33 +13,30 @@ import Item from './item';
  */
 export default function index(props) {
 
-    const { items, columns = '1' } = props
+    const { items, columns = '1',cb } = props
 
 
     return (
         // (i == items.length - 1) ?
 
-        <CssCart backgroundColor='#ffffff' padding='4px' margin='' width='100%'>
+        <ItemCart>
             <Stack spacing='0' >
                 {
                     items && items.map((item, i) => (
-        (i == items.length - 1) ?
-
-                       ( <CssCart  minHeight='40px' padding='4px 10px' >
-
-                            <Item  {...item} key={i} />
-                        </CssCart>):
-                        (
-                            <CssCart borderBottom='1px #f5f5f5 solid' minHeight='40px' padding='4px 10px' >
-
-                            <Item  {...item} key={i} />
-                        </CssCart> 
-                        )
+                        (i == items.length - 1) ?
+                            (<CssCart minHeight='40px' padding='8px 10px' background='#ffffff' >
+                                <Item  {...item} key={i} callBack={cb} />
+                            </CssCart>) :
+                            (
+                                <CssCart borderBottom='1px #f5f5f5 solid' minHeight='40px'  background='#ffffff'  padding='8px 10px' >
+                                    <Item  {...item} key={i} callBack={cb} />
+                                </CssCart>
+                            )
                     )
                     )
                 }
             </Stack>
-        </CssCart>
+        </ItemCart>
 
 
     )

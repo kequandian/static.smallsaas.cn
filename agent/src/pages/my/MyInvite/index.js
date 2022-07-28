@@ -17,15 +17,6 @@ export default function index(props) {
         getList(api)
     }, [])
 
-    // const [data] = useTokenRequest({ api });
-    // console.log(data, '==data11111111111');
-
-
-    // const items = data.records
-    // console.log(items, '=======================items');
-
-    // const { avatar, name, preStoragePoint } = items
-
 
     function getList() {
         promiseAjax(api)
@@ -42,7 +33,7 @@ export default function index(props) {
     function updateLevel(id, query) {
         promiseAjax(`/api/u/saasAgent/level/${id}`, query, { method: "PUT" })
             .then(res => {
-                console.log(res, '== 更新')
+                // console.log(res, '== 更新')
                 if (res && res.code === 200) {
                     getList()
                 }
@@ -58,19 +49,15 @@ export default function index(props) {
     }
 
     return (
-        <TopBar>
         <>
-            <CssCart margin='6px 0 10px 40px' >
-                <ContainerSubtitle>
-                    代理授权（我的新邀请）
-                </ContainerSubtitle>
-            </CssCart>
-
+            <div className='Global' />
+            <TopBar>
+                代理授权
+            </TopBar>
             {items && Array.isArray(items) && items.length > 0 ? (
                 <MyInvite items={items} cb={cb} />
             ) : <></>}
         </>
-        </TopBar>
     )
 
 

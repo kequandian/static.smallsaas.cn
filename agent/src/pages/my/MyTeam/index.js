@@ -19,27 +19,21 @@ export default function index(props) {
 
 
     return (
-        <TopBar>
-            <>
-                <CssCart margin='6px 0 10px 40px' >
-                    <ContainerSubtitle>
-                        三级代理
-                </ContainerSubtitle>
+        <>
+            <div className='Global' />
+
+            <TopBar>
+                三级代理
+            </TopBar>
+
+            {items && Array.isArray(items) && items.length > 0 ? (
+                <CssCart backgroundColor='#ffffff' margin=''>
+                    <AvatarCard title={items[0].name} subtitle={items[0].phone} size='40px'>
+                        <TeanItem {...items[0]} />
+                    </AvatarCard>
                 </CssCart>
-
-                {items && Array.isArray(items) && items.length > 0 ? (
-                    <CssCart backgroundColor='#ffffff' margin=''>
-                        <AvatarCard title={items[0].name} subtitle={items[0].phone}  size='40px'>
-                            <TeanItem {...items} />
-
-                        </AvatarCard>
-
-                    </CssCart>
-
-                ) : <></>}
-            </>
-        </TopBar>
-
+            ) : <></>}
+        </>
     )
 
 

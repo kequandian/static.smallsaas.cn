@@ -1,0 +1,7 @@
+.Global{
+    background:  #F4F6F8;
+    position: fixed;
+    height: 100%;
+    width:100%;
+    z-index:-10;
+}

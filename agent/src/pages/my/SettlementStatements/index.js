@@ -11,12 +11,16 @@ import TopBar from '@/components/presenter/TopBar'
 // --结算报表页面
 export default function index(props) {
   return (
-    <TopBar>
-    <CssCart position='fixed' width='100%' height='100%' background='#23a7b260'>
     <>
-      <Center h='40px' bg='#23a7b2'>
+    <TopBar>
+    结算报表
+    </TopBar>
+
+    <CssCart position='fixed' width='100%' height='100%' background='#23a7b230'>
+    <>
+      {/* <Center h='40px' bg='#23a7b2'>
         <DarkBackgroundTitle>结算报表</DarkBackgroundTitle>
-      </Center>
+      </Center> */}
       <CssCart borderTop='1px solid #f5f5f5' width='100%' height='34px' margin=' 0' padding='6px 10px' backgroundColor='#23a7b2'>
         <Flex w='100%'>
           <Box w='15%' bg=''>
@@ -51,7 +55,7 @@ export default function index(props) {
       
       </>
     </CssCart>
-    </TopBar>
+    </>
   )
 
 

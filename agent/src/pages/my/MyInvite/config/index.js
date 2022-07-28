@@ -11,8 +11,7 @@ import MyInviteItem from '../MyInviteItem';
 
 export default function index(props) {
 
-    const { items, cb } = props
-    // console.log(props, ' == props')
+    const { items, cb, } = props
 
 
     // const data = [
@@ -26,7 +25,7 @@ export default function index(props) {
 
     return items && items.map((item, i) => (
 
-        <MyInviteItem  {...item} key={i} cb={cb}/>
+        <MyInviteItem  {...item} key={i} cb={cb} />
 
 
     )

@@ -39,9 +39,9 @@ export default function index(props) {
 
   function myPages() {
     // if (getToken()) {
-      history.push('/my/ManagingDirector')
-      // console.log('getToken() = ', getToken());
-      
+    history.push('/my/ManagingDirector')
+    // console.log('getToken() = ', getToken());
+
 
     // } else {
     //   history.push('/login')
@@ -54,22 +54,21 @@ export default function index(props) {
   const ct = new Date()
   const res = ct.getMonth() + 1
 
-
-  // const api = '/api/SalesStatisticData'
+  // 获取每月销量api
   const api = `/api/u/saasAgent/salesVolume?month=${res}`
-
   const [saleData] = useTokenRequest({ api });
   // console.log(saleData, ' == saleData')
 
 
 
   return (
-    <TopBar>
-      <>
-      <CssCart background='linear-gradient(141deg, rgba(88, 85, 232)1%,rgba(62, 196, 160)80%)' padding='20px'>
+    <>
+
+
+      <CssCart background='#23a7b2' padding='20px'>
         <>
           <Flex onClick={myPages} bg='' w='40%'>
-            <Avatar size='46px' />
+            <Avatar size='46px'  />
             < Center h='50px' w='' bg=''>
               <Text fontSize='10px' color='#ffffff'>我的主页</Text>
             </Center>
@@ -126,8 +125,7 @@ export default function index(props) {
         </Flex>
       </CssCart>
       <OrderedList />
-      </>
-    </TopBar>
+    </>
   )
 
 }

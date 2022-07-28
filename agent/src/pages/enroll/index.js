@@ -39,6 +39,7 @@ export default function index(props) {
     function validateData(values) {
 
         // console.log('values = ', values)
+        values.appid = 3
 
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
             // console.log('resp data = ', resp)
@@ -61,6 +62,9 @@ export default function index(props) {
     return (
         <ChakraProvider>
             <TopBar>
+                注册
+            </TopBar>
+
                 <CssCart position='fixed' width='100%' height='100%' padding='16px'>
 
                     {/* <CssCart position='fixed' width='100%' height='100%'  backgroundColor='#ff0000' padding='16px'> */}
@@ -69,11 +73,11 @@ export default function index(props) {
                             <Text fontSize='40px' color='#d22e21'>5G</Text>
                         </Center>
 
-                        <CssCart width='160px' margin='auto'>
+                        {/* <CssCart width='160px' margin='auto'>
                             <Center justify='start' direction='row' align='start-with-last-end' >
                                 <Text fontSize='16px' color='#333333' onClick={() => swtichClick(true)}>注册</Text>
                             </Center>
-                        </CssCart>
+                        </CssCart> */}
                         <form onSubmit={handleSubmit(validateData)} noValidate>
 
                             <Spacer />
@@ -88,9 +92,7 @@ export default function index(props) {
                                             {...register('name', {
                                             })}
                                         />
-                                        {/* <InputRightAddon
-                    children='获取验证码'
-                /> */}
+                                       
 
                                     </InputGroup>
 
@@ -104,9 +106,7 @@ export default function index(props) {
                                                 minLength: { value: 4, message: '最小长度应为4' },
                                             })}
                                         />
-                                        {/* <InputRightAddon
-                    children='获取验证码'
-                /> */}
+                                        
                                         <InputRightAddon w='90px' padding='8px'>
                                             <div style={{ color: '#a772ff', fontSize: '13px' }} onClick   >
                                                 获取验证码
@@ -117,6 +117,13 @@ export default function index(props) {
                                     <InputGroup size='md'>
                                         <InputLeftAddon children={<QRCode />} />
                                         <Input placeholder='请输入手机动态码' value={validateCode}
+                                            {...register('validateCode', {
+                                            })}
+                                        />
+                                    </InputGroup>
+                                    <InputGroup size='md'>
+                                        <InputLeftAddon children={<Account />} />
+                                        <Input placeholder='邀请码' value={validateCode}
                                             {...register('validateCode', {
                                             })}
                                         />
@@ -138,7 +145,6 @@ export default function index(props) {
                         </form>
                     </Stack>
                 </CssCart>
-            </TopBar>
 
         </ChakraProvider>
     )

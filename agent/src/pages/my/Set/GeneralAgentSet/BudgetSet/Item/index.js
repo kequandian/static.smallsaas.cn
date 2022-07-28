@@ -1,39 +1,42 @@
 import React from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import { Flex, Center, Progress } from '@chakra-ui/react'
-import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
+import { Flex, ChakraProvider, Center, Progress } from '@chakra-ui/react'
+import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitle';
+import { history } from 'umi';
 
 /**
  * 
  */
 
- // --预算分成设置item
+// --话费分成设置item
 export default function index(props) {
 
-    const { children, name = '', point = '' } = props
+    const { children, name = '', point = '',id='' } = props
+    function onClick() {
+        history.push(`/my/Set/GeneralAgentSet/edit/pointSetting?point=${point}&title=${name}&id=${id}`)
 
+    }
 
     return (
-        <CssCart backgroundColor='#f7f9fa' height='30px' width='100%' padding='4px 10px' margin='1px 0 0  0 ' >
+        <CssCart backgroundColor='#ffffff' height='40px' width='100%' padding='8px 20px' margin='0' >
             <>
                 <Flex>
                     <Flex w='100%' bg=''>
-                        <PrimarySubtitle>
+                        <ItemTitle>
                             {name}
-                        </PrimarySubtitle>
+                        </ItemTitle>
                     </Flex>
                     <Center>
-                        <Progress h='10px' w='200px'  size='md' value={point} />
+                        <Progress h='10px' w='200px' size='md' value={point} />
                     </Center>
-                    <Flex w='30px' margin='0 0 0 2px'>
-                        <PrimarySubtitle>
-                            {point}%
-                </PrimarySubtitle>
+                    <Flex w='30px' margin='0 0 0 2px' onClick={() => {onClick()}}>
+                        <ItemTitle>
+                            {point || '0'}%
+                        </ItemTitle>
                     </Flex>
                 </Flex>
             </>
         </CssCart>
-
     )
 
 }
