@@ -10,13 +10,17 @@ import Container from 'zero-element-boot/lib/components/container/Container'
  */
 export default function index(props) {
 
-    const { children } = props
+    const { children, ...rest } = props
 
     return React.Children.map(children, child => {
 
         return (
-            <CssCart background='' padding='' boxShadow='0 0px 2px rgba(0, 0, 0, 0.1)' borderRadius='10px' margin='10px' overflow='hidden'>
-               {child}
+            <CssCart background='' padding='10px' boxShadow='0 0px 2px rgba(0, 0, 0, 0.1)' borderRadius='10px' margin='10px' overflow='hidden'>
+                {
+                    React.cloneElement(child, {
+                        ...rest
+                    })
+                }
             </CssCart>
         )
     }

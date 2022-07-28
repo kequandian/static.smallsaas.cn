@@ -41,8 +41,8 @@ export default function index(props) {
             {data ? (
                 <>
                     <CssCart padding='20px 20px 0 20px '
-                        backgroundColor='#23a7b2'
-                        // background='linear-gradient(141deg, rgba(88, 85, 232)1%,rgba(72, 156, 186)80%)'
+                        // backgroundColor='#dbedf7'
+                        background='linear-gradient(141deg, rgba(55, 139, 203),rgba(219, 237, 247)100%)'
                         height='120px'>
                         <AvatarCard title={data.name} subtitle={data.agentName} avatar={data.avatar} navigation={`/my/ModifyAvatar?title=${data.name}&icon=${data.avatar}`}>
                             <div onClick={myInvitationCode} style={{ width: '40px', backgroundColor: '' }}>

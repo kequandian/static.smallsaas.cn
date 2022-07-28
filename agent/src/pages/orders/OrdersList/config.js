@@ -26,7 +26,7 @@ export default function index(props) {
       xname: 'Gridbox',
       props: {
         columns: 1,
-        space:1
+        space:0
       },
       container: 'PlainList'
     },

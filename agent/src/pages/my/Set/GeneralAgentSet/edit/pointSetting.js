@@ -21,7 +21,9 @@ export default function index(props) {
 
     const [point, setKeyValues] = useState(queryData.query.point)
 
-    const title = queryData.query.title ? queryData.query.title:''
+    const title =''
+    //  queryData.query.title ? queryData.query.title:''
+        // console.log('queryData.query.title = ', queryData.query.title)
 
     function changeValue(e) {
         // console.log('change value = ', e.target.value)

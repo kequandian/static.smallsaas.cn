@@ -37,7 +37,7 @@ export default function index(props) {
 
     const endpoint = getEndpoint()
     
-    const urls=endpoint+avatar
+    const urls= avatar? (endpoint+avatar):''
 
     const onnextClick = navigation ? path : null
 

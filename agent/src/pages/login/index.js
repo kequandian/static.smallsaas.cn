@@ -46,7 +46,7 @@ export default function index(props) {
             if (resp && resp.code === 200) {
                 history.push('/orders')
                 setToken(resp.data.accessToken)
-                // console.log('accessToken = ', resp.data.accessToken)
+                console.log('accessToken = ', resp.data.accessToken)
             }
         });
     }
@@ -87,22 +87,10 @@ export default function index(props) {
                                 </Container>
                             </CssCart>
                             <form onSubmit={handleSubmit(validateData)} noValidate>
-
                                 <Spacer />
-
                                 <Stack spacing={6} h=''>
                                     <>
-                                        {/* <InputGroup size='md'>
-                            <InputLeftAddon
-                                children={<Name />}
-                            />
-                            <Input  variant='outline'  type='tel' placeholder='名字'
-                                {...register('name', {
-                                })}
-                            />
-                        </InputGroup> */}
-
-                                        <InputGroup size='md'>
+                                        <InputGroup size='md' errorBorderColor>
                                             <InputLeftAddon
                                                 children={<Number />}
                                             />
@@ -112,13 +100,10 @@ export default function index(props) {
                                                     minLength: { value: 4, message: '最小长度应为4' },
                                                 })}
                                             />
-                                            {/* <InputRightAddon
-                        children='获取验证码'
-                    /> */}
                                             <InputRightAddon w='90px' padding='8px'>
                                                 <div style={{ color: '#a772ff', fontSize: '13px' }} onClick   >
                                                     获取验证码
-                                </div>
+                                                </div>
                                             </InputRightAddon>
                                         </InputGroup>
 
@@ -129,69 +114,60 @@ export default function index(props) {
                                                 })}
                                             />
                                         </InputGroup>
-                                        {/* <InputGroup size='md'>
-                            <InputLeftAddon children={<VerificationCode />} />
-                            <Input  variant='outline'  placeholder='密码' value={password}
-                                {...register('password', {})} />
-                        </InputGroup> */}
                                         <Spacer />
                                         {/* <Button solid color='#0e639c' navigation>登录</Button> */}
                                         <Button width='100%' height='40px' colorScheme='telegram' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
                                             登录
-                </Button> </>
+                                        </Button> </>
                                 </Stack>
                             </form>
                         </>) : <>
-                            <CssCart width='260px' margin='auto'>
-                                <Container>
-                                    <Flexbox justify='start' direction='row' align='start-with-last-end' >
-                                        <Text fontSize='16px' color='#c3c3c3' onClick={() => swtichClick(true)}>手机号登录</Text>
-                                        <Text fontSize='16px' color='#333333' onClick={() => swtichClick(false)}>账号密码登录</Text>
-                                    </Flexbox>
-                                </Container>
-                            </CssCart>
-                            <form onSubmit={handleSubmit(validateData)} noValidate>
+                        <CssCart width='260px' margin='auto'>
+                            <Container>
+                                <Flexbox justify='start' direction='row' align='start-with-last-end' >
+                                    <Text fontSize='16px' color='#c3c3c3' onClick={() => swtichClick(true)}>手机号登录</Text>
+                                    <Text fontSize='16px' color='#333333' onClick={() => swtichClick(false)}>账号密码登录</Text>
+                                </Flexbox>
+                            </Container>
+                        </CssCart>
+                        <form onSubmit={handleSubmit(validateData)} noValidate>
 
+                            <Spacer />
+
+                            <Stack spacing={6} >
+                                <InputGroup size='md'>
+                                    <InputLeftAddon
+                                        children={<Account />}
+                                    />
+                                    <Input variant='outline' type='text' placeholder='账号'
+                                        {...register('account', {
+                                            required: '',
+                                        })}
+                                    />
+
+                                </InputGroup>
+
+                                <InputGroup size='md'>
+                                    <InputLeftAddon children={<VerificationCode />} />
+                                    <Input variant='outline' placeholder='密码' value={validateCode}
+                                        {...register('password', {
+                                        })}
+                                    />
+                                </InputGroup>
                                 <Spacer />
 
-                                <Stack spacing={6} >
-                                    <InputGroup size='md'>
-                                        <InputLeftAddon
-                                            children={<Account />}
-                                        />
-                                        <Input variant='outline' type='text' placeholder='账号'
-                                            {...register('account', {
-                                                required: '',
-                                            })}
-                                        />
-
-                                    </InputGroup>
-
-                                    <InputGroup size='md'>
-                                        <InputLeftAddon children={<VerificationCode />} />
-                                        <Input variant='outline' placeholder='密码' value={validateCode}
-                                            {...register('password', {
-                                            })}
-                                        />
-                                    </InputGroup>
-                                    <Spacer />
-
-                                    {/* <Button solid color='#0e639c' navigation>登录</Button> */}
-
-                                    <Button width='100%' height='40px' colorScheme='telegram' variant='solid' isLoading={isSubmitting} type='submit' size='sm'>
-                                        登录
-                    </Button>
-
-
-                                </Stack>
-                            </form>
-                        </>}
+                                {/* <Button solid color='#0e639c' navigation>登录</Button> */}
+                                <Button width='100%' height='40px' colorScheme='telegram' variant='solid' isLoading={isSubmitting} type='submit' size='sm'>
+                                    登录
+                                </Button>
+                            </Stack>
+                        </form>
+                    </>}
                     < Center h='50px' w='100%' bg='' onClick={enroll}>
-                        <Text fontSize='10px' color='#333333'>还没有账号？去注册 ></Text>
+                        <Text fontSize='10px' color='#333333'>还没有账号？去注册 </Text>
                     </Center>
                 </Stack>
             </CssCart>
-
         </ChakraProvider>
     )
 
