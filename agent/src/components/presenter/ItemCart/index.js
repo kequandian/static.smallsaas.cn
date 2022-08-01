@@ -15,7 +15,7 @@ export default function index(props) {
     return React.Children.map(children, child => {
 
         return (
-            <CssCart background='' padding='10px' boxShadow='0 0px 2px rgba(0, 0, 0, 0.1)' borderRadius='10px' margin='10px' overflow='hidden'>
+            <CssCart background='' padding='' boxShadow='0 0px 2px rgba(0, 0, 0, 0.12)' borderRadius='10px' margin='10px' overflow='hidden'>
                 {
                     React.cloneElement(child, {
                         ...rest

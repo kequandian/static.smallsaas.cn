@@ -73,7 +73,7 @@ export default function index(props) {
             <Center w='100%' bg='' margin=' 0' padding='0 20px'>
                 <from style={{ width: '90%' }} >
                     <CssCart background='#ffffff' margin='20px 0' boxShadow='0 1px 8px rgba(0, 0, 0, 0.08) ' padding='10px 10px 14px 10px'>
-                        <input type='text' value={secondaryAgentTelephoneCharges || ''}
+                        <input type='number' value={secondaryAgentTelephoneCharges || ''}
                             style={{ border: '0', fontSize: '20px', width: '100%' }}
                             onChange={(e) => changeValue(e)}
                         />

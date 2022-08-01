@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import {
-    Flex, Box, Spacer, Stack, ChakraProvider, Text, Center, Popover, PopoverTrigger, PopoverContent, PopoverArrow, PopoverHeader,
-    PopoverBody, PopoverCloseButton
-} from '@chakra-ui/react'
+import { ChakraProvider,} from '@chakra-ui/react'
 import Head from './head/config';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 import Router from 'zero-element-boot-presenter/lib/components/presenter/card/Router';

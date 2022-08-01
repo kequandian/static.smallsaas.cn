@@ -63,7 +63,13 @@ export default function index(props) {
 
     //     }
     // }
-
+    // function checkNum() {
+    //     var Num = parseInt(document.getElementById("id名称").value)
+    //     if (Num > 0 || Num < 100 || isNaN(Num)) {
+    //         alert("输入数据需在0~100之间");
+    //         // document.getElementById('id名称').value = "";
+    //     }
+    // }
 
     return (
         <ChakraProvider>
@@ -115,6 +121,8 @@ export default function index(props) {
                                             />
                                         </InputGroup>
                                         <Spacer />
+                                        {/* <input type="text" id="id名称" onkeyup="value=value.replace(/[^(\d)]/g,'')"
+                                            onblur={checkNum()} /> */}
                                         {/* <Button solid color='#0e639c' navigation>登录</Button> */}
                                         <Button width='100%' height='40px' colorScheme='telegram' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
                                             登录

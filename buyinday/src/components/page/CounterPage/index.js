@@ -192,7 +192,7 @@ export default function (props) {
                         <div onClick={onRemark} style={{
                             display: 'flex', justifyContent: 'flex-end', alignItems: 'center', margin: '16px 2px -3px 4px',
                             fontSize: '14px', height: '100%', color: '#cdcdcd', width: '75%'
-                        }}>选填，输入备注内容 ></div>
+                        }}>选填，输入备注内容 </div>
 
 
                     </Flex>

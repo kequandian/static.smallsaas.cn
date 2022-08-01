@@ -19,10 +19,10 @@ export default function index(props) {
   function myPages() {
     // if (getToken()) {
     history.push('/my/ManagingDirector')
-    // console.log('getToken() = ', getToken());
+    console.log('getToken() = ', getToken());
     // } else {
-    //   history.push('/login')
-    //   console.log('2222');
+      // history.push('/login')
+      // console.log('2222');
     // }
 
   }

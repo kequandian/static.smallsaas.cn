@@ -62,10 +62,13 @@ export default function index(props) {
             <Center w='100%' bg='' margin=' 0' padding='0 20px'>
                 <from style={{ width: '90%' }} >
                     <CssCart background='#ffffff' margin='20px 0' boxShadow='0 1px 8px rgba(0, 0, 0, 0.08) ' padding='10px 10px 14px 10px'>
-                        <input type='text' value={phone || ''}
-                            style={{ border: '0', fontSize: '20px', width: '100%' }}
+                        <input type='number' value={phone || ''}
+                            style={{ border: '0', fontSize: '20px', width: '100%',}}
                             onChange={(e) => changeValue(e)}
+                            // step="0.01" 
+                           
                         />
+                       {/* < input type="number" min="0.00" max="10000.00" step="0.01" /> */}
                     </CssCart>
                     <Button w='100%' margin='' height='40px' colorScheme='telegram' variant='solid' onClick={() => changName()} type='submit' size='sm' >
                         保存

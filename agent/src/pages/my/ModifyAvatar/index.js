@@ -25,7 +25,7 @@ export default function index(props) {
     ]
     const datas1=[
         { "title": "手机号", "content":`${data.phone || ''}`, "navigation": `/my/ModifyAvatar/editPhone?phone=${data.phone}&text=name` },
-        { "title": "密码", "content":`${data.password  || '----'}`, "navigation": `/my/ModifyAvatar/editPassword?password=${data.password || '----'}&text=name` },
+        { "title": "密码", "content":`${data.password  || '----'}`, "navigation": `/my/ModifyAvatar/editPassword?password=${data.password || '------'}&text=name` },
     ]
 
     function updateAvatar(query) {
@@ -39,7 +39,6 @@ export default function index(props) {
         if (url) {
             updateAvatar({avatar:url })
             console.log('url==',url);
-            
         }
     }
 

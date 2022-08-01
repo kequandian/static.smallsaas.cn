@@ -21,27 +21,14 @@ export default function index(props) {
         uploadImage('/api/u/fs/uploadfile', files[0].file).then(resp => {
             if (resp && resp.code === 200) {
                 callBack(resp.data.url)
-                console.log('url',resp.data.url)
+                // console.log('url',resp.data.url)
 
             }
         });
 
-        
-
-
         setAvator(files)
 
-
-        // if (callBack) {
-        //     callBack(url)
-        //     console.log('url=', url);
-
-        // }
-
-        // console.log('avator=', avator);
-        // console.log('files=', files);
     }
-    // console.log('callBack=', callBack);
 
     const avatorImg = () => {
         // 如果选择了图片就用选择后的图作为头像
