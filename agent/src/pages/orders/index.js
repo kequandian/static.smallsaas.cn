@@ -19,7 +19,7 @@ export default function index(props) {
   function myPages() {
     if (getToken()) {
     history.push('/my/ManagingDirector')
-    console.log('getToken() = ', getToken());
+    // console.log('getToken() = ', getToken());
     } else {
       history.push('/login')
       // console.log('2222');
@@ -52,7 +52,7 @@ export default function index(props) {
           <Flex onClick={myPages} bg='' w='40%'>
             <Avatar size='46px' url={url} />
             < Center h='50px' w='' bg=''>
-              <Text fontSize='10px' color=''>我的主页</Text>
+              <Text fontSize='14px' color=''>我的主页</Text>
             </Center>
           </Flex>
 
@@ -84,23 +84,23 @@ export default function index(props) {
 
         <Flex w='100%'>
           <Box w='60%' bg=''>
-            <PrimarySubtitle color='#ffffff' fontSize='14px'>
+            <PrimarySubtitle color='#ffffff' fontSize='18px'>
               单号
             </PrimarySubtitle>
           </Box>
-          <Box w='80%'>
-            < PrimarySubtitle color='#ffffff' fontSize='14px'>
+          <Box w='50%'>
+            < PrimarySubtitle color='#ffffff' fontSize='18px'>
               交易价格
             </PrimarySubtitle>
           </Box>
-          <Box w='60%'>
+          <Box w='80%'>
 
-            <PrimarySubtitle color='#ffffff' fontSize='14px'>
+            <PrimarySubtitle color='#ffffff' fontSize='18px'>
               产品
             </PrimarySubtitle>
           </Box>
           <Box w='130%'>
-            <PrimarySubtitle color='#ffffff' fontSize='14px'>
+            <PrimarySubtitle color='#ffffff' fontSize='18px'>
               代理
             </PrimarySubtitle>
           </Box>

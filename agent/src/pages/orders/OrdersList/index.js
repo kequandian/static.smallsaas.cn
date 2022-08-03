@@ -18,22 +18,22 @@ export default function index(props) {
                 <Flex w='100%'>
                     <Box w='60%' bg=''>
 
-                        <PrimarySubtitle>
+                        <PrimarySubtitle fontSize='14px'>
                             {userId || ''}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='80%'>
-                        <PrimarySubtitle>
+                    <Box w='50%'>
+                        <PrimarySubtitle fontSize='14px'>
                             {price || ''}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='60%'>
-                        <PrimarySubtitle>
+                    <Box w='80%'>
+                        <PrimarySubtitle fontSize='14px'>
                             {productName || ''}
                         </PrimarySubtitle>
                     </Box>
                     <Box w='130%'>
-                        <PrimarySubtitle >
+                        <PrimarySubtitle  fontSize='14px'>
                             {agentName || ''}
                         </PrimarySubtitle>
                     </Box>

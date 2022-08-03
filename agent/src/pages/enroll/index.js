@@ -17,6 +17,8 @@ import { useForm } from 'react-hook-form';
 const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 import { history } from 'umi';
 import TopBar from '@/components/presenter/TopBar'
+import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
+
 
 
 // --注册页面
@@ -24,7 +26,6 @@ export default function index(props) {
 
     const { phone, validateCode, password } = props
 
-    const [showPhoneLogin, setShowPhoneLogin] = useState(true)
 
     const [ code, setCode ] = useState(props.location.query.invitationCode)
 
@@ -39,25 +40,18 @@ export default function index(props) {
     } = useForm()
 
     function validateData(values) {
-
-        // console.log('values = ', values)
-        values.appid = 3
-
+        // values.appid = 3
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
-            // console.log('resp data = ', resp)
+            console.log('resp data = ', resp)
             if (resp && resp.code === 200) {
                 history.push('/orders')
                 setToken(resp.data.accessToken)
+                console.log('accessToken = ', resp.data.accessToken)
             }
         });
     }
 
-    const swtichClick = (status) => {
-        setShowPhoneLogin(status)
-    }
-
-
-    function enroll() {
+    function login() {
         history.push('/login')
     }
 
@@ -138,8 +132,8 @@ export default function index(props) {
                                 <Button width='100%' height='40px' colorScheme='telegram' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
                                 注册
                                 </Button> </>
-                            < Center h='50px' w='100%' bg='' onClick={enroll}>
-                                <Text fontSize='10px' color='#ffffff'>已有账号？去登录 </Text>
+                            < Center h='50px' w='100%' bg='' onClick={login}>
+                                <Text fontSize='14px' color='#ffffff'>已有账号？去登录 </Text>
                             </Center>
                         </Stack>
                     </form>

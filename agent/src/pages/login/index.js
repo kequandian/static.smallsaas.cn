@@ -46,7 +46,7 @@ export default function index(props) {
             if (resp && resp.code === 200) {
                 history.push('/orders')
                 setToken(resp.data.accessToken)
-                console.log('accessToken = ', resp.data.accessToken)
+                // console.log('accessToken = ', resp.data.accessToken)
             }
         });
     }
@@ -172,7 +172,7 @@ export default function index(props) {
                         </form>
                     </>}
                     < Center h='50px' w='100%' bg='' onClick={enroll}>
-                        <Text fontSize='10px' color='#333333'>还没有账号？去注册 </Text>
+                        <Text fontSize='14px' color='#333333'>还没有账号？去注册 </Text>
                     </Center>
                 </Stack>
             </CssCart>
