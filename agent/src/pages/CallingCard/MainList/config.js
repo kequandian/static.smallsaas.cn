@@ -7,7 +7,7 @@ const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 
 export default function index(props) {
 
-  const { endpoint, cb,onNumberClick, } = props;
+  const { endpoint, cb,onNumberClick, searchNum=0 } = props;
 
   const api = '/api/link/code/select-num'
 
@@ -15,20 +15,28 @@ export default function index(props) {
 
   useEffect(_ => {
     fetchNumber()
-  }, [])
+  }, [searchNum])
   // let api = '/api/link/code/select-num'
   const [NumberData, setNumberData] = useState([])
 
   function fetchNumber() {
-    const query = {
+    let query = {
       "cityCode": "445200",
       "goodsId": "982203315714",
       "groupkey": "1",
       "provinceCode": "440000",
       "searchCategory": "3",
       "searchType": "01",
-      "searchValue": "1"
+      // "searchValue": "156",
     }
+
+    if(searchNum > 0){
+      query = {
+        ...query,
+        searchValue: searchNum
+      }
+    }
+
     promiseAjax(api, query, { method: 'POST' }).then(resp => {
       // console.log('resp = ', resp)
 

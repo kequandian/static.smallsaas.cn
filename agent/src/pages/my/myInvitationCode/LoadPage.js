@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Flex, Box, Spacer, Center, ChakraProvider, Text, Stack, Spinner } from '@chakra-ui/react'
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
@@ -12,13 +12,14 @@ import TopBar from '@/components/presenter/TopBar'
 
 export default function index(props) {
 
-    const { pass } = props
+    const {  } = props
     // console.log('props==', props);
 
     function PassData() {
         // pass(data)
-        if( pass ){
-            history.push('/orders')
+        const pass = props.location.query.pass
+        if(pass){
+            history.push(`/enroll?invitationCode=${pass}`)
         }else{
             alert('跳转失败，请重新扫码，或输入邀请码登录!')
         }

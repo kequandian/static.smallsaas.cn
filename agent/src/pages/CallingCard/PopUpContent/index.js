@@ -132,7 +132,7 @@ export default function index(props) {
                                 </Center>} />
                             <Input placeholder='街道/镇+村/小区/写字楼+门牌号' />
                         </InputGroup>
-                        <Button width='100%' height='40px' colorScheme='telegram' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
+                        <Button width='100%' height='40px' colorScheme='twitter' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
                             0元申请 包邮到家
                         </Button>
                     </Stack>

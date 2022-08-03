@@ -17,13 +17,13 @@ export default function index(props) {
   const { onChange } = props
 
   function myPages() {
-    // if (getToken()) {
+    if (getToken()) {
     history.push('/my/ManagingDirector')
     console.log('getToken() = ', getToken());
-    // } else {
-      // history.push('/login')
+    } else {
+      history.push('/login')
       // console.log('2222');
-    // }
+    }
 
   }
   const ct = new Date()

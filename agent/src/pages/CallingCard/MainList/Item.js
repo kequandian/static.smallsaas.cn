@@ -8,39 +8,51 @@ import Button from 'zero-element-boot/lib/components/presenter/button/Button';
 
 export default function index(props) {
 
-    const { onNumberClick, numList = [], max, min, cb } = props;
+    const { onNumberClick, numList = [], cb, pageList, resetPageList } = props;
 
     let newList = [], newItem = [];
 
     numList.map((num, index) => {
         newItem.push(num)
-        if (index < max && index >= min && index % 12 == 11) {
+        if (index % 12 == 11) {
             newList.push(newItem)
             newItem = []
         }
     });
-    // console.log(newList)
 
-    function callBackData() {
-        if (cb) {
-            cb(numList)
+    let showList = [];
+    newList.map((item, index) =>{
+        if(pageList.includes(index)){
+            showList.push(item)
         }
+    })
+
+    if(showList.length == 0){
+        resetPageList()
     }
+
+    // console.log('showList == ', showList)
+
+    // function callBackData() {
+    //     if (cb) {
+    //         cb(numList)
+    //     }
+    // }
 
     // console.log('numList ==', numList);
     // console.log('newList ==', newList);
 
     useEffect(_ => {
-        callBackData()
+        // callBackData()
     }, [])
 
     return (
         <div style={{
             overflow: "hidden", display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridRowgap: '2px', gridColumnGap: '2px',
-            width: '100%', height: '480px', padding: '0'
+            width: '100%', height: '', padding: '0'
         }}>
             {
-                newList && newList.length > 0 && newList.map((item, index) => (
+                showList && showList.length > 0 && showList.map((item, index) => (
                     (<>
                         <CssCart border='0 solid #f5f5f5' padding='10px' margin='8px' boxShadow='0 0px 4px rgba(0, 0, 0, 0.12)' key={index}>
                             <>

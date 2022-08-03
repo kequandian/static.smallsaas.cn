@@ -22,9 +22,11 @@ import TopBar from '@/components/presenter/TopBar'
 // --注册页面
 export default function index(props) {
 
-    const { phone, validateCode, invitationCode, password } = props
+    const { phone, validateCode, password } = props
 
     const [showPhoneLogin, setShowPhoneLogin] = useState(true)
+
+    const [ code, setCode ] = useState(props.location.query.invitationCode)
 
     let api = '/api/app/oauth/account/register'
 
@@ -121,7 +123,7 @@ export default function index(props) {
                                 </InputGroup>
                                 <InputGroup size='md'>
                                     <InputLeftAddon children={<Account />} />
-                                    <Input placeholder='邀请码' value={invitationCode}
+                                    <Input placeholder='邀请码' defaultValue={code}
                                         {...register('invitationCode', {
                                         })}
                                     />

@@ -17,6 +17,7 @@ export default function index(props) {
   return (
     // <Testlogin />
     <Testorders />
+    // <CallingCard />
   //  <LoadPage />
     // <TestManagingDirector />
     // <TestFrom />
