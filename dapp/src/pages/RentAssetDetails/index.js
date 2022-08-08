@@ -14,6 +14,7 @@ import Price from 'zero-element-boot-plugin-theme/lib/components/text/Price';
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitle';
 import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
+import PageSection from 'zero-element-boot-plugin-theme/lib/components/text/pageSectionTitle/PageSection';
 import ItemCart from 'zero-element-boot-plugin-theme/lib/components/cart/ItemCart';
 import SurroundingCconstruction from '@/components/SurroundingCconstruction';
 import promiseAjax from 'zero-element-boot/lib/components/utils/request';
@@ -76,9 +77,9 @@ export default function RentAssetDetails(props) {
   //   }
   // ]
 
-   //拿数据
+  //拿数据
   const facilitiesData = detail.facilities
-  
+
 
   const items = [
     {
@@ -100,15 +101,14 @@ export default function RentAssetDetails(props) {
 
   ]
   return (
-    // traffic && traffic.length > 0 &&
-      detail && JSON.stringify(detail) != '{}' ? (
-      <>
+    detail && JSON.stringify(detail) != '{}' ? (
+      <ChakraProvider>
         {/* <div className='Global' /> */}
         <SetBarTitle text='房屋详情' />
         <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.vrPicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
         </div>
         <PageModuleContainer fill='transparent'>
-          <Stack>
+          <Stack spacing='2'>
             {/* {
           convertedSlidesArr && convertedSlidesArr.map((item, index) => <div key={index}>
           <img src={item} style={{
@@ -119,86 +119,67 @@ export default function RentAssetDetails(props) {
         } */}
             <ContainerSubtitle>{title}</ContainerSubtitle>
             <Flex>
-
-              <Center w='' h='50px'>
+              <Center w='' h=''>
                 <ItemTitle>参考价格：</ItemTitle>
               </Center>
-              <Center w='' h=''>
-                <Flex gap='2px'>
-                  <Center h='18px' >
-                    <Price>{parseInt(price)}</Price>
-                  </Center>
-                  <ItemTitleBold>元/月</ItemTitleBold>
-                </Flex>
+              <Flex gap='2px'>
+                <Center h='14px' >
+                  <Price>{parseInt(price)}</Price>
+                </Center>
+                <ItemTitleBold>元/月</ItemTitleBold>
+              </Flex>
+            </Flex>
+            <Flex>
+              <Box w='30px' h='30px'>
+                <svg t="1659672225263" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34319" width="30" height="30"><path d="M778.24 260.608m-20.48 0a20.48 20.48 0 1 0 40.96 0 20.48 20.48 0 1 0-40.96 0Z" p-id="34320" fill="#8a8a8a"></path><path d="M479.232 904.704c7.68 10.752 19.968 16.896 32.768 16.896 13.312 0 25.088-6.144 32.768-16.896 27.648-37.376 98.816-135.68 162.304-241.152C784.896 532.992 824.32 435.2 824.32 372.736c0-11.264-9.216-20.48-20.48-20.48s-20.48 9.216-20.48 20.48c0 68.608-71.168 237.568-271.36 507.392-200.192-269.312-271.36-438.784-271.36-507.392 0-149.504 121.856-270.848 271.36-270.848 79.36 0 154.624 34.816 206.848 95.232 7.168 8.704 20.48 9.728 28.672 2.048 8.704-7.168 9.728-20.48 2.048-28.672-59.904-69.632-146.432-109.568-237.568-109.568-172.032 0-312.32 139.776-312.32 311.808 0 62.464 39.424 160.256 117.248 290.816 63.488 105.472 134.656 203.776 162.304 241.152zM688.64 936.448h-353.28c-11.264 0-20.48 9.216-20.48 20.48s9.216 20.48 20.48 20.48h353.28c11.264 0 20.48-9.216 20.48-20.48s-9.216-20.48-20.48-20.48z" p-id="34321" fill="#8a8a8a"></path><path d="M343.04 368.128c0 93.184 75.776 168.96 168.96 168.96s168.96-75.776 168.96-168.96-75.776-168.96-168.96-168.96-168.96 75.776-168.96 168.96z m296.96 0c0 70.656-57.344 128-128 128s-128-57.344-128-128 57.344-128 128-128 128 57.344 128 128z" p-id="34322" fill="#8a8a8a"></path></svg>
+              </Box>
+              <Center>
+                <ItemTitle> {address}</ItemTitle>
               </Center>
-
             </Flex>
             <Spacer borderBottom='1px dashed #d6d3d3' />
 
             <PageSectionTitle>房源简介</PageSectionTitle>
             <Flex w=''>
               <Flex w='50%'>
-                <ContainerInactiveTitle>面积：</ContainerInactiveTitle>
-                <ItemTitle> {area} m²</ItemTitle>
+                <Center>
+                  <ContainerInactiveTitle>面积：</ContainerInactiveTitle>
+                </Center>
+                <PageSection> {area} m²</PageSection>
               </Flex>
               <Flex>
-                <ContainerInactiveTitle>房型：</ContainerInactiveTitle>
-                <ItemTitle> {houseType}</ItemTitle>
+                <Center>
+                  <ContainerInactiveTitle>房型：</ContainerInactiveTitle>
+                </Center>
+                <PageSection> {houseType}</PageSection>
               </Flex>
             </Flex>
             <Flex>
               <Flex w='50%'>
-                <ContainerInactiveTitle>楼层：</ContainerInactiveTitle>
-                <ItemTitle>  {floor}</ItemTitle>
+                <Center>
+                  <ContainerInactiveTitle>楼层：</ContainerInactiveTitle>
+                </Center>
+                <PageSection>  {floor}</PageSection>
               </Flex>
               <Flex>
-                <ContainerInactiveTitle>朝向：</ContainerInactiveTitle>
-                <ItemTitle>  {direction}</ItemTitle>
+                <Center>
+                  <ContainerInactiveTitle>朝向：</ContainerInactiveTitle>
+                </Center>
+                <PageSection>  {direction}</PageSection>
               </Flex>
             </Flex>
-            <Flex>
-              <Box w='28px' h='20px'>
-                <svg t="1659672225263" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34319" width="20" height="20"><path d="M778.24 260.608m-20.48 0a20.48 20.48 0 1 0 40.96 0 20.48 20.48 0 1 0-40.96 0Z" p-id="34320" fill="#8a8a8a"></path><path d="M479.232 904.704c7.68 10.752 19.968 16.896 32.768 16.896 13.312 0 25.088-6.144 32.768-16.896 27.648-37.376 98.816-135.68 162.304-241.152C784.896 532.992 824.32 435.2 824.32 372.736c0-11.264-9.216-20.48-20.48-20.48s-20.48 9.216-20.48 20.48c0 68.608-71.168 237.568-271.36 507.392-200.192-269.312-271.36-438.784-271.36-507.392 0-149.504 121.856-270.848 271.36-270.848 79.36 0 154.624 34.816 206.848 95.232 7.168 8.704 20.48 9.728 28.672 2.048 8.704-7.168 9.728-20.48 2.048-28.672-59.904-69.632-146.432-109.568-237.568-109.568-172.032 0-312.32 139.776-312.32 311.808 0 62.464 39.424 160.256 117.248 290.816 63.488 105.472 134.656 203.776 162.304 241.152zM688.64 936.448h-353.28c-11.264 0-20.48 9.216-20.48 20.48s9.216 20.48 20.48 20.48h353.28c11.264 0 20.48-9.216 20.48-20.48s-9.216-20.48-20.48-20.48z" p-id="34321" fill="#8a8a8a"></path><path d="M343.04 368.128c0 93.184 75.776 168.96 168.96 168.96s168.96-75.776 168.96-168.96-75.776-168.96-168.96-168.96-168.96 75.776-168.96 168.96z m296.96 0c0 70.656-57.344 128-128 128s-128-57.344-128-128 57.344-128 128-128 128 57.344 128 128z" p-id="34322" fill="#8a8a8a"></path></svg>
-              </Box>
-              <ItemTitle> {address}</ItemTitle>
-            </Flex>
+
             <Spacer borderBottom='1px dashed #d6d3d3' />
             <Spacer />
 
-            <PageSectionTitle>配套设施</PageSectionTitle>
+            <PageSectionTitle>家具家电</PageSectionTitle>
 
-            <Cart corner='16px' padding='0'>
-              <Flex>
-                <Center w='80px' borderRight='1px #d0cdcd solid' >
-                  <ContainerInactiveTitle>
-                    家电
-                  </ContainerInactiveTitle>
-                </Center>
-                <Center margin='8px'>
-                  <ConditionalIem columns='3' items={items} />
-                </Center>
-
-              </Flex>
-            </Cart>
-            <Cart corner='16px' padding='0'>
-              <Flex>
-                <Center w='80px' borderRight='1px #d0cdcd solid' >
-                  <ContainerInactiveTitle>
-                    户型
-                  </ContainerInactiveTitle>
-                </Center>
-                <Center margin='8px'>
-                  <ConditionalIem columns='3' items={items} />
-                </Center>
-
-              </Flex>
-            </Cart>
             <Cart corner='16px' padding='0'>
               <Flex >
                 <Center w='80px' borderRight='1px #d0cdcd solid' >
-                  <ContainerInactiveTitle>
+                  <ItemTitleBold>
                     家具
-                  </ContainerInactiveTitle>
+                  </ItemTitleBold>
                 </Center>
                 <Center margin='8px'>
                   <ConditionalIem columns='3' items={items} />
@@ -206,6 +187,34 @@ export default function RentAssetDetails(props) {
 
               </Flex>
             </Cart>
+
+            <Cart corner='16px' padding='0'>
+              <Flex>
+                <Center w='80px' borderRight='1px #d0cdcd solid' >
+                  <ItemTitleBold>
+                    家电
+                  </ItemTitleBold>
+                </Center>
+                <Center margin='8px'>
+                  <ConditionalIem columns='3' items={items} />
+                </Center>
+              </Flex>
+            </Cart>
+
+            <Cart corner='16px' padding='0'>
+              <Flex>
+                <Center w='80px' borderRight='1px #d0cdcd solid' >
+                  <ItemTitleBold>
+                    户型
+                  </ItemTitleBold>
+                </Center>
+                <Center margin='8px'>
+                  <ConditionalIem columns='3' items={items} />
+                </Center>
+
+              </Flex>
+            </Cart>
+          
 
             <Spacer />
 
@@ -215,10 +224,11 @@ export default function RentAssetDetails(props) {
                 )
               }
             </Container> */}
-              <Spacer borderBottom='1px dashed #d6d3d3' />
-          
-              <PageSectionTitle>周边公建</PageSectionTitle>
-              <SurroundingCconstruction  detail={facilitiesData}/>
+            <Spacer borderBottom='1px dashed #d6d3d3' />
+
+            <PageSectionTitle>周边配套</PageSectionTitle>
+
+            <SurroundingCconstruction detail={facilitiesData} />
 
             <Spacer />
             <Spacer borderBottom='1px dashed #d6d3d3' />
@@ -230,8 +240,8 @@ export default function RentAssetDetails(props) {
             </AvatarCard> */}
 
             <Flex boxShadow='0 0px 8px rgba(0, 0, 0, 0.08) ' padding='8px 0' >
-              <Avatar size='80px' url={serverAvatar} />
-              <Stack spacing='6'>
+              <Avatar size='70px' url={serverAvatar} />
+              <Stack spacing='1'>
                 <ItemTitleBold>
                   <>
                     {serverName}
@@ -265,7 +275,7 @@ export default function RentAssetDetails(props) {
 
           </Stack>
         </PageModuleContainer>
-      </>
+      </ChakraProvider>
     ) : (
       <Center h='500px'>
         <Spin spinning={loading}></Spin>

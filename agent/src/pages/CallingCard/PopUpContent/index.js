@@ -121,7 +121,7 @@ export default function index(props) {
                                 </Center>} />
                             <Input type='tel' value={phone} placeholder='请填写本人联系电话（已加密）' onChange={(e) => changeValue(e)} />
                         </InputGroup>
-                        {phone && phone.lenght >= 11 ? (
+                        {phone  ? (
                             <>
                                 <InputGroup size='sm'>
                                     <InputLeftAddon children={

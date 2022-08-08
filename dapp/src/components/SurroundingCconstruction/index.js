@@ -1,6 +1,6 @@
 import React from 'react';
 import Detail from './Detail';
-import { Center, Spacer } from '@chakra-ui/layout';
+import { Center, Flex, Spacer } from '@chakra-ui/layout';
 import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
 
 
@@ -19,13 +19,16 @@ export default function index(props) {
 
     return detail && detail.map((item, i) => (
         <>
-            <Center w='50px'>
+            {/* <Center w='50px'>
                 <ItemTitleBold>
                     {detail[i].cnName}
                 </ItemTitleBold>
-            </Center>
-            <Detail  {...item} key={i} />
-            <Spacer borderBottom='0px dashed #d6d3d3' />
+            </Center> */}
+            <Flex h='56px'>
+                <img src={detail[i].icon} width='30px' />
+                <Detail  {...item} key={i} />
+            </Flex>
+            {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
         </>
 
     )
