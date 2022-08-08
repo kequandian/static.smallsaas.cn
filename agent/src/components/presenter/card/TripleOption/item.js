@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
-import Cart from 'zero-element-boot/lib/components/cart/Cart';
-import { Flex, Box, Center } from '@chakra-ui/react'
-import Container from 'zero-element-boot/lib/components/container/Container'
 require('./index.less');
 
 const colorMap = {
@@ -14,14 +10,15 @@ const colorMap = {
 
 /**
  * 
- * @param {data} items 数据
+ * @param {name} name 前端样式内容
+ * @param {value} value 字段名
+ * @param {size} size 大小(传数字)
  * 
  */
 
 export default function index(props) {
 
-    const { id, defaultValue, defaultStatus, callBack, name = '', value = '', bg = '', color = '', size = 30 } = props
-    // const [names, setNames] = useState(value)
+    const { id, defaultValue, defaultStatus, callBack, name = '', value = '',  size = 30 } = props
 
     let ref = React.createRef()
 
@@ -45,12 +42,10 @@ export default function index(props) {
                 value={name}
                 name={value}
                 style={{
-                    // color: `${color}`,
                     padding: '4px 10px',
                     fontSize: `${0.4 * size}px`,
                     width: `${3 * size} px`,
                     height: `${size} px`,
-                    background: `${bg}`
                 }}
                 onClick={(e) => onClick(e)} />
         </CssCart>

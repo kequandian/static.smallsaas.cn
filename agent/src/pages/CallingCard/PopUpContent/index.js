@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import {
     Stack,
@@ -24,6 +24,7 @@ export default function index(props) {
     const { onClickList = [] } = props;
 
     // console.log('onClickList === ', onClickList)
+    const [phone, setKeyValues] = useState()
 
     function validateData(values) {
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
@@ -37,6 +38,12 @@ export default function index(props) {
         reset,
         formState: { errors, isSubmitting },
     } = useForm()
+
+
+    function changeValue(e) {
+        console.log('change value = ', e.target.value)
+        setKeyValues(e.target.value)
+    }
     return (
         <ChakraProvider>
             <Stack >
@@ -97,10 +104,12 @@ export default function index(props) {
                             <Input type='text' placeholder='请填写真实姓名（已加密）'
                                 {...register('name', {
                                     minLength: { value: 10, message: '' },
-                                    onkeyup:{value:"value.replace(/[^(\d)]/g"}
+                                    onkeyup: { value: "value.replace(/[^(\d)]/g" }
                                     // onblur="checkNum()"
-                                })} />
+                                })}
+                            />
                         </InputGroup>
+
 
                         <InputGroup size='sm'>
                             <InputLeftAddon children={
@@ -110,28 +119,52 @@ export default function index(props) {
                                     </PrimarySubtitle>
                                     <Price> *</Price>
                                 </Center>} />
-                            <Input type='tel' placeholder='请填写本人联系电话（已加密）' />
+                            <Input type='tel' value={phone} placeholder='请填写本人联系电话（已加密）' onChange={(e) => changeValue(e)} />
                         </InputGroup>
-                        <InputGroup size='sm'>
-                            <InputLeftAddon children={
-                                <Center w='60px'>
-                                    <PrimarySubtitle>
-                                        签收城市
-                                    </PrimarySubtitle>
-                                    <Price> *</Price>
-                                </Center>} />
-                            <SignOffAddress />
-                        </InputGroup>
-                        <InputGroup size='sm'>
-                            <InputLeftAddon children={
-                                <Center w='60px'>
-                                    <PrimarySubtitle>
-                                        详细地址
-                                    </PrimarySubtitle>
-                                    <Price> *</Price>
-                                </Center>} />
-                            <Input placeholder='街道/镇+村/小区/写字楼+门牌号' />
-                        </InputGroup>
+                        {phone && phone.lenght >= 11 ? (
+                            <>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                验证码
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <Input type='tel' placeholder='' />
+                                </InputGroup>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                身份证号
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <Input type='tel' placeholder='请填写真实信息（已加密）' />
+                                </InputGroup>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                签收城市
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <SignOffAddress />
+                                </InputGroup>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                详细地址
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <Input placeholder='街道/镇+村/小区/写字楼+门牌号' />
+                                </InputGroup>
+                            </>
+                        ) : <></>}
                         <Button width='100%' height='40px' colorScheme='twitter' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
                             0元申请 包邮到家
                         </Button>

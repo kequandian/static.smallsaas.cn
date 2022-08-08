@@ -22,12 +22,12 @@ export default function index(props) {
                             {userId || ''}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='50%'>
+                    <Box w='60%'>
                         <PrimarySubtitle fontSize='14px'>
                             {price || ''}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='80%'>
+                    <Box w='70%'>
                         <PrimarySubtitle fontSize='14px'>
                             {productName || ''}
                         </PrimarySubtitle>

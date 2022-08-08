@@ -84,23 +84,23 @@ export default function index(props) {
 
         <Flex w='100%'>
           <Box w='60%' bg=''>
-            <PrimarySubtitle color='#ffffff' fontSize='18px'>
+            <PrimarySubtitle color='#ffffff' fontSize='16px'>
               单号
             </PrimarySubtitle>
           </Box>
-          <Box w='50%'>
-            < PrimarySubtitle color='#ffffff' fontSize='18px'>
+          <Box w='60%'>
+            < PrimarySubtitle color='#ffffff' fontSize='16px'>
               交易价格
             </PrimarySubtitle>
           </Box>
-          <Box w='80%'>
+          <Box w='70%'>
 
-            <PrimarySubtitle color='#ffffff' fontSize='18px'>
+            <PrimarySubtitle color='#ffffff' fontSize='16px'>
               产品
             </PrimarySubtitle>
           </Box>
           <Box w='130%'>
-            <PrimarySubtitle color='#ffffff' fontSize='18px'>
+            <PrimarySubtitle color='#ffffff' fontSize='16px'>
               代理
             </PrimarySubtitle>
           </Box>
