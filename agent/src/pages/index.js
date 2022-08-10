@@ -16,9 +16,9 @@ export default function index(props) {
   // history.push('/Testlogin')
   return (
     // <Testlogin />
-    // <Testorders />
-    <CallingCard />
-  //  <LoadPage />
+    <Testorders />
+    // <CallingCard />
+    //<LoadPage />
     // <TestManagingDirector />
     // <TestFrom />
     // <h1>hello</h1>

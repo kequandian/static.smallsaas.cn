@@ -16,6 +16,7 @@ export default function index(props) {
 
     function myInvitationCode() {
         history.push('/my/myInvitationCode')
+        // history.push('/my/MyOrdersCode')
     }
 
     const api = '/api/u/saasAgent/myAgentInfo'
@@ -71,16 +72,26 @@ export default function index(props) {
                     </ItemCart>
                     <ItemCart>
                         {(data.level === 'SECONDARY_AGENT' || data.level === 'GENERAL_AGENT') ? (
+                             <>
                             <Router items={[
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/report.svg", "title": "结算报表", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SettlementStatements?level=2" },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "历史", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "" },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/SetUp.svg", "title": "设置", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/Set/GeneralAgentSet?level=2" },
                             ]} />
+                            <Router items={[
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyOrdersCode?" },
+                            ]} />
+                           </>
                         ) : (data.level === 'TERTIARY_AGENT') ? (
+                            <>
                             <Router items={[
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/report.svg", "title": "结算报表", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SettlementStatements?level=2" },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "历史", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "" },
                             ]} />
+                            <Router items={[
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyOrdersCode?" },
+                            ]} />
+                            </>
                         ) : (<></>)
                         }
                     </ItemCart>

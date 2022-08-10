@@ -5,7 +5,7 @@ import {
     Input,
     InputGroup,
     InputLeftAddon,
-    ChakraProvider, Text, Button, Spacer, Center, Flex
+    ChakraProvider, Text, Button, Spacer, Center, Flex, InputRightAddon, Box
 } from '@chakra-ui/react'
 import ItemCart from '@/components/presenter/ItemCart'
 import { useForm } from 'react-hook-form';
@@ -16,19 +16,62 @@ import PrimarySubtitle from '@/components/text/PrimarySubtitle';
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import SignOffAddress from '@/pages/CallingCard/PopUpContent/SignOffAddress'
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
+import AgreeSelector from '@/components/selector/AgreeSelector'
+require('./index.less');
 
 
 
 export default function index(props) {
 
-    const { onClickList = [] } = props;
+    const { onClickList = [], postAddr, VerificationCode } = props;
+
+
+    let api = '/api/app/oauth/account/login'
 
     // console.log('onClickList === ', onClickList)
-    const [phone, setKeyValues] = useState()
+    const [channel, setChannel] = useState()
+    const [contactNum, setKeyContactNum] = useState()
+    const [certName, setCertName] = useState()
+    const [certNo, setCertNo] = useState()
 
     function validateData(values) {
-        promiseAjax(api, values, { method: 'POST' }).then(resp => {
+        const query = {
+            // channel,
+            // contactNum,
+            // certName,
+            // certNo,
+            "goodsId": "982203315714",
+            "certName": "林学文",
+            "certNo": "44142719951224171X",
+            "contactNum": "17827409860",
+            "postProvinceCode": "13076511024",
+            "postCityCode": "440100",
+            "postDistrictCode": "440112",
+            "postAddr": "440000",
+            "saleTurn": "",
+            "policyId": "",
+            "policyName": "215",
+            "firstMonthFee": "",
+            "qz_gdt": "123",
+            "gdt_vid": "123",
+            "expectPostTime": "",
+            "expectPostTimeEnd": "",
+            "wtMcId": "",
+            "referrerPhone": "",
+            "orderTotalFee": "",
+            "isOpenCF": "",
+            "financeFlag": "",
+            "financeChannelCode": "",
+            "contractId": "",
+            "actId": "",
+            "provinceCode": "",
+            "cityCode": "",
+            "phoneNum": "",
+            "safeCode": "277446"
+        }
+        promiseAjax(api, query, { method: 'POST' }).then(resp => {
             if (resp && resp.code === 200) {
+                alert('下单成功')
             }
         });
     }
@@ -39,10 +82,32 @@ export default function index(props) {
         formState: { errors, isSubmitting },
     } = useForm()
 
+    const [agreeStatus, setAgreeStatus] = useState(false)
 
-    function changeValue(e) {
+    function changContactNum(e) {
         console.log('change value = ', e.target.value)
-        setKeyValues(e.target.value)
+        setKeyContactNum(e.target.value)
+    }
+
+    function changeCertName(e) {
+        setCertName(e.target.value)
+        console.log('certName ==', certName)
+    }
+
+    function changeCertNo(e) {
+        setCertNo(e.target.value)
+        console.log('certNo ==', certNo)
+
+    }
+
+    function CallBack(agreeStatus,channel) {
+        setAgreeStatus(agreeStatus)
+        setChannel(channel)
+        // console.log('agreeStatus===', agreeStatus)
+    }
+    function aa() {
+        alert('请填写完信息')
+        // console.log('请填写完信息')
     }
     return (
         <ChakraProvider>
@@ -56,23 +121,7 @@ export default function index(props) {
                     </Flex>
                 </Center>
 
-                {/* <Center>
-                    <Flex >
-                        <Center>
-                            <Price color='#ff0704'>注 </Price>
-                        </Center>
-                        <Center>
-                            <PrimarySubtitle fontSize='8px' color='#9ba6af'>
-                                : 此号码需预存
-                                <Price color='#ff0704'> {onClickList[1]}</Price>
-                                元，月承诺消费
-                                <Price color='#ff0704'> {onClickList[3]}</Price>
-                                元，承诺在网
-                                <Price color='#ff0704'> {onClickList[6]}</Price>
-                                月</PrimarySubtitle>
-                        </Center>
-                    </Flex>
-                </Center> */}
+
                 <p style={{ color: '#9ba6af' }} >
                     <span style={{ color: '#ff0704', fontWeight: 'bold' }} >注</span>：此号码需预存<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[1]}</span>元，月承诺消费<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[3]}</span>元，承诺在网<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[6]}</span>月
                 </p>
@@ -101,12 +150,12 @@ export default function index(props) {
                                     </PrimarySubtitle>
                                     <Price> *</Price>
                                 </Center>} />
-                            <Input type='text' placeholder='请填写真实姓名（已加密）'
-                                {...register('name', {
-                                    minLength: { value: 10, message: '' },
-                                    onkeyup: { value: "value.replace(/[^(\d)]/g" }
-                                    // onblur="checkNum()"
-                                })}
+                            <Input type='text' value={certName} placeholder='请填写真实姓名（已加密）' onChange={(e) => changeCertName(e)}
+                            // {...register('name', {
+                            //     minLength: { value: 10, message: '' },
+                            //     onkeyup: { value: "value.replace(/[^(\d)]/g" }
+                            //     // onblur="checkNum()"
+                            // })}
                             />
                         </InputGroup>
 
@@ -119,9 +168,14 @@ export default function index(props) {
                                     </PrimarySubtitle>
                                     <Price> *</Price>
                                 </Center>} />
-                            <Input type='tel' value={phone} placeholder='请填写本人联系电话（已加密）' onChange={(e) => changeValue(e)} />
+                            <Input type='tel' value={contactNum} placeholder='请填写本人联系电话（已加密）' maxLength='11' onChange={(e) => changContactNum(e)} />
+                            <InputRightAddon w='90px' padding='8px'>
+                                <div style={{ color: '#a772ff', fontSize: '13px' }} onClick   >
+                                    获取验证码
+                                </div>
+                            </InputRightAddon>
                         </InputGroup>
-                        {phone  ? (
+                        {contactNum && contactNum.length == 11 ? (
                             <>
                                 <InputGroup size='sm'>
                                     <InputLeftAddon children={
@@ -131,7 +185,7 @@ export default function index(props) {
                                             </PrimarySubtitle>
                                             <Price> *</Price>
                                         </Center>} />
-                                    <Input type='tel' placeholder='' />
+                                    <Input type='tel' value={VerificationCode} placeholder='' />
                                 </InputGroup>
                                 <InputGroup size='sm'>
                                     <InputLeftAddon children={
@@ -141,7 +195,12 @@ export default function index(props) {
                                             </PrimarySubtitle>
                                             <Price> *</Price>
                                         </Center>} />
-                                    <Input type='tel' placeholder='请填写真实信息（已加密）' />
+                                    <Input type='tel' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
+                                    //  {...register('certNo', {
+                                    //     required: '请输入号码',
+                                    //     minLength: { value: 11, message: '最小长度应为4' },
+                                    // })}
+                                    />
                                 </InputGroup>
                                 <InputGroup size='sm'>
                                     <InputLeftAddon children={
@@ -161,15 +220,41 @@ export default function index(props) {
                                             </PrimarySubtitle>
                                             <Price> *</Price>
                                         </Center>} />
-                                    <Input placeholder='街道/镇+村/小区/写字楼+门牌号' />
+                                    <Input value={postAddr} placeholder='街道/镇+村/小区/写字楼+门牌号' />
                                 </InputGroup>
+                              
+
                             </>
                         ) : <></>}
-                        <Button width='100%' height='40px' colorScheme='twitter' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
-                            0元申请 包邮到家
-                        </Button>
-                    </Stack>
 
+                        <Flex>
+                            <Center w='50px'>
+                                <AgreeSelector CallBack={CallBack} />
+                            </Center>
+                            <p style={{ color: '#c3c3c3' }}>
+                                已阅读并同意 <a className='link' target='_blank' href='https://m.75510010.com/view/3F8Bc1DC61' >《入网协议》</a>、<a href='https://m.75510010.com/view/73Cd7812C9' className='link'>《信息收集公告》</a>、<a href='https://m.75510010.com/view/8b147a3A2e' className='link'>《靓号协议》</a>
+                            </p>
+                        </Flex>
+
+                        {/* <Box bg='#adcdeb' color='#ffffff90' padding={}>
+                            
+                            0元申请 包邮到家
+                        </Box> */}
+
+                        {certNo && certNo.length == 18 && contactNum && agreeStatus && contactNum.length == 11 ? (
+                            // {agreeStatus ? (
+                            <Button width='100%' height='40px' colorScheme='twitter' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
+                                0元申请 包邮到家
+                            </Button>
+                        ) :
+                            (
+                                <Button width='100%' height='40px' colorScheme='gray' variant='solid' type='submit' size='sm' onClick={() => { aa() }}>
+                                    0元申请 包邮到家
+                                </Button>
+
+                            )
+                        }
+                    </Stack>
                 </form>
             </Stack>
         </ChakraProvider >

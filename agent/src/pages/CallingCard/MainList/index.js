@@ -10,7 +10,7 @@ import Search from '@/pages/login/image/Search'
 
 export default function Container(props) {
 
-    const { address = '广东', onNumberClick, } = props;
+    const { address = '广东',channel ,onNumberClick, } = props;
 
     // const onHandleNumberClick = (NumberClick) => {
     //     console.log('NumberClick == ', NumberClick)
@@ -54,6 +54,9 @@ export default function Container(props) {
         <ChakraProvider>
             <Cart fill='#465bce' padding='18px 10px 10px 10px' margin='0'>
                 <Text color='#ffffff'>归属地：{address}</Text>
+            </Cart>
+            <Cart fill='#465bce' padding='18px 10px 10px 10px' margin='0'>
+                <Text color='#ffffff'>邀请人:{channel}</Text>
             </Cart>
             <PageModuleContainer>
                 <>
