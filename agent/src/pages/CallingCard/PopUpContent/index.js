@@ -18,62 +18,69 @@ import SignOffAddress from '@/pages/CallingCard/PopUpContent/SignOffAddress'
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import AgreeSelector from '@/components/selector/AgreeSelector'
 require('./index.less');
+import promiseAjax from 'zero-element-boot/lib/components/utils/request';
 
 
 
 export default function index(props) {
 
-    const { onClickList = [], postAddr, VerificationCode } = props;
+    const { onClickList = [], postAddr, safeCode } = props;
 
 
     let api = '/api/app/oauth/account/login'
+    let codeApi = '/api/link/code/safe-code'
 
     // console.log('onClickList === ', onClickList)
-    const [channel, setChannel] = useState()
+    const [financeChannelCode, setfinanceChannelCode] = useState()
     const [contactNum, setKeyContactNum] = useState()
     const [certName, setCertName] = useState()
     const [certNo, setCertNo] = useState()
 
     function validateData(values) {
         const query = {
-            // channel,
+            // goodsId,
+            certName,certNo,contactNum,postProvinceCode,postProvinceCode,postAddr,policyName,
+            qz_gdt,gdt_vid,
+            financeChannelCode,
+            safeCode,
             // contactNum,
             // certName,
             // certNo,
             "goodsId": "982203315714",
-            "certName": "林学文",
-            "certNo": "44142719951224171X",
-            "contactNum": "17827409860",
+            // "certName": "林学文",
+            // "certNo": "44142719951224171X",
+            // "contactNum": "17827409860",
             "postProvinceCode": "13076511024",
             "postCityCode": "440100",
             "postDistrictCode": "440112",
-            "postAddr": "440000",
-            "saleTurn": "",
-            "policyId": "",
-            "policyName": "215",
-            "firstMonthFee": "",
-            "qz_gdt": "123",
-            "gdt_vid": "123",
-            "expectPostTime": "",
-            "expectPostTimeEnd": "",
-            "wtMcId": "",
-            "referrerPhone": "",
-            "orderTotalFee": "",
-            "isOpenCF": "",
-            "financeFlag": "",
-            "financeChannelCode": "",
-            "contractId": "",
-            "actId": "",
-            "provinceCode": "",
-            "cityCode": "",
-            "phoneNum": "",
-            "safeCode": "277446"
+            // "postAddr": "440000",
+            // "saleTurn": "",
+            // "policyId": "",
+            // "policyName": "215",
+            // "firstMonthFee": "",
+            // "qz_gdt": "123",
+            // "gdt_vid": "123",
+            // "expectPostTime": "",
+            // "expectPostTimeEnd": "",
+            // "wtMcId": "",
+            // "referrerPhone": "",
+            // "orderTotalFee": "",
+            // "isOpenCF": "",
+            // "financeFlag": "",
+            // // "financeChannelCode": "",
+            // "contractId": "",
+            // "actId": "",
+            // "provinceCode": "",
+            // "cityCode": "",
+            // "phoneNum": "",
+            // "safeCode": "277446"
         }
         promiseAjax(api, query, { method: 'POST' }).then(resp => {
-            if (resp && resp.code === 200) {
+            if (resp && resp.code === 0) {
                 alert('下单成功')
             }
         });
+        updateName(safeCode)
     }
     const {
         handleSubmit,
@@ -81,6 +88,51 @@ export default function index(props) {
         reset,
         formState: { errors, isSubmitting },
     } = useForm()
+
+
+
+    function code() {
+        const codeData = {
+            // "certName": "傅庆发",
+            // "certNum": "445281199805293856",
+            // "contactNum": "15581531981",
+            // "cityCode": "445200",
+            // "provinceCode": "440000"
+            certName,
+            certNum,
+            contactNum,
+            cityCode,
+            provinceCode
+        }
+
+        promiseAjax(codeApi, codeData, { method: 'POST' }).then(resp => {
+            console.log('resp ==', resp)
+            if (resp && resp.code === 0) {
+                alert('验证码发送成功')
+            }
+        }
+        )
+    }
+
+    function updateName(query) {
+
+        const queryData = {
+            // "certNo": "44142719951224171X",
+            // "contactNum": "15488681212",
+            // "safeCode": "151853"
+            certNo,
+            contactNum,
+            safeCode
+        }
+        promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
+            .then(res => {
+                // console.log(res, '== 更新')
+                if (res && res.code === 200) {
+                    alert('验证成功')
+                }
+            })
+    }
+
 
     const [agreeStatus, setAgreeStatus] = useState(false)
 
@@ -100,12 +152,12 @@ export default function index(props) {
 
     }
 
-    function CallBack(agreeStatus,channel) {
+    function CallBack(agreeStatus, channel) {
         setAgreeStatus(agreeStatus)
-        setChannel(channel)
+        setfinanceChannelCode(channel)
         // console.log('agreeStatus===', agreeStatus)
     }
-    function aa() {
+    function warn() {
         alert('请填写完信息')
         // console.log('请填写完信息')
     }
@@ -170,7 +222,7 @@ export default function index(props) {
                                 </Center>} />
                             <Input type='tel' value={contactNum} placeholder='请填写本人联系电话（已加密）' maxLength='11' onChange={(e) => changContactNum(e)} />
                             <InputRightAddon w='90px' padding='8px'>
-                                <div style={{ color: '#a772ff', fontSize: '13px' }} onClick   >
+                                <div style={{ color: '#a772ff', fontSize: '13px' }} onClick={() => code()}  >
                                     获取验证码
                                 </div>
                             </InputRightAddon>
@@ -185,7 +237,7 @@ export default function index(props) {
                                             </PrimarySubtitle>
                                             <Price> *</Price>
                                         </Center>} />
-                                    <Input type='tel' value={VerificationCode} placeholder='' />
+                                    <Input type='tel' value={safeCode} placeholder='' />
                                 </InputGroup>
                                 <InputGroup size='sm'>
                                     <InputLeftAddon children={
@@ -220,9 +272,9 @@ export default function index(props) {
                                             </PrimarySubtitle>
                                             <Price> *</Price>
                                         </Center>} />
-                                    <Input value={postAddr} placeholder='街道/镇+村/小区/写字楼+门牌号' />
+                                    <Input value={postAddr} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' />
                                 </InputGroup>
-                              
+
 
                             </>
                         ) : <></>}
@@ -248,7 +300,7 @@ export default function index(props) {
                             </Button>
                         ) :
                             (
-                                <Button width='100%' height='40px' colorScheme='gray' variant='solid' type='submit' size='sm' onClick={() => { aa() }}>
+                                <Button width='100%' height='40px' colorScheme='gray' variant='solid' type='submit' size='sm' onClick={() => { warn() }}>
                                     0元申请 包邮到家
                                 </Button>
 

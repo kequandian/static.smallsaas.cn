@@ -16,7 +16,7 @@ export default function index(props) {
 
     function myInvitationCode() {
         history.push('/my/myInvitationCode')
-        // history.push('/my/MyOrdersCode')
+        // history.push('/enroll/RegistrationSuccessful')
     }
 
     const api = '/api/u/saasAgent/myAgentInfo'

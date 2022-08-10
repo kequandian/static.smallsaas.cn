@@ -54,15 +54,15 @@ export default function index(props) {
             {
                 showList && showList.length > 0 && showList.map((item, index) => (
                     (<>
-                        <CssCart border='0 solid #f5f5f5' padding='10px' margin='8px' boxShadow='0 0px 4px rgba(0, 0, 0, 0.12)' key={index}>
+                        <CssCart border='0 solid #f5f5f5' padding='10px 4px' margin='8px 2px' boxShadow='0 0px 4px rgba(0, 0, 0, 0.12)' key={index}>
                             <>
                                 <div style={{ width: '', border: '0px solid #ff0000', height: '30px', margin: '6px ' }} onClick={() => onNumberClick(item)} >
-                                    <Text fontSize='20px'> {item[0]}</Text>
+                                    <Text fontSize='24px'> {item[0]}</Text>
                                 </div>
                                 <Container>
                                     <Flexbox direction='row' align='start-with-last-end' w='100%'>
-                                        <Text fontSize='8px' color='#aaaaaa' as='del'>￥99</Text>
-                                        <Text fontSize='8px' color='#ff0704' onClick={() => onNumberClick(item)}>免费领取</Text>
+                                        <Text fontSize='14px' color='#aaaaaa' as='del'>￥99</Text>
+                                        <Text fontSize='14px' color='#ff0704' onClick={() => onNumberClick(item)}>免费领取</Text>
                                     </Flexbox>
                                 </Container>
                             </>

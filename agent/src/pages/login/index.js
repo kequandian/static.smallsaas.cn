@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
     Stack, Flex, Text, Center, Input, InputRightAddon, Spacer, CheckIcon,
-    InputGroup,
+    InputGroup, Box,
     InputLeftAddon,
     Button, ChakraProvider
 } from '@chakra-ui/react'
@@ -18,6 +18,7 @@ const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 import { history } from 'umi';
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 import TopBar from '@/components/presenter/TopBar'
+import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle'
 
 
 // --登录页面
@@ -30,6 +31,8 @@ export default function index(props) {
     let api = '/api/app/oauth/account/login'
 
     // const [data] = useTokenRequest({ api });
+
+    const defaultValues = {};
     const {
         handleSubmit,
         register,
@@ -42,17 +45,20 @@ export default function index(props) {
         // console.log('values = ', values)
         values.appid = 3
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
-            // console.log('resp data = ', resp)
             if (resp && resp.code === 200) {
                 history.push('/orders')
                 setToken(resp.data.accessToken)
-                // console.log('accessToken = ', resp.data.accessToken)
+                console.log('resp = ', resp)
             }
+        }).catch(errors => {
+                alert('登录失败，请重新输入')
         });
     }
 
+
     const swtichClick = (status) => {
         setShowPhoneLogin(status)
+        reset({ defaultValues })
     }
     function enroll() {
         history.push('/enroll')
@@ -112,7 +118,6 @@ export default function index(props) {
                                                 </div>
                                             </InputRightAddon>
                                         </InputGroup>
-
                                         <InputGroup size='md'>
                                             <InputLeftAddon children={<QRCode />} />
                                             <Input variant='outline' placeholder='请输入验证码' value={validateCode}

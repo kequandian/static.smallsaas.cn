@@ -7,25 +7,26 @@ import Button from 'zero-element-boot/lib/components/presenter/button/Button';
 import ItemCart from '@/components/presenter/ItemCart'
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import Search from '@/pages/login/image/Search'
+import Stack from 'zero-element-boot/lib/components/layout/Stack';
 
 export default function Container(props) {
 
-    const { address = '广东',channel ,onNumberClick, } = props;
+    const { address = '广东', channel, onNumberClick, } = props;
 
     // const onHandleNumberClick = (NumberClick) => {
     //     console.log('NumberClick == ', NumberClick)
     // }
 
-    const defaultPageList = [0,1,2,3,4,5,6,7,8,9]
-    const [ pageList, setPageList ] = useState(defaultPageList)
-    const [ inputValue, setInputValue] = useState('')
-    const [ searchNum, setSearchNum] = useState(0)
+    const defaultPageList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const [pageList, setPageList] = useState(defaultPageList)
+    const [inputValue, setInputValue] = useState('')
+    const [searchNum, setSearchNum] = useState(0)
 
 
-    function change(){
+    function change() {
         const pLIst = []
         pageList.map(item => {
-            pLIst.push(item+10)
+            pLIst.push(item + 10)
         })
         setPageList(pLIst)
     }
@@ -37,43 +38,43 @@ export default function Container(props) {
         }
     }
 
-    function resetPageList(){
+    function resetPageList() {
         setPageList(defaultPageList)
     }
 
-    function inputChange(e){
+    function inputChange(e) {
         setInputValue(e.target.value)
     }
 
-    function searchAction(){
+    function searchAction() {
         setSearchNum(inputValue)
     }
 
 
     return (
         <ChakraProvider>
-            <Cart fill='#465bce' padding='18px 10px 10px 10px' margin='0'>
+            <Cart fill='#465bce' padding='8px 10px 10px 10px' margin='0'>
                 <Text color='#ffffff'>归属地：{address}</Text>
             </Cart>
-            <Cart fill='#465bce' padding='18px 10px 10px 10px' margin='0'>
-                <Text color='#ffffff'>邀请人:{channel}</Text>
+            <Cart fill='#' padding='8px 10px 10px 10px' margin='0'>
+                <Text color='#'>邀请人:{channel}</Text>
             </Cart>
             <PageModuleContainer>
                 <>
-                    <Flex>
+                    <Box h='40px'>
                         <Text w='100%' fontSize='18px'> 请选择你的心仪号码</Text>
+                    </Box>
+                    <Box h='40px'>
                         <InputGroup size='sm' w='300px'>
                             <Input type='tel' placeholder='请输入你的幸运数字' defaultValue={inputValue} onChange={inputChange} />
-                            <InputRightElement children={<Search color='green.500' />} onClick={()=>searchAction()} />
+                            <InputRightElement children={<Search color='green.500' />} onClick={() => searchAction()} />
                         </InputGroup>
-                    </Flex>
-
+                    </Box>
                     <Item cb={cb} onNumberClick={onNumberClick} searchNum={searchNum} pageList={pageList} resetPageList={resetPageList} />
-
                 </>
             </PageModuleContainer>
 
-            <Center onClick={() => change()}>
+            <Center onClick={() => change()} h='44px'>
                 <CssCart width='100%' padding='0 20px' position='fixed' bottom='8px'>
                     <Button color='#1da1f2' solid onAtion >换一批
                         <Center margin='0 0 0 4px' >
