@@ -1,11 +1,13 @@
 import { Button, Drawer, Radio, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
 import PopUpContent from '@/pages/CallingCard/PopUpContent/index'
-import CallingCard from '@/pages/CallingCard/MainList'
+import MainList from '@/pages/CallingCard/MainList'
 
 
 export default function index(props) {
     const { } = props
+
+    const channel = props.location.query.channel
 
     const [visible, setVisible] = useState(false);
     const [onClickList, setOnClickList] = useState([]);
@@ -22,7 +24,7 @@ export default function index(props) {
 
     return (
         <>
-            <CallingCard onNumberClick={showDrawer} />
+            <MainList onNumberClick={showDrawer}  channel={channel}/>
             <Drawer
                 title="下单"
                 placement='bottom'
@@ -39,7 +41,7 @@ export default function index(props) {
             //   </Space>
             // }
             >
-                <PopUpContent onClickList={onClickList} />
+                <PopUpContent onClickList={onClickList}  />
             </Drawer>
         </>
     )

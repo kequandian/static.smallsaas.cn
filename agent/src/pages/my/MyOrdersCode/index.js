@@ -15,47 +15,47 @@ export default function index(props) {
 
 
     const { pass } = props
-
-
+    // console.log('props===', props)
     const api = '/api/u/saasAgent/myAgentInfo'
 
     const [data] = useTokenRequest({ api });
 
-    // console.log(data, '=== data');
+    console.log(data.phone, '=== data');
 
     return (
         // data && data.length > 0 ? (
-            <ChakraProvider>
-                <TopBar>
-                    我的下单邀请
-                </TopBar>
+        <ChakraProvider>
+            <TopBar>
+                我的下单邀请
+            </TopBar>
 
-                <CssCart position='fixed' width='100%' height='100%' padding='40px 20px ' margin='0 0 10px 0'
-                    //  backgroundColor='#020407'
-                    background='linear-gradient(141deg, rgba(98, 98, 125)1%,rgba(2, 4, 7)100%)'
-                >
-                    <>
-                        <Stack bg='#1a2748'>
-                            <Center border='1px #3156bd solid' padding='4px 10px' margin='20px 40px ' borderRadius='2px'>
-                                <DarkBackgroundTitle>
-                                    扫我下单
-                                </DarkBackgroundTitle>
-                            </Center>
+            <CssCart position='fixed' width='100%' height='100%' padding='40px 20px ' margin='0 0 10px 0'
+                //  backgroundColor='#020407'
+                background='linear-gradient(141deg, rgba(98, 98, 125)1%,rgba(2, 4, 7)100%)'
+            >
+                <>
+                    <Stack bg='#1a2748'>
+                        <Center border='1px #3156bd solid' padding='4px 10px' margin='20px 40px ' borderRadius='2px'>
+                            <DarkBackgroundTitle>
+                                扫我下单
+                            </DarkBackgroundTitle>
+                        </Center>
 
-                            <Center borderTop='2px #2e3f64 solid' width='' padding='60px 62px' bg='' >
-                                <CssCart padding='8px ' backgroundColor='#ffffff' borderRadius='2px'>
-                                    {/* <QRCode value="/my/Set/CallsSet" /> */}
-                                    <QRCode value={`https://static.smallsaas.cn/agent/model-5g.html#/CallingCard?channel=${data.phone}`} />
-                                </CssCart>
-                            </Center>
-                        </Stack>
-                      
-                    </>
-                </CssCart>
-            </ChakraProvider>
+                        <Center borderTop='2px #2e3f64 solid' width='' padding='60px 62px' bg='' >
+                            <CssCart padding='8px ' backgroundColor='#ffffff' borderRadius='2px'>
+                                {/* <QRCode value="/my/Set/CallsSet" /> */}
+                                {/* <QRCode value={`https://static.smallsaas.cn/agent/model-5g.html#/CallingCard?channel=${data.phone}`} /> */}
+                                <QRCode value={`http://192.168.3.34:8000/#/CallingCard?channel=${data.phone}`} />
+                            </CssCart>
+                        </Center>
+                    </Stack>
+
+                </>
+            </CssCart>
+        </ChakraProvider>
 
         // ) : <></>
-    
+
     )
 
 

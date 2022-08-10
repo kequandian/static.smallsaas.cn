@@ -31,7 +31,7 @@ export default function index(props) {
     let codeApi = '/api/link/code/safe-code'
 
     // console.log('onClickList === ', onClickList)
-    const [financeChannelCode, setfinanceChannelCode] = useState()
+    const [channel, setChannel] = useState()
     const [contactNum, setKeyContactNum] = useState()
     const [certName, setCertName] = useState()
     const [certNo, setCertNo] = useState()
@@ -42,7 +42,7 @@ export default function index(props) {
             certName,certNo,contactNum,postProvinceCode,postProvinceCode,postAddr,policyName,
             qz_gdt,gdt_vid,
             financeChannelCode,
-            safeCode,
+            safeCode,channel,
             // contactNum,
             // certName,
             // certNo,
@@ -154,7 +154,7 @@ export default function index(props) {
 
     function CallBack(agreeStatus, channel) {
         setAgreeStatus(agreeStatus)
-        setfinanceChannelCode(channel)
+        setChannel(channel)
         // console.log('agreeStatus===', agreeStatus)
     }
     function warn() {
@@ -248,10 +248,7 @@ export default function index(props) {
                                             <Price> *</Price>
                                         </Center>} />
                                     <Input type='tel' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
-                                    //  {...register('certNo', {
-                                    //     required: '请输入号码',
-                                    //     minLength: { value: 11, message: '最小长度应为4' },
-                                    // })}
+                                 
                                     />
                                 </InputGroup>
                                 <InputGroup size='sm'>

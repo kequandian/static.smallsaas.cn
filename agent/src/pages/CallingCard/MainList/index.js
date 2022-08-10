@@ -11,8 +11,9 @@ import Stack from 'zero-element-boot/lib/components/layout/Stack';
 
 export default function Container(props) {
 
-    const { address = '广东', channel, onNumberClick, } = props;
+    const { address = '广东',channel,  onNumberClick, } = props;
 
+    // const { query } = location
     // const onHandleNumberClick = (NumberClick) => {
     //     console.log('NumberClick == ', NumberClick)
     // }
