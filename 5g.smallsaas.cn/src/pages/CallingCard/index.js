@@ -5,7 +5,7 @@ import MainList from '@/pages/CallingCard/MainList'
 
 
 export default function index(props) {
-    const { } = props
+    // const { channel} = props
 
     const channel = props.location.query.channel
 

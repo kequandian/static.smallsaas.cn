@@ -70,36 +70,10 @@ export default function RentAssetDetails(props) {
     }
   }
 
-  // const traffic = [
-  //   {
-  //     "icon": "https://static.smallsaas.cn/house/2022/svg/senior/hospital.svg",
-  //     "title": "距离地铁7号线科丰路站近",
-  //   }
-  // ]
-
   //拿数据
   const facilitiesData = detail.facilities
-
-
-  const items = [
-    {
-      "title": "床",
-      "value": true
-    },
-    {
-      "title": "衣柜",
-      "value": false
-    },
-    {
-      "title": "餐桌",
-      "value": false
-    },
-    {
-      "title": "沙发",
-      "value": true
-    },
-
-  ]
+  const homeData = detail.supportFacilities
+ 
   return (
     detail && JSON.stringify(detail) != '{}' ? (
       <ChakraProvider>
@@ -173,51 +147,9 @@ export default function RentAssetDetails(props) {
             <Spacer />
 
             <PageSectionTitle>家具家电</PageSectionTitle>
-
-            <Cart corner='16px' padding='0'>
-              <Flex >
-                <Center w='80px' borderRight='1px #d0cdcd solid' >
-                  <ItemTitleBold>
-                    家具
-                  </ItemTitleBold>
-                </Center>
-                <Center margin='8px'>
-                  <ConditionalIem columns='3' items={items} />
-                </Center>
-
-              </Flex>
-            </Cart>
-
-            <Cart corner='16px' padding='0'>
-              <Flex>
-                <Center w='80px' borderRight='1px #d0cdcd solid' >
-                  <ItemTitleBold>
-                    家电
-                  </ItemTitleBold>
-                </Center>
-                <Center margin='8px'>
-                  <ConditionalIem columns='3' items={items} />
-                </Center>
-              </Flex>
-            </Cart>
-
-            <Cart corner='16px' padding='0'>
-              <Flex>
-                <Center w='80px' borderRight='1px #d0cdcd solid' >
-                  <ItemTitleBold>
-                    户型
-                  </ItemTitleBold>
-                </Center>
-                <Center margin='8px'>
-                  <ConditionalIem columns='3' items={items} />
-                </Center>
-
-              </Flex>
-            </Cart>
-          
+            <ConditionalIem columns='3' homeData={homeData} />
 
             <Spacer />
-
             {/* <Container>
               {
                 convertedExtra && convertedExtra.tags.map((item, index) => <Tag key={index}>{item.tagName}</Tag>
@@ -238,7 +170,6 @@ export default function RentAssetDetails(props) {
             <AvatarCard title={serverName} subtitle={serverPhone} avatar={serverAvatar} navigation={''}>
               {''}
             </AvatarCard> */}
-
             <Flex boxShadow='0 0px 8px rgba(0, 0, 0, 0.08) ' padding='8px 0' >
               <Avatar size='70px' url={serverAvatar} />
               <Stack spacing='1'>
@@ -259,8 +190,6 @@ export default function RentAssetDetails(props) {
                 </ItemTitle>
               </Stack>
             </Flex>
-
-
             <Spacer />
             <Spacer />
             <PageSectionTitle>照片展示</PageSectionTitle>
@@ -269,9 +198,6 @@ export default function RentAssetDetails(props) {
 
             <Spacer borderBottom='1px dashed #d6d3d3' />
             <Spacer />
-
-
-
 
           </Stack>
         </PageModuleContainer>
@@ -283,7 +209,6 @@ export default function RentAssetDetails(props) {
     )
   )
 }
-
 
 // const convertStrToObj = str => {
 //   if (str) {

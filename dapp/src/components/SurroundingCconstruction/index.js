@@ -15,7 +15,7 @@ import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/It
 export default function index(props) {
 
     const { detail } = props
-    console.log('props ==', props);
+    // console.log('props ==', props);
 
     return detail && detail.map((item, i) => (
         <>
@@ -24,7 +24,7 @@ export default function index(props) {
                     {detail[i].cnName}
                 </ItemTitleBold>
             </Center> */}
-            <Flex h='56px'>
+            <Flex h='46px'>
                 <img src={detail[i].icon} width='30px' />
                 <Detail  {...item} key={i} />
             </Flex>

@@ -38,14 +38,10 @@ export default function index(props) {
 
     return (
 
-        <Flex margin='0 10px' >
+        <Flex margin='0 8px' >
             <Center>
-                {/* <Box w='120px' h='40px' padding='' borderRadius='md' overflow='hidden'>
-                    <TagIndicator outline plain  color='#000000'>{title}</TagIndicator>
-
-                </Box> */}
-                <CssCart borderRadius='20px' color='#555555' border='#999999 1px solid' padding='4px 10px' background='#f9f9f9'>
-                {title}
+                <CssCart borderRadius='18px' color='#555555' border='#999999 1px solid' padding=' 6px' background='#f9f9f9'>
+                    {title}
                 </CssCart>
             </Center>
         </Flex>

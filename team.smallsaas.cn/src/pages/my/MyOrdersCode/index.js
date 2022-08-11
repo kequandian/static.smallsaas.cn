@@ -20,8 +20,9 @@ export default function index(props) {
 
     const [data] = useTokenRequest({ api });
 
-    console.log(data.phone, '=== data');
-
+    console.log(data, '=== data');
+    const channel = ( data  && data.length > 0 ) ? (data.name + '' + data.phone):''
+    console.log('channel==', channel)
     return (
         // data && data.length > 0 ? (
         <ChakraProvider>
