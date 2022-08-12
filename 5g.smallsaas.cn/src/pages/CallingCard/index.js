@@ -5,12 +5,12 @@ import MainList from '@/pages/CallingCard/MainList'
 
 
 export default function index(props) {
-    // const { reference='1213123',coChannel='4542',coUserid='7342'} = props
+    const { reference='1213123',coChannel='4542',coUserid='7342'} = props
 
-    //接收扫码跳转带过来的参数
-    const reference = props.location.query.channel
-    const coChannel = props.location.query.coChannel
-    const coUserid = props.location.query.coUserid
+    // //接收扫码跳转带过来的参数
+    // const reference = props.location.query.channel
+    // const coChannel = props.location.query.coChannel
+    // const coUserid = props.location.query.coUserid
 
     const [visible, setVisible] = useState(false);
     const [onClickList, setOnClickList] = useState([]);

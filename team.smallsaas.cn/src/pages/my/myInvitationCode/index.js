@@ -24,7 +24,7 @@ export default function index(props) {
     const api = '/api/u/saasAgent/inviteCode'
     // const api = '/api/u/saasAgent/invite?inviteCode=(G-15475197476990115851234)'
     const Token = getToken()
-    console.log(Token, '=== Token');
+    // console.log(Token, '=== Token');
 
     const [data] = useTokenRequest({ api });
 

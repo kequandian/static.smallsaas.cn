@@ -57,9 +57,7 @@ export default function Container(props) {
             <Cart fill='#465bce' padding='8px 10px 10px 10px' margin='0'>
                 <Text color='#ffffff'>归属地：{address}</Text>
             </Cart>
-            <Cart fill='#' padding='8px 10px 10px 10px' margin='0'>
-                <Text color='#'>邀请人:{channel}</Text>
-            </Cart>
+           
             <PageModuleContainer>
                 <>
                     <Box h='40px'>
@@ -71,12 +69,12 @@ export default function Container(props) {
                             <InputRightElement children={<Search color='green.500' />} onClick={() => searchAction()} />
                         </InputGroup>
                     </Box>
-                    <Item cb={cb} onNumberClick={onNumberClick} searchNum={searchNum} pageList={pageList} resetPageList={resetPageList} />
+                    <Item cb={cb} onNumberClick={onNumberClick} searchNum={searchNum} pageList={pageList} resetPageList={resetPageList}  />
                 </>
             </PageModuleContainer>
 
-            <Center onClick={() => change()} h='44px'>
-                <CssCart width='100%' padding='0 20px' position='fixed' bottom='8px'>
+            <Center onClick={() => change()} h='44px' >
+                <CssCart width='100%' padding='0 20px'>
                     <Button color='#1da1f2' solid onAtion >换一批
                         <Center margin='0 0 0 4px' >
                             <svg t="1659145430699" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12765" width="22" height="22"><path d="M230.684444 230.684444a398.222222 398.222222 0 0 1 589.937778 28.444445L682.666667 398.222222h341.333333V56.888889l-122.595556 122.595555A512 512 0 0 0 13.084444 398.222222h116.906667a391.68 391.68 0 0 1 100.693333-167.537778zM793.315556 793.315556a398.222222 398.222222 0 0 1-589.937778-28.444445L341.333333 625.777778H0v341.333333l122.595556-122.595555A512 512 0 0 0 1010.915556 625.777778h-117.475556a395.093333 395.093333 0 0 1-100.124444 167.537778z" fill='#ffffff' p-id="12766"></path></svg>

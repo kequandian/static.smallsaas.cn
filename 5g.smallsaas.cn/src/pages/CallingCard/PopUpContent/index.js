@@ -26,7 +26,7 @@ import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/C
 
 export default function index(props) {
 
-    const { onClickList = [], postAddr, reference , safeCode, coUserid, coChannel } = props;
+    const { onClickList = [], postAddr, reference, safeCode, coUserid, coChannel } = props;
 
 
     let api = '/api/link/order/subNotOfterOrdertest'
@@ -54,21 +54,30 @@ export default function index(props) {
             "provinceCode": "0022",
             "postProvinceCode": "1412312",
         }
-        promiseAjax(api, query, { method: 'POST' }).then(resp => {
-            if (resp && resp.data.code === 0) {
-                console.log("resp ==", resp)
-                alert('下单成功')
-            }
-        });
+        const queryData = {
+            // "certNo": "44142719951224171X",
+            // "contactNum": "15488681212",
+            // "safeCode": "151853"
+            certNo,
+            contactNum,
+            safeCode
+        }
 
         promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
             .then(res => {
-                // console.log(res, '== 更新')
                 if (res && res.code === 200) {
-                    alert('验证成功')
+                    console.log(res, '== 验证成功')
+                    promiseAjax(api, query, { method: 'POST' }).then(resp => {
+                        if (resp && resp.data.code === 0) {
+                            console.log("resp ==", resp)
+                            alert('下单成功')
+                        }
+                    });
+                } else {
+                    alert('验证码验证失败，请重新验证！')
                 }
             })
-        updateName(safeCode)
+        // updateName(safeCode)
     }
     const {
         handleSubmit,
@@ -79,21 +88,21 @@ export default function index(props) {
 
     function code() {
         const codeData = {
-            // "certName": "傅庆发",
-            // "certNum": "445281199805293856",
-            // "contactNum": "15581531981",
-            // "cityCode": "445200",
-            // "provinceCode": "440000"
-            certName,
-            certNum,
-            contactNum,
-            cityCode,
-            provinceCode
+            "certName": "傅庆发",
+            "certNum": "445281199805293856",
+            "contactNum": "15212165381",
+            "cityCode": "445200",
+            "provinceCode": "440000"
+            // certName,
+            // certNum,
+            // contactNum,
+            // cityCode,
+            // provinceCode
         }
 
         promiseAjax(codeApi, codeData, { method: 'POST' }).then(resp => {
             console.log('resp ==', resp)
-            if (resp && resp.code === 0) {
+            if (resp && resp.data.code === 0) {
                 alert('验证码发送成功')
             }
         }
@@ -116,6 +125,7 @@ export default function index(props) {
         setCertNo(e.target.value)
         console.log('certNo ==', certNo)
 
+
     }
     function changeAddress(e) {
         setAddress(e.target.value)
@@ -126,6 +136,9 @@ export default function index(props) {
         // console.log('agreeStatus===', agreeStatus)
     }
     function warn() {
+        if (!/^\d{17}(\d|x)$/i.test(certNo.replace(/\s+/g, ''))) {
+            return Promise.reject('输入的身份证长度或格式错误');
+        }
         alert('请填写完信息')
         // console.log('请填写完信息')
     }
@@ -209,42 +222,50 @@ export default function index(props) {
                                     </Center>} />
                                 <Input type='tel' value={safeCode} placeholder='' />
                             </InputGroup>
-                            <InputGroup size='sm'>
-                                <InputLeftAddon children={
-                                    <Center w='60px'>
-                                        <PrimarySubtitle>
-                                            身份证号
-                                        </PrimarySubtitle>
-                                        <Price> *</Price>
-                                    </Center>} />
-                                <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
 
-                                />
-                            </InputGroup>
-                            <InputGroup size='sm'>
-                                <InputLeftAddon children={
-                                    <Center w='60px'>
-                                        <PrimarySubtitle>
-                                            签收城市
-                                        </PrimarySubtitle>
-                                        <Price> *</Price>
-                                    </Center>} />
-                                <SignOffAddress />
-                            </InputGroup>
-                            <InputGroup size='sm'>
-                                <InputLeftAddon children={
-                                    <Center w='60px'>
-                                        <PrimarySubtitle>
-                                            详细地址
-                                        </PrimarySubtitle>
-                                        <Price> *</Price>
-                                    </Center>} />
-                                <Input value={address} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' onChange={(e) => changeAddress(e)} />
-                            </InputGroup>
+                            {(certName && contactNum && contactNum.length == 11) ?
+                                (
+                                    <>
+                                        <InputGroup size='sm'>
+                                            <InputLeftAddon children={
+                                                <Center w='60px'>
+                                                    <PrimarySubtitle>
+                                                        身份证号
+                                                    </PrimarySubtitle>
+                                                    <Price> *</Price>
+                                                </Center>} />
+                                            <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
+
+                                            />
+                                        </InputGroup>
+                                        <InputGroup size='sm'>
+                                            <InputLeftAddon children={
+                                                <Center w='60px'>
+                                                    <PrimarySubtitle>
+                                                        签收城市
+                                                    </PrimarySubtitle>
+                                                    <Price> *</Price>
+                                                </Center>} />
+                                            <SignOffAddress />
+                                        </InputGroup>
+                                        <InputGroup size='sm'>
+                                            <InputLeftAddon children={
+                                                <Center w='60px'>
+                                                    <PrimarySubtitle>
+                                                        详细地址
+                                                    </PrimarySubtitle>
+                                                    <Price> *</Price>
+                                                </Center>} />
+                                            <Input value={address} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' onChange={(e) => changeAddress(e)} />
+                                        </InputGroup>
+                                    </>
+
+                                ) : <></>
+                            }
+
 
 
                         </>
-                        {/* ) : <></>} */}
 
                         <Flex>
                             <Center w='50px'>
