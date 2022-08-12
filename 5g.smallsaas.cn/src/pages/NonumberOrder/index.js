@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import {
@@ -20,54 +18,67 @@ import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import AgreeSelector from '@/components/selector/AgreeSelector'
 require('./index.less');
 import promiseAjax from 'zero-element-boot/lib/components/utils/request';
-import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 
 
 
 export default function index(props) {
 
-    const { onClickList = [], postAddr, reference , safeCode, coUserid, coChannel } = props;
+    const { onClickList = [], postAddr, safeCode } = props;
 
 
-    let api = '/api/link/order/subNotOfterOrdertest'
+    let api = '/api/app/oauth/account/login'
     let codeApi = '/api/link/code/safe-code'
 
     // console.log('onClickList === ', onClickList)
-    // const [channel, setChannel] = useState()
+    const [channel, setChannel] = useState()
     const [contactNum, setKeyContactNum] = useState()
     const [certName, setCertName] = useState()
-    const [address, setAddress] = useState()
     const [certNo, setCertNo] = useState()
 
     function validateData(values) {
         const query = {
-            address, certName, certNo, contactNum, coChannel, coUserid,
-            "cityCode": "432423",
-            "phoneNum": `${onClickList[0]}`,
+            // goodsId,
+            certName,certNo,contactNum,postProvinceCode,postProvinceCode,postAddr,policyName,
+            qz_gdt,gdt_vid,
+            financeChannelCode,
+            safeCode,channel,
+            // contactNum,
+            // certName,
+            // certNo,
             "goodsId": "982203315714",
-            "reference": `${reference}`,
             // "certName": "林学文",
             // "certNo": "44142719951224171X",
             // "contactNum": "17827409860",
+            "postProvinceCode": "13076511024",
             "postCityCode": "440100",
             "postDistrictCode": "440112",
-            "provinceCode": "0022",
-            "postProvinceCode": "1412312",
+            // "postAddr": "440000",
+            // "saleTurn": "",
+            // "policyId": "",
+            // "policyName": "215",
+            // "firstMonthFee": "",
+            // "qz_gdt": "123",
+            // "gdt_vid": "123",
+            // "expectPostTime": "",
+            // "expectPostTimeEnd": "",
+            // "wtMcId": "",
+            // "referrerPhone": "",
+            // "orderTotalFee": "",
+            // "isOpenCF": "",
+            // "financeFlag": "",
+            // // "financeChannelCode": "",
+            // "contractId": "",
+            // "actId": "",
+            // "provinceCode": "",
+            // "cityCode": "",
+            // "phoneNum": "",
+            // "safeCode": "277446"
         }
         promiseAjax(api, query, { method: 'POST' }).then(resp => {
-            if (resp && resp.data.code === 0) {
-                console.log("resp ==", resp)
+            if (resp && resp.code === 0) {
                 alert('下单成功')
             }
         });
-
-        promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
-            .then(res => {
-                // console.log(res, '== 更新')
-                if (res && res.code === 200) {
-                    alert('验证成功')
-                }
-            })
         updateName(safeCode)
     }
     const {
@@ -76,6 +87,8 @@ export default function index(props) {
         reset,
         formState: { errors, isSubmitting },
     } = useForm()
+
+
 
     function code() {
         const codeData = {
@@ -100,6 +113,26 @@ export default function index(props) {
         )
     }
 
+    function updateName(query) {
+
+        const queryData = {
+            // "certNo": "44142719951224171X",
+            // "contactNum": "15488681212",
+            // "safeCode": "151853"
+            certNo,
+            contactNum,
+            safeCode
+        }
+        promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
+            .then(res => {
+                // console.log(res, '== 更新')
+                if (res && res.code === 200) {
+                    alert('验证成功')
+                }
+            })
+    }
+
+
     const [agreeStatus, setAgreeStatus] = useState(false)
 
     function changContactNum(e) {
@@ -117,12 +150,10 @@ export default function index(props) {
         console.log('certNo ==', certNo)
 
     }
-    function changeAddress(e) {
-        setAddress(e.target.value)
-    }
-    function CallBack(agreeStatus) {
+
+    function CallBack(agreeStatus, channel) {
         setAgreeStatus(agreeStatus)
-        // setChannel(channel)
+        setChannel(channel)
         // console.log('agreeStatus===', agreeStatus)
     }
     function warn() {
@@ -140,9 +171,6 @@ export default function index(props) {
                         <PrimaryTitle fontSize='20px' color='#ff0704'>靓号: {onClickList[0]}</PrimaryTitle>
                     </Flex>
                 </Center>
-                <Text color='#'>邀请人:{reference}</Text>
-                <Text color='#'>coUserid:{coUserid}</Text>
-                <Text color='#'>coChannel:{coChannel}</Text>
 
 
                 <p style={{ color: '#9ba6af' }} >
@@ -198,53 +226,54 @@ export default function index(props) {
                                 </div>
                             </InputRightAddon>
                         </InputGroup>
-                        <>
-                            <InputGroup size='sm'>
-                                <InputLeftAddon children={
-                                    <Center w='60px'>
-                                        <PrimarySubtitle>
-                                            验证码
-                                        </PrimarySubtitle>
-                                        <Price> *</Price>
-                                    </Center>} />
-                                <Input type='tel' value={safeCode} placeholder='' />
-                            </InputGroup>
-                            <InputGroup size='sm'>
-                                <InputLeftAddon children={
-                                    <Center w='60px'>
-                                        <PrimarySubtitle>
-                                            身份证号
-                                        </PrimarySubtitle>
-                                        <Price> *</Price>
-                                    </Center>} />
-                                <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
+                        {contactNum && contactNum.length == 11 ? (
+                            <>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                验证码
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <Input type='tel' value={safeCode} placeholder='' />
+                                </InputGroup>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                身份证号
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <Input type='tel' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
+                                 
+                                    />
+                                </InputGroup>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                签收城市
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <SignOffAddress />
+                                </InputGroup>
+                                <InputGroup size='sm'>
+                                    <InputLeftAddon children={
+                                        <Center w='60px'>
+                                            <PrimarySubtitle>
+                                                详细地址
+                                            </PrimarySubtitle>
+                                            <Price> *</Price>
+                                        </Center>} />
+                                    <Input value={postAddr} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' />
+                                </InputGroup>
 
-                                />
-                            </InputGroup>
-                            <InputGroup size='sm'>
-                                <InputLeftAddon children={
-                                    <Center w='60px'>
-                                        <PrimarySubtitle>
-                                            签收城市
-                                        </PrimarySubtitle>
-                                        <Price> *</Price>
-                                    </Center>} />
-                                <SignOffAddress />
-                            </InputGroup>
-                            <InputGroup size='sm'>
-                                <InputLeftAddon children={
-                                    <Center w='60px'>
-                                        <PrimarySubtitle>
-                                            详细地址
-                                        </PrimarySubtitle>
-                                        <Price> *</Price>
-                                    </Center>} />
-                                <Input value={address} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' onChange={(e) => changeAddress(e)} />
-                            </InputGroup>
 
-
-                        </>
-                        {/* ) : <></>} */}
+                            </>
+                        ) : <></>}
 
                         <Flex>
                             <Center w='50px'>
@@ -270,6 +299,7 @@ export default function index(props) {
                                 <Button width='100%' height='40px' colorScheme='gray' variant='solid' type='submit' size='sm' onClick={() => { warn() }}>
                                     0元申请 包邮到家
                                 </Button>
+
                             )
                         }
                     </Stack>
