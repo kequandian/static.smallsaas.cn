@@ -22,17 +22,17 @@ export default function index(props) {
                             {userId || ''}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='60%'>
+                    {/* <Box w='60%'>
                         <PrimarySubtitle fontSize='14px'>
                             {price || ''}
                         </PrimarySubtitle>
-                    </Box>
-                    <Box w='70%'>
+                    </Box> */}
+                    <Box w='110%'>
                         <PrimarySubtitle fontSize='14px'>
                             {productName || ''}
                         </PrimarySubtitle>
                     </Box>
-                    <Box w='130%'>
+                    <Box w='90%'>
                         <PrimarySubtitle  fontSize='14px'>
                             {agentName || ''}
                         </PrimarySubtitle>

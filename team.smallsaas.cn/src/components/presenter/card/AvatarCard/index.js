@@ -47,10 +47,10 @@ export default function index(props) {
                <Container>
                 <Flexbox direction='row'  align='start-with-last-end' >
                     <Flexbox justify='center' direction='row' align='center' >
-                        <Stack onClick={()=>{onnextClick()}}>
+                        <Stack onClick={()=>{onnextClick()}} >
                             <Avatar size={size} url= {urls} />
                         </Stack>
-                        <Stack>
+                        <Stack  onClick={()=>{onnextClick()}} >
                             <ItemTitleBold>
                                 {title}
                             </ItemTitleBold>

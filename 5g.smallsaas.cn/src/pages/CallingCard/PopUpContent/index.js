@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import {
@@ -10,7 +9,7 @@ import {
     ChakraProvider, Text, Button, Spacer, Center, Flex, InputRightAddon, Box
 } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form';
-import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
+import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitle';
 import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerSubtitle';
 import Price from 'zero-element-boot-plugin-theme/lib/components/text/Price';
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
@@ -63,19 +62,19 @@ export default function index(props) {
             safeCode
         }
 
-        promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
-            .then(res => {
-                if (res && res.code === 200) {
-                    console.log(res, '== 验证成功')
+        // promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
+        //     .then(res => {
+        //         if (res && res.code === 200) {
+        //             console.log(res, '== 验证成功')
                     promiseAjax(api, query, { method: 'POST' }).then(resp => {
                         if (resp && resp.data.code === 0) {
                             console.log("resp ==", resp)
                             alert('下单成功')
                         }
-                    });
-                } else {
-                    alert('验证码验证失败，请重新验证！')
-                }
+            //         });
+            //     } else {
+            //         alert('验证码验证失败，请重新验证！')
+            //     }
             })
         // updateName(safeCode)
     }
@@ -181,9 +180,9 @@ export default function index(props) {
                         <InputGroup size='sm'>
                             <InputLeftAddon children={
                                 <Center w='60px'>
-                                    <PrimarySubtitle>
+                                    <ItemTitle>
                                         姓名
-                                    </PrimarySubtitle>
+                                    </ItemTitle>
                                     <Price> *</Price>
                                 </Center>} />
                             <Input type='text' value={certName} placeholder='请填写真实姓名（已加密）' onChange={(e) => changeCertName(e)}
@@ -199,9 +198,9 @@ export default function index(props) {
                         <InputGroup size='sm'>
                             <InputLeftAddon children={
                                 <Center w='60px'>
-                                    <PrimarySubtitle>
+                                    <ItemTitle>
                                         手机号
-                                    </PrimarySubtitle>
+                                    </ItemTitle>
                                     <Price> *</Price>
                                 </Center>} />
                             <Input type='tel' value={contactNum} placeholder='请填写本人联系电话（已加密）' maxLength='11' onChange={(e) => changContactNum(e)} />
@@ -215,9 +214,9 @@ export default function index(props) {
                             <InputGroup size='sm'>
                                 <InputLeftAddon children={
                                     <Center w='60px'>
-                                        <PrimarySubtitle>
+                                        <ItemTitle>
                                             验证码
-                                        </PrimarySubtitle>
+                                        </ItemTitle>
                                         <Price> *</Price>
                                     </Center>} />
                                 <Input type='tel' value={safeCode} placeholder='' />
@@ -229,9 +228,9 @@ export default function index(props) {
                                         <InputGroup size='sm'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>
-                                                    <PrimarySubtitle>
+                                                    <ItemTitle>
                                                         身份证号
-                                                    </PrimarySubtitle>
+                                                    </ItemTitle>
                                                     <Price> *</Price>
                                                 </Center>} />
                                             <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
@@ -241,9 +240,9 @@ export default function index(props) {
                                         <InputGroup size='sm'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>
-                                                    <PrimarySubtitle>
+                                                    <ItemTitle>
                                                         签收城市
-                                                    </PrimarySubtitle>
+                                                    </ItemTitle>
                                                     <Price> *</Price>
                                                 </Center>} />
                                             <SignOffAddress />
@@ -251,9 +250,9 @@ export default function index(props) {
                                         <InputGroup size='sm'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>
-                                                    <PrimarySubtitle>
+                                                    <ItemTitle>
                                                         详细地址
-                                                    </PrimarySubtitle>
+                                                    </ItemTitle>
                                                     <Price> *</Price>
                                                 </Center>} />
                                             <Input value={address} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' onChange={(e) => changeAddress(e)} />

@@ -3,17 +3,17 @@ import { AutoLayout } from 'zero-element-boot';
 import Presenter from './index';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
+// import { ProvidePlugin } from '@umijs/deps/compiled/webpack';
 
 
 export default function index(props) {
 
+  const { appid='Unicom5G'} =props
   
   // const api ='/api/OrdersListData' 
-  const api ='/api/u/saasAgent/orderList' 
-
+  const api =`/api/u/saasAgent/orderList/${appid}`
 
   const [data] = useTokenRequest({ api });
-
 
 
   /**

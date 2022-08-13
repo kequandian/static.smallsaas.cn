@@ -162,7 +162,7 @@ export default function index(props) {
 
                                 <InputGroup size='md'>
                                     <InputLeftAddon children={<VerificationCode />} />
-                                    <Input variant='outline' placeholder='密码' value={validateCode}
+                                    <Input type='password' variant='outline' placeholder='密码' value={validateCode}
                                         {...register('password', {
                                         })}
                                     />

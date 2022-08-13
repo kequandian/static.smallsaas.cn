@@ -88,18 +88,18 @@ export default function index(props) {
               单号
             </PrimarySubtitle>
           </Box>
-          <Box w='60%'>
+          {/* <Box w='60%'>
             < PrimarySubtitle color='#ffffff' fontSize='16px'>
               交易价格
             </PrimarySubtitle>
-          </Box>
-          <Box w='70%'>
+          </Box> */}
+          <Box w='110%'>
 
             <PrimarySubtitle color='#ffffff' fontSize='16px'>
               产品
             </PrimarySubtitle>
           </Box>
-          <Box w='130%'>
+          <Box w='90%'>
             <PrimarySubtitle color='#ffffff' fontSize='16px'>
               代理
             </PrimarySubtitle>
