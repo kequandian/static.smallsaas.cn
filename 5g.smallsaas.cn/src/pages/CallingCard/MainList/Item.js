@@ -20,13 +20,13 @@ export default function index(props) {
     });
 
     let showList = [];
-    newList.map((item, index) =>{
-        if(pageList.includes(index)){
+    newList.map((item, index) => {
+        if (pageList.includes(index)) {
             showList.push(item)
         }
     })
 
-    if(showList.length == 0){
+    if (showList.length == 0) {
         resetPageList()
     }
 
@@ -53,11 +53,11 @@ export default function index(props) {
             {
                 showList && showList.length > 0 && showList.map((item, index) => (
                     (<>
-                        <CssCart border='0 solid #f5f5f5' padding='10px 4px' margin='8px 2px' boxShadow='0 0px 4px rgba(0, 0, 0, 0.12)' key={index}>
+                        <CssCart border='0 solid #f5f5f5' padding='10px 8px' margin='8px 2px' boxShadow='0 0px 4px rgba(0, 0, 0, 0.12)' key={index}>
                             <>
-                                <div style={{ width: '', border: '0px solid #ff0000', height: '30px', margin: '6px ' }} onClick={() => onNumberClick(item)} >
-                                    <Text fontSize='24px'> {item[0]}</Text>
-                                </div>
+                                <Center h='30px' margin='8px 0 ' onClick={() => onNumberClick(item)} >
+                                    <Text fontSize='22px'> {item[0]}</Text>
+                                </Center>
                                 <Container>
                                     <Flexbox direction='row' align='start-with-last-end' w='100%'>
                                         <Text fontSize='14px' color='#aaaaaa' as='del'>￥99</Text>

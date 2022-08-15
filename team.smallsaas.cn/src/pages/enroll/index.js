@@ -30,6 +30,7 @@ export default function index(props) {
     const [ code, setCode ] = useState(props.location.query.invitationCode)
 
     let api = '/api/app/oauth/account/register'
+    let apiData = '/api/u/saasAgent/myAgentInfo'
 
     // const [data] = useTokenRequest({ api });
     const {
@@ -44,7 +45,8 @@ export default function index(props) {
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
             console.log('resp data = ', resp)
             if (resp && resp.code === 200) {
-                history.push('/orders')
+                history.push('/enroll/RegistrationSuccessful')
+                // history.push('/orders')
                 setToken(resp.data.accessToken)
                 console.log('accessToken = ', resp.data.accessToken)
             }

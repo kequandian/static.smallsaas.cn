@@ -5,9 +5,9 @@ import MainList from '@/pages/CallingCard/MainList'
 
 
 export default function index(props) {
-    const { reference='15019975496',coChannel='gd-chi2201',coUserid='gd-user2201'} = props
+    const { reference='',coChannel='',coUserid=''} = props
+    // console.log('props==',props)
 
-    // //接收扫码跳转带过来的参数
     // const reference = props.location.query.channel
     // const coChannel = props.location.query.coChannel
     // const coUserid = props.location.query.coUserid

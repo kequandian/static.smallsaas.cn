@@ -87,16 +87,16 @@ export default function index(props) {
 
     function code() {
         const codeData = {
-            "certName": "傅庆发",
-            "certNum": "445281199805293856",
-            "contactNum": "15212165381",
-            "cityCode": "445200",
-            "provinceCode": "440000"
-            // certName,
-            // certNum,
-            // contactNum,
-            // cityCode,
-            // provinceCode
+            // "certName": "傅庆发",
+            // "certNum": "445281199805293856",
+            // "contactNum": "15212165381",
+            // "cityCode": "445200",
+            // "provinceCode": "440000"
+            certName,
+            certNum,
+            contactNum,
+            cityCode,
+            provinceCode
         }
 
         promiseAjax(codeApi, codeData, { method: 'POST' }).then(resp => {
@@ -136,7 +136,8 @@ export default function index(props) {
     }
     function warn() {
         if (!/^\d{17}(\d|x)$/i.test(certNo.replace(/\s+/g, ''))) {
-            return Promise.reject('输入的身份证长度或格式错误');
+            return certNoErro;
+            // return Promise.reject('输入的身份证长度或格式错误');
         }
         alert('请填写完信息')
         // console.log('请填写完信息')
@@ -155,8 +156,6 @@ export default function index(props) {
                 <Text color='#'>邀请人:{reference}</Text>
                 <Text color='#'>coUserid:{coUserid}</Text>
                 <Text color='#'>coChannel:{coChannel}</Text>
-
-
                 <p style={{ color: '#9ba6af' }} >
                     <span style={{ color: '#ff0704', fontWeight: 'bold' }} >注</span>：此号码需预存<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[1]}</span>元，月承诺消费<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[3]}</span>元，承诺在网<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[6]}</span>月
                 </p>
@@ -177,7 +176,7 @@ export default function index(props) {
                 <Spacer />
                 <form onSubmit={handleSubmit(validateData)} noValidate>
                     <Stack spacing={6} h=''>
-                        <InputGroup size='sm'>
+                        <InputGroup size='md'  >
                             <InputLeftAddon children={
                                 <Center w='60px'>
                                     <ItemTitle>
@@ -195,7 +194,7 @@ export default function index(props) {
                         </InputGroup>
 
 
-                        <InputGroup size='sm'>
+                        <InputGroup size='md'>
                             <InputLeftAddon children={
                                 <Center w='60px'>
                                     <ItemTitle>
@@ -211,7 +210,7 @@ export default function index(props) {
                             </InputRightAddon>
                         </InputGroup>
                         <>
-                            <InputGroup size='sm'>
+                            <InputGroup size='md'>
                                 <InputLeftAddon children={
                                     <Center w='60px'>
                                         <ItemTitle>
@@ -219,13 +218,13 @@ export default function index(props) {
                                         </ItemTitle>
                                         <Price> *</Price>
                                     </Center>} />
-                                <Input type='tel' value={safeCode} placeholder='' />
+                                <Input type='tel' value={safeCode} placeholder='六位数' maxLength='6' />
                             </InputGroup>
 
                             {(certName && contactNum && contactNum.length == 11) ?
                                 (
                                     <>
-                                        <InputGroup size='sm'>
+                                        <InputGroup size='md'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>
                                                     <ItemTitle>
@@ -237,7 +236,7 @@ export default function index(props) {
 
                                             />
                                         </InputGroup>
-                                        <InputGroup size='sm'>
+                                        <InputGroup size='md'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>
                                                     <ItemTitle>
@@ -247,7 +246,7 @@ export default function index(props) {
                                                 </Center>} />
                                             <SignOffAddress />
                                         </InputGroup>
-                                        <InputGroup size='sm'>
+                                        <InputGroup size='md'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>
                                                     <ItemTitle>
@@ -258,14 +257,10 @@ export default function index(props) {
                                             <Input value={address} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' onChange={(e) => changeAddress(e)} />
                                         </InputGroup>
                                     </>
-
                                 ) : <></>
                             }
-
-
-
                         </>
-
+{/* 
                         <Flex>
                             <Center w='50px'>
                                 <AgreeSelector CallBack={CallBack} />
@@ -273,14 +268,14 @@ export default function index(props) {
                             <p style={{ color: '#c3c3c3' }}>
                                 已阅读并同意 <a className='link' target='_blank' href='https://m.75510010.com/view/3F8Bc1DC61' >《入网协议》</a>、<a href='https://m.75510010.com/view/73Cd7812C9' className='link'>《信息收集公告》</a>、<a href='https://m.75510010.com/view/8b147a3A2e' className='link'>《靓号协议》</a>
                             </p>
-                        </Flex>
+                        </Flex> */}
 
                         {/* <Box bg='#adcdeb' color='#ffffff90' padding={}>
                             
                             0元申请 包邮到家
                         </Box> */}
 
-                        {certNo && certNo.length == 18 && contactNum && agreeStatus && contactNum.length == 11 ? (
+                        {certNo && certNo.length == 18 && contactNum  && address&&  contactNum.length == 11 ? (
                             // {agreeStatus ? (
                             <Button width='100%' height='40px' colorScheme='twitter' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
                                 0元申请 包邮到家

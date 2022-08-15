@@ -6,6 +6,7 @@ import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/component
 import QRCode from 'qrcode.react';
 import { history } from 'umi';
 import DarkBackgroundTitle from 'zero-element-boot-plugin-theme/lib/components/text/DarkBackgroundTitle';
+import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
 
 import TopBar from '@/components/presenter/TopBar'
 
@@ -31,31 +32,24 @@ export default function index(props) {
             </TopBar>
 
             <CssCart position='fixed' width='100%' height='100%' padding='40px 20px ' margin='0 0 10px 0'
-                 backgroundColor='#f5f5f5'
-                // background='linear-gradient(141deg, rgba(98, 98, 125)1%,rgba(2, 4, 7)100%)'
+                backgroundColor=''
+            // background='linear-gradient(141deg, rgba(98, 98, 125)1%,rgba(2, 4, 7)100%)'
             >
                 <>
-                    <Stack bg='#1a2748' padding='40px'>
-                        <Center border='1px #3156bd solid' padding='4px 10px' margin='20px 40px ' borderRadius='2px'>
-                            <DarkBackgroundTitle>
-                                扫我下单
-                            </DarkBackgroundTitle>
+                    <Stack bg='#' padding='40px'>
+                        <Center border='0px #3156bd solid' padding='4px 10px' margin='20px 40px ' borderRadius='2px'>
+                            <ItemTitleBold>
+                               { ''}
+                            </ItemTitleBold>
                         </Center>
-
-                            <Center>
-                                <CssCart width='' padding='8px ' backgroundColor='#ffffff' borderRadius='2px'>
-                                    {/* <QRCode value="/my/Set/CallsSet" /> */}
-                                    {/* <QRCode value={`https://static.smallsaas.cn/agent/model-5g.html#/CallingCard?channel=${data.phone}`} /> */}
-                                    <QRCode value={`https://5g.smallsaas.cn/model-5g.html#/CallingCard?channel=${data.phone}&coUserid=${data.coUserid}&coChannel=${data.coChannel}`} />
-                                </CssCart>
-                            </Center>
-
-                        
-                        <Box>
-
-                        </Box>
+                        <Center>
+                            <CssCart  boxShadow='0 0px 12px rgba(0, 0, 0, 0.1)' padding='12px ' backgroundColor='#ffffff' borderRadius='2px'>
+                                {/* <QRCode value="/my/Set/CallsSet" /> */}
+                                {/* <QRCode value={`https://static.smallsaas.cn/agent/model-5g.html#/CallingCard?channel=${data.phone}`} /> */}
+                                <QRCode value={`https://5g.smallsaas.cn/${data.coChannel}#/CallingCard?phone=${data.phone}&coUserid=${data.coUserid}`} />
+                            </CssCart>
+                        </Center>
                     </Stack>
-
                 </>
             </CssCart>
         </ChakraProvider>

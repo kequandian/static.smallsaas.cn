@@ -8,6 +8,7 @@ import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/component
 // import CallingCard from '@/pages/CallingCard'
 import CallingCard from '@/pages/CallingCard'
 import LoadPage from '@/pages/my/myInvitationCode/LoadPage'
+import SelectApply from '@/pages/SelectApply'
 
 
 
@@ -16,7 +17,7 @@ export default function index(props) {
   // history.push('/Testlogin')
   return (
     // <Testlogin />
-    <Testorders />
+    <SelectApply />
     // <CallingCard />
     // <LoadPage />
     // <TestManagingDirector />

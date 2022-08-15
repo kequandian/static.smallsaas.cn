@@ -11,11 +11,11 @@ import Stack from 'zero-element-boot/lib/components/layout/Stack';
 
 export default function Container(props) {
 
-    const { address = '广东',channel,  onNumberClick, } = props;
+    const { address = '广东', channel, onNumberClick, } = props;
 
     // const { query } = location
     // const onHandleNumberClick = (NumberClick) => {
-        // console.log('NumberClick == ', NumberClick)
+    // console.log('NumberClick == ', NumberClick)
     // }
 
     const defaultPageList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -51,13 +51,12 @@ export default function Container(props) {
         setSearchNum(inputValue)
     }
 
-
     return (
         <ChakraProvider>
             <Cart fill='#465bce' padding='8px 10px 10px 10px' margin='0'>
                 <Text color='#ffffff'>归属地：{address}</Text>
             </Cart>
-           
+
             <PageModuleContainer>
                 <>
                     <Box h='40px'>
@@ -69,7 +68,7 @@ export default function Container(props) {
                             <InputRightElement children={<Search color='green.500' />} onClick={() => searchAction()} />
                         </InputGroup>
                     </Box>
-                    <Item cb={cb} onNumberClick={onNumberClick} searchNum={searchNum} pageList={pageList} resetPageList={resetPageList}  />
+                    <Item cb={cb} onNumberClick={onNumberClick} searchNum={searchNum} pageList={pageList} resetPageList={resetPageList} />
                 </>
             </PageModuleContainer>
 

@@ -43,11 +43,10 @@ export default function index(props) {
 
   return (
     <>
-
-
       <CssCart
-        // background='#23a7b2'
-        background='linear-gradient(161deg, rgba(55, 139, 203),rgba(219, 237, 247)100%)' padding='20px'>
+        background='#68a8d8'
+        // background='linear-gradient(161deg, rgba(55, 139, 203),rgba(219, 237, 247)100%)'
+         padding='20px'>
         <>
           <Flex onClick={myPages} bg='' w='40%'>
             <Avatar size='46px' url={url} />

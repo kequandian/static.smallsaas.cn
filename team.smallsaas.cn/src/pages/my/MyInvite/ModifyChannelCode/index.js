@@ -62,7 +62,7 @@ export default function index(props) {
                             <ItemTitleBold>订单来源</ItemTitleBold>
                         </Center>
                         <CssCart background='#ffffff' boxShadow='0 1px 8px rgba(0, 0, 0, 0.08) ' padding='10px 10px 14px 10px' width='100%'>
-                            <input type='number' value={coChannel || ''}
+                            <input type='text' value={coChannel || ''}
                                 style={{ border: '0', fontSize: '20px', width: '100%' }}
                                 onChange={(e) => changCoChannel(e)}
                             />
@@ -73,7 +73,7 @@ export default function index(props) {
                             <ItemTitleBold>用户id</ItemTitleBold>
                         </Center>
                         <CssCart background='#ffffff' margin='20px 0' boxShadow='0 1px 8px rgba(0, 0, 0, 0.08) ' padding='10px 10px 14px 10px ' width='100%'>
-                            <input type='number' value={coUserId || ''}
+                            <input type='text' value={coUserId || ''}
                                 style={{ border: '0', fontSize: '20px', width: '100%' }}
                                 onChange={(e) => changCoUserId(e)}
                             />

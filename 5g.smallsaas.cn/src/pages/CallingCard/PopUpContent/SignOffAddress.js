@@ -49,7 +49,7 @@ export default function SignOffAddress(props) {
 };
   return (
     <CssCart width='100%'>
-    <Cascader width='100%' options={options} onChange={onChange} placeholder="请选择" />
+    <Cascader size='large' width='100%' options={options} onChange={onChange} placeholder="请选择" />
     </CssCart>
   )
 

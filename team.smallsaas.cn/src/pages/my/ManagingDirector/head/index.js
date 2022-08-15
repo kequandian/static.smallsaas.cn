@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import RouterBox from '@/components/presenter/card/RouterBox';
+import RouterBox from 'zero-element-boot-presenter/lib/components/presenter/card/RouterBox';
 
 
 // --我的页面头部列表
