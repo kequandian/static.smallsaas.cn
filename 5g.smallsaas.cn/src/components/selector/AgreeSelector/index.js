@@ -11,7 +11,7 @@ export default function index(props) {
     }
 
     return (
-        <div onClick={() => { onClick(agreeStatus) }} style={{ background: '', width: '16px', heigth: '10px' }} >
+        <div onClick={() => { onClick(agreeStatus) }} style={{ background: '', width: '36px', heigth: '10px' }} >
             {
                 agreeStatus ?
                     (

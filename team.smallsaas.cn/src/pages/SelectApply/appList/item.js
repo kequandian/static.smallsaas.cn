@@ -5,6 +5,7 @@ import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import { history } from 'umi';
 import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
 import ItemTitle from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitle';
+import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 
 /**
  * 
@@ -28,7 +29,12 @@ export default function index(props) {
 
     //点击路由到新的app
     function onnextClick() {
-        history.push(`https://team.smallsaas.cn/${appid}`)
+        if (getToken()) {
+            history.push(`/Orders?appid=${appid}`)
+            // history.push(`https://team.smallsaas.cn/${appid}`)
+        } else {
+            history.push(`/login?appid=${appid}`)
+        }
     }
 
     return (

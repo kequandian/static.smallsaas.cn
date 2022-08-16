@@ -24,7 +24,7 @@ import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/component
 // --注册页面
 export default function index(props) {
 
-    const { phone, validateCode, password } = props
+    const { phone, validateCode, password,appid } = props
 
 
     const [ code, setCode ] = useState(props.location.query.invitationCode)
@@ -45,7 +45,7 @@ export default function index(props) {
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
             console.log('resp data = ', resp)
             if (resp && resp.code === 200) {
-                history.push('/enroll/RegistrationSuccessful')
+                history.push(`/enroll/RegistrationSuccessful/login?${appid}`)
                 // history.push('/orders')
                 setToken(resp.data.accessToken)
                 console.log('accessToken = ', resp.data.accessToken)
@@ -54,7 +54,7 @@ export default function index(props) {
     }
 
     function login() {
-        history.push('/login')
+        history.push(`/login?${appid}`)
     }
 
     return (

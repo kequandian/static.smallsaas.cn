@@ -53,7 +53,7 @@ export default function index(props) {
                                     </div>
                                 </AvatarCard>
                              
-                                <Box boxShadow='0 0px 12px rgba(0, 0, 0, 0.1)' margin='10px 0' padding='0  ' bg='#ffffff' borderRadius='4px'overflow='scroll' >
+                                <Box boxShadow='0 0px 12px rgba(0, 0, 0, 0.1)' margin='10px 0' padding='0' bg='#ffffff' borderRadius='4px'overflow='scroll' >
                                     <Head list={data} />
                                 </Box>
                             </>

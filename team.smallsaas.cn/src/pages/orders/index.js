@@ -10,18 +10,23 @@ import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequ
 import { history } from 'umi';
 import TopBar from '@/components/presenter/TopBar'
 import { getEndpoint, getToken } from 'zero-element-boot/lib/components/config/common';
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 
 
 // --首页
 export default function index(props) {
   const { onChange } = props
+  const queryData = useQuery(props)
+  const appid = queryData.query.appid
 
+  // console.log('props ==', props)
+  console.log('appid首页 ==', appid)
   function myPages() {
     if (getToken()) {
-    history.push('/my/ManagingDirector')
-    // console.log('getToken() = ', getToken());
+      history.push('/my/ManagingDirector')
+      // console.log('getToken() = ', getToken());
     } else {
-      history.push('/login')
+      history.push(`/login?appid=${appid}`)
       // console.log('2222');
     }
 
@@ -32,13 +37,13 @@ export default function index(props) {
   // 获取每月销量api
   const api = `/api/u/saasAgent/salesVolume?month=${res}`
   const [saleData] = useTokenRequest({ api });
-  
+
   //获取用户信息api
   const myApi = '/api/u/saasAgent/myAgentInfo'
-  const [myData] = useTokenRequest({ api:myApi });
+  const [myData] = useTokenRequest({ api: myApi });
 
   const endpoint = getEndpoint()
-    const url =myData.avatar? (endpoint + myData.avatar):''
+  const url = myData.avatar ? (endpoint + myData.avatar) : ''
   // console.log('myData==', myData);
 
   return (
@@ -46,7 +51,7 @@ export default function index(props) {
       <CssCart
         background='#68a8d8'
         // background='linear-gradient(161deg, rgba(55, 139, 203),rgba(219, 237, 247)100%)'
-         padding='20px'>
+        padding='20px'>
         <>
           <Flex onClick={myPages} bg='' w='40%'>
             <Avatar size='46px' url={url} />
@@ -60,10 +65,7 @@ export default function index(props) {
               <Flex padding='4px' >
                 <PrimaryTitle fontSize='18PX'>销量</PrimaryTitle>
                 <Spacer />
-
-
                 {/* <DatePicker onChange={onChange} picker="month" w='80px' /> */}
-
                 <PrimaryTitle fontSize='18px'>
                   {res}月
                 </PrimaryTitle>

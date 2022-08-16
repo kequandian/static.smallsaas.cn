@@ -19,12 +19,18 @@ import { history } from 'umi';
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 import TopBar from '@/components/presenter/TopBar'
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle'
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 
 
 // --登录页面
 export default function index(props) {
 
-    const { phone, validateCode, password } = props
+    const { phone, validateCode, password  } = props
+    const queryData = useQuery(props)
+    const appid = queryData.query.appid
+
+    // console.log('props ==', props)
+    console.log('appid 登录 ==', appid)
 
     const [showPhoneLogin, setShowPhoneLogin] = useState(true)
 
@@ -45,13 +51,17 @@ export default function index(props) {
         // console.log('values = ', values)
         values.appid = 3
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
-            if (resp && resp.code === 200) {
-                history.push('/orders')
+            if (resp && resp.code === 200 ) {
+                // console.log('appid = ', appid)
+                history.push(`/orders?appid=${appid}`)
                 setToken(resp.data.accessToken)
-                console.log('resp = ', resp)
+                if (resp && resp.code === 200 && !appid) {
+                    history.push('/SelectApply')
+                }
             }
         }).catch(errors => {
-                alert('登录失败，请重新输入')
+            console.log('errors==',errors)
+            alert('登录失败，请重新输入')
         });
     }
 
@@ -61,7 +71,7 @@ export default function index(props) {
         reset({ defaultValues })
     }
     function enroll() {
-        history.push('/enroll')
+        history.push(`/enroll?appid=${appid}`)
     }
 
     // function onLoginClick() {

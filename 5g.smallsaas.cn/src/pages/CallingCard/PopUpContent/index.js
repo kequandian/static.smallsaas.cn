@@ -233,7 +233,6 @@ export default function index(props) {
                                                     <Price> *</Price>
                                                 </Center>} />
                                             <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
-
                                             />
                                         </InputGroup>
                                         <InputGroup size='md'>
@@ -260,22 +259,22 @@ export default function index(props) {
                                 ) : <></>
                             }
                         </>
-{/* 
+
                         <Flex>
-                            <Center w='50px'>
-                                <AgreeSelector CallBack={CallBack} />
+                            <Center w='60px'>
+                                <AgreeSelector CallBack={CallBack}/>
                             </Center>
                             <p style={{ color: '#c3c3c3' }}>
-                                已阅读并同意 <a className='link' target='_blank' href='https://m.75510010.com/view/3F8Bc1DC61' >《入网协议》</a>、<a href='https://m.75510010.com/view/73Cd7812C9' className='link'>《信息收集公告》</a>、<a href='https://m.75510010.com/view/8b147a3A2e' className='link'>《靓号协议》</a>
+                                已阅读并同意 <a className='link' target='_blank' href='https://m.75510010.com/view/3F8Bc1DC61' >《关于用户跟人信息收集、使用规则的公告》</a>、<a href='https://m.75510010.com/view/73Cd7812C9' className='link'>《中国联通客户入网协议》</a>、<a href='https://m.75510010.com/view/8b147a3A2e' className='link'>中国联通客户移动业务靓号协议》</a>
                             </p>
-                        </Flex> */}
+                        </Flex>
 
                         {/* <Box bg='#adcdeb' color='#ffffff90' padding={}>
                             
                             0元申请 包邮到家
                         </Box> */}
 
-                        {certNo && certNo.length == 18 && contactNum  && address&&  contactNum.length == 11 ? (
+                        {certNo && certNo.length == 18 && contactNum && agreeStatus  && address&&  contactNum.length == 11 ? (
                             // {agreeStatus ? (
                             <Button width='100%' height='40px' colorScheme='twitter' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
                                 0元申请 包邮到家

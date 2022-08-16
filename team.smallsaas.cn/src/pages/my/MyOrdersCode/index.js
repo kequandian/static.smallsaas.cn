@@ -22,8 +22,8 @@ export default function index(props) {
     const [data] = useTokenRequest({ api });
 
     console.log(data, '=== data');
-    const channel = (data && data.length > 0) ? (data.name + '' + data.phone) : ''
-    console.log('channel==', channel)
+    // const channel = (data && data.length > 0) ? (data.name + '' + data.phone) : ''
+    // console.log('channel==', channel)
     return (
         // data && data.length > 0 ? (
         <ChakraProvider>
@@ -46,7 +46,7 @@ export default function index(props) {
                             <CssCart  boxShadow='0 0px 12px rgba(0, 0, 0, 0.1)' padding='12px ' backgroundColor='#ffffff' borderRadius='2px'>
                                 {/* <QRCode value="/my/Set/CallsSet" /> */}
                                 {/* <QRCode value={`https://static.smallsaas.cn/agent/model-5g.html#/CallingCard?channel=${data.phone}`} /> */}
-                                <QRCode value={`https://5g.smallsaas.cn/${data.coChannel}#/CallingCard?phone=${data.phone}&coUserid=${data.coUserid}`} />
+                                <QRCode value={`https://5g.smallsaas.cn/${data.coChannel}?phone=${data.phone}&coUserid=${data.coUserId}`} />
                             </CssCart>
                         </Center>
                     </Stack>

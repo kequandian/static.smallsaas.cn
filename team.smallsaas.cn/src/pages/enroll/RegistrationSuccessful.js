@@ -7,17 +7,16 @@ import QRCode from 'qrcode.react';
 import { history } from 'umi';
 import DarkBackgroundTitle from 'zero-element-boot-plugin-theme/lib/components/text/DarkBackgroundTitle';
 import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
-
 import TopBar from '@/components/presenter/TopBar'
 import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerSubtitle';
 import Linktitle from 'zero-element-boot-plugin-theme/lib/components/text/Linktitle';
 
 
-// --我的邀请码页面
+// --注册成功页面
 export default function index(props) {
 
 
-    const { pass } = props
+    const { pass ,appid} = props
 
 
     function CloseInvitationCode() {
