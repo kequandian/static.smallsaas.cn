@@ -1,6 +1,7 @@
 import { Cascader } from 'antd';
 import React from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
+import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
 
 
@@ -8,8 +9,9 @@ import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 // const App = () => <Cascader  options={options} onChange={onChange} placeholder="请选择" />;
 
 // export default App;
+
 export default function SignOffAddress(props) {
-  const { }=props
+  const { numProvinceName, id, numProvinceCode } = props
   const options = [
     {
       value: '广州',
@@ -44,12 +46,20 @@ export default function SignOffAddress(props) {
       ],
     },
   ];
+
+  const optionDatas = [
+    {
+      value: `${numProvinceName}`,
+      label: `${id}`,
+    }
+
+  ]
   const onChange = (value) => {
-  // console.log(value);
-};
+    // console.log(value);
+  };
   return (
     <CssCart width='100%'>
-    <Cascader size='large' width='100%' options={options} onChange={onChange} placeholder="请选择" />
+      <Cascader size='large' width='100%' options={options} onChange={onChange} placeholder="请选择" />
     </CssCart>
   )
 

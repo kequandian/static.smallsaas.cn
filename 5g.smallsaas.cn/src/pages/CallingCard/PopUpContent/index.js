@@ -25,7 +25,7 @@ import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/C
 
 export default function index(props) {
 
-    const { onClickList = [], postAddr, reference, safeCode, coUserid, coChannel } = props;
+    const { onClickList = [], postAddr, reference, safeCode, coUserid, coChannel,vendorCode } = props;
 
 
     let api = '/api/link/order/subNotOfterOrdertest'
@@ -40,7 +40,7 @@ export default function index(props) {
 
     function validateData(values) {
         const query = {
-            address, certName, certNo, contactNum, coChannel, coUserid,
+            address, certName, certNo, contactNum, coChannel, coUserid,vendorCode,
             "cityCode": "432423",
             "phoneNum": `${onClickList[0]}`,
             "goodsId": "982203315714",
@@ -153,9 +153,9 @@ export default function index(props) {
                         <PrimaryTitle fontSize='20px' color='#ff0704'>靓号: {onClickList[0]}</PrimaryTitle>
                     </Flex>
                 </Center>
-                <Text color='#'>邀请人:{reference}</Text>
+                {/* <Text color='#'>邀请人:{reference}</Text>
                 <Text color='#'>coUserid:{coUserid}</Text>
-                <Text color='#'>coChannel:{coChannel}</Text>
+                <Text color='#'>coChannel:{coChannel}</Text> */}
                 <p style={{ color: '#9ba6af' }} >
                     <span style={{ color: '#ff0704', fontWeight: 'bold' }} >注</span>：此号码需预存<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[1]}</span>元，月承诺消费<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[3]}</span>元，承诺在网<span style={{ color: '#ff0704', fontWeight: 'bold' }} >{onClickList[6]}</span>月
                 </p>

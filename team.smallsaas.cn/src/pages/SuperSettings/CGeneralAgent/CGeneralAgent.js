@@ -16,16 +16,19 @@ import { useForm } from 'react-hook-form';
 import Flexbox from 'zero-element-boot/lib/components/layout/Flexbox';
 import Container from 'zero-element-boot/lib/components/container/Container'
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import Item from './ProductList'
+import AgentList from './AgentList'
 
 
 export default function index(props) {
+    const { appid,onIetmClick } = props
+    // const queryData = useQuery(props)
+    // const appid = queryData.query.appid
+   
 
-    
     return (
         <ChakraProvider>
             <TopBar>
-                超级管理员配置
+                创建总代理
             </TopBar>
             <div className='Global' />
 
@@ -44,7 +47,7 @@ export default function index(props) {
                 </CssCart>
 
                 <Center h='' w='100%' bg='' >
-                    <Item />
+                    <AgentList appid={appid} onIetmClick={onIetmClick} />
                 </Center>
             </>
         </ChakraProvider >

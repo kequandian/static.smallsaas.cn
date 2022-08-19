@@ -1,25 +1,29 @@
 import { Button, Drawer, Radio, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
-import PopUpContent from '@/pages/CallingCard/PopUpContent/index'
-import MainList from '@/pages/CallingCard/MainList'
+import Buttons from './buttons'
+import CGeneralAgent from './CGeneralAgent'
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 
 
 export default function index(props) {
-    const { reference='',coChannel='',coUserid='',vendorCode} = props
+    
+    const queryData = useQuery(props)
+    const appid = queryData.query.appid
+   
+    // const { channel} = props
     // console.log('props==',props)
-
-    // //接收扫码跳转带过来的参数
-    // const reference = props.location.query.channel
-    // const coChannel = props.location.query.coChannel
-    // const coUserid = props.location.query.coUserid
+    // const channel = props.location.query.channel
 
     const [visible, setVisible] = useState(false);
-    const [onClickList, setOnClickList] = useState([]);
+    const [onId, setOnClickAppid] = useState([]);
 
-    const showDrawer = (item) => {
+    const showDrawer = (id) => {
         setVisible(true);
-        setOnClickList(item)
+        setOnClickAppid(id)
     };
+    // function showDrawer(){
+    //     console.log('1111111111')
+    // }
 
     const onClose = () => {
         setVisible(false);
@@ -28,12 +32,13 @@ export default function index(props) {
 
     return (
         <>
-            <MainList onNumberClick={showDrawer} reference={reference} />
+        
+            <CGeneralAgent  appid={appid} onIetmClick={(id)=>showDrawer(id)}/> 
             <Drawer
-                title="下单"
+                // title="确定"
                 placement='bottom'
                 width='89%'
-                height='86%'
+                height='46%'
                 onClose={onClose}
                 visible={visible}
             // extra={
@@ -45,8 +50,9 @@ export default function index(props) {
             //   </Space>
             // }
             >
-                <PopUpContent onClickList={onClickList} reference={reference} coChannel={coChannel} coUserid={coUserid}vendorCode={vendorCode} />
+                <Buttons  id={onId}   />
             </Drawer>
+           
         </>
     )
 }

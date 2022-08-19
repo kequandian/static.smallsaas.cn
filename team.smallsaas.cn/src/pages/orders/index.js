@@ -20,10 +20,10 @@ export default function index(props) {
   const appid = queryData.query.appid
 
   // console.log('props ==', props)
-  console.log('appid首页 ==', appid)
+  // console.log('appid首页 ==', appid)
   function myPages() {
     if (getToken()) {
-      history.push('/my/ManagingDirector')
+      history.push(`/my/ManagingDirector?appid=${appid}`)
       // console.log('getToken() = ', getToken());
     } else {
       history.push(`/login?appid=${appid}`)
@@ -49,8 +49,8 @@ export default function index(props) {
   return (
     <>
       <CssCart
-        background='#68a8d8'
-        // background='linear-gradient(161deg, rgba(55, 139, 203),rgba(219, 237, 247)100%)'
+        // background='#68a8d8'
+        background='linear-gradient(to right bottom,#eea2a4,#619ac3)'
         padding='20px'>
         <>
           <Flex onClick={myPages} bg='' w='40%'>
@@ -81,7 +81,7 @@ export default function index(props) {
       </CssCart>
 
       {/* <CssCart width='100%' height='34px' margin='0 auto' padding='2px 10px' backgroundColor='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'> */}
-      <CssCart width='100%' height='' background='linear-gradient(141deg, rgba(43, 145, 204)1%,rgba(137, 208, 244)80%)'>
+      <CssCart width='100%' height='' background='linear-gradient(to right bottom,#eea2a4,#619ac3)'>
 
         <Flex w='100%'>
           <Box w='60%' bg=''>

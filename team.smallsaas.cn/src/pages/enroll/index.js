@@ -41,7 +41,7 @@ export default function index(props) {
     } = useForm()
 
     function validateData(values) {
-        // values.appid = 3
+        values.appid = "Unicom5G"
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
             console.log('resp data = ', resp)
             if (resp && resp.code === 200) {

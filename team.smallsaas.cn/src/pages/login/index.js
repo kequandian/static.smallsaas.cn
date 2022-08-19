@@ -29,14 +29,11 @@ export default function index(props) {
     const queryData = useQuery(props)
     const appid = queryData.query.appid
 
-    // console.log('props ==', props)
-    console.log('appid 登录 ==', appid)
+    // console.log('appid 登录 ==', appid)
 
     const [showPhoneLogin, setShowPhoneLogin] = useState(true)
 
     let api = '/api/app/oauth/account/login'
-
-    // const [data] = useTokenRequest({ api });
 
     const defaultValues = {};
     const {
@@ -49,7 +46,7 @@ export default function index(props) {
     function validateData(values) {
 
         // console.log('values = ', values)
-        values.appid = 3
+        values.appid = "Unicom5G"
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
             if (resp && resp.code === 200 ) {
                 // console.log('appid = ', appid)
