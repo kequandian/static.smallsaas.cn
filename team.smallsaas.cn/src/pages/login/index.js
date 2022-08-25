@@ -25,13 +25,14 @@ import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 // --登录页面
 export default function index(props) {
 
-    const { phone, validateCode, password  } = props
+    const { phone, validateCode, password } = props
     const queryData = useQuery(props)
     const appid = queryData.query.appid
 
-    // console.log('appid 登录 ==', appid)
 
+    // 用于切换手机号或者账号密码登录
     const [showPhoneLogin, setShowPhoneLogin] = useState(true)
+
 
     let api = '/api/app/oauth/account/login'
 
@@ -45,21 +46,30 @@ export default function index(props) {
 
     function validateData(values) {
 
-        // console.log('values = ', values)
         values.appid = "Unicom5G"
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
-            if (resp && resp.code === 200 ) {
+            if (resp && resp.code === 200) {
                 // console.log('appid = ', appid)
                 history.push(`/orders?appid=${appid}`)
                 setToken(resp.data.accessToken)
+                let datas = resp.data.userTypeList
+                console.log('datas1111111111 = ', datas)
+                // setDataaaaaaa(datas)
+
+                promiseAjax('/api/u/saasAgent/invite?inviteCode=', { method: 'PUT' }).then(resp => {
+                    console.log('data1111111111 = ')
+                })
+
                 if (resp && resp.code === 200 && !appid) {
                     history.push('/SelectApply')
                 }
             }
         }).catch(errors => {
-            console.log('errors==',errors)
+            console.log('errors==', errors)
             alert('登录失败，请重新输入')
         });
+    // const [dataaaaaaa, setDataaaaaaa] = useState([])
+    // console.log('dataaaaaaa = ', dataaaaaaa)
     }
 
 
@@ -71,18 +81,6 @@ export default function index(props) {
         history.push(`/enroll?appid=${appid}`)
     }
 
-    // function onLoginClick() {
-    //     if (resp && resp.code === 200) {
-
-    //     }
-    // }
-    // function checkNum() {
-    //     var Num = parseInt(document.getElementById("id名称").value)
-    //     if (Num > 0 || Num < 100 || isNaN(Num)) {
-    //         alert("输入数据需在0~100之间");
-    //         // document.getElementById('id名称').value = "";
-    //     }
-    // }
 
     return (
         <ChakraProvider>

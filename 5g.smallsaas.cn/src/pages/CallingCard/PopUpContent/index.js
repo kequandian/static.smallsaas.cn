@@ -182,7 +182,7 @@ export default function index(props) {
                                     <ItemTitle>
                                         姓名
                                     </ItemTitle>
-                                    <Price> *</Price>
+                                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                 </Center>} />
                             <Input type='text' value={certName} placeholder='请填写真实姓名（已加密）' onChange={(e) => changeCertName(e)}
                             // {...register('name', {
@@ -200,7 +200,7 @@ export default function index(props) {
                                     <ItemTitle>
                                         手机号
                                     </ItemTitle>
-                                    <Price> *</Price>
+                                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                 </Center>} />
                             <Input type='tel' value={contactNum} placeholder='请填写本人联系电话（已加密）' maxLength='11' onChange={(e) => changContactNum(e)} />
                             <InputRightAddon w='90px' padding='8px'>
@@ -216,7 +216,7 @@ export default function index(props) {
                                         <ItemTitle>
                                             验证码
                                         </ItemTitle>
-                                        <Price> *</Price>
+                                        <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                     </Center>} />
                                 <Input type='tel' value={safeCode} placeholder='六位数' maxLength='6' />
                             </InputGroup>
@@ -230,7 +230,7 @@ export default function index(props) {
                                                     <ItemTitle>
                                                         身份证号
                                                     </ItemTitle>
-                                                    <Price> *</Price>
+                                                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                                 </Center>} />
                                             <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
                                             />
@@ -241,7 +241,7 @@ export default function index(props) {
                                                     <ItemTitle>
                                                         签收城市
                                                     </ItemTitle>
-                                                    <Price> *</Price>
+                                                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                                 </Center>} />
                                             <SignOffAddress />
                                         </InputGroup>
@@ -251,7 +251,7 @@ export default function index(props) {
                                                     <ItemTitle>
                                                         详细地址
                                                     </ItemTitle>
-                                                    <Price> *</Price>
+                                                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                                 </Center>} />
                                             <Input value={address} minLength='4' placeholder='街道/镇+村/小区/写字楼+门牌号' onChange={(e) => changeAddress(e)} />
                                         </InputGroup>

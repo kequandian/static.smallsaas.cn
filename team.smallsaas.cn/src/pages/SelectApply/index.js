@@ -15,7 +15,7 @@ import TopBar from '@/components/presenter/TopBar'
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
 
 
-// --我的邀请码页面
+// --选择app
 export default function index(props) {
 
 
@@ -23,22 +23,9 @@ export default function index(props) {
 
     const apiInfo = '/api/u/saasAgent/myAgentInfo'
     const [dataInfo] = useTokenRequest({ api: apiInfo });
-    // console.log('dataInfo ==', dataInfo)
-    // ${dataInfo.agentId
     const api = `/api/u/agentApp/list/1`
-    // const api = (dataInfo && dataInfo.length > 0) ? `/api/u/agentApp/list/1` : ''
-    // const api = '/api/u/saasAgent/invite?inviteCode=(G-15475197476990115851234)'
     const [data] = useTokenRequest({ api });
-    // console.log('data==', data)
-    // console.log('data.length==', data.length)
-
-    // function PassData() {
-    //     pass(data)
-    // }
-
-    // useEffect(_ => {
-    //     PassData()
-    // }, [])
+  
 
     return (
         <ChakraProvider>

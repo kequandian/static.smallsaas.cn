@@ -17,7 +17,7 @@ export default function index(props) {
 
     const { homeData, columns = '4' } = props
 
-    console.log('homeData==', homeData)
+    // console.log('homeData==', homeData)
     // const titleBold =homeData[0]
     return (
         <>
@@ -30,7 +30,7 @@ export default function index(props) {
                                     {item.cnName || ''}
                                 </ItemTitleBold>
                             </Center>
-                            <Center margin='8px'>
+                            <Center margin='8px'w='' >
                                 <Item items={homeData.items} columns={columns} key={i}  {...item} />
                             </Center>
                         </Flex>

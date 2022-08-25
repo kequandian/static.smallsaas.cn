@@ -13,7 +13,7 @@ import ConditionalIem from './ConditionalIem';
  */
 export default function index(props) {
 
-    const { items,columns='4' } = props
+    const { items,columns='3' } = props
 
 
     return (

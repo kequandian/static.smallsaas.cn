@@ -9,11 +9,13 @@ import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/component
 import ProductListDefaultImage from '@/components/presenter/ProductListDefaultImage'
 import Button from 'zero-element-boot/lib/components/presenter/button/Button';
 import Counter from './Counter'
+// import Counter from 'zero-element-boot/lib/components/presenter/Counter'
 
 
 
 /**
  * 
+ *弹出的计数按钮
  * 
  */
 

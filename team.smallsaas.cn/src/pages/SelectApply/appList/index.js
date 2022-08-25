@@ -14,7 +14,6 @@ export default function index(props) {
 
     const { items,columns='2' } = props
 
-
     return (
 
         // <CssCart  backgroundColor='#ffffff' padding='4px' margin='' borderRadius='8px' width='100%'>

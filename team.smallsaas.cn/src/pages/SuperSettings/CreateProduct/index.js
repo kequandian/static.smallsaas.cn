@@ -21,7 +21,7 @@ import Item from './ProductList'
 
 export default function index(props) {
 
-    
+    const {onIetmClick}=props
     return (
         <ChakraProvider>
             <TopBar>
@@ -44,7 +44,7 @@ export default function index(props) {
                 </CssCart>
 
                 <Center h='' w='100%' bg='' >
-                    <Item />
+                    <Item  onIetmClick={onIetmClick}/>
                 </Center>
             </>
         </ChakraProvider >

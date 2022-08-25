@@ -11,7 +11,7 @@ import RouterItem from './Item';
 
 export default function index(props) {
 
-    const { items ,number} = props
+    const { items ,number,MyownAgentId} = props
     // console.log(props, ' == items2222222222222')
     // items.map(item=>{
     //     // console.log('item==',item)
@@ -30,7 +30,7 @@ export default function index(props) {
 
     return items && items.map((item, i) => (
 
-        <RouterItem  {...item} key={i} />
+        <RouterItem  {...item} key={i} MyownAgentId={MyownAgentId} />
 
 
     )

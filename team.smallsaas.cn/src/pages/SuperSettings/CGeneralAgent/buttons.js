@@ -10,9 +10,9 @@ import ProductListDefaultImage from '@/components/presenter/ProductListDefaultIm
 import Button from 'zero-element-boot/lib/components/presenter/button/Button';
 
 
-
 /**
  * 
+ * 总代理管理页面弹出按钮
  * 
  */
 
@@ -22,7 +22,6 @@ export default function index(props) {
     // function onAppClick() {
         // history.push(`/SuperSettings/CGeneralAgent/ViewChannelCode/BatchGeneration?agentId=${id}`)
     // }
-    console.log('11=',id)
     function onChannelCode() {
         history.push(`/SuperSettings/CGeneralAgent/ViewChannelCode/BatchGeneration?agentId=${id}`)
     }
@@ -40,7 +39,7 @@ export default function index(props) {
                     </Box>
                 </Center>
                 <Center w='' onClick>
-                    <Box padding='0 10px' h='10px' margin='0 ' w='100%' />
+                    <Box padding='0 10px' h='14px' margin='0 ' w='100%' />
                 </Center>
                 <Center w='' onClick>
                     <Box padding='0 10px' margin=' 0 ' w='100%' onClick={() => onNextClick()} >

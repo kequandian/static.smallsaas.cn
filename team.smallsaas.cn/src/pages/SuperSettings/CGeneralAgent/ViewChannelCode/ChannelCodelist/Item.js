@@ -22,7 +22,6 @@ export default function index(props) {
    
     return (
 
-        // ownedAgentId ? (
         <CssCart backgroundColor='#ffffff' height='50px' width='100%' margin='1px 0 0  0 ' border='solid 1px #f5f5f5' >
             <Flex padding='12px 8px' h='100%'  >
                 <Flex w='90%'  >
@@ -32,7 +31,7 @@ export default function index(props) {
                 </Flex>
 
                 {
-                    ownedAgentId && !chiAgentName ? (
+                    ownedAgentId  ? (
                         <Flex w='320px'>
                             <Center w=''>
                                 <CssCart overflow='hidden' width='120px' height='25px' display='flex' justifyContent='center' alignContent='center' padding='1px 4px' margin='4px 0' border='1px #97a4ae solid' borderRadius='4px' color='#97a4ae'>
@@ -48,7 +47,7 @@ export default function index(props) {
 
 
                     ) :
-                        ownedAgentId && !chiAgentId ? (
+                        !ownedAgentId && chiAgentId ? (
                             <Flex w='320px'>
                                 <Center w=''>
                                     <CssCart overflow='hidden' width='120px' height='25px' display='flex' justifyContent='center' alignContent='center' padding='1px 4px' margin='4px 0' border='1px #97a4ae solid' borderRadius='4px' color='#97a4ae'>

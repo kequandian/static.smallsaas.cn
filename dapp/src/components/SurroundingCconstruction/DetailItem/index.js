@@ -40,7 +40,7 @@ export default function index(props) {
 
         <Flex margin='0 8px' >
             <Center>
-                <CssCart borderRadius='18px' color='#555555' border='#999999 1px solid' padding=' 6px' background='#f9f9f9'>
+                <CssCart borderRadius='18px' color='#555555' border='#999999 1px solid' padding='4px 6px' background='#f9f9f9'>
                     {title}
                 </CssCart>
             </Center>

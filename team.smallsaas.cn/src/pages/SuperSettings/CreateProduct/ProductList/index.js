@@ -15,7 +15,7 @@ import TopBar from '@/components/presenter/TopBar'
  */
 export default function index(props) {
 
-    const { columns = '2' } = props
+    const { columns = '2',onIetmClick } = props
     let api = '/api/u/accountProduct/Unicom5G'
     const [data] = useTokenRequest({ api });
     const items = data.records
@@ -29,7 +29,7 @@ export default function index(props) {
                     <Gridbox columns={columns}>
                         {
                             items && items.map((item, i) => (
-                                <Item  {...item} key={i} />
+                                <Item  {...item} key={i} onIetmClick={onIetmClick} />
                             )
                             )
                         }

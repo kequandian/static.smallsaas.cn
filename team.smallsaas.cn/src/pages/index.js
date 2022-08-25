@@ -10,6 +10,7 @@ import LoadPage from '@/pages/my/myInvitationCode/LoadPage'
 import SelectApply from '@/pages/SelectApply'
 import SuperSettings from '@/pages/SuperSettings'
 import Orders from '@/pages/orders'
+import TestPrompt from '@/pages/test/TestPrompt'
 
 
 export default function index(props) {
@@ -30,7 +31,7 @@ export default function index(props) {
 
   return (
     <></>
-    // <Testlogin />
+    // <TestPrompt />
     // <SuperSettings />
     // <SelectApply />
     // <Orders />

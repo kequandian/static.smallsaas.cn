@@ -13,15 +13,12 @@ import Router from 'zero-element-boot-presenter/lib/components/presenter/card/Ro
 import ChannelCodelist from './ChannelCodelist'
 import TagIndicator from 'zero-element-boot/lib/components/indicator/TagIndicator'
 import Button from 'zero-element-boot/lib/components/presenter/button/Button';
-import Pages from './BatchGeneration/pages'
+import Pages from './BatchGeneration/Pages'
 export default function index(props) {
 
     const { agentId, appid, onNextClick } = props
     const [items, setItems] = useState([])
     const [numberData, setNumberData] = useState('')
-    // const [pageNum, setPageNum] = useState('1')
-    // let [api, setApiList] = useState(`/api/u/saasAgentInvitationCode?agentId=${agentId}&pageNum=1`)
-
 
     let api = `/api/u/saasAgentInvitationCode?agentId=${agentId}&pageNum=1`
 
@@ -35,20 +32,16 @@ export default function index(props) {
                 let numberDatas = resp.data
                 setItems(items)
                 setNumberData(numberDatas)
-                // console.log('111-==', numberDatas.pages)
             }
         })
     }
 
     useEffect(_ => {
         valuesData(api)
-        // console.log('api== ',api)
     }, [])
 
 
     function cb(number) {
-        // setPageNum(number)
-        // setApiList(`/api/u/saasAgentInvitationCode?agentId=${agentId}&pageNum=${number}`)
         api = `/api/u/saasAgentInvitationCode?agentId=${agentId}&pageNum=${number}`
         valuesData(api)
     }
@@ -68,7 +61,7 @@ export default function index(props) {
                 </Center>
             </Flex>
             <Center position='fixed'
-                bottom=' 16px'
+                bottom='16px'
                 left='0'
                 right=' 0'>
                 <Box padding='0 10px' margin='0 ' w='100%' onClick={() => onNextClick()} >

@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import DotDashButton from 'zero-element-boot/lib/components/presenter/button/DotDashButton'
-import DotPlusButton from 'zero-element-boot/lib/components/presenter/button/DotPlusButton'
 import { Center, Flex } from "@chakra-ui/react";
-import ShowHideIndicator from 'zero-element-boot/lib/components/indicator/ShowHideIndicator';
-import NextIndicator from 'zero-element-boot/lib/components/NextIndicator'
 
 /**
  * 
- * 计数器
+ * 翻页组件
+ * 
+ * @param {函数} cb 外部传入的函数
+ * @param {maxNumber} maxNumber 最大页数
  * 
  */
 
 export default function Index(props) {
 
-    const { productId, cb, maxNumber } = props
+    const {  cb, maxNumber } = props
 
     const [number, setnumber] = React.useState(1)
 
@@ -24,6 +23,7 @@ export default function Index(props) {
         // console.log('number ==',number)
 
     }
+
     function decrease() {
         const num = number - 1
         if (num <= 0) {

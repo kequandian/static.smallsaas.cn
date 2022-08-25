@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Flex, Box, Spacer, Center, ChakraProvider, Text, Stack } from '@chakra-ui/react'
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
@@ -13,46 +13,45 @@ import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/tex
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import TopBar from '@/components/presenter/TopBar'
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
+const promiseAjax = require('zero-element-boot/lib/components/utils/request');
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 
 
 // --我的邀请码页面
 export default function index(props) {
 
 
-    const { level = '1' } = props
+    const { level = '1', onIetmClick ,onCreateApp} = props
 
-    const apiInfo = '/api/u/saasAgent/myAgentInfo'
-    const [dataInfo] = useTokenRequest({ api: apiInfo });
-    // console.log('dataInfo ==', dataInfo)
-    // ${dataInfo.agentId
-    const api = `/api/u/agentApp/list/1`
-    // const api = (dataInfo && dataInfo.length > 0) ? `/api/u/agentApp/list/1` : ''
-    // const api = '/api/u/saasAgent/invite?inviteCode=(G-15475197476990115851234)'
-    const [data] = useTokenRequest({ api });
-    // console.log('data==', data)
-    // console.log('data.length==', data.length)
+    // const queryData = useQuery(props)
+    // const appid = queryData.query.appid
+    // const agentId = queryData.query.agentId
 
-    // function PassData() {
-    //     pass(data)
-    // }
+    const [data, setData] = useState([])
+    // console.log('data==', data.records)
+    const items = data.records
+    console.log('items==', items)
 
-    // useEffect(_ => {
-    //     PassData()
-    // }, [])
+    useEffect(_ => {
+        const query = {}
+        promiseAjax('/api/u/apps?unionId=Agent', query, { method: "GET" })
+            .then(res => {
+                if (res && res.code === 200) {
+                    setData(res.data)
+                }
+            })
+    }, [])
 
     return (
         <ChakraProvider>
             <TopBar>
-                你的APP
+            创建应用
             </TopBar>
             {
-                (data && data.length > 0) ?
+                (items && items.length > 0) ?
                     (
                         <PageModuleContainer>
-                            <ItemTitleBold>
-                                创建应用
-                            </ItemTitleBold>
-                            < AppList columns={data.length} items={data} />
+                            < AppList columns={data.length} items={items} onIetmClick={onIetmClick}  onCreateApp={onCreateApp}/>
                         </PageModuleContainer>
                     ) : <></>
             }

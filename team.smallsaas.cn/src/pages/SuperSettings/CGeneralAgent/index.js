@@ -10,9 +10,6 @@ export default function index(props) {
     const queryData = useQuery(props)
     const appid = queryData.query.appid
    
-    // const { channel} = props
-    // console.log('props==',props)
-    // const channel = props.location.query.channel
 
     const [visible, setVisible] = useState(false);
     const [onId, setOnClickAppid] = useState([]);
@@ -20,19 +17,15 @@ export default function index(props) {
     const showDrawer = (id) => {
         setVisible(true);
         setOnClickAppid(id)
+        // console.log('11111111111')
     };
-    // function showDrawer(){
-    //     console.log('1111111111')
-    // }
 
     const onClose = () => {
         setVisible(false);
     };
 
-
     return (
         <>
-        
             <CGeneralAgent  appid={appid} onIetmClick={(id)=>showDrawer(id)}/> 
             <Drawer
                 // title="确定"
@@ -41,14 +34,6 @@ export default function index(props) {
                 height='46%'
                 onClose={onClose}
                 visible={visible}
-            // extra={
-            //   <Space>
-            //     <Button onClick={onClose}>Cancel</Button>
-            //     <Button type="primary" onClick={onClose}>
-            //       OK
-            //     </Button>
-            //   </Space>
-            // }
             >
                 <Buttons  id={onId}   />
             </Drawer>

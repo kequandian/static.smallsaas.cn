@@ -39,7 +39,7 @@ export default function index(props) {
                     <Stack bg='#' padding='40px'>
                         <Center border='0px #3156bd solid' padding='4px 10px' margin='20px 40px ' borderRadius='2px'>
                             <ItemTitleBold>
-                               { ''}
+                               {''}
                             </ItemTitleBold>
                         </Center>
                         <Center>

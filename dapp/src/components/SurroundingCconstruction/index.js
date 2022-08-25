@@ -24,9 +24,13 @@ export default function index(props) {
                     {detail[i].cnName}
                 </ItemTitleBold>
             </Center> */}
-            <Flex h='46px'>
-                <img src={detail[i].icon} width='30px' />
-                <Detail  {...item} key={i} />
+            <Flex h='36px'>
+                <Center bg='#f0f0f0' borderRadius='50%' padding='2px' w='36px' h='100%'>
+                    <img src={detail[i].icon} width='20px' />
+                </Center>
+                <Center>
+                    <Detail  {...item} key={i} />
+                </Center>
             </Flex>
             {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
         </>

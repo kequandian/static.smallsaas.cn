@@ -19,21 +19,14 @@ import AppListDefaultImage from '@/components/presenter/AppListDefaultImage'
 
 export default function index(props) {
 
-    const { icon = 'https://inews.gtimg.com/newsapp_bt/0/14982779315/1000', value = '', appName = '', navigation, appid } = props
-
-    // console.log('props === ', props)
-
+    const { icon = 'https://inews.gtimg.com/newsapp_bt/0/14982779315/1000', value = '', name = '', navigation, appid,onIetmClick } = props
 
     const queryData = useQuery(props.navigation)
-    // console.log('queryData === ', queryData)
 
-
-    function onnextClick() {
-        // history.push('/SelectApply/CreateProduct')
-    }
+   
 
     return (
-        <Center h='120px' w='120px' margin='10px' onClick={() => onnextClick()} padding='8px' >
+        <Center h='120px' w='120px' margin='10px' onClick={onIetmClick} padding='8px' >
             <Stack padding='8px ' bg=''>
                 <Center >
                     <AppListDefaultImage size='50px' url={icon} />
@@ -41,7 +34,7 @@ export default function index(props) {
                 </Center>
                 <Center h='' w='100%' bg='' >
                     <ItemTitle>
-                        {appName}
+                        {name}
                     </ItemTitle>
                 </Center>
             </Stack>

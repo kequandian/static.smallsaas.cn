@@ -27,10 +27,10 @@ export default function index(props) {
     // const api = '/api/u/saasAgent/myAgentInfo'
 
     const [data] = useTokenRequest({ api });
-    console.log(data, '===data')
+    // console.log(data, '===data')
 
     function onSuperSettings() {
-        history.push(`/SuperSettings?appid=${appid}`)
+        history.push(`/SuperSettings?appid=${appid}&agentId=${data.agentId}`)
     }
 
     return (
@@ -59,7 +59,7 @@ export default function index(props) {
                                     </div>
                                 </AvatarCard>
 
-                                <Box boxShadow='0 0px 12px rgba(0, 0, 0, 0.1)' margin='10px 0' padding='0' bg='#ffffff' borderRadius='4px' overflow='scroll' >
+                                <Box boxShadow='0 0px 12px rgba(0, 0, 0, 0.1)'  >
                                     <Head list={data} />
                                 </Box>
                             </>

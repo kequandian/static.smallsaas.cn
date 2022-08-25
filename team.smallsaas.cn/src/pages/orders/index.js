@@ -81,7 +81,7 @@ export default function index(props) {
       </CssCart>
 
       {/* <CssCart width='100%' height='34px' margin='0 auto' padding='2px 10px' backgroundColor='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'> */}
-      <CssCart width='100%' height='' background='linear-gradient(to right bottom,#eea2a4,#619ac3)'>
+      <CssCart width='100%' height='' background='#659ac2'>
 
         <Flex w='100%'>
           <Box w='60%' bg=''>

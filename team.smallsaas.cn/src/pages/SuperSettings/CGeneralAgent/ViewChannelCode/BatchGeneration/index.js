@@ -7,15 +7,13 @@ const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 
 //批量生成渠道码
 export default function index(props) {
-    // const { agentId } = props
 
+    // 接收传入的appid,和agendId
     const queryData = useQuery(props)
     const appid = queryData.query.appid
     const agentId = queryData.query.agentId
-    console.log('agentId ==', agentId)
 
     const [visible, setVisible] = useState(false);
-    const [onId, setOnClickAppid] = useState([]);
     const [number, setNumber] = useState('')
 
     const showDrawer = () => {
@@ -35,10 +33,9 @@ export default function index(props) {
         })
     }
 
+    // 获取数量
     function callBackData(number) {
         setNumber(number)
-
-
     }
 
 
@@ -55,18 +52,10 @@ export default function index(props) {
                 onClose={onClose}
                 visible={visible}
                 padding='0'
-            // extra={
-            //   <Space>
-            //     <Button onClick={onClose}>Cancel</Button>
-            //     <Button type="primary" onClick={onClose}>
-            //       OK
-            //     </Button>
-            //   </Space>
-            // }
             >
 
              {/*弹出 */}
-                <Number id={onId} determine={(number) => getNumber(number)} callBackData={(number) => callBackData(number)} />
+                <Number  determine={(number) => getNumber(number)} callBackData={(number) => callBackData(number)} />
             </Drawer>
 
         </>
