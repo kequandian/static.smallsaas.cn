@@ -6,20 +6,22 @@ import { Button, Space, Toast } from 'antd-mobile'
 
 export default function index(props) {
   function aa() {
-    console.log('111111111111')
+    return Toast.show({
+      icon: 'fail',
+      content: '名称已存在',
+    })
   }
   return (
     <>
 
       <Button
-        onClick={() => 
-          Toast.show({
-            icon: 'fail',
-            content: '名称已存在',
-          })
-          // aa()
-        }
-      >
+            onClick={() => {
+              Toast.success(
+                '名称已存在',
+                1
+              )
+            }}
+          >
         失败
       </Button>
     </>

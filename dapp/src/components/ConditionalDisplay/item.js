@@ -13,22 +13,25 @@ import ConditionalIem from './ConditionalIem';
  */
 export default function index(props) {
 
-    const { items,columns='3' } = props
+    const { items, columns = '2' } = props
 
 
     return (
 
-        <CssCart  backgroundColor='#ffffff' padding='4px' margin='' borderRadius='8px' width='100%'>
+        <CssCart backgroundColor='#ffffff' padding='4px' margin='' borderRadius='8px' width='100%'>
             <Center>
                 <Container>
-                    {
-                        items && items.map((item, i) => (
-                            <Gridbox columns={columns}>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3,80px)" }} >
+                        {
+                            items && items.map((item, i) => (
+                                // <Gridbox columns={columns}>
                                 <ConditionalIem  {...item} key={i} />
-                            </Gridbox>
-                        )
+                                // {/* </Gridbox> */ }
+                            )
                         )
                     }
+                    </div>
+
                 </Container>
             </Center>
         </CssCart>

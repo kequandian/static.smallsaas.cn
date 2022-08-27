@@ -15,10 +15,8 @@ import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/It
  */
 export default function index(props) {
 
-    const { homeData, columns = '4' } = props
+    const { homeData, columns = '' } = props
 
-    // console.log('homeData==', homeData)
-    // const titleBold =homeData[0]
     return (
         <>
             {
@@ -30,8 +28,8 @@ export default function index(props) {
                                     {item.cnName || ''}
                                 </ItemTitleBold>
                             </Center>
-                            <Center margin='8px'w='' >
-                                <Item items={homeData.items} columns={columns} key={i}  {...item} />
+                            <Center margin='8px'w='100%' >
+                                <Item items={homeData.items}  key={i}  {...item} />
                             </Center>
                         </Flex>
                     </Cart>

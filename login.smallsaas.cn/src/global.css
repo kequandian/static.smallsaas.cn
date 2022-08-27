@@ -1,5 +1,7 @@
 .Global{
-    background:  #8252bb;
+    /* background:  #8252bb; */
+    /* background-image: radial-gradient(circle at top right, #ff8a00, red, #e52e71); */
+    background-image: radial-gradient(#8252bb, #5b3983);
     position: fixed;
     height: 100%;
     width:100%;

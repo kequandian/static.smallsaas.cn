@@ -26,25 +26,13 @@ export default function index(props) {
 
     // console.log('props === ', props)
 
-
-    const queryData = useQuery(props.navigation)
-    // console.log('queryData === ', queryData)
-
-    const path = () => {
-        history.push(queryData)
-    }
-
-    const onnextClick = navigation ? path : null
-
     return (
 
-        <Flex margin='0 8px' >
-            <Center>
-                <CssCart borderRadius='18px' color='#555555' border='#999999 1px solid' padding='4px 6px' background='#f9f9f9'>
-                    {title}
-                </CssCart>
+        <CssCart margin='0 2px' height='' borderRadius='18px' color='#555555' border='#999999 1px solid' padding='4px 6px' background='#f9f9f9'>
+            <Center w=''>
+                {title}
             </Center>
-        </Flex>
+        </CssCart>
 
 
 

@@ -19,13 +19,9 @@ export default function index(props) {
 
     return detail && detail.map((item, i) => (
         <>
-            {/* <Center w='50px'>
-                <ItemTitleBold>
-                    {detail[i].cnName}
-                </ItemTitleBold>
-            </Center> */}
-            <Flex h='36px'>
-                <Center bg='#f0f0f0' borderRadius='50%' padding='2px' w='36px' h='100%'>
+           
+            <Flex h=''>
+                <Center bg='#f0f0f0' borderRadius='50%' padding='2px' w='32px' h='32px' marginRight='4px'>
                     <img src={detail[i].icon} width='20px' />
                 </Center>
                 <Center>

@@ -1,7 +1,7 @@
 import React from 'react';
-import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Flex, Center } from '@chakra-ui/react'
+import Gridbox from 'zero-element-boot/lib/components/layout/Gridbox';
 import Container from 'zero-element-boot/lib/components/container/Container'
 import Item from './item';
 
@@ -16,7 +16,6 @@ export default function index(props) {
 
     return (
 
-        // <CssCart  backgroundColor='#ffffff' padding='4px' margin='' borderRadius='8px' width='100%'>
             <Center>
                 <Container>
                     {
@@ -29,7 +28,6 @@ export default function index(props) {
                     }
                 </Container>
             </Center>
-        // </CssCart>
 
 
     )
