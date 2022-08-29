@@ -28,7 +28,7 @@ export default function index(props) {
 
     return (
 
-        <CssCart margin='0 2px' height='' borderRadius='18px' color='#555555' border='#999999 1px solid' padding='4px 6px' background='#f9f9f9'>
+        <CssCart margin='0 2px' height='' borderRadius='18px' color='#555555' border='#999999 1px solid' padding='4px 2px' background='#f9f9f9'>
             <Center w=''>
                 {title}
             </Center>

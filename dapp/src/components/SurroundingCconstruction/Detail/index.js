@@ -15,7 +15,7 @@ export default function index(props) {
     const { items } = props
 
     return (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,148px)" }} >
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,140px)" }} >
             {items && items.map((item, i) => (
                 <DetailItem  {...item} key={i} />
             ))}
