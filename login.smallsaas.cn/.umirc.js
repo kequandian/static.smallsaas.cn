@@ -4,7 +4,7 @@ export default {
   title: 'login',
   links: [
     // href的图片你可以放在public里面，直接./图片名.png 就可以了，也可以是cdn链接
-     { rel: 'icon', href: 'https://static.smallsaas.cn/house/2022/svg/agent/login.svg' },
+     { rel: 'icon', href: 'https://static.smallsaas.cn/house/2022/image/SmallSaaS/SmallSaaS.png' },
    ],
 
   hash: true,

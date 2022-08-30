@@ -37,7 +37,7 @@ export default function RentAssetDetails(props) {
   // if (detail === undefined || detail.length === 0) {
   //   return <div></div>
   // }
-
+  console.log('detail ==', detail.rentDescribe)
 
   function getDetail() {
     promiseAjax(api)
@@ -51,7 +51,7 @@ export default function RentAssetDetails(props) {
   }
 
   const { title = '', price = 0, area = 0, houseAssetModel = {}, rentDescribe = '', serverAvatar = '', serverName = '', serverPhone = '' } = detail
-  const { houseType = '', floor = 0, direction = '', communityName = '', address } = houseAssetModel
+  const { houseType = '', floor = 0, direction = '', number, communityName = '', address } = houseAssetModel
 
   // // 需要转换的数据
   // const { cover = '', extra = '', houseTypePicture = '', introducePicture = '', slide = '', } = detail
@@ -64,27 +64,47 @@ export default function RentAssetDetails(props) {
 
   //图片格式转化为url
   function handleVrSnapshotUrl(value) {
-    if (value) {
-      return endpoint + JSON.parse(value)[0].url
-    }
+    console.log('value ==', value)
+
+    // console.log('value && value.length > 0 && Array.isArray(value) ==', value && value.length > 0 && value.indexOf("[") != -1)
+    //判断value的格式
+    // if (value && !(value.indexOf("[") != -1)) {
+    //   return endpoint + value
+    // }
+    // if (value && value.length > 0 && value.indexOf("[") != -1) {
+    //   return endpoint + JSON.parse(value)[0].url
+    // }
+
+    return endpoint + value
   }
 
   //周边配套和家具家电数据
   const facilitiesData = detail.facilities
   const homeData = detail.supportFacilities
 
+  //照片展示的数据 转化格式
+  let introducePicture = detail.introducePicture
+
+  if (introducePicture) {
+    introducePicture = JSON.parse(introducePicture)
+  }
+
+  // const detailIntroducePicture =introducePicture && introducePicture.indexOf(',') != -1 ? introducePicture.split(',') : ''
+  console.log("introducePicture ==", introducePicture)
+  // console.log("detailIntroducePicture ==", detailIntroducePicture)
+
+
   //关注房屋
   const subscribeStatus = detail.subscribeStatus
-  console.log("subscribeStatus ==", subscribeStatus)
+  // console.log("subscribeStatus ==", subscribeStatus)
 
   function onConcern() {
-    // console.log('111111111111111')
     const query = {
       "subscribeId": `${urlQuery.query.id}`
     }
     promiseAjax(`/api/u/house/rent/subscribe/subscribeSwitch?userId=${urlQuery.query.userId}`, query, { method: "POST" })
       .then(res => {
-        console.log(res, '== 更新')
+        // console.log(res, '== 更新')
         if (res && res.code === 200) {
           if (!subscribeStatus) {
             Toast.show(
@@ -130,7 +150,8 @@ export default function RentAssetDetails(props) {
       <ChakraProvider>
         {/* <div className='Global' /> */}
         <SetBarTitle text='房屋详情' />
-        <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.vrPicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
+        {/* <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.vrPicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}> */}
+        <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
         </div>
 
         <PageModuleContainer fill='transparent'>
@@ -144,6 +165,7 @@ export default function RentAssetDetails(props) {
           </div>)
           } */}
             <ContainerSubtitle>{title}</ContainerSubtitle>
+
             <Flex W='100%'>
               <Flex w='88%'>
                 <Center w='' h=''>
@@ -156,13 +178,8 @@ export default function RentAssetDetails(props) {
                   <ItemTitleBold>元/月</ItemTitleBold>
                 </Flex>
               </Flex>
+
               <Center h='14px' onClick={() => onConcern()}>
-                {/* <Center h='14px' onClick={() => {
-                  Toast.success(
-                    '已关注',
-                    1
-                  )
-                }}> */}
                 {subscribeStatus ?
                   <svg t="1661393805451" class="icon" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16279" width="28" height="28"><path d="M1020.85564 385.279248c-8.427984-26.487948-30.099941-45.751911-57.189888-49.965902l-83.075838-12.641975-171.569665-29.497942c-10.23398-1.805996-19.263962-8.427984-24.079953-18.059965l0-0.601999c-0.601999-2.407995-0.601999-4.213992-1.805996-6.621987L575.978509 41.537919c-3.009994-6.621987-7.223986-12.641975-11.437978-17.457966l0 0 0 0C550.694558 9.029982 532.634593 0 512.768632 0c-27.089947 0-51.1699 15.651969-63.209877 40.93592L329.158991 294.979424 60.667515 335.915344c-27.089947 4.213992-48.761905 22.875955-57.189888 49.965902-8.427984 27.089947-1.203998 55.985891 18.059965 75.249853l194.44562 197.455614-45.751911 278.725456c-4.815991 27.691946 6.019988 55.383892 28.293945 71.63786 21.671958 16.855967 50.567901 18.661964 74.045855 5.417989l240.197531-131.837743 240.197531 131.837743c10.23398 6.019988 21.671958 8.427984 32.507937 8.427984 14.447972 0 28.895944-4.815991 41.537919-14.447972 21.671958-16.855967 32.507937-43.945914 28.293945-71.63786l-45.751911-278.725456 194.44562-197.455614C1022.661636 441.265138 1029.283623 412.369195 1020.85564 385.279248z" p-id="16280" fill="#fcee21"></path></svg>
                   :
@@ -170,8 +187,9 @@ export default function RentAssetDetails(props) {
                 }
               </Center>
             </Flex>
+
             <Flex>
-              <Box w='30px' h='30px'>
+              <Box w='30px' h='40px'>
                 <svg t="1659672225263" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34319" width="30" height="30"><path d="M778.24 260.608m-20.48 0a20.48 20.48 0 1 0 40.96 0 20.48 20.48 0 1 0-40.96 0Z" p-id="34320" fill="#8a8a8a"></path><path d="M479.232 904.704c7.68 10.752 19.968 16.896 32.768 16.896 13.312 0 25.088-6.144 32.768-16.896 27.648-37.376 98.816-135.68 162.304-241.152C784.896 532.992 824.32 435.2 824.32 372.736c0-11.264-9.216-20.48-20.48-20.48s-20.48 9.216-20.48 20.48c0 68.608-71.168 237.568-271.36 507.392-200.192-269.312-271.36-438.784-271.36-507.392 0-149.504 121.856-270.848 271.36-270.848 79.36 0 154.624 34.816 206.848 95.232 7.168 8.704 20.48 9.728 28.672 2.048 8.704-7.168 9.728-20.48 2.048-28.672-59.904-69.632-146.432-109.568-237.568-109.568-172.032 0-312.32 139.776-312.32 311.808 0 62.464 39.424 160.256 117.248 290.816 63.488 105.472 134.656 203.776 162.304 241.152zM688.64 936.448h-353.28c-11.264 0-20.48 9.216-20.48 20.48s9.216 20.48 20.48 20.48h353.28c11.264 0 20.48-9.216 20.48-20.48s-9.216-20.48-20.48-20.48z" p-id="34321" fill="#8a8a8a"></path><path d="M343.04 368.128c0 93.184 75.776 168.96 168.96 168.96s168.96-75.776 168.96-168.96-75.776-168.96-168.96-168.96-168.96 75.776-168.96 168.96z m296.96 0c0 70.656-57.344 128-128 128s-128-57.344-128-128 57.344-128 128-128 128 57.344 128 128z" p-id="34322" fill="#8a8a8a"></path></svg>
               </Box>
               <Center>
@@ -181,6 +199,13 @@ export default function RentAssetDetails(props) {
             <Spacer borderBottom='1px dashed #d6d3d3' />
 
             <PageSectionTitle>房源简介</PageSectionTitle>
+
+            {/* <Flex w='40%'>
+              <Center w='' h=''>
+                <PageSection>{communityName}-</PageSection>
+              </Center>
+              <PageSection>{number}</PageSection>
+            </Flex> */}
             <Flex w=''>
               <Flex w='50%'>
                 <Center>
@@ -195,6 +220,7 @@ export default function RentAssetDetails(props) {
                 <PageSection> {houseType}</PageSection>
               </Flex>
             </Flex>
+
             <Flex>
               <Flex w='50%'>
                 <Center>
@@ -210,70 +236,99 @@ export default function RentAssetDetails(props) {
               </Flex>
             </Flex>
 
+            <Flex>
+              <Flex w='50%'>
+                <Center>
+                  <ContainerInactiveTitle>小区：</ContainerInactiveTitle>
+                </Center>
+                <PageSection>  {communityName}</PageSection>
+              </Flex>
+              <Flex>
+                <Center>
+                  <ContainerInactiveTitle>门牌号：</ContainerInactiveTitle>
+                </Center>
+                <PageSection>  {number}</PageSection>
+              </Flex>
+            </Flex>
+
             <Spacer borderBottom='1px dashed #d6d3d3' />
             <Spacer />
 
             <PageSectionTitle>家具家电</PageSectionTitle>
             <ConditionalIem columns='3' homeData={homeData} />
 
-            <Spacer />
-            {/* <Container>
+
+            <PageSectionTitle>房子描述</PageSectionTitle>
+            <CssCart background='#' border='1px dotted  #d0cdcd' height='' borderRadius='4px' padding='8px'>
+              <p>
+            <span style={{  fontSize: '14px', color: '#9299a5'}}> 描述：</span> 
+            <span  style={{  fontSize: '14px'}} >{detail.rentDescribe}</span>
+              </p>
+          </CssCart>
+          <Spacer />
+          {/* <Container>
                 {
                   convertedExtra && convertedExtra.tags.map((item, index) => <Tag key={index}>{item.tagName}</Tag>
                   )
                 }
               </Container> */}
-            <Spacer borderBottom='1px dashed #d6d3d3' />
+          <Spacer borderBottom='1px dashed #d6d3d3' />
 
-            <PageSectionTitle>周边配套</PageSectionTitle>
+          <PageSectionTitle>周边配套</PageSectionTitle>
 
-            <SurroundingCconstruction detail={facilitiesData} />
+          <SurroundingCconstruction detail={facilitiesData} />
 
-            <Spacer />
-            <Spacer borderBottom='1px dashed #d6d3d3' />
+          <Spacer />
+          <Spacer borderBottom='1px dashed #d6d3d3' />
 
-            <PageSectionTitle> 置业顾问 </PageSectionTitle>
-            {/* 
+          <PageSectionTitle> 置业顾问 </PageSectionTitle>
+          {/* 
               <AvatarCard title={serverName} subtitle={serverPhone} avatar={serverAvatar} navigation={''}>
                 {''}
               </AvatarCard> */}
-            <Flex boxShadow='0 0px 8px rgba(0, 0, 0, 0.08) ' padding='8px 0' >
-              <Avatar size='70px' url={serverAvatar} />
-              <Stack spacing='1'>
-                <ItemTitleBold>
-                  <>
-                    {serverName}
-                  </>
-                </ItemTitleBold>
-                <ItemTitle>
-                  <>
-                    手机号： {serverPhone}
-                  </>
-                </ItemTitle>
-                <ItemTitle>
-                  <>
-                    微信号： {serverPhone}
-                  </>
-                </ItemTitle>
-              </Stack>
-            </Flex>
-            <Spacer />
-            <Spacer />
-            <PageSectionTitle>照片展示</PageSectionTitle>
-            {/* <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.houseTypePicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
+          <Flex boxShadow='0 0px 8px rgba(0, 0, 0, 0.08) ' padding='8px 0' >
+            <Avatar size='70px' url={serverAvatar} />
+            <Stack spacing='1'>
+              <ItemTitleBold>
+                <>
+                  {serverName}
+                </>
+              </ItemTitleBold>
+              <ItemTitle>
+                <>
+                  手机号： {serverPhone}
+                </>
+              </ItemTitle>
+              <ItemTitle>
+                <>
+                  微信号： {serverPhone}
+                </>
+              </ItemTitle>
+            </Stack>
+          </Flex>
+          <Spacer />
+          <Spacer />
+          <PageSectionTitle>照片展示</PageSectionTitle>
+          {/* <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.houseTypePicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
             </div> */}
+          {
+            Array.isArray(introducePicture) && introducePicture.map((item, index) => (
+              <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(item.url || item)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }} key={index}>
+              </div>
+            ))
+          }
 
-            <Spacer borderBottom='1px dashed #d6d3d3' />
-            <Spacer />
+          <Spacer borderBottom='1px dashed #d6d3d3' />
+          <Spacer />
 
-          </Stack>
-        </PageModuleContainer>
-      </ChakraProvider>
+        </Stack>
+      </PageModuleContainer>
+      </ChakraProvider >
     ) : (
-      <Center h='500px'>
-        <Spin spinning={loading}></Spin>
-      </Center>
-    )
+    <Center h='500px'>
+      <Spin spinning={loading}></Spin>
+    </Center>
+  )
     // ) : (
     //   1
     // )
