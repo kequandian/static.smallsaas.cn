@@ -3,7 +3,7 @@ import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 import { Flex, Box, Center, Spacer, ChakraProvider, Text } from '@chakra-ui/react'
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import Item from './config'
-import Containertitle from 'zero-element-boot-plugin-theme/lib/components/text/Containertitle';
+import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
 import DarkBackgroundTitle from 'zero-element-boot-plugin-theme/lib/components/text/DarkBackgroundTitle';
 import TopBar from '@/components/presenter/TopBar'
 
@@ -28,23 +28,23 @@ export default function index(props) {
               订单
             </PrimarySubtitle>
           </Box>
-          <Box w='26%'>
+          <Box w='36%'>
             < PrimarySubtitle  color='#ffffff'fontSize='14px'>
               结算时间
              </PrimarySubtitle>
           </Box>
-          <Box w='20%'>
+          <Box w='26%'>
 
             <PrimarySubtitle color='#ffffff' fontSize='14px'>
               产品
             </PrimarySubtitle>
           </Box>
-          <Box w='20%'>
+          <Box w='22%'>
             <PrimarySubtitle color='#ffffff' fontSize='14px'>
-              预存
+            订单额
            </PrimarySubtitle>
           </Box>
-          <Box w='20%'>
+          <Box w='22%'>
             <PrimarySubtitle color='#ffffff' fontSize='14px'>
               提佣
            </PrimarySubtitle>

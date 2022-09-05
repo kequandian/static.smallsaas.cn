@@ -9,7 +9,7 @@ import TopBar from '@/components/presenter/TopBar'
 
 export default function index(props) {
 
-    const api = `/api/u/saasAgent/myInvitationList`
+    const api = `/api/u/saasAgent/myInvitationList?pageSize=200`
     const [items, setItems] = useState([])
 
     //获取列表数据

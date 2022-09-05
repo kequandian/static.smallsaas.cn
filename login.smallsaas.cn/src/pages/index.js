@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Login from '@/pages/login'
+import Login from '@/pages/login/login'
 // import Testorders from '@/pages/test/Testorders'
 // import TestManagingDirector from '@/pages/test/testMy/TestManagingDirector'
 import { history } from 'umi';

@@ -18,19 +18,20 @@ const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 import { history } from 'umi';
 import TopBar from '@/components/presenter/TopBar'
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
+import { Toast } from 'antd-mobile'
 
 
 
 // --注册页面
 export default function index(props) {
 
-    const { phone, validateCode, password,appid } = props
-
+    const { phone, validateCode, password } = props
+    
 
     const [ code, setCode ] = useState(props.location.query.invitationCode)
 
     let api = '/api/app/oauth/account/register'
-    let apiData = '/api/u/saasAgent/myAgentInfo'
 
     // const [data] = useTokenRequest({ api });
     const {
@@ -45,9 +46,14 @@ export default function index(props) {
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
             console.log('resp data = ', resp)
             if (resp && resp.code === 200) {
-                history.push(`/enroll/RegistrationSuccessful/login?${appid}`)
+                Toast.show(
+                    '注册成功！',
+                    2
+                )
+                history.push(`/enroll/RegistrationSuccessful`)
                 // history.push('/orders')
                 setToken(resp.data.accessToken)
+                // getToken()
                 console.log('accessToken = ', resp.data.accessToken)
             }
         });

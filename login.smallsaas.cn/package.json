@@ -27,9 +27,9 @@
     "react-dom": "^16.8.6",
     "react-hook-form": "^7.22.2",
     "zero-element": "^1.0.0",
-    "zero-element-boot": "C:/Users/cmj/Desktop/zero-element-boot",
-    "zero-element-boot-plugin-theme": "D:/kequandian/StyleComponent/zero-element-boot-plugin-theme",
-    "zero-element-boot-presenter": "D:/kequandian/StyleComponent/zero-element-boot-presenter"
+    "zero-element-boot": "github:kequandian/zero-element-boot#pattern",
+    "zero-element-boot-plugin-theme": "github:kequandian/zero-element-boot-plugin-theme#master",
+    "zero-element-boot-presenter": "github:kequandian/zero-element-boot-presenter"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",

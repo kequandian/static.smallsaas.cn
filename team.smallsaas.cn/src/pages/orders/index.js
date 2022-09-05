@@ -35,7 +35,7 @@ export default function index(props) {
   const res = ct.getMonth() + 1
 
   // 获取每月销量api
-  const api = `/api/u/saasAgent/salesVolume?month=${res}`
+  const api = `/api/u/saasAgent/salesVolume/${appid}?month=${res}`
   const [saleData] = useTokenRequest({ api });
 
   //获取用户信息api
@@ -60,7 +60,7 @@ export default function index(props) {
             </Center>
           </Flex>
 
-          <CssCart width='100%' background='#f5f5f530' height='130px' margin='10px auto' padding='16px 10px 16px 16px' border='#48beb3 2px '>
+          <CssCart width='100%' background='#f5f5f520' height='130px' margin='10px auto' padding='16px 10px 16px 16px' border='#48beb3 2px '>
             <>
               <Flex padding='4px' >
                 <PrimaryTitle fontSize='18PX'>销量</PrimaryTitle>
@@ -84,27 +84,27 @@ export default function index(props) {
       <CssCart width='100%' height='' background='#659ac2'>
 
         <Flex w='100%'>
-          <Box w='60%' bg=''>
+          <Center w='60%' bg=''>
             <PrimarySubtitle color='#ffffff' fontSize='16px'>
               单号
             </PrimarySubtitle>
-          </Box>
+          </Center>
           {/* <Box w='60%'>
             < PrimarySubtitle color='#ffffff' fontSize='16px'>
               交易价格
             </PrimarySubtitle>
           </Box> */}
-          <Box w='110%'>
+          <Center w='110%'>
 
             <PrimarySubtitle color='#ffffff' fontSize='16px'>
               产品
             </PrimarySubtitle>
-          </Box>
-          <Box w='90%'>
+          </Center>
+          <Center w='90%'>
             <PrimarySubtitle color='#ffffff' fontSize='16px'>
               代理
             </PrimarySubtitle>
-          </Box>
+          </Center>
         </Flex>
       </CssCart>
       <OrderedList />

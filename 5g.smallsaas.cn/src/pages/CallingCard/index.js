@@ -5,6 +5,9 @@ import MainList from '@/pages/CallingCard/MainList'
 
 
 export default function index(props) {
+
+    // const appid = window.location.pathname.substring(1, window.location.pathname.length)
+    // console.log('appid ==', appid)
     const { reference='',coChannel='',coUserid='',vendorCode} = props
     // console.log('props==',props)
 
@@ -12,6 +15,7 @@ export default function index(props) {
     // const reference = props.location.query.channel
     // const coChannel = props.location.query.coChannel
     // const coUserid = props.location.query.coUserid
+    // const vendorCode = props.location.query.vendorCode
 
     const [visible, setVisible] = useState(false);
     const [onClickList, setOnClickList] = useState([]);
@@ -45,7 +49,7 @@ export default function index(props) {
             //   </Space>
             // }
             >
-                <PopUpContent onClickList={onClickList} reference={reference} coChannel={coChannel} coUserid={coUserid}vendorCode={vendorCode} />
+                <PopUpContent onClickList={onClickList} reference={reference} coChannel={coChannel} coUserid={coUserid} vendorCode={vendorCode} />
             </Drawer>
         </>
     )

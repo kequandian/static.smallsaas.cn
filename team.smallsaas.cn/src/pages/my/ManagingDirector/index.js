@@ -19,7 +19,7 @@ export default function index(props) {
     const queryData = useQuery(props)
     const appid = queryData.query.appid
     function myInvitationCode() {
-        history.push('/my/myInvitationCode')
+        history.push(`/my/myInvitationCode?appid=${appid}`)
         // history.push('/enroll/RegistrationSuccessful')
     }
 

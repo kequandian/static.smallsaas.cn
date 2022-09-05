@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Flex, Box, Spacer, Center, ChakraProvider, Text, Stack } from '@chakra-ui/react'
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
@@ -10,41 +10,67 @@ import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/It
 import TopBar from '@/components/presenter/TopBar'
 import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerSubtitle';
 import Linktitle from 'zero-element-boot-plugin-theme/lib/components/text/Linktitle';
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
+import Button from 'zero-element-boot/lib/components/presenter/button/Button'
+import SelectedCartUpperRightIcon from 'zero-element-boot/lib/components/indicator/SelectedCartUpperRightIcon';
+import { Toast } from 'antd-mobile'
+const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 
 
 // --注册成功页面
 export default function index(props) {
 
+    //获取路由中的appid
+    const appid = window.location.pathname.substring(1, window.location.pathname.length)
+    console.log('appid = ', appid)
 
-    const { pass ,appid} = props
+    //获取我的邀请码和个人信息
+    const api = '/api/u/saasAgent/inviteCode'
+    let apiData = '/api/u/saasAgent/myAgentInfo'
+    const [data] = useTokenRequest({ api });
+    // const [myAgentInfo] = useTokenRequest({ api: apiData });
 
+    const [myAgentInfo, setAgentInfo] = useState()
+    console.log('myAgentInfo ==', myAgentInfo)
 
-    function CloseInvitationCode() {
-        history.push('/my/ManagingDirector')
+    function valuesData() {
+        const query = {
+        }
+        promiseAjax(apiData, query, { method: 'GET' }).then(resp => {
+            if (resp && resp.code === 200) {
+                let myAgentInfo = resp.data
+                setAgentInfo(myAgentInfo)
+            }
+        })
     }
 
+    function flushed() {
+        valuesData()
+        //判断是否授权
+        if (myAgentInfo.level) {
+            // valuesData()
+            // this.forceUpdate();
+            if (appid) {
+                // 判断是否有appid
+                history.push('/Orders')
+            } else {
+                history.push('/SelectApply')
+            }
+        } else {
+            Toast.show(
+                '请等待你的邀请人授权!',
+                2
+            )
+        }
+    }
 
-    const api = '/api/u/saasAgent/inviteCode'
-    // const api = '/api/u/saasAgent/invite?inviteCode=(G-15475197476990115851234)'
-    const Token = getToken()
-    // console.log(Token, '=== Token');
-
-    const [data] = useTokenRequest({ api });
-
-
-
-    // function PassData() {
-    //     pass(data)
-    // }
-
-    // useEffect(_ => {
-    //     PassData()
-    // }, [])
+    useEffect(_ => {
+    }, [])
 
     return (
         <ChakraProvider>
             <TopBar>
-                {''}
+                注册成功
             </TopBar>
 
             <CssCart position='fixed' width='100%' height='100%' padding='40px 20px ' margin='0 0 10px 0'
@@ -61,6 +87,13 @@ export default function index(props) {
                             <ItemTitleBold>
                                 注册成功
                             </ItemTitleBold>
+                        </Center>
+                        <Center padding='0 80px'>
+                            <Box onClick={() => flushed()}>
+                                <Button outline color='#4392ce'>
+                                    刷新
+                                </Button>
+                            </Box>
                         </Center>
                         <Center padding='62px 62px 0 0' >
                             <ItemTitleBold>

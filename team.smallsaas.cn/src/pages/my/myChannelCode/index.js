@@ -90,7 +90,7 @@ export default function index(props) {
             <ChannelCodelist items={items} number={number} MyownAgentId={agentId} />
             <Flex display='flex' justifyContent='ent' >
                 <Center>
-                    <Pages cb={cb} />
+                    <Pages cb={cb} maxNumber={data.pages} />
                 </Center>
                 <Center color='#909090'>
                     共{data.pages}页
