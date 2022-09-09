@@ -28,7 +28,6 @@ export default function index(props) {
     // console.log('data==', data)
 
 
-
     const api = '/api/u/saasAgentInvitationCode/batchGenCode'
 
     let apiList = `/api/u/saasAgentInvitationCode?agentId=${agentId}&pageNum=1`

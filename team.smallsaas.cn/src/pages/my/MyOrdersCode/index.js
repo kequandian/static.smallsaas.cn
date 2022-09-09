@@ -45,7 +45,7 @@ export default function index(props) {
                         <Center>
                             <CssCart  boxShadow='0 0px 12px rgba(0, 0, 0, 0.1)' padding='12px ' backgroundColor='#ffffff' borderRadius='2px'>
                                 {/* <QRCode value={`https://5g.smallsaas.cn/${data.coChannel}?phone=${data.phone}&coUserid=${data.coUserId}`} /> */}
-                                <QRCode value={`https://5g.smallsaas.cn/${data.vendorCode}?phone=${data.phone}&coUserid=${data.coUserId}`} />
+                                <QRCode value={`http://test.5g.smallsaas.cn/${data.vendorCode}#/?phone=${data.phone}&coUserid=${data.coUserId}`} />
                             </CssCart>
                         </Center>
                     </Stack>

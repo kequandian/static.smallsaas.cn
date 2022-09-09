@@ -18,13 +18,13 @@ import { getEndpoint, getToken } from 'zero-element-boot/lib/components/config/c
 
 export default function index(props) {
 
-    const { cb, id, level, status, avatar = '', name = '', phone = '', coChannel = '11', coUserId = '22' } = props
+    const { cb, id,levelInfo, level, status, avatar = '', name = '', phone = '', coChannel = '11', coUserId = '22' } = props
     // const useLevel = ''
     // console.log('useLevel ==', useLevel);
 
-    const api = '/api/u/saasAgent/myAgentInfo'
+    // const api = '/api/u/saasAgent/myAgentInfo'
 
-    const [data] = useTokenRequest({ api });
+    // const [data] = useTokenRequest({ api });
     // console.log('data== ',data)
     const endpoint = getEndpoint()
     const url = !(avatar == null) ? (endpoint + avatar) : ''
@@ -36,7 +36,7 @@ export default function index(props) {
                     <Flex  >
                         <AvatarCard size='34px' avatar={url} title={name} subtitle={phone} navigation={`/my/MyInvite/ModifyChannelCode?id=${id}&coChannel=${coChannel}&coUserId=${coUserId}`} >
                             <CssCart background='#ffffff' padding='4px ' margin='4px'>
-                                {(data.level == 'GENERAL_AGENT') ? (
+                                {(levelInfo == 'GENERAL_AGENT') ? (
                                     <TripleOption
                                         id={id}
                                         defaultValue={level}
@@ -44,7 +44,7 @@ export default function index(props) {
                                         options={[{ "value": "UNAUTHORIZED_LEVEL", "name": "无效" }, { "value": "TERTIARY_AGENT", "name": "二级" }, { "value": "SECONDARY_AGENT", "name": "三级" }]}
                                         callBack={cb}
                                     />
-                                ) : (data.level == 'SECONDARY_AGENT') ?
+                               ) : (levelInfo == 'SECONDARY_AGENT') ?
                                     (
                                         <Switch />
                                     ) : (

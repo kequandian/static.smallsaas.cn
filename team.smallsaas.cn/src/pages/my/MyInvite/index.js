@@ -5,12 +5,22 @@ import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/tex
 import promiseAjax from 'zero-element-boot/lib/components/utils/request';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import TopBar from '@/components/presenter/TopBar'
+import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 
 
 export default function index(props) {
 
     const api = `/api/u/saasAgent/myInvitationList?pageSize=200`
     const [items, setItems] = useState([])
+
+
+
+    const apiInfo = '/api/u/saasAgent/myAgentInfo'
+
+    const [dataInfo] = useTokenRequest({ api: apiInfo });
+    console.log('dataInfo', dataInfo)
+    const levelInfo = dataInfo ? dataInfo.level : ''
+    console.log('levelInfo', levelInfo)
 
     //获取列表数据
     useEffect(_ => {
@@ -55,7 +65,7 @@ export default function index(props) {
                 代理授权
             </TopBar>
             {items && Array.isArray(items) && items.length > 0 ? (
-                <MyInvite items={items} cb={cb} />
+                <MyInvite items={items} cb={cb} levelInfo={levelInfo} />
             ) : <></>}
         </>
     )

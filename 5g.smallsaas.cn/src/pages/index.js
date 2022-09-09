@@ -24,11 +24,11 @@ export default function index(props) {
   console.log('vendorCode==', vendorCode)
 
   //接收扫码跳转带过来的参数,
-  const queryData = useQuery(window.location.search)
-  const reference = queryData.query.phone
-  const coUserid = queryData.query.coUserid
-  // console.log('reference==', reference)
-  // console.log('coUserid==', coUserid)
+  const queryData = useQuery(window.location.href)
+  const reference = queryData.query ? queryData.query.phone : 0
+  const coUserid = queryData.query ? queryData.query.coUserid : 0
+  console.log('reference==', reference)
+  console.log('queryData==', queryData)
   // history.push('/Testlogin')
 
   // const provinceApi = '/api/u/unicom/pcd/province/list'
@@ -36,7 +36,7 @@ export default function index(props) {
   // console.log('provinceData ==', provinceData)
 
   return (
-    vendorCode == null ? (
+    reference == 0 || coUserid == 0 ? (
       // vendorCode ? (
       <Stack h='400px' margin='100px 0'>
         <Center h='200px'>
