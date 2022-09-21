@@ -24,6 +24,11 @@ export default function index(props) {
     const appid = window.location.pathname.substring(1, window.location.pathname.length)
     console.log('appid = ', appid)
 
+    const queryData = useQuery(props)
+    const Permissions = queryData.query.Permissions?queryData.query.Permissions:''
+    console.log('Permissions = ', Permissions)
+
+
     //获取我的邀请码和个人信息
     const api = '/api/u/saasAgent/inviteCode'
     let apiData = '/api/u/saasAgent/myAgentInfo'
@@ -52,9 +57,9 @@ export default function index(props) {
             // this.forceUpdate();
             if (appid) {
                 // 判断是否有appid
-                history.push('/Orders')
+                history.push('/Orders?Permissions=${Permissions}')
             } else {
-                history.push('/SelectApply')
+                history.push(`/SelectApply?Permissions=${Permissions}`)
             }
         } else {
             Toast.show(

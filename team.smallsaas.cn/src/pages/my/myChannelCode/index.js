@@ -25,7 +25,7 @@ export default function index(props) {
     const [items, setItems] = useState([])
     const [data, setData] = useState('')
     const [number, setNumber] = useState([])
-    // console.log('data==', data)
+    console.log('queryData11==', queryData)
 
 
     const api = '/api/u/saasAgentInvitationCode/batchGenCode'

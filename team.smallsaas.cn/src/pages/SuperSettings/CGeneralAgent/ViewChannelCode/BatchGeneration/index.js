@@ -25,9 +25,10 @@ export default function index(props) {
     };
 
     const api = '/api/u/saasAgentInvitationCode/batchGenCode'
+    console.log('2222222')
     function getNumber() {
         const values = { "agentId": 1, "genCount": `${number}` }
-        promiseAjax(api, values, { method: 'POST' }).then(resp => {
+        promiseAjax(api, values, { method: 'GET' }).then(resp => {
             if (resp && resp.code === 200) {
             }
         })

@@ -36,15 +36,15 @@ export default function index(props) {
                     <Flex  >
                         <AvatarCard size='34px' avatar={url} title={name} subtitle={phone} navigation={`/my/MyInvite/ModifyChannelCode?id=${id}&coChannel=${coChannel}&coUserId=${coUserId}`} >
                             <CssCart background='#ffffff' padding='4px ' margin='4px'>
-                                {(levelInfo == 'GENERAL_AGENT') ? (
+                                {(levelInfo == 'GENERAL_AGENT' || 'SECONDARY_AGENT') ? (
                                     <TripleOption
                                         id={id}
                                         defaultValue={level}
                                         defaultStatus={status}
-                                        options={[{ "value": "UNAUTHORIZED_LEVEL", "name": "无效" }, { "value": "TERTIARY_AGENT", "name": "二级" }, { "value": "SECONDARY_AGENT", "name": "三级" }]}
+                                        options={[{ "value": "UNAUTHORIZED_LEVEL", "name": "无效" }, { "value": "SECONDARY_AGENT", "name": "二级" }, { "value": "TERTIARY_AGENT", "name": "三级" }]}
                                         callBack={cb}
                                     />
-                               ) : (levelInfo == 'SECONDARY_AGENT') ?
+                               ) : (levelInfo == 'TERTIARY_AGENT') ?
                                     (
                                         <Switch />
                                     ) : (

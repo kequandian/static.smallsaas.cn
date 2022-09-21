@@ -18,15 +18,15 @@ export default function index(props) {
   const { onChange } = props
   const queryData = useQuery(props)
   const appid = queryData.query.appid
+  const Permissions = queryData.query.Permissions
+  // console.log('Permissions ==', Permissions)
 
-  // console.log('props ==', props)
-  // console.log('appid首页 ==', appid)
   function myPages() {
     if (getToken()) {
-      history.push(`/my/ManagingDirector?appid=${appid}`)
+      history.push(`/my/ManagingDirector?appid=${appid}&Permissions=${Permissions}`)
       // console.log('getToken() = ', getToken());
     } else {
-      history.push(`/login?appid=${appid}`)
+      history.push(`/login?appid=${appid}&Permissions=${Permissions}`)
       // console.log('2222');
     }
 
@@ -44,7 +44,10 @@ export default function index(props) {
 
   const endpoint = getEndpoint()
   const url = myData.avatar ? (endpoint + myData.avatar) : ''
-  // console.log('myData==', myData);
+  
+  function onOrderDetails(id) {
+    history.push(`/orders/OrderDetails?id=${id}`)
+  }
 
   return (
     <>
@@ -60,7 +63,7 @@ export default function index(props) {
             </Center>
           </Flex>
 
-          <CssCart width='100%' background='#f5f5f520' height='130px' margin='10px auto' padding='16px 10px 16px 16px' border='#48beb3 2px '>
+          <CssCart width='100%' background='#f5f5f520' height='160px' margin='10px auto' padding='16px 10px 16px 16px' border='#48beb3 2px '>
             <>
               <Flex padding='4px' >
                 <PrimaryTitle fontSize='18PX'>销量</PrimaryTitle>
@@ -70,7 +73,9 @@ export default function index(props) {
                   {res}月
                 </PrimaryTitle>
               </Flex>
-              <SalesStatistic list={saleData} />
+              <Center borderTop='1px #c8cfdc solid'>
+                <SalesStatistic list={saleData} />
+              </Center>
             </>
           </CssCart>
         </>
@@ -84,7 +89,7 @@ export default function index(props) {
       <CssCart width='100%' height='' background='#659ac2'>
 
         <Flex w='100%'>
-          <Center w='60%' bg=''>
+          <Center w='82%' bg=''>
             <PrimarySubtitle color='#ffffff' fontSize='16px'>
               单号
             </PrimarySubtitle>
@@ -107,7 +112,7 @@ export default function index(props) {
           </Center>
         </Flex>
       </CssCart>
-      <OrderedList />
+      <OrderedList onOrderDetails={(id) => onOrderDetails(id)} />
     </>
   )
 

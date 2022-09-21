@@ -11,12 +11,13 @@ export default function index(props) {
     const { userId='',
     // time='2022-06-06',
     price='', 
-        productName='', agentName='',orderNumber } = props
+    onOrderDetails,
+        productName='', agentName='',orderNumber,id } = props
     return (
         <CssCart  borderBottom='1px #f5f5f5 solid' backgroundColor='' padding='1px 8px' width='100%'>
             <Container>
-                <Flex w='100%'>
-                    <Center w='60%' bg='' padding='0 2px'>
+                <Flex w='100%' onClick={()=>onOrderDetails(id)}>
+                    <Center w='82%' bg='' padding='0 2px'>
                         <PrimarySubtitle fontSize='12px'>
                             {orderNumber || ''}
                         </PrimarySubtitle>

@@ -8,7 +8,7 @@ export default function index(props) {
 
     // const appid = window.location.pathname.substring(1, window.location.pathname.length)
     // console.log('appid ==', appid)
-    const { reference='',coChannel='',coUserid='',vendorCode} = props
+    const { vendorCode,infoData} = props
     // console.log('props==',props)
 
     // //接收扫码跳转带过来的参数
@@ -32,7 +32,7 @@ export default function index(props) {
 
     return (
         <>
-            <MainList onNumberClick={showDrawer} reference={reference} />
+            <MainList onNumberClick={showDrawer}  />
             <Drawer
                 title="下单"
                 placement='bottom'
@@ -49,7 +49,7 @@ export default function index(props) {
             //   </Space>
             // }
             >
-                <PopUpContent onClickList={onClickList} reference={reference} coChannel={coChannel} coUserid={coUserid} vendorCode={vendorCode} />
+                <PopUpContent onClickList={onClickList} vendorCode={vendorCode} infoData={infoData}/>
             </Drawer>
         </>
     )

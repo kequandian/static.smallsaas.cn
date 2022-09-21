@@ -25,8 +25,8 @@ export default function index(props) {
     layout: {
       xname: 'Gridbox',
       props: {
-        columns: 4,
-        space:10
+        // columns: 4,
+        // space:10
       },
       container: 'PlainList'
       },

@@ -13,7 +13,7 @@ export default function index(props) {
                 {(list.level === 'GENERAL_AGENT') ? (
                     <RouterBox columns='5' items={[
                         { "title": "二级", "value": `${list.secondaryAgentCount || '0'}` },
-                        { "title": "三级", "value": `${list.tertiaryAgentAmount || '0'}` },
+                        { "title": "三级", "value": `${list.tertiaryAgentCount || '0'}` },
                         { "title": "直推", "value": `￥${list.point || '0'}` },
                         { "title": "二级贡献", "value": `￥${list.secondaryAgentAmount || '0'}` },
                         { "title": "三级贡献", "value": `￥${list.tertiaryAgentAmount || '0'}` },

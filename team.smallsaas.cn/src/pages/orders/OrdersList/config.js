@@ -8,7 +8,7 @@ import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
 
 export default function index(props) {
 
-  const { appid='Unicom5G'} =props
+  const { appid='Unicom5G',id} =props
   
   // const api ='/api/OrdersListData' 
   const api =`/api/u/saasAgent/orderList/${appid}`
@@ -37,7 +37,7 @@ export default function index(props) {
   return (
     <CssCart background='#f0ffff'>
       <AutoLayout {...config} data={data} >
-        <Presenter />
+        <Presenter id={id}/>
       </AutoLayout>
     </CssCart>
 

@@ -12,18 +12,18 @@ import Item from './item';
  */
 export default function index(props) {
 
-    const { items, columns = '2' ,Permissions} = props
+    const { items, columns = '1',onProductClick , selectGoodsId } = props
 
     return (
 
         <Center>
             <Container>
                 <div style={{
-                    display: 'grid', gridTemplateColumns: `repeat(2, 1fr)`, gridRowgap: '2px', gridColumnGap: '2px',
+                    display: 'grid', gridTemplateColumns: `repeat(1, 1fr)`, gridRowgap: '2px', gridColumnGap: '2px',
                 }}>
                     {
                         items && items.map((item, i) => (
-                            <Item  {...item} key={i}  Permissions={Permissions}/>
+                            <Item  {...item} key={i} onProductClick={onProductClick} selectGoodsId={selectGoodsId}/>
                         )
                         )
                     }

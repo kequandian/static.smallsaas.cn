@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart'
-import { ChakraProvider, Box, Center } from '@chakra-ui/react'
+import { ChakraProvider, Box, Center, Flex } from '@chakra-ui/react'
 import Head from './head/config';
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
 import Router from 'zero-element-boot-presenter/lib/components/presenter/card/Router';
@@ -10,6 +10,7 @@ import TopBar from '@/components/presenter/TopBar'
 import ItemCart from '@/components/presenter/ItemCart'
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import { history } from 'umi';
+import TopBarTitle from '@/components/presenter/TopBarTitle'
 
 
 // --我的页面
@@ -18,6 +19,11 @@ export default function index(props) {
 
     const queryData = useQuery(props)
     const appid = queryData.query.appid
+    const Permissions = queryData.query.Permissions
+
+    var flag = Permissions.includes('1');
+    console.log("是否为管理员身份 ==", flag)
+
     function myInvitationCode() {
         history.push(`/my/myInvitationCode?appid=${appid}`)
         // history.push('/enroll/RegistrationSuccessful')
@@ -33,14 +39,27 @@ export default function index(props) {
         history.push(`/SuperSettings?appid=${appid}&agentId=${data.agentId}`)
     }
 
+    function goBack() {
+        history.push(`/orders?appid=${appid}`)
+    }
+
     return (
         // <div className='aa'>
 
         <ChakraProvider>
             <div className='Global' />
-            <TopBar>
+            {/* <TopBar>
                 我的主页
-            </TopBar>
+            </TopBar> */}
+
+            <Flex height='38px' padding='6px' >
+                <Center>
+                    <svg onClick={() => goBack()} t="1658717944661" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12442" width="24" height="24"><path d="M624.788992 204.047974 585.205965 164.464026 219.560038 530.185011 585.205965 895.864013 624.788992 856.280986 298.663014 530.16105Z" fill='#33333390' p-id="12443"></path></svg>
+                </Center>
+                <Center>
+                    <TopBarTitle> 超级管理员配置</TopBarTitle>
+                </Center>
+            </Flex>
 
             {data ? (
                 <>
@@ -97,7 +116,7 @@ export default function index(props) {
                                     { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/SetUp.svg", "title": "设置", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/Set/GeneralAgentSet?level=2" },
                                 ]} />
                                 <Router items={[
-                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyOrdersCode?" },
+                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyOrdersCode?appid=${appid}` },
                                     // { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "选择app", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/SelectApply?" },
                                 ]} />
                             </>
@@ -108,17 +127,23 @@ export default function index(props) {
                                     { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "历史", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "" },
                                 ]} />
                                 <Router items={[
-                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyOrdersCode?" },
+                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyOrdersCode?appid=${appid}` },
                                 ]} />
                             </>
                         ) : (<></>)
                         }
                     </ItemCart>
-                    <Center w='100%'>
-                        <Box w='300px' onClick={() => onSuperSettings()}>
-                            <Button solid navigation='/SuperSettings' color='#859bba' > 超级管理员配置</Button>
-                        </Box>
-                    </Center>
+
+                    {
+                    flag ?
+                        <Center w='100%'>
+                            <Box w='300px' onClick={() => onSuperSettings()}>
+                                <Button solid navigation='/SuperSettings' color='#859bba' > 超级管理员配置</Button>
+                            </Box>
+                        </Center>
+                         :
+                        <></>
+                    }
                 </>
             ) :
                 <></>}

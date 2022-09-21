@@ -23,19 +23,24 @@ import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/C
 import SignOffAddress from '@/pages/CallingCard/PopUpContent/SelectAddress'
 import api from '../api'
 import { Toast } from 'antd-mobile'
+import ProductList from './ProductList'
+import { history } from 'umi';
 
 
 export default function index(props) {
 
-    const { onClickList = [], postAddr, reference, safeCode, coUserid, coChannel, vendorCode } = props;
-
+    const { onClickList = [], postAddr, reference, safeCode, infoData, vendorCode } = props;
+    console.log('infoData ==', infoData)
 
     // let api = '/api/link/order/subNotOfterOrdertest'
+
+    // 获取验证码的api
     let codeApi = '/api/link/code/safe-code'
 
     // console.log('props === ', props)
     // console.log('api === ', api)
     // const [channel, setChannel] = useState()
+
     const [contactNum, setKeyContactNum] = useState('')
     const [certName, setCertName] = useState('')
     const [address, setAddress] = useState('')
@@ -43,25 +48,45 @@ export default function index(props) {
     const [postProvinceCode, setPostProvinceCode] = useState('')
     const [postDistrictCode, setpostDistrictCode] = useState('')
     const [postCityCode, setpostCityCode] = useState('')
-    // fun
+
+    // 产品信息
+    const [ProductListData, setProductListData] = useState([])
+
+    function productList() {
+        const Data = {}
+        promiseAjax(`/api/u/accountProduct/Unicom5G`, Data, { method: 'GET' }).then(resp => {
+            if (resp && resp.code === 200) {
+                let ListData = resp.data.records
+                // console.log('ListData ==', ListData)
+                setProductListData(ListData)
+            }
+        }
+        )
+    }
 
 
+    // 下单
     function validateData(values) {
         const query = {
-            address, certName, certNo, contactNum, "coChannel": 'few', coUserid, vendorCode,
+            address,
+            certName,
+            certNo,
+            contactNum,
+            vendorCode,
+            "coChannel": `${infoData.coChannel}`,
+            "coUserid": `${infoData.coUserId}`,
+            // "selectGoodsId": `${selectGoodsId}`,
             "cityCode": "445200",
             "phoneNum": `${onClickList[0]}`,
-            "goodsId": "982203315714",
-            "reference": `${reference}`,
-            // "certName": "林学文",
-            // "certNo": "44142719951224171X",
-            // "contactNum": "17827409860",
+            "goodsId": `${selectGoodsId}`,
+            "reference": `${infoData.phone}`,
             "postCityCode": `${postCityCode}`,
-            "postDistrictCode":`${postDistrictCode}`,
-            "provinceCode":'440000',
+            "postDistrictCode": `${postDistrictCode}`,
+            "provinceCode": '440000',
             "postProvinceCode": `${postProvinceCode}`,
         }
 
+        // 验证码限制
         const queryData = {
             // "certNo": "44142719951224171X",
             // "contactNum": "15488681212",
@@ -70,7 +95,6 @@ export default function index(props) {
             contactNum,
             safeCode
         }
-
         // promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
         //     .then(res => {
         //         if (res && res.code === 200) {
@@ -78,7 +102,15 @@ export default function index(props) {
         promiseAjax(api(), query, { method: 'POST' }).then(resp => {
             if (resp && resp.data.code === 0) {
                 // console.log("resp ==", resp)
-                alert('下单成功')
+                // alert('下单成功')
+                Toast.show(
+                    '下单成功',
+                    2
+                )
+                setTimeout(() => {
+                    history.push('/CallingCard')
+                }, 200)
+
             }
             //         });
             //     } else {
@@ -86,11 +118,17 @@ export default function index(props) {
             //     }
         }).catch(errors => {
             console.log('errors==', errors)
-            alert('下单失败，请稍后重试')
+            // alert('下单失败，请稍后重试')
+            Toast.show(
+                '下单失败，请稍后重试',
+                2
+            )
         });
         // updateName(safeCode)
         submit()
     }
+
+    // 提交表单内容
     const {
         handleSubmit,
         register,
@@ -98,6 +136,8 @@ export default function index(props) {
         formState: { errors, isSubmitting },
     } = useForm()
 
+
+    // 获取验证码
     function code() {
         const codeData = {
             // "certName": "傅庆发",
@@ -105,14 +145,11 @@ export default function index(props) {
             // "contactNum": "15212165381",
             // "cityCode": "445200",
             // "provinceCode": "440000"
-            certName,
-            certNum,
-            contactNum,
-            cityCode,
-            provinceCode
+            "certName":`${certName}`,
+            "certNo":`${certNo}`,
+            "contactNum":`${contactNum}`,
         }
-
-        promiseAjax(codeApi, codeData, { method: 'POST' }).then(resp => {
+        promiseAjax('/api/u/oauth/verification/send', codeData, { method: 'GET' }).then(resp => {
             console.log('resp ==', resp)
             if (resp && resp.data.code === 0) {
                 // alert('验证码发送成功')
@@ -125,7 +162,9 @@ export default function index(props) {
         )
     }
 
+    // 判断是否同意协议的状态变量
     const [agreeStatus, setAgreeStatus] = useState(false)
+
 
     function changContactNum(e) {
         // console.log('change value = ', e.target.value)
@@ -140,7 +179,6 @@ export default function index(props) {
     function changeCertNo(e) {
         setCertNo(e.target.value)
         // console.log('certNo ==', certNo)
-
 
     }
     function changeAddress(e) {
@@ -160,18 +198,35 @@ export default function index(props) {
         // console.log('请填写完信息')
     }
 
-    function submit(Selectprovince, SelectCity, SelectRegion,postProvinceCode,postDistrictCode,postCityCode) {
-        console.log('Selectprovince11  ==', Selectprovince)
-        console.log(' SelectCity11 ==', SelectCity)
-        console.log(' SelectRegion11 ==', SelectRegion)
-        console.log(' postProvinceCode11 ==', postProvinceCode)
-        console.log(' postDistrictCode11 ==', postDistrictCode)
-        console.log(' postCityCode11 ==', postCityCode)
+    // 拿到选择的地址区域编码等信息
+    function submit(Selectprovince, SelectCity, SelectRegion, postProvinceCode, postDistrictCode, postCityCode) {
+        // console.log('Selectprovince11  ==', Selectprovince)
+        // console.log(' SelectCity11 ==', SelectCity)
+        // console.log(' SelectRegion11 ==', SelectRegion)
+        // console.log(' postProvinceCode11 ==', postProvinceCode)
+        // console.log(' postDistrictCode11 ==', postDistrictCode)
+        // console.log(' postCityCode11 ==', postCityCode)
         setPostProvinceCode(postProvinceCode)
         setpostDistrictCode(postDistrictCode)
         setpostCityCode(postCityCode)
     }
+
+
+    // 回调选择的产品id
+
+    const [selectGoodsId, setSelectGoodsId] = useState('')
+
+    function onProductClick(goodsId) {
+        // console.log('11111')
+        // console.log('goodsId ==', goodsId)
+
+        setSelectGoodsId(goodsId)
+    }
+    console.log('selectGoodsId ==', selectGoodsId)
+
+
     useEffect(_ => {
+        productList()
     }, [])
     return (
         <ChakraProvider>
@@ -203,10 +258,19 @@ export default function index(props) {
                     </PrimarySubtitle>
                 </Center>
 
+                <Center w='' onClick={() => productList()} borderTop='1px dashed #333333'>
+                    <ItemTitle>
+                        请选择产品
+                    </ItemTitle>
+                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
+                </Center>
+                <ProductList items={ProductListData} onProductClick={(goodsId) => onProductClick(goodsId)} selectGoodsId={selectGoodsId} />
+
                 <Spacer />
                 <Spacer />
                 <form onSubmit={handleSubmit(validateData)} noValidate>
                     <Stack spacing={6} h=''>
+
                         <InputGroup size='md'  >
                             <InputLeftAddon children={
                                 <Center w='60px'>
@@ -223,7 +287,17 @@ export default function index(props) {
                             // })}
                             />
                         </InputGroup>
-
+                        <InputGroup size='md'>
+                            <InputLeftAddon children={
+                                <Center w='60px'>
+                                    <ItemTitle>
+                                        身份证号
+                                    </ItemTitle>
+                                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
+                                </Center>} />
+                            <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
+                            />
+                        </InputGroup>
 
                         <InputGroup size='md'>
                             <InputLeftAddon children={
@@ -235,9 +309,18 @@ export default function index(props) {
                                 </Center>} />
                             <Input type='tel' value={contactNum} placeholder='请填写本人联系电话（已加密）' maxLength='11' onChange={(e) => changContactNum(e)} />
                             <InputRightAddon w='90px' padding='8px'>
-                                <div style={{ color: '#a772ff', fontSize: '13px' }} onClick={() => code()}  >
-                                    获取验证码
-                                </div>
+
+                                {
+                                    certName && certNo && contactNum.length == 11 ?
+                                        <div style={{ color: '#ff0704', fontSize: '13px' }} onClick={() => code()}  >
+                                            获取验证码
+                                        </div>
+                                        :
+                                        <div style={{ color: '#a7b4c5', fontSize: '13px' }}  >
+                                            获取验证码
+                                        </div>
+
+                                }
                             </InputRightAddon>
                         </InputGroup>
                         <>
@@ -255,17 +338,7 @@ export default function index(props) {
                             {(certName && contactNum && contactNum.length == 11) ?
                                 (
                                     <>
-                                        <InputGroup size='md'>
-                                            <InputLeftAddon children={
-                                                <Center w='60px'>
-                                                    <ItemTitle>
-                                                        身份证号
-                                                    </ItemTitle>
-                                                    <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
-                                                </Center>} />
-                                            <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
-                                            />
-                                        </InputGroup>
+
                                         <InputGroup size='md'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>
@@ -274,7 +347,7 @@ export default function index(props) {
                                                     </ItemTitle>
                                                     <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                                 </Center>} />
-                                                <SignOffAddress submit={(Selectprovince, SelectCity, SelectRegion,postProvinceCode,postDistrictCode,postCityCode) => submit(Selectprovince, SelectCity, SelectRegion,postProvinceCode,postDistrictCode,postCityCode)} />
+                                            <SignOffAddress submit={(Selectprovince, SelectCity, SelectRegion, postProvinceCode, postDistrictCode, postCityCode) => submit(Selectprovince, SelectCity, SelectRegion, postProvinceCode, postDistrictCode, postCityCode)} />
                                         </InputGroup>
                                         <InputGroup size='md'>
                                             <InputLeftAddon children={

@@ -27,7 +27,7 @@ import { Toast } from 'antd-mobile'
 export default function index(props) {
 
     const { phone, validateCode, password } = props
-    
+    const localToken = 'eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NjI2LCJhY2NvdW50IjoiYWNjOTU2NjA5NjMiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoiIiwiaWF0IjoxNjYzNTY4OTc5LCJqdGkiOiI2MjYiLCJzdWIiOiJhY2M5NTY2MDk2MyIsImV4cCI6MTY2MzgyODE3OX0.VXJvXN8pLJGKthXGHFzoRb0oa6QykITeybKVyQn18yO-G_s-6OuGA5fKuRSPJKmi-jfNFDf4JZa3PA_9WkPbMw'
 
     const [ code, setCode ] = useState(props.location.query.invitationCode)
 
@@ -41,7 +41,9 @@ export default function index(props) {
         formState: { errors, isSubmitting },
     } = useForm()
 
+
     function validateData(values) {
+
         values.appid = "Unicom5G"
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
             console.log('resp data = ', resp)
@@ -50,11 +52,14 @@ export default function index(props) {
                     '注册成功！',
                     2
                 )
-                history.push(`/enroll/RegistrationSuccessful`)
-                // history.push('/orders')
                 setToken(resp.data.accessToken)
+
+                setTimeout(()=> {
+                    history.push(`/enroll/RegistrationSuccessful`)
+                }, 200)
+                // history.push('/orders')
                 // getToken()
-                console.log('accessToken = ', resp.data.accessToken)
+                // console.log('accessToken = ', resp.data.accessToken)
             }
         });
     }

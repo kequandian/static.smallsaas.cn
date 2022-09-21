@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CssCart from 'zero-element-boot/lib/components/cart/CssCart';
 import { Flex, Box, Spacer, Center, ChakraProvider, Text, Stack } from '@chakra-ui/react'
 import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequest';
@@ -13,19 +13,57 @@ import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/tex
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer';
 import TopBar from '@/components/presenter/TopBar'
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
+const promiseAjax = require('zero-element-boot/lib/components/utils/request');
+import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 
 
 // --选择app
 export default function index(props) {
 
+    const queryData = useQuery(props)
+    const Permissions = queryData.query.Permissions
+    // console.log("Permissions ==", Permissions)
+    const { level = '1' } = props
 
-    const { level='1'  } = props
+    // const apiInfo = '/api/u/saasAgent/myAgentInfo'
+    // const [dataInfo] = useTokenRequest({ api: apiInfo });
 
-    const apiInfo = '/api/u/saasAgent/myAgentInfo'
-    const [dataInfo] = useTokenRequest({ api: apiInfo });
-    const api = `/api/u/agentApp/list/1`
-    const [data] = useTokenRequest({ api });
-  
+    const [appData, setAppData] = useState('')
+
+    useEffect(_ => {
+        infoData()
+    }, [])
+
+    function infoData() {
+        const info = {
+        }
+        promiseAjax('/api/u/saasAgent/myAgentInfo', info, { method: 'GET' }).then(resp => {
+            if (resp && resp.code === 200) {
+                let data = resp.data
+                // setDataInfo(data)
+                if (data) {
+                    valuesData(data.agentId)
+                }
+            }
+        })
+    }
+
+
+    function valuesData(agentId) {
+        const query = {
+        }
+        promiseAjax(`/api/u/agentApp/list/${agentId}`, query, { method: 'GET' }).then(resp => {
+            if (resp && resp.code === 200) {
+                let data = resp.data
+                // setItems(items)
+                setAppData(data)
+            }
+        })
+    }
+
+    // if (!agentId == '') {
+    //     valuesData()
+    // }
 
     return (
         <ChakraProvider>
@@ -34,13 +72,13 @@ export default function index(props) {
             </TopBar>
             {level ?
                 (
-                    (data && data.length > 0) ?
+                    (appData && appData.length > 0) ?
                         (
                             <PageModuleContainer>
                                 <ItemTitleBold>
                                     请选择如下应用
                                 </ItemTitleBold>
-                                < AppList columns={data.length} items={data} />
+                                < AppList columns={appData.length} items={appData} Permissions={Permissions} />
                             </PageModuleContainer>
 
                         ) : <></>

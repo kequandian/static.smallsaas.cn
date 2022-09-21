@@ -6,6 +6,7 @@ import useTokenRequest from 'zero-element-boot/lib/components/hooks/useTokenRequ
 // import SecondaryAgent from './Agent';
 import TopBar from '@/components/presenter/TopBar'
 import AvatarCard from '@/components/presenter/card/AvatarCard';
+import List from './List';
 
 export default function index(props) {
 
@@ -31,12 +32,12 @@ export default function index(props) {
             </CssCart> */}
 
             {items && Array.isArray(items) && items.length > 0 ? (
-                <CssCart backgroundColor='#ffffff' margin=''>
-                    <AvatarCard title={items[0].name} subtitle={items[0].phone} size='40px' >
-                        <TeanItem {...items} />
-                    </AvatarCard>
-                </CssCart>
-
+                // <CssCart backgroundColor='#ffffff' margin=''>
+                //     <AvatarCard title={items[0].name} subtitle={items[0].phone} size='40px' >
+                //         <TeanItem {...items} />
+                //     </AvatarCard>
+                // </CssCart>
+<List items={items} />
             ) : <></>}
 </>
     )
