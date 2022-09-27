@@ -30,24 +30,24 @@ export default function index(props) {
   // const appid = queryData.query ? queryData.query.appid : 0
   // const coUserid = queryData.query ? queryData.query.coUserid : 0
 
-  const [infoData, SetInfoData] = useState([])
-  // console.log('infoData==', infoData)
+  // const [infoData, SetInfoData] = useState([])
+  // // console.log('infoData==', infoData)
 
-  // 根据渠道码获取邀请人的信息
-  function info() {
-    const query = {
-    }
-    promiseAjax(`/api/u/saasAgent/agentInfo/${vendorCode}`, query, { method: 'GET' }).then(resp => {
-      if (resp && resp.code === 200) {
-        let data = resp.data
-        SetInfoData(data)
-      }
-    })
-  }
+  // // 根据渠道码获取邀请人的信息
+  // function info() {
+  //   const query = {
+  //   }
+  //   promiseAjax(`/api/u/saasAgent/agentInfo/${vendorCode}`, query, { method: 'GET' }).then(resp => {
+  //     if (resp && resp.code === 200) {
+  //       let data = resp.data
+  //       SetInfoData(data)
+  //     }
+  //   })
+  // }
 
-  useEffect(_ => {
-    info()
-  }, [])
+  // useEffect(_ => {
+  //   info()
+  // }, [])
   return (
     !vendorCode ? (
       // vendorCode ? (
@@ -63,8 +63,8 @@ export default function index(props) {
       </Stack>
     ) : (
       <CallingCard
-        vendorCode={vendorCode}
-        infoData={infoData}
+      vendorCodeData={vendorCode}
+        // infoData={infoData}
       // coUserid={coUserid}
       />
     )

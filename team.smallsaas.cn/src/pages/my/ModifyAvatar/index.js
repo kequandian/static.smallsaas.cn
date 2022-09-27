@@ -52,7 +52,7 @@ export default function index(props) {
             </TopBar>
             <ModifyAvatar items={datas} cb={cb} />
             <ModifyAvatar items={datas1} cb={cb} />
-            <Flex>
+            {/* <Flex>
                 <Flex w='130px' h='40px' boxShadow='0 0px 8px rgba(0, 0, 0, 0.08) ' borderRadius='10px 0 0 10px' margin=' 0 0 0 10px' overflow='hidden' backgroundColor='#fff' padding='0 20PX'>
                     <Center>
                         <ItemTitleBold>
@@ -61,7 +61,7 @@ export default function index(props) {
                     </Center>
                 </Flex>
                 <SelectAddress />
-            </Flex>
+            </Flex> */}
 
 
 

@@ -11,6 +11,9 @@ import { history } from 'umi';
 import TopBar from '@/components/presenter/TopBar'
 import { getEndpoint, getToken } from 'zero-element-boot/lib/components/config/common';
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
+import { Modal, Toast } from 'antd-mobile'
+import Button from 'zero-element-boot/lib/components/presenter/button/Button';
+const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 
 
 // --首页
@@ -44,11 +47,29 @@ export default function index(props) {
 
   const endpoint = getEndpoint()
   const url = myData.avatar ? (endpoint + myData.avatar) : ''
-  
+
   function onOrderDetails(id) {
-    history.push(`/orders/OrderDetails?id=${id}`)
+    history.push(`/orders/OrderDetails?id=${id}&appid=Unicom5G&Permissions=${Permissions}`)
   }
 
+  function daleteOrder() {
+ 
+    const query = {
+    }
+    promiseAjax('/api/u/saasAgent/order/self/testOrder', query, { method: 'DELETE' }).then(resp => {
+      if (resp && resp.code === 200) {
+        console.log('删除成功 ==', resp)
+        Toast.show(
+          '删除成功',
+          2
+        )
+        // setTimeout(() => {
+          // history.push(`/orders?appid=Unicom5G&Permissions=${Permissions}`)
+        // }, 200)
+      }
+    })
+
+  }
   return (
     <>
       <CssCart
@@ -81,9 +102,16 @@ export default function index(props) {
         </>
       </CssCart>
 
-      <CssCart width='100%' height='44px' margin='0 auto' padding='14px 20px 4px 20px' backgroundColor=''>
-        <PrimaryTitle fontSize='16PX' margin='0'>订单</PrimaryTitle>
-      </CssCart>
+      <Flex>
+        <CssCart width='100%' height='44px' margin='0 auto' padding='14px 20px 4px 20px' backgroundColor=''>
+          <PrimaryTitle fontSize='16PX' margin='0'>订单</PrimaryTitle>
+        </CssCart>
+        <Center w='300px' margin='2px 0 ' onClick={() => daleteOrder()}>
+          <Button  outline color='#e5a1a5' >
+            一键删除测试订单
+          </Button>
+        </Center>
+      </Flex>
 
       {/* <CssCart width='100%' height='34px' margin='0 auto' padding='2px 10px' backgroundColor='linear-gradient(141deg, rgba(18, 157, 186)1%,rgba(64, 186, 165)80%)'> */}
       <CssCart width='100%' height='' background='#659ac2'>

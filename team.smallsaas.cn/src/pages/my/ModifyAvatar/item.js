@@ -58,6 +58,7 @@ export default function index(props) {
                             </Center> */}
                             <CssCart width='70px' height='60px' background=''>
                                 <ChangeAvatar logo={url} callBack={callBack} />
+                                {/* 1 */}
                             </CssCart>
 
                             <Center h='100%' w='' bg='' margin='0 0 0 8px'>

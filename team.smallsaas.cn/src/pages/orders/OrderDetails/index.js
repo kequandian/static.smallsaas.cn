@@ -12,12 +12,16 @@ import TopBar from '@/components/presenter/TopBar'
 import ItemTitleBold from 'zero-element-boot-plugin-theme/lib/components/text/ItemTitleBold';
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle'
 import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/Container/PageModuleContainer'
+import Button from 'zero-element-boot/lib/components/presenter/button/Button';
+import { Modal, Toast } from 'antd-mobile'
 
 
 // --我的邀请码页面
 export default function index(props) {
 
     const queryData = useQuery(props)
+    const appid = queryData.query.appid
+    const Permissions = queryData.query.Permissions
     const id = queryData.query.id
     const [data, setData] = useState('')
     console.log('data ==', data)
@@ -37,8 +41,9 @@ export default function index(props) {
         })
     }
 
+    const ordersStatus = data.type === "TEST" ? '测试订单' : data.type === "NORMAL" ? '正式订单' : ''
 
-
+   
 
     return (
         <ChakraProvider>
@@ -48,102 +53,113 @@ export default function index(props) {
                 订单详情
             </TopBar>
             <PageModuleContainer>
-                <Stack>
-
+                <Stack >
                     <Flex>
-                        <Center w='30%'>
+                        <Center w='30%' justifyContent='end'>
                             <ContainerInactiveTitle fontSize='14px'>
                                 套餐：
                             </ContainerInactiveTitle>
                         </Center>
 
-                        <Center w='60%'>
+                        <Center w='60%' justifyContent='start'>
                             <ItemTitleBold>
                                 {data.productName || ''}
                             </ItemTitleBold>
                         </Center>
                     </Flex>
                     {/* <Spacer  borderButtom='1px soild #f5f5f5'/> */}
-                    <Spacer borderBottom='1px dashed #d6d3d3' />
+                    {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
 
-                    <Flex>
-                        <Center w='30%'>
+                    <Flex> 
+                        <Center w='30%' justifyContent='end'>
                             <ContainerInactiveTitle fontSize='14px'>
                                 产品编号：
                             </ContainerInactiveTitle>
                         </Center>
 
-                        <Center w='60%'>
+                        <Center w='60%' justifyContent='start'>
                             <ItemTitleBold>
                                 {data.goodsId || ''}
                             </ItemTitleBold>
                         </Center>
                     </Flex>
-                    <Spacer borderBottom='1px dashed #d6d3d3' />
+                    {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
 
                     <Flex >
-                        <Center w='30%'>
+                        <Center w='30%'  justifyContent='end'>
                             <ContainerInactiveTitle fontSize='14px'>
-                                成交价格：
+                                产品月费：
                             </ContainerInactiveTitle>
                         </Center>
 
-                        <Center w='60%'>
+                        <Center w='60%' justifyContent='start'>
                             <ItemTitleBold>
-                                {data.dealPrice || ''}
+                                {data.monthlyFee || ''}
                             </ItemTitleBold>
                         </Center>
                     </Flex>
-                    <Spacer borderBottom='1px dashed #d6d3d3' />
+                    {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
 
                     <Flex>
-                        <Center w='30%'>
+                        <Center w='30%' justifyContent='end'>
                             <ContainerInactiveTitle fontSize='14px'>
                                 下单时间：
                             </ContainerInactiveTitle>
                         </Center>
 
-                        <Center w='60%'>
+                        <Center w='60%' justifyContent='start'>
                             <ItemTitleBold>
                                 {data.orderTime || ''}
                             </ItemTitleBold>
                         </Center>
                     </Flex>
-                    <Spacer borderBottom='1px dashed #d6d3d3' />
-
-                    <Flex >
-                        <Center w='30%'>
+                    {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
+                    <Flex>
+                        <Center w='30%' justifyContent='end'>
                             <ContainerInactiveTitle fontSize='14px'>
                                 邀请人：
                             </ContainerInactiveTitle>
                         </Center>
 
-                        <Center w='60%'>
+                        <Center w='60%' justifyContent='start'>
+                            <ItemTitleBold>
+                                {data.agentName ||''}
+                            </ItemTitleBold>
+                        </Center>
+                    </Flex>
+
+                    <Flex >
+                        <Center w='30%' justifyContent='end'>
+                            <ContainerInactiveTitle fontSize='14px'>
+                                邀请人电话：
+                            </ContainerInactiveTitle>
+                        </Center>
+
+                        <Center w='60%' justifyContent='start'>
                             <ItemTitleBold>
                                 {data.reference || ''}
                             </ItemTitleBold>
                         </Center>
                     </Flex>
-                    <Spacer borderBottom='1px dashed #d6d3d3' />
+                    {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
 
                     <Flex>
-                        <Center w='30%'>
+                        <Center w='30%' justifyContent='end'>
                             <ContainerInactiveTitle fontSize='14px'>
-                                订单描述：
+                                订单属性：
                             </ContainerInactiveTitle>
                         </Center>
 
-                        <Center w='60%'>
+                        <Center w='60%' justifyContent='start'>
                             <ItemTitleBold>
-                                {data.statusDescribe || ''}
+                                {ordersStatus}
                             </ItemTitleBold>
                         </Center>
                     </Flex>
 
                 </Stack>
             </PageModuleContainer>
+          
         </ChakraProvider>
     )
-
-
 }

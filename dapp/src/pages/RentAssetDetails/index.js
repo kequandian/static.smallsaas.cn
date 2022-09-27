@@ -23,7 +23,8 @@ import Avatar from 'zero-element-boot/lib/components/presenter/Avatar'
 import SetBarTitle from '@/components/setBarTitle'
 // const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/components/config/common';
-import { Button, Space, Toast } from 'antd-mobile'
+import Toast from 'antd-mobile/es/components/toast'
+import ImageViewer from 'antd-mobile/es/components/image-viewer'
 import RouterBox from 'zero-element-boot-presenter/lib/components/presenter/card/RouterBox';
 
 
@@ -146,7 +147,7 @@ export default function RentAssetDetails(props) {
       setLoginStatus(false)
     }
   }, [])
-
+  const [visible, setVisible] = useState(false)
   // console.log('detail', detail)
   return (
 
@@ -156,8 +157,15 @@ export default function RentAssetDetails(props) {
         {/* <div className='Global' /> */}
         <SetBarTitle text='房屋详情' />
         {/* <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.vrPicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}> */}
-        <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
+        <div onClick={() => setVisible(true)} style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
         </div>
+        <ImageViewer
+          image={handleVrSnapshotUrl(detail.cover)}
+          visible={visible}
+          onClose={() => {
+            setVisible(false)
+          }}
+        />
 
 
         {/* <PageModuleContainer fill='transparent'> */}
@@ -325,8 +333,17 @@ export default function RentAssetDetails(props) {
             </div> */}
           {
             Array.isArray(introducePicture) && introducePicture.map((item, index) => (
-              <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(item.url || item)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }} key={index}>
+              <>
+              <div onClick={() => setVisible(true)} style={{ backgroundImage: `url(${handleVrSnapshotUrl(item.url || item)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }} key={index}>
               </div>
+               <ImageViewer
+               image={handleVrSnapshotUrl(detail.cover)}
+               visible={visible}
+               onClose={() => {
+                 setVisible(false)
+               }}
+               />
+              </>
             ))
           }
 

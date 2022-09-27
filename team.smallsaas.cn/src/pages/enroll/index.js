@@ -46,7 +46,7 @@ export default function index(props) {
 
         values.appid = "Unicom5G"
         promiseAjax(api, values, { method: 'POST' }).then(resp => {
-            console.log('resp data = ', resp)
+            // console.log('resp data = ', resp)
             if (resp && resp.code === 200) {
                 Toast.show(
                     '注册成功！',

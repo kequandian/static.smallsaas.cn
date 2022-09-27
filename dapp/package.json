@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.3.0",
     "@loadable/component": "^5.10.1",
     "ahooks": "^2.4.0",
+    "antd-mobile": "^5.24.0",
     "framer-motion": "^4.1.17",
     "fs-extra": "^10.1.0",
     "lodash": "^4.17.19",

@@ -57,7 +57,7 @@ export default function index(props) {
                     <svg onClick={() => goBack()} t="1658717944661" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12442" width="24" height="24"><path d="M624.788992 204.047974 585.205965 164.464026 219.560038 530.185011 585.205965 895.864013 624.788992 856.280986 298.663014 530.16105Z" fill='#33333390' p-id="12443"></path></svg>
                 </Center>
                 <Center>
-                    <TopBarTitle> 超级管理员配置</TopBarTitle>
+                    <TopBarTitle> 我的主页</TopBarTitle>
                 </Center>
             </Flex>
 
@@ -88,15 +88,15 @@ export default function index(props) {
                     <ItemCart>
                         {(data.level === 'GENERAL_AGENT') ? (
                             <Router items={[
-                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/invite.svg", "title": "我的渠道码", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/myChannelCode?appid=${appid}&agentId=${data.agentId}` },
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/Channelcode.svg", "title": "我的渠道码", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/myChannelCode?appid=${appid}&agentId=${data.agentId}` },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/invite.svg", "title": "我的邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyInvite?level=2` },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/ThreeLevelAgent.svg", "title": "三级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyTeam?level=2" },
-                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "二级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SecondaryAgent?level=2" },
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/SecondaryAgent.svg", "title": "二级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SecondaryAgent?level=2" },
                             ]} />
                         ) : (data.level === 'SECONDARY_AGENT') ? (
                             <Router items={[
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/invite.svg", "title": "我的邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyInvite?level=2` },
-                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "二级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SecondaryAgent?level=2" },
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/SecondaryAgent.svg", "title": "二级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SecondaryAgent?level=2" },
                             ]} />
                         ) : (data.level === 'TERTIARY_AGENT') ? (
                             <Router items={[
@@ -116,7 +116,7 @@ export default function index(props) {
                                     { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/SetUp.svg", "title": "设置", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/Set/GeneralAgentSet?level=2" },
                                 ]} />
                                 <Router items={[
-                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyOrdersCode?appid=${appid}` },
+                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/Placeorder.svg", "title": "下单链接", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyOrdersCode?appid=${appid}` },
                                     // { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "选择app", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/SelectApply?" },
                                 ]} />
                             </>
@@ -127,7 +127,7 @@ export default function index(props) {
                                     { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "历史", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "" },
                                 ]} />
                                 <Router items={[
-                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/history.svg", "title": "下单邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyOrdersCode?appid=${appid}` },
+                                    { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/Placeorder.svg", "title": "下单链接", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyOrdersCode?appid=${appid}` },
                                 ]} />
                             </>
                         ) : (<></>)

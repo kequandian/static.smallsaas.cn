@@ -6,7 +6,7 @@ import MainList from '@/pages/CallingCard/MainList'
 
 export default function index(props) {
     const { channel} = props
-    console.log('props==',props)
+    // console.log('props==',props)
     // const channel = props.location.query.channel
 
     const [visible, setVisible] = useState(false);

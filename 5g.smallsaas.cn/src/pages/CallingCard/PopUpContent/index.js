@@ -14,7 +14,6 @@ import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/tex
 import Price from 'zero-element-boot-plugin-theme/lib/components/text/Price';
 import PrimarySubtitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimarySubtitle';
 import PrimaryTitle from 'zero-element-boot-plugin-theme/lib/components/text/PrimaryTitle';
-// import SignOffAddress from '@/pages/CallingCard/PopUpContent/SelectAddress'
 import useQuery from 'zero-element-boot/lib/components/hooks/useQuery'
 import AgreeSelector from '@/components/selector/AgreeSelector'
 require('./index.less');
@@ -29,28 +28,47 @@ import { history } from 'umi';
 
 export default function index(props) {
 
-    const { onClickList = [], postAddr, reference, safeCode, infoData, vendorCode } = props;
-    console.log('infoData ==', infoData)
+    const { onClickList = [],infoData, vendorCode,isClose} = props;
 
-    // let api = '/api/link/order/subNotOfterOrdertest'
+    // console.log('infoData ==', infoData)
+    console.log('isClose ==', isClose)
 
     // 获取验证码的api
-    let codeApi = '/api/link/code/safe-code'
+    // let codeApi = '/api/link/code/safe-code'
 
-    // console.log('props === ', props)
-    // console.log('api === ', api)
-    // const [channel, setChannel] = useState()
-
-    const [contactNum, setKeyContactNum] = useState('')
-    const [certName, setCertName] = useState('')
-    const [address, setAddress] = useState('')
-    const [certNo, setCertNo] = useState('')
+    const [contactNum, setKeyContactNum] = useState('') //手机号
+    const [certName, setCertName] = useState('') //姓名
+    const [address, setAddress] = useState('') //详细地址
+    const [certNo, setCertNo] = useState('') //身份证号
+    const [safeCode, setSafeCode] = useState('') //验证码
     const [postProvinceCode, setPostProvinceCode] = useState('')
     const [postDistrictCode, setpostDistrictCode] = useState('')
     const [postCityCode, setpostCityCode] = useState('')
 
-    // 产品信息
+    // console.log('safeCode=', safeCode)
+
+    // 获取产品信息
     const [ProductListData, setProductListData] = useState([])
+
+    // 回调选择的产品id
+    const [selectGoodsId, setSelectGoodsId] = useState('')
+
+    function onProductClick(goodsId) {
+        setSelectGoodsId(goodsId)
+    }
+
+    useEffect(_=>{
+        setCertName('')
+        setKeyContactNum('')
+        setAddress('')
+        setCertNo('')
+        setSafeCode('')
+        setPostProvinceCode('')
+        setpostDistrictCode('')
+        setpostCityCode('')
+        setSelectGoodsId('')
+
+    },[isClose])
 
     function productList() {
         const Data = {}
@@ -64,6 +82,81 @@ export default function index(props) {
         )
     }
 
+
+    // 获取验证码
+    function code() {
+        const codeData = {
+            // "certName": "傅庆发",
+            // "certNum": "445281199805293856",
+            // "contactNum": "15212165381",
+            // "cityCode": "445200",
+            // "provinceCode": "440000"
+            "certName": `${certName}`,
+            "certNo": `${certNo}`,
+            "contactNum": `${contactNum}`,
+        }
+        promiseAjax('/api/u/oauth/verification/send', codeData, { method: 'GET' }).then(resp => {
+            if (resp && resp.code === 200) {
+                Toast.show(
+                    '验证码发送成功',
+                    2
+                )
+            }
+        }
+        ).catch(errors => {
+            console.log('errors==', errors)
+            Toast.show(
+                '获取验证码失败!',
+                2
+            )
+        });
+    }
+
+    // 获取验证码条件提示
+    function VCprompt() {
+        if (!contactNum) {
+            Toast.show(
+                '请填写手机号',
+                2
+            )
+            if (!certNo) {
+                Toast.show(
+                    '请填写身份证号码',
+                    2
+                )
+                if (!certName) {
+                    Toast.show(
+                        '请填写真实姓名',
+                        2
+                    )
+                }
+            }
+        }
+        else {
+            if (!certNo) {
+                Toast.show(
+                    '请填写身份证号码',
+                    2
+                )
+                if (!certName) {
+                    Toast.show(
+                        '请填写真实姓名',
+                        2
+                    )
+                }
+            }
+            else {
+                if (!certName) {
+                    Toast.show(
+                        '请填写真实姓名',
+                        2
+                    )
+                }
+            }
+
+        }
+
+    }
 
     // 下单
     function validateData(values) {
@@ -82,49 +175,48 @@ export default function index(props) {
             "reference": `${infoData.phone}`,
             "postCityCode": `${postCityCode}`,
             "postDistrictCode": `${postDistrictCode}`,
-            "provinceCode": '440000',
             "postProvinceCode": `${postProvinceCode}`,
+            "provinceCode": '440000',
         }
 
         // 验证码限制
         const queryData = {
-            // "certNo": "44142719951224171X",
-            // "contactNum": "15488681212",
-            // "safeCode": "151853"
-            certNo,
-            contactNum,
-            safeCode
+            "certName": `${certName}`,
+            "certNo": `${certNo}`,
+            "safeCode": `${safeCode}`,
+            "contactNum": `${contactNum}`
         }
-        // promiseAjax('/api/link/code/check-code', queryData, { method: "PUT" })
-        //     .then(res => {
-        //         if (res && res.code === 200) {
-        //             console.log(res, '== 验证成功')
-        promiseAjax(api(), query, { method: 'POST' }).then(resp => {
-            if (resp && resp.data.code === 0) {
-                // console.log("resp ==", resp)
-                // alert('下单成功')
+        promiseAjax('/api/u/oauth/verification/check', queryData, { method: "GET" })
+            .then(res => {
+                if (res && res.code === 200) {
+                    console.log(res, '== 验证成功')
+                    promiseAjax(api(), query, { method: 'POST' }).then(resp => {
+                        if (resp && resp.data.code === 0) {
+                            console.log("resp ==", resp)
+                            Toast.show(
+                                '下单成功',
+                                2
+                            )
+                            setTimeout(() => {
+                                history.push(`/CallingCard?vendorCode=${vendorCode}`)
+                            }, 200)
+                        } else {
+                            Toast.show(
+                                '下单失败，请稍后重试!',
+                                2
+                            )
+                        }
+                    });
+
+                }
+            }).catch(errors => {
+                console.log('errors==', errors)
                 Toast.show(
-                    '下单成功',
+                    '验证码验证失败，请重新验证!',
                     2
                 )
-                setTimeout(() => {
-                    history.push('/CallingCard')
-                }, 200)
+            });
 
-            }
-            //         });
-            //     } else {
-            //         alert('验证码验证失败，请重新验证！')
-            //     }
-        }).catch(errors => {
-            console.log('errors==', errors)
-            // alert('下单失败，请稍后重试')
-            Toast.show(
-                '下单失败，请稍后重试',
-                2
-            )
-        });
-        // updateName(safeCode)
         submit()
     }
 
@@ -137,97 +229,60 @@ export default function index(props) {
     } = useForm()
 
 
-    // 获取验证码
-    function code() {
-        const codeData = {
-            // "certName": "傅庆发",
-            // "certNum": "445281199805293856",
-            // "contactNum": "15212165381",
-            // "cityCode": "445200",
-            // "provinceCode": "440000"
-            "certName":`${certName}`,
-            "certNo":`${certNo}`,
-            "contactNum":`${contactNum}`,
-        }
-        promiseAjax('/api/u/oauth/verification/send', codeData, { method: 'GET' }).then(resp => {
-            console.log('resp ==', resp)
-            if (resp && resp.data.code === 0) {
-                // alert('验证码发送成功')
-                Toast.show(
-                    '验证码发送成功',
-                    2
-                )
-            }
-        }
-        )
-    }
+
 
     // 判断是否同意协议的状态变量
     const [agreeStatus, setAgreeStatus] = useState(false)
 
-
+    // 表单内容
     function changContactNum(e) {
-        // console.log('change value = ', e.target.value)
         setKeyContactNum(e.target.value)
     }
-
     function changeCertName(e) {
         setCertName(e.target.value)
-        // console.log('certName ==', certName)
     }
-
+    function changeSafeCode(e) {
+        setSafeCode(e.target.value)
+    }
     function changeCertNo(e) {
         setCertNo(e.target.value)
-        // console.log('certNo ==', certNo)
-
     }
     function changeAddress(e) {
         setAddress(e.target.value)
     }
+
+    // 回调是否同意协议
     function CallBack(agreeStatus) {
         setAgreeStatus(agreeStatus)
-        // setChannel(channel)
-        // console.log('agreeStatus===', agreeStatus)
-    }
-    function warn() {
-        if (!/^\d{17}(\d|x)$/i.test(certNo.replace(/\s+/g, ''))) {
-            return certNoErro;
-            // return Promise.reject('输入的身份证长度或格式错误');
-        }
-        alert('请填写完信息')
-        // console.log('请填写完信息')
+        // resetValue()
     }
 
+    // function warn() {
+    //     if (!/^\d{17}(\d|x)$/i.test(certNo.replace(/\s+/g, ''))) {
+    //         return certNoErro;
+    //         // return Promise.reject('输入的身份证长度或格式错误');
+    //     }
+    //     alert('请填写完信息')
+    //     // console.log('请填写完信息')
+    // }
+
     // 拿到选择的地址区域编码等信息
-    function submit(Selectprovince, SelectCity, SelectRegion, postProvinceCode, postDistrictCode, postCityCode) {
-        // console.log('Selectprovince11  ==', Selectprovince)
-        // console.log(' SelectCity11 ==', SelectCity)
-        // console.log(' SelectRegion11 ==', SelectRegion)
-        // console.log(' postProvinceCode11 ==', postProvinceCode)
-        // console.log(' postDistrictCode11 ==', postDistrictCode)
-        // console.log(' postCityCode11 ==', postCityCode)
+    function submit(postProvinceCode, postDistrictCode, postCityCode) {
         setPostProvinceCode(postProvinceCode)
         setpostDistrictCode(postDistrictCode)
         setpostCityCode(postCityCode)
     }
 
 
-    // 回调选择的产品id
+    // console.log('selectGoodsId ==', selectGoodsId)
 
-    const [selectGoodsId, setSelectGoodsId] = useState('')
-
-    function onProductClick(goodsId) {
-        // console.log('11111')
-        // console.log('goodsId ==', goodsId)
-
-        setSelectGoodsId(goodsId)
-    }
-    console.log('selectGoodsId ==', selectGoodsId)
-
-
+    // const defaultValues = {};
     useEffect(_ => {
         productList()
+        // resetValue()
     }, [])
+
+
     return (
         <ChakraProvider>
             <Stack >
@@ -280,10 +335,9 @@ export default function index(props) {
                                     <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                 </Center>} />
                             <Input type='text' value={certName} placeholder='请填写真实姓名（已加密）' onChange={(e) => changeCertName(e)}
-                            // {...register('name', {
-                            //     minLength: { value: 10, message: '' },
-                            //     onkeyup: { value: "value.replace(/[^(\d)]/g" }
-                            //     // onblur="checkNum()"
+                            // {...register('certName', {
+                            // minLength: { value: 10, message: '' },
+                            // onkeyup: { value: "value.replace(/[^(\d)]/g" }
                             // })}
                             />
                         </InputGroup>
@@ -298,7 +352,6 @@ export default function index(props) {
                             <Input type='text' value={certNo} placeholder='请填写真实信息（已加密）' maxLength='18' onChange={(e) => changeCertNo(e)}
                             />
                         </InputGroup>
-
                         <InputGroup size='md'>
                             <InputLeftAddon children={
                                 <Center w='60px'>
@@ -316,10 +369,9 @@ export default function index(props) {
                                             获取验证码
                                         </div>
                                         :
-                                        <div style={{ color: '#a7b4c5', fontSize: '13px' }}  >
+                                        <div style={{ color: '#a7b4c5', fontSize: '13px' }} onClick={() => VCprompt()}  >
                                             获取验证码
                                         </div>
-
                                 }
                             </InputRightAddon>
                         </InputGroup>
@@ -332,13 +384,12 @@ export default function index(props) {
                                         </ItemTitle>
                                         <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                     </Center>} />
-                                <Input type='tel' value={safeCode} placeholder='六位数' maxLength='6' />
+                                <Input type='tel' value={safeCode} placeholder='六位数' maxLength='6' onChange={(e) => changeSafeCode(e)} />
                             </InputGroup>
 
                             {(certName && contactNum && contactNum.length == 11) ?
                                 (
                                     <>
-
                                         <InputGroup size='md'>
                                             <InputLeftAddon children={
                                                 <Center w='60px'>

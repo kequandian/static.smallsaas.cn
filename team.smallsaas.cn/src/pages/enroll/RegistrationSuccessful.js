@@ -36,7 +36,7 @@ export default function index(props) {
     // const [myAgentInfo] = useTokenRequest({ api: apiData });
 
     const [myAgentInfo, setAgentInfo] = useState()
-    console.log('myAgentInfo ==', myAgentInfo)
+    // console.log('myAgentInfo ==', myAgentInfo)
 
     function valuesData() {
         const query = {
