@@ -26,7 +26,7 @@ import { setEndpoint, setToken, getToken } from 'zero-element-boot/lib/component
 import Toast from 'antd-mobile/es/components/toast'
 import ImageViewer from 'antd-mobile/es/components/image-viewer'
 import RouterBox from 'zero-element-boot-presenter/lib/components/presenter/card/RouterBox';
-
+import Images from './images'
 
 export default function RentAssetDetails(props) {
   const endpoint = getEndpoint()
@@ -70,7 +70,7 @@ export default function RentAssetDetails(props) {
 
   //图片格式转化为url
   function handleVrSnapshotUrl(value) {
-    console.log('value ==', value)
+    // console.log('value ==', value)
 
     // console.log('value && value.length > 0 && Array.isArray(value) ==', value && value.length > 0 && value.indexOf("[") != -1)
     //判断value的格式
@@ -147,6 +147,8 @@ export default function RentAssetDetails(props) {
       setLoginStatus(false)
     }
   }, [])
+
+  // 图片展示状态
   const [visible, setVisible] = useState(false)
   // console.log('detail', detail)
   return (
@@ -333,21 +335,11 @@ export default function RentAssetDetails(props) {
             </div> */}
           {
             Array.isArray(introducePicture) && introducePicture.map((item, index) => (
-              <>
-              <div onClick={() => setVisible(true)} style={{ backgroundImage: `url(${handleVrSnapshotUrl(item.url || item)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }} key={index}>
-              </div>
-               <ImageViewer
-               image={handleVrSnapshotUrl(detail.cover)}
-               visible={visible}
-               onClose={() => {
-                 setVisible(false)
-               }}
-               />
-              </>
+             <Images item= {item} key={index} />
             ))
           }
 
-          <Spacer borderBottom='1px dashed #d6d3d3' />
+          {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
           <Spacer />
 
         </Stack>
