@@ -29,7 +29,7 @@ export default function index(props) {
     const { phone, validateCode, password } = props
     const localToken = 'eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NjI2LCJhY2NvdW50IjoiYWNjOTU2NjA5NjMiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoiIiwiaWF0IjoxNjYzNTY4OTc5LCJqdGkiOiI2MjYiLCJzdWIiOiJhY2M5NTY2MDk2MyIsImV4cCI6MTY2MzgyODE3OX0.VXJvXN8pLJGKthXGHFzoRb0oa6QykITeybKVyQn18yO-G_s-6OuGA5fKuRSPJKmi-jfNFDf4JZa3PA_9WkPbMw'
 
-    const [ code, setCode ] = useState(props.location.query.invitationCode)
+    const [code, setCode] = useState(props.location.query.invitationCode)
 
     let api = '/api/app/oauth/account/register'
 
@@ -41,7 +41,7 @@ export default function index(props) {
         formState: { errors, isSubmitting },
     } = useForm()
 
-
+    const [Permissions, SetPermissions] = useState([])
     function validateData(values) {
 
         values.appid = "Unicom5G"
@@ -53,9 +53,11 @@ export default function index(props) {
                     2
                 )
                 setToken(resp.data.accessToken)
-
-                setTimeout(()=> {
-                    history.push(`/enroll/RegistrationSuccessful`)
+                SetPermissions(resp.data.userTypeList)
+                // console.log('data=', )
+                // console.log('Permissions=',Permissions)
+                setTimeout(() => {
+                    history.push(`/enroll/RegistrationSuccessful?Permissions=${Permissions}`)
                 }, 200)
                 // history.push('/orders')
                 // getToken()
@@ -143,7 +145,7 @@ export default function index(props) {
                                 <Spacer />
                                 {/* <Button solid color='#0e639c' navigation>登录</Button> */}
                                 <Button width='100%' height='40px' colorScheme='telegram' variant='solid' isLoading={isSubmitting} type='submit' size='sm' >
-                                注册
+                                    注册
                                 </Button> </>
                             < Center h='50px' w='100%' bg='' onClick={login}>
                                 <Text fontSize='14px' color='#ffffff'>已有账号？去登录 </Text>
