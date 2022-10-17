@@ -37,55 +37,43 @@ export default function RentAssetDetails(props) {
   const api = `/api/u/house/rent/rentCommon/userRentAssetDetails/${urlQuery.query.id}?userId=${userId}`
 
   const [loading, setLoading] = useState(true)
-  const [detail, setDetail] = useState({})
+  const [detail, setDetail] = useState('')
   const [loginStatus, setLoginStatus] = useState(true)
-  // const [detail] = useTokenRequest({ api })
-  // if (detail === undefined || detail.length === 0) {
-  //   return <div></div>
-  // }
-  console.log('detail ==', detail.rentDescribe)
+
 
   function getDetail() {
-    promiseAjax(api)
-      .then(res => {
-        setLoading(false)
-        if (res.code == 200) {
-          console.log('res == ', res)
-          setDetail(res.data)
-        }
-      })
+    promiseAjax(api).then(res => {
+      setLoading(false)
+      if (res.code == 200) {
+        console.log('res == ', res)
+        let detailData = res.data
+        setDetail(detailData)
+      }
+    })
   }
+
+  //判断登录状态，未登录无法使用关注功能
+  useEffect(_ => {
+    getDetail()
+    if (!urlQuery.query.userId) {
+      setLoginStatus(false)
+    }
+  }, [])
 
   const { title = '', price = 0, area = 0, houseAssetModel = {}, rentDescribe = '', serverAvatar = '', serverName = '', serverPhone = '' } = detail
   const { houseType = '', floor = 0, direction = '', number, communityName = '', address } = houseAssetModel
 
-  // // 需要转换的数据
-  // const { cover = '', extra = '', houseTypePicture = '', introducePicture = '', slide = '', } = detail
-  // // console.log('detail==', detail);
-  // const { cadPicture = '' } = houseAssetModel
-  // // 已转换的数据
-  // let convertedExtra = convertStrToObj(extra)
-  // let convertedSlidesArr = convertStrToImgUrlArr(introducePicture, endpoint)
-  // let convertedCadPicture = convertStrToImgUrlArr(cadPicture, endpoint)
 
   //图片格式转化为url
   function handleVrSnapshotUrl(value) {
-    // console.log('value ==', value)
 
-    // console.log('value && value.length > 0 && Array.isArray(value) ==', value && value.length > 0 && value.indexOf("[") != -1)
-    //判断value的格式
-    // if (value && !(value.indexOf("[") != -1)) {
-    //   return endpoint + value
-    // }
-    // if (value && value.length > 0 && value.indexOf("[") != -1) {
-    //   return endpoint + JSON.parse(value)[0].url
-    // }
 
     return endpoint + value
   }
 
   //周边配套和家具家电数据
   const facilitiesData = detail.facilities
+  console.log('facilitiesData ==', facilitiesData)
   const homeData = detail.supportFacilities
 
   //照片展示的数据 转化格式
@@ -95,14 +83,9 @@ export default function RentAssetDetails(props) {
     introducePicture = JSON.parse(introducePicture)
   }
 
-  // const detailIntroducePicture =introducePicture && introducePicture.indexOf(',') != -1 ? introducePicture.split(',') : ''
-  console.log("introducePicture ==", introducePicture)
-  // console.log("detailIntroducePicture ==", detailIntroducePicture)
-
 
   //关注房屋
   const subscribeStatus = detail.subscribeStatus
-  // console.log("subscribeStatus ==", subscribeStatus)
 
   function onConcern() {
     const query = {
@@ -124,41 +107,19 @@ export default function RentAssetDetails(props) {
               1
             )
           }
-
-          // let concern = true
-          // setSubscribeStatus(!subscribeStatus)
           getDetail()
         }
       })
   }
 
-  // function prompt() {
-  //   Toast.show(
-  //     '您尚未登录，请先登录！',
-  //     100
-  //   )
-  // }
-
-
-  //判断登录状态，未登录无法使用关注功能
-  useEffect(_ => {
-    getDetail()
-    if (!urlQuery.query.userId) {
-      setLoginStatus(false)
-    }
-  }, [])
 
   // 图片展示状态
   const [visible, setVisible] = useState(false)
-  // console.log('detail', detail)
   return (
 
-    // urlQuery.query.userId ? (
     detail && JSON.stringify(detail) != '{}' ? (
       <ChakraProvider>
-        {/* <div className='Global' /> */}
         <SetBarTitle text='房屋详情' />
-        {/* <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.vrPicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}> */}
         <div onClick={() => setVisible(true)} style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
         </div>
         <ImageViewer
@@ -168,13 +129,8 @@ export default function RentAssetDetails(props) {
             setVisible(false)
           }}
         />
-
-
-        {/* <PageModuleContainer fill='transparent'> */}
         <Stack spacing='2' padding='10px  10px 0 10px '>
-
           <ContainerSubtitle>{title}</ContainerSubtitle>
-
           <Flex W='100%'>
             <Flex w='88%'>
               <Center w='' h=''>
@@ -187,9 +143,7 @@ export default function RentAssetDetails(props) {
                 <ItemTitleBold>元/月</ItemTitleBold>
               </Flex>
             </Flex>
-
             <Center h='14px' onClick={() => onConcern()}>
-
               {/* //判断登录状态，未登录无法使用关注功能 */}
               {loginStatus ?
                 (subscribeStatus ?
@@ -201,7 +155,6 @@ export default function RentAssetDetails(props) {
               }
             </Center>
           </Flex>
-
           <Flex>
             <Box w='30px' h='40px'>
               <svg t="1659672225263" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34319" width="30" height="30"><path d="M778.24 260.608m-20.48 0a20.48 20.48 0 1 0 40.96 0 20.48 20.48 0 1 0-40.96 0Z" p-id="34320" fill="#8a8a8a"></path><path d="M479.232 904.704c7.68 10.752 19.968 16.896 32.768 16.896 13.312 0 25.088-6.144 32.768-16.896 27.648-37.376 98.816-135.68 162.304-241.152C784.896 532.992 824.32 435.2 824.32 372.736c0-11.264-9.216-20.48-20.48-20.48s-20.48 9.216-20.48 20.48c0 68.608-71.168 237.568-271.36 507.392-200.192-269.312-271.36-438.784-271.36-507.392 0-149.504 121.856-270.848 271.36-270.848 79.36 0 154.624 34.816 206.848 95.232 7.168 8.704 20.48 9.728 28.672 2.048 8.704-7.168 9.728-20.48 2.048-28.672-59.904-69.632-146.432-109.568-237.568-109.568-172.032 0-312.32 139.776-312.32 311.808 0 62.464 39.424 160.256 117.248 290.816 63.488 105.472 134.656 203.776 162.304 241.152zM688.64 936.448h-353.28c-11.264 0-20.48 9.216-20.48 20.48s9.216 20.48 20.48 20.48h353.28c11.264 0 20.48-9.216 20.48-20.48s-9.216-20.48-20.48-20.48z" p-id="34321" fill="#8a8a8a"></path><path d="M343.04 368.128c0 93.184 75.776 168.96 168.96 168.96s168.96-75.776 168.96-168.96-75.776-168.96-168.96-168.96-168.96 75.776-168.96 168.96z m296.96 0c0 70.656-57.344 128-128 128s-128-57.344-128-128 57.344-128 128-128 128 57.344 128 128z" p-id="34322" fill="#8a8a8a"></path></svg>
@@ -213,87 +166,26 @@ export default function RentAssetDetails(props) {
           <Spacer borderBottom='1px dashed #d6d3d3' />
           <PageSectionTitle>简介</PageSectionTitle>
         </Stack>
-        {/* </PageModuleContainer> */}
-        <RouterBox items={[
-          { "title": "面积", "value": `${area || '0'}` },
-          { "title": "房型", "value": `${houseType || '0'}` },
-          { "title": "楼层", "value": `${floor || '0'}` },
-          { "title": "朝向", "value": `${direction || '0'}` },
-        ]} />
-        {/* <PageModuleContainer fill='transparent'> */}
+          <RouterBox columns='3' items={[
+            { "title": "面积", "value": `${area || '0'}` },
+            { "title": "房型", "value": `${houseType || '0'}` },
+            // { "title": "楼层", "value": `${floor || '0'}` },
+            { "title": "朝向", "value": `${direction || '0'}` },
+          ]} />
         <Stack spacing='2' padding='0 10px 10px 10px'>
-          {/* <Flex w='40%'>
-              <Center w='' h=''>
-                <PageSection>{communityName}-</PageSection>
-              </Center>
-              <PageSection>{number}</PageSection>
-            </Flex> */}
-          {/* <Flex w=''>
-              <Flex w='50%'>
-                <Center>
-                  <ContainerInactiveTitle>面积：</ContainerInactiveTitle>
-                </Center>
-                <PageSection> {area} m²</PageSection>
-              </Flex>
-              <Flex>
-                <Center>
-                  <ContainerInactiveTitle>房型：</ContainerInactiveTitle>
-                </Center>
-                <PageSection> {houseType}</PageSection>
-              </Flex>
-            </Flex>
-
-            <Flex>
-              <Flex w='50%'>
-                <Center>
-                  <ContainerInactiveTitle>楼层：</ContainerInactiveTitle>
-                </Center>
-                <PageSection>  {floor}</PageSection>
-              </Flex>
-              <Flex>
-                <Center>
-                  <ContainerInactiveTitle>朝向：</ContainerInactiveTitle>
-                </Center>
-                <PageSection>  {direction}</PageSection>
-              </Flex>
-            </Flex>
-
-            <Flex>
-              <Flex w='50%'>
-                <Center>
-                  <ContainerInactiveTitle>小区：</ContainerInactiveTitle>
-                </Center>
-                <PageSection>  {communityName}</PageSection>
-              </Flex>
-              <Flex>
-                <Center>
-                  <ContainerInactiveTitle>门牌号：</ContainerInactiveTitle>
-                </Center>
-                <PageSection>  {number}</PageSection>
-              </Flex>
-            </Flex> */}
-
           <Spacer borderBottom='1px dashed #d6d3d3' />
           <Spacer />
-
           <PageSectionTitle>家具家电</PageSectionTitle>
           <ConditionalIem columns='3' homeData={homeData} />
-
 
           <PageSectionTitle>房子描述</PageSectionTitle>
           <CssCart background='#' border='1px dotted  #d0cdcd' height='' borderRadius='4px' padding='8px'>
             <p>
-              {/* <span style={{ fontSize: '14px', color: '#9299a5' }}> 描述：</span> */}
               <span style={{ fontSize: '14px' }} >{detail.rentDescribe}</span>
             </p>
           </CssCart>
           <Spacer />
-          {/* <Container>
-                {
-                  convertedExtra && convertedExtra.tags.map((item, index) => <Tag key={index}>{item.tagName}</Tag>
-                  )
-                }
-              </Container> */}
+
           <Spacer borderBottom='1px dashed #d6d3d3' />
 
           <PageSectionTitle>周边配套</PageSectionTitle>
@@ -302,12 +194,9 @@ export default function RentAssetDetails(props) {
 
           <Spacer />
           <Spacer borderBottom='1px dashed #d6d3d3' />
-
           <PageSectionTitle> 置业顾问 </PageSectionTitle>
-          {/* 
-              <AvatarCard title={serverName} subtitle={serverPhone} avatar={serverAvatar} navigation={''}>
-                {''}
-              </AvatarCard> */}
+
+
           <Flex boxShadow='0 0px 8px rgba(0, 0, 0, 0.08) ' padding='8px 0' >
             <Avatar size='70px' url={serverAvatar} />
             <Stack spacing='1'>
@@ -330,52 +219,18 @@ export default function RentAssetDetails(props) {
           </Flex>
           <Spacer />
           <Spacer />
-          <PageSectionTitle>照片展示</PageSectionTitle>
-          {/* <div style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.houseAssetModel.houseTypePicture)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
-            </div> */}
           {
             Array.isArray(introducePicture) && introducePicture.map((item, index) => (
-             <Images item= {item} key={index} />
+              <Images item={item} key={index} />
             ))
           }
-
-          {/* <Spacer borderBottom='1px dashed #d6d3d3' /> */}
           <Spacer />
-
         </Stack>
-        {/* </PageModuleContainer> */}
       </ChakraProvider >
     ) : (
       <Center h='500px'>
         <Spin spinning={loading}></Spin>
       </Center>
     )
-
   )
 }
-
-// const convertStrToObj = str => {
-//   if (str) {
-//     let newObj = JSON.parse(str)
-//     return newObj
-//   }
-// }
-
-// const handleUrl = (str, endpoint) => endpoint + str
-
-// // 将图片字段的字符串转成Url
-// const convertStrToImgUrl = (str, endpoint) => {
-//   if (str) {
-//     let trimmed = str.slice(1, -1)
-//     return endpoint + trimmed
-//   }
-// }
-// // 将图片字段的字符串转成Url数组
-// const convertStrToImgUrlArr = (str, endpoint) => {
-//   if (str) {
-//     let trimmed = str.slice(1, -1)
-//     let arr = trimmed.split(',')
-//     let objArr = arr.map(item => JSON.parse(item))
-//     return objArr.map(item => endpoint + item.url)
-//   }
-// }
