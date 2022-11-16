@@ -120,8 +120,15 @@ export default function RentAssetDetails(props) {
     detail && JSON.stringify(detail) != '{}' ? (
       <ChakraProvider>
         <SetBarTitle text='房屋详情' />
-        <div onClick={() => setVisible(true)} style={{ backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`, backgroundSize: '100% 100%', width: '100%', height: '260px' }}>
-        </div>
+        <div onClick={() => setVisible(true)} style={{
+          backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`,
+          backgroundRepeat: " no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: 'cover',
+          width: '100%',
+          height: '260px'
+        }}
+        />
         <ImageViewer
           image={handleVrSnapshotUrl(detail.cover)}
           visible={visible}
@@ -166,12 +173,23 @@ export default function RentAssetDetails(props) {
           <Spacer borderBottom='1px dashed #d6d3d3' />
           <PageSectionTitle>简介</PageSectionTitle>
         </Stack>
-          <RouterBox columns='3' items={[
-            { "title": "面积", "value": `${area || '0'}` },
-            { "title": "房型", "value": `${houseType || '0'}` },
-            // { "title": "楼层", "value": `${floor || '0'}` },
-            { "title": "朝向", "value": `${direction || '0'}` },
-          ]} />
+        <Flex display="flex" padding='0 30px' justifyContent='center' fontWeight='bold' >
+          <Box w='30%' display="flex" justifyContent='center'>面积</Box>
+          <Box w='30%' display="flex" justifyContent='center'>房型</Box>
+          <Box w='30%' display="flex" justifyContent='center'>朝向</Box>
+        </Flex>
+        <Flex display="flex" padding='0 30px' justifyContent='center' color='#8a8a8a' margin='10px 0'>
+          <Box w='30%' display="flex" justifyContent='center'>{area || '0'}m²</Box>
+          <Box w='30%' display="flex" justifyContent='center'>{houseType || '0'}</Box>
+          <Box w='30%' display="flex" justifyContent='center'>{direction || '0'}</Box>
+        </Flex>
+        {/* 
+        <RouterBox columns='3' items={[
+          { "title": "面积", "value": `${area || '0'}` },
+          { "title": "房型", "value": `${houseType || '0'}` },
+          // { "title": "楼层", "value": `${floor || '0'}` },
+          { "title": "朝向", "value": `${direction || '0'}` },
+        ]} /> */}
         <Stack spacing='2' padding='0 10px 10px 10px'>
           <Spacer borderBottom='1px dashed #d6d3d3' />
           <Spacer />
