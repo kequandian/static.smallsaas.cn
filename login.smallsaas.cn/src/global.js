@@ -8,7 +8,7 @@ import { Cart, Circle,HightlightCart,HoverShadowCart,Rectangle,Round,SelectCart}
 
 
 if (process.env.NODE_ENV == 'development') {
-  setEndpoint('https://house.cloud.smallsaas.cn');
+  // setEndpoint('https://house.cloud.smallsaas.cn');
   // setEndpoint('http://app1.console.smallsaas.cn:8001');
 
   // setEndpoint('http://demo.smallsaas.cn:80');
