@@ -155,7 +155,8 @@ export default function index(props) {
                     <Text fontSize='14px' color='#333333'>还没有账号？去注册 </Text>
                 </Center> */}
                 < Center>
-                <a href='https://graph.qq.com/oauth2.0/authorize?client_id=101995206&response_type=code&redirect_uri=https://www.smallsaas.cn/#/Home' target='_blank'>
+                <a href='https://graph.qq.com/oauth2.0/authorize?client_id=101995206&response_type=code&redirect_uri=https://www.smallsaas.cn/login/qq' target='_blank'>
+                {/* <a href='https://graph.qq.com/oauth2.0/authorize?client_id=101995206&response_type=code&redirect_uri=https://www.smallsaas.cn/#/Home' target='_blank'> */}
                     <Flex w='160px' h='50px' bg='#ffffff20' borderRadius='40px' padding='16px 14px' >
                         使用第三方登录
                         <Center h='12px' margin='0 2px'>
