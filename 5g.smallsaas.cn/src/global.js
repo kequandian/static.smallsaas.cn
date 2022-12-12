@@ -15,7 +15,7 @@ if (process.env.NODE_ENV == 'development') {
   // setToken("eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzgsInVzZXJJZCI6MzI2LCJhY2NvdW50IjoiYmE5MGZiYTYwOGEyNDZkYWEyNWI5NDQ0NWE4NzA0YTgiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjo2NywiaWF0IjoxNjYwMDk4MjI3LCJqdGkiOiIzMjYiLCJzdWIiOiJiYTkwZmJhNjA4YTI0NmRhYTI1Yjk0NDQ1YTg3MDRhOCIsImV4cCI6MTY2MDM1NzQyN30.HcWbGkvE-FulIyLjqojdWVFxp0jztx0hCVBpkB0SxVjX4D772_z8zX_7cEXQvNKvwjzdGvQY2pw-yUlfU1kMyw")
 } else {
   // setEndpoint('https://app1.console.smallsaas.cn:8001');
-  setEndpoint('https://house.cloud.smallsaas.cn');
+  setEndpoint('https://5g.smallsaas.cn');
 
 }
 

@@ -7,10 +7,10 @@ export default {
      { rel: 'icon', href: 'https://static.smallsaas.cn/house/2022/image/SmallSaaS/SmallSaaS.png' },
    ],
 
-  hash: true,
-  history: {
-    type: 'hash',
-  },
+  // hash: true,
+  // history: {
+  //   type: 'hash',
+  // },
   // dynamicImport: {
   //   loading: '@/components/loading'
   // },
@@ -37,5 +37,5 @@ export default {
   },
 
   // outputPath: '/dist/dev-logs',
-  publicPath: process.env.NODE_ENV === 'production' ? './model-smallsaas/' : '/',  //设置 dist/index.html 访问 js和css路径
+  publicPath: process.env.NODE_ENV === 'production' ? '/model-smallsaas/' : '/',  //设置 dist/index.html 访问 js和css路径
 }

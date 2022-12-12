@@ -1,0 +1,15 @@
+# @endpoint = http://119.91.20.40:8000
+# @endpoint = http://buy.smallsaas.cn:8000
+@endpoint = https://house.cloud.smallsaas.cn
+
+
+@token = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6MzE4LCJhY2NvdW50IjoiYjQxYTg2OTRhNjM4NDIyNWJmNWMxOTQyZjdmZjIyNTYiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxNDYxLCJpYXQiOjE2NjkxMTMzMTQsImp0aSI6IjMxOCIsInN1YiI6ImI0MWE4Njk0YTYzODQyMjViZjVjMTk0MmY3ZmYyMjU2IiwiZXhwIjoxNjY5MzcyNTE0fQ.HnIuikkC0ugUeZAoqhtVgl4wYiJUgkuL9v8kd46YNIBpdCj-DujDVfHIUgfCqjp0mP23o-3hP697swHrP2qPiQ
+
+### 查询团长
+POST {{endpoint}}/api/oauth/qq/login
+
+{
+    "app": "Report",
+    "code": "900683B1A56B940E7100B5057281BF98"
+}
+

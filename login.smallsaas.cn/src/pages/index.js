@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Login from '@/pages/login/login'
+import Login from '@/pages/login/QQInterconnection'
 // import Testorders from '@/pages/test/Testorders'
 // import TestManagingDirector from '@/pages/test/testMy/TestManagingDirector'
 import { history } from 'umi';
@@ -21,11 +21,12 @@ export default function index(props) {
   //     history.push('/SelectApply')
   //   }
   // }
+      history.push('/login/QQInterconnection')
 
 
   return (
-    // <></>
-    <Login />
+    <></>
+    // <Login />
     // <SuperSettings />
 
   )
