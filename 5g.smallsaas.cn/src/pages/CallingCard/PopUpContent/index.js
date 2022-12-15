@@ -166,6 +166,7 @@ export default function index(props) {
             certNo,
             contactNum,
             vendorCode,
+            safeCode,
             "coChannel": `${infoData.coChannel}`,
             "coUserid": `${infoData.coUserId}`,
             // "selectGoodsId": `${selectGoodsId}`,
@@ -180,16 +181,16 @@ export default function index(props) {
         }
 
         // 验证码限制
-        const queryData = {
-            "certName": `${certName}`,
-            "certNo": `${certNo}`,
-            "safeCode": `${safeCode}`,
-            "contactNum": `${contactNum}`
-        }
-        promiseAjax('/api/u/oauth/verification/check', queryData, { method: "GET" })
-            .then(res => {
-                if (res && res.code === 200) {
-                    console.log(res, '== 验证成功')
+        // const queryData = {
+        //     "certName": `${certName}`,
+        //     "certNo": `${certNo}`,
+        //     "safeCode": `${safeCode}`,
+        //     "contactNum": `${contactNum}`
+        // }
+        // promiseAjax('/api/u/oauth/verification/check', queryData, { method: "GET" })
+        //     .then(res => {
+                // if (res && res.code === 200) {
+                    // console.log(res, '== 验证成功')
                     promiseAjax(api(), query, { method: 'POST' }).then(resp => {
                         if (resp && resp.data.code === 0) {
                             console.log("resp ==", resp)
@@ -208,14 +209,14 @@ export default function index(props) {
                         }
                     });
 
-                }
-            }).catch(errors => {
-                console.log('errors==', errors)
-                Toast.show(
-                    '验证码验证失败，请重新验证!',
-                    2
-                )
-            });
+                // }
+            // }).catch(errors => {
+            //     console.log('errors==', errors)
+            //     Toast.show(
+            //         '验证码验证失败，请重新验证!',
+            //         2
+            //     )
+            // });
 
         submit()
     }

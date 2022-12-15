@@ -4,7 +4,7 @@ export default function useApi(props) {
     // let api = '/api/link/order/subNotOfterOrdertest'
 
     //正式api
-    let api='/api/link/order/subOfterOrder'
+    let api='/api/link/order/subNotOfterOrder'
 
     return (api)
 }
