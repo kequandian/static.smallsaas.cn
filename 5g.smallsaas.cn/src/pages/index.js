@@ -45,9 +45,56 @@ export default function index(props) {
   //   })
   // }
 
-  // useEffect(_ => {
-  //   info()
-  // }, [])
+
+
+  var imgUrl = "https://static.smallsaas.cn/house/2022/svg/group/moerdeng/detailedDiagram/moerdeng2.png";
+  var lineLink = "https://5g.smallsaas.cn/a#/";
+  var descContent = "分享到朋友圈只显示标题"; //分享给好友的时候显示标题和描述，分享到朋友圈只显示标题
+  var shareTitle = "111111111111111";
+  var appid = "";
+  var share = {
+    shareFriend: function (argv) {
+      console.log('111111111111')
+        WeixinJSBridge.invoke('sendAppMessage', {
+          "appid": appid,
+          "img_url": imgUrl,
+          "img_width": "200",
+          "img_height": "200",
+          "link": lineLink,
+          "desc": descContent,
+          "title": shareTitle
+        }, function (res) {
+          //_report("send_msg", res.err_msg);
+        })
+    },
+    //分享到朋友圈
+    shareTimeline: function () {
+      WeixinJSBridge.invoke("shareTimeline", {//
+        "img_url": imgUrl,
+        "img_width": "200",
+        "img_height": "200",
+        "link": lineLink,
+        "desc": descContent,
+        "title": shareTitle
+      }, function (res) {
+        //_report("timeline", res.err_msg);
+      });
+    }
+  }
+  setTimeout(function () {
+    document.addEventListener("WeixinJSBridgeReady", function onBridgeReady() {//
+      //发送给好友
+      WeixinJSBridge.on("menu:share:appmessage", function (argv) {
+        share.shareFriend();
+      });
+      //分享到朋友圈
+      WeixinJSBridge.on("menu:share:timeline", function (argv) {
+        share.shareTimeline();
+      });
+    }, false);
+  }, 1000)
+
+
   return (
     !vendorCode ? (
       // vendorCode ? (
@@ -63,8 +110,8 @@ export default function index(props) {
       </Stack>
     ) : (
       <CallingCard
-      vendorCodeData={vendorCode}
-        // infoData={infoData}
+        vendorCodeData={vendorCode}
+      // infoData={infoData}
       // coUserid={coUserid}
       />
     )

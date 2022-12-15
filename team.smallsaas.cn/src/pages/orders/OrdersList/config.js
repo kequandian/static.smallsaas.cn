@@ -11,7 +11,7 @@ export default function index(props) {
   const { appid='Unicom5G',id} =props
   
   // const api ='/api/OrdersListData' 
-  const api =`/api/u/saasAgent/orderList/${appid}`
+  const api =`/api/u/saasAgent/orderList/${appid}?pageSize=50`
 
   const [data] = useTokenRequest({ api });
 
