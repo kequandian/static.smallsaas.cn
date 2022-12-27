@@ -18,7 +18,6 @@ export default function index(props) {
             newItem = []
         }
     });
-
     let showList = [];
     newList.map((item, index) => {
         if (pageList.includes(index)) {
@@ -30,7 +29,6 @@ export default function index(props) {
         resetPageList()
     }
 
-    // console.log('showList == ', showList)
 
     // function callBackData() {
     //     if (cb) {

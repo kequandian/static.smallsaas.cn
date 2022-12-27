@@ -22,6 +22,7 @@ export default function index(props) {
     const vendorCode = vendorCodeData || vendorCodelValue
     // console.log('vendorCode =', vendorCode)
 
+    const [selectGoodsId, setSelectGoodsId] = useState('');
     const [visible, setVisible] = useState(false);
     const [isClose, setClose] = useState(false);
     const [onClickList, setOnClickList] = useState([]);
@@ -59,10 +60,12 @@ export default function index(props) {
         info()
     }, [])
 
-
+    function cb(selectGoodsId){
+        setSelectGoodsId(selectGoodsId)
+    }
     return (
         <>
-            <MainList onNumberClick={showDrawer} />
+            <MainList onNumberClick={showDrawer} cbId={(selectGoodsId) =>cb(selectGoodsId)} />
             <Drawer
                 title="下单"
                 placement='bottom'
@@ -71,16 +74,8 @@ export default function index(props) {
                 onClose={onClose}
                 visible={visible}
                 maskClosable={false}
-            // extra={
-            //   <Space>
-            //     <Button onClick={onClose}>Cancel</Button>
-            //     <Button type="primary" onClick={onClose}>
-            //       OK
-            //     </Button>
-            //   </Space>
-            // }
             >
-                <PopUpContent onClickList={onClickList} vendorCode={vendorCode} infoData={infoData} isClose={isClose}
+                <PopUpContent onClickList={onClickList} vendorCode={vendorCode} infoData={infoData} isClose={isClose} selectGoodsId={selectGoodsId}
                 />
             </Drawer>
         </>

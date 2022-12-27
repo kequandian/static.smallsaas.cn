@@ -28,10 +28,9 @@ import { history } from 'umi';
 
 export default function index(props) {
 
-    const { onClickList = [],infoData, vendorCode,isClose} = props;
+    const { onClickList = [], infoData, vendorCode, isClose, selectGoodsId } = props;
 
     // console.log('infoData ==', infoData)
-    console.log('isClose ==', isClose)
 
     // 获取验证码的api
     // let codeApi = '/api/link/code/safe-code'
@@ -45,19 +44,21 @@ export default function index(props) {
     const [postDistrictCode, setpostDistrictCode] = useState('')
     const [postCityCode, setpostCityCode] = useState('')
 
-    // console.log('safeCode=', safeCode)
+    // console.log('postProvinceCode=', postProvinceCode)
+    // console.log('postDistrictCode=', postDistrictCode)
+    // console.log('postCityCode=', postCityCode)
 
-    // 获取产品信息
-    const [ProductListData, setProductListData] = useState([])
+    // // 获取产品信息
+    // const [ProductListData, setProductListData] = useState([])
 
-    // 回调选择的产品id
-    const [selectGoodsId, setSelectGoodsId] = useState('')
+    // // 回调选择的产品id
+    // const [selectGoodsId, setSelectGoodsId] = useState('')
 
-    function onProductClick(goodsId) {
-        setSelectGoodsId(goodsId)
-    }
+    // function onProductClick(goodsId) {
+    //     setSelectGoodsId(goodsId)
+    // }
 
-    useEffect(_=>{
+    useEffect(_ => {
         setCertName('')
         setKeyContactNum('')
         setAddress('')
@@ -66,21 +67,21 @@ export default function index(props) {
         setPostProvinceCode('')
         setpostDistrictCode('')
         setpostCityCode('')
-        setSelectGoodsId('')
+        // setSelectGoodsId('')
 
-    },[isClose])
+    }, [isClose])
 
-    function productList() {
-        const Data = {}
-        promiseAjax(`/api/u/accountProduct/Unicom5G`, Data, { method: 'GET' }).then(resp => {
-            if (resp && resp.code === 200) {
-                let ListData = resp.data.records
-                // console.log('ListData ==', ListData)
-                setProductListData(ListData)
-            }
-        }
-        )
-    }
+    // function productList() {
+    //     const Data = {}
+    //     promiseAjax(`/api/u/accountProduct/Unicom5G`, Data, { method: 'GET' }).then(resp => {
+    //         if (resp && resp.code === 200) {
+    //             let ListData = resp.data.records
+    //             // console.log('ListData ==', ListData)
+    //             setProductListData(ListData)
+    //         }
+    //     }
+    //     )
+    // }
 
 
     // 获取验证码
@@ -172,7 +173,7 @@ export default function index(props) {
             // "selectGoodsId": `${selectGoodsId}`,
             "cityCode": "445200",
             "phoneNum": `${onClickList[0]}`,
-            "goodsId": `${selectGoodsId}`,
+            "productId ": `${selectGoodsId}`,
             "reference": `${infoData.phone}`,
             "postCityCode": `${postCityCode}`,
             "postDistrictCode": `${postDistrictCode}`,
@@ -189,34 +190,35 @@ export default function index(props) {
         // }
         // promiseAjax('/api/u/oauth/verification/check', queryData, { method: "GET" })
         //     .then(res => {
-                // if (res && res.code === 200) {
-                    // console.log(res, '== 验证成功')
-                    promiseAjax(api(), query, { method: 'POST' }).then(resp => {
-                        if (resp && resp.data.code === 0) {
-                            console.log("resp ==", resp)
-                            Toast.show(
-                                '下单成功',
-                                2
-                            )
-                            setTimeout(() => {
-                                history.push(`/CallingCard?vendorCode=${vendorCode}`)
-                            }, 200)
-                        } else {
-                            Toast.show(
-                                '下单失败，请稍后重试!',
-                                2
-                            )
-                        }
-                    });
+        // if (res && res.code === 200) {
+        // console.log(res, '== 验证成功')
+        promiseAjax(api(), query, { method: 'POST' }).then(resp => {
+            if (resp && resp.data.code === 0) {
+                Toast.show(
+                    '下单成功',
+                    2
+                )
+            } else {
+                Toast.show(
+                    '下单失败，请稍后重试!',
+                    2
+                )
+            }
+            setTimeout(() => {
+                history.push(`/CallingCard?vendorCode=${vendorCode}`)
+            }, 300)
+        }).catch(message => {
+            console.log('message==', message)
+        });
 
-                // }
-            // }).catch(errors => {
-            //     console.log('errors==', errors)
-            //     Toast.show(
-            //         '验证码验证失败，请重新验证!',
-            //         2
-            //     )
-            // });
+        // }
+        // }).catch(errors => {
+        //     console.log('errors==', errors)
+        //     Toast.show(
+        //         '验证码验证失败，请重新验证!',
+        //         2
+        //     )
+        // });
 
         submit()
     }
@@ -272,6 +274,9 @@ export default function index(props) {
         setPostProvinceCode(postProvinceCode)
         setpostDistrictCode(postDistrictCode)
         setpostCityCode(postCityCode)
+        // console.log("postProvinceCode", postProvinceCode)
+        // console.log("postDistrictCode", postDistrictCode)
+        // console.log("postCityCode", postCityCode)
     }
 
 
@@ -279,7 +284,7 @@ export default function index(props) {
 
     // const defaultValues = {};
     useEffect(_ => {
-        productList()
+        // productList()
         // resetValue()
     }, [])
 
@@ -313,14 +318,14 @@ export default function index(props) {
                         请如实填写信息，以便我们及时为您送达
                     </PrimarySubtitle>
                 </Center>
-
+                {/* 
                 <Center w='' onClick={() => productList()} borderTop='1px dashed #333333'>
                     <ItemTitle>
                         请选择产品
                     </ItemTitle>
                     <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                 </Center>
-                <ProductList items={ProductListData} onProductClick={(goodsId) => onProductClick(goodsId)} selectGoodsId={selectGoodsId} />
+                <ProductList items={ProductListData} onProductClick={(goodsId) => onProductClick(goodsId)} selectGoodsId={selectGoodsId} /> */}
 
                 <Spacer />
                 <Spacer />
@@ -399,7 +404,7 @@ export default function index(props) {
                                                     </ItemTitle>
                                                     <PrimaryTitle fontSize='18px' color='#ff0704'> *</PrimaryTitle>
                                                 </Center>} />
-                                            <SignOffAddress submit={(Selectprovince, SelectCity, SelectRegion, postProvinceCode, postDistrictCode, postCityCode) => submit(Selectprovince, SelectCity, SelectRegion, postProvinceCode, postDistrictCode, postCityCode)} />
+                                            <SignOffAddress submit={(postProvinceCode, postDistrictCode, postCityCode) => submit(postProvinceCode, postDistrictCode, postCityCode)} />
                                         </InputGroup>
                                         <InputGroup size='md'>
                                             <InputLeftAddon children={

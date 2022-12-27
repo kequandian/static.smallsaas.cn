@@ -82,17 +82,18 @@ export default function index(props) {
   }
 
 
-  const cb = (id, numProvinceName) => {
+  const cb = (id, numProvinceName, numProvinceCode) => {
     city(id)
     SetSelectProvince(numProvinceName)
     SetClickStatus(true)
     SetSelectCity('')
     SetSelectRegion('')
+    // console.log('numProvinceCode ==', numProvinceCode);
+
   };
 
-  function cbCity(id, numCityName) {
-    // console.log('cbCityid ==', id);
-    // console.log('numCityName ==', numCityName);
+  function cbCity(id, numCityName, numCityCode) {
+    // console.log('numCityCode ==', numCityCode);
     Region(id)
     SetSelectCity(numCityName)
     SetClickStatus(true)
@@ -101,60 +102,19 @@ export default function index(props) {
   function cbRegion(postDistrictName, postProvinceCode, postDistrictCode, postCityCode) {
     SetSelectRegion(postDistrictName)
     SetClickStatus(!ClickStatus)
-
-  // 提交到下一个文件
-    submit(Selectprovince, SelectCity, postDistrictName,postProvinceCode,postDistrictCode,postCityCode)
-
+    // 提交到下一个文件
+    submit(postProvinceCode, postDistrictCode, postCityCode)
+    // console.log("postProvinceCode", postProvinceCode)
+    // console.log("postDistrictCode", postDistrictCode)
+    // console.log("postCityCode", postCityCode)
   };
 
 
   function onBlurStatus() {
-    // SetClickStatus(false)
   }
   function onFocusStatus() {
-    // SetClickStatus(true)
     SetFocusStatus(true)
   }
-
-  // const status = FocusStatus && Selectprovince&&
-
-
-  // console.log('ClickStatus==',ClickStatus)
-
-  // const options = [
-  //   {
-  //     value: '广州',
-  //     label: '广州',
-  //     children: [
-  //       {
-  //         value: '广州市',
-  //         label: '广州市',
-  //         children: [
-  //           {
-  //             value: '西湖',
-  //             label: '西湖',
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'jiangsu',
-  //     label: 'Jiangsu',
-  //     children: [
-  //       {
-  //         value: 'nanjing',
-  //         label: 'Nanjing',
-  //         children: [
-  //           {
-  //             value: 'zhonghuamen',
-  //             label: 'Zhong Hua Men',
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // ];
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       <Stack w='100%' spacing='0' borderRadius='0 0 4px 4px' >
@@ -184,7 +144,7 @@ export default function index(props) {
                     (
                       provinceList && provinceList.map((item, i) => (
                         <div key={i} >
-                          <SignOffAddressItem {...item} cb={(id, numProvinceName) => cb(id, numProvinceName)} />
+                          <SignOffAddressItem {...item} cb={(id, numProvinceName, numProvinceCode) => cb(id, numProvinceName, numProvinceCode)} />
                         </div>
                       ))
                     )
@@ -197,7 +157,7 @@ export default function index(props) {
                       (
                         SelectCityList && SelectCityList.map((item, i) => (
                           <div key={i}>
-                            <SignOffCityItem {...item} cbCity={(id, numCityName) => cbCity(id, numCityName)} />
+                            <SignOffCityItem {...item} cbCity={(id, numCityName, numCityCode) => cbCity(id, numCityName, numCityCode)} />
                           </div>
                         ))
                       )

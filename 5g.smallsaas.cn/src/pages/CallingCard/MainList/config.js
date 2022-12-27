@@ -7,7 +7,7 @@ const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 
 export default function index(props) {
 
-  const { endpoint, cb,onNumberClick, searchNum=0 } = props;
+  const { endpoint, cb,onNumberClick, searchNum=0,selectGoodsId,onSearch=false } = props;
 
   const api = '/api/link/code/select-num'
 
@@ -15,14 +15,15 @@ export default function index(props) {
 
   useEffect(_ => {
     fetchNumber()
-  }, [searchNum])
+  }, [selectGoodsId,onSearch])
   // let api = '/api/link/code/select-num'
   const [NumberData, setNumberData] = useState([])
+      // console.log('onSearch = ', onSearch)
 
   function fetchNumber() {
     let query = {
       "cityCode": "445200",
-      "goodsId": "982203315714",
+      "goodsId": `${selectGoodsId}`,
       "groupkey": "1",
       "provinceCode": "440000",
       "searchCategory": "3",
