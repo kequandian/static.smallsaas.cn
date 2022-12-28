@@ -36,6 +36,8 @@ export default function Container(props) {
 
     // 回调选择的产品id
     const [selectGoodsId, setSelectGoodsId] = useState('')
+    const [productId, setProductId] = useState('')
+    const [productName, setProductName] = useState('')
 
 
     function change() {
@@ -80,10 +82,12 @@ export default function Container(props) {
         )
     }
 
-    function onProductClick(goodsId) {
+    function onProductClick(goodsId,productId,name) {
         setSelectGoodsId(goodsId)
+        setProductId(productId)
+        setProductName(name)
         if (cbId){
-            cbId(goodsId)
+            cbId(goodsId,productId,name)
         }
     }
     // console.log('selectGoodsId ==',u selectGoodsId);
@@ -116,7 +120,7 @@ export default function Container(props) {
                     </Center>
                 </Flex>
                 {packageStatus ?
-                    <ProductList items={ProductListData} onProductClick={(goodsId) => onProductClick(goodsId)} selectGoodsId={selectGoodsId} />
+                    <ProductList items={ProductListData} onProductClick={(goodsId,productId,name) => onProductClick(goodsId,productId,name)} selectGoodsId={selectGoodsId} />
                     : <></>
                 }
             </>
@@ -135,7 +139,7 @@ export default function Container(props) {
                                         <InputRightElement children={<Search color='green.500' />} onClick={() => searchAction()} />
                                     </InputGroup>
                                 </Box>
-                                <ItemConfig onSearch={searchStatua} cb={cb} onNumberClick={onNumberClick} searchNum={searchNum} pageList={pageList} resetPageList={resetPageList} selectGoodsId={selectGoodsId} />
+                                <ItemConfig onSearch={searchStatua} cb={cb} onNumberClick={onNumberClick} searchNum={searchNum} pageList={pageList} resetPageList={resetPageList} selectGoodsId={selectGoodsId} productId={productId} />
                             </>
                         </PageModuleContainer>
 

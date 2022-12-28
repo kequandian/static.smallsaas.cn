@@ -7,7 +7,7 @@ import Button from 'zero-element-boot/lib/components/presenter/button/Button';
 
 export default function index(props) {
 
-    const { onProductClick, numList = [], cb, pageList, name, goodsId, selectGoodsId, flow,url } = props;
+    const { onProductClick, numList = [], cb, pageList, name, goodsId,productId, selectGoodsId, flow,url } = props;
 
     useEffect(_ => {
         // callBackData()
@@ -16,7 +16,7 @@ export default function index(props) {
     return (
         name ?
             <Stack border='1px solid #33333320' spacing='0' w='100%' >
-                <Flex onClick={() => onProductClick(goodsId)}>
+                <Flex onClick={() => onProductClick(goodsId,productId,name)}>
                     <Center h='36px' w='280px' margin=' 0 ' >
                         <Text fontSize='16px'> {name}</Text>
                     </Center>

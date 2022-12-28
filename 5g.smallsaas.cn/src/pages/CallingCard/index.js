@@ -23,6 +23,8 @@ export default function index(props) {
     // console.log('vendorCode =', vendorCode)
 
     const [selectGoodsId, setSelectGoodsId] = useState('');
+    const [productId, setProductId] = useState('');
+    const [productName, setProductName] = useState('');
     const [visible, setVisible] = useState(false);
     const [isClose, setClose] = useState(false);
     const [onClickList, setOnClickList] = useState([]);
@@ -60,12 +62,14 @@ export default function index(props) {
         info()
     }, [])
 
-    function cb(selectGoodsId){
+    function cb(selectGoodsId,productId,productName){
         setSelectGoodsId(selectGoodsId)
+        setProductId(productId)
+        setProductName(productName)
     }
     return (
         <>
-            <MainList onNumberClick={showDrawer} cbId={(selectGoodsId) =>cb(selectGoodsId)} />
+            <MainList onNumberClick={showDrawer} cbId={(selectGoodsId,productId,productName) =>cb(selectGoodsId,productId,productName)} />
             <Drawer
                 title="下单"
                 placement='bottom'
@@ -75,7 +79,7 @@ export default function index(props) {
                 visible={visible}
                 maskClosable={false}
             >
-                <PopUpContent onClickList={onClickList} vendorCode={vendorCode} infoData={infoData} isClose={isClose} selectGoodsId={selectGoodsId}
+                <PopUpContent onClickList={onClickList} vendorCode={vendorCode} infoData={infoData} isClose={isClose} selectGoodsId={selectGoodsId} productId={productId} productName={productName}
                 />
             </Drawer>
         </>

@@ -28,9 +28,8 @@ import { history } from 'umi';
 
 export default function index(props) {
 
-    const { onClickList = [], infoData, vendorCode, isClose, selectGoodsId } = props;
+    const { onClickList = [], infoData, vendorCode, isClose, selectGoodsId, productId, productName } = props;
 
-    // console.log('infoData ==', infoData)
 
     // 获取验证码的api
     // let codeApi = '/api/link/code/safe-code'
@@ -162,23 +161,29 @@ export default function index(props) {
     // 下单
     function validateData(values) {
         const query = {
+            "app": "3",
             address,
             certName,
             certNo,
             contactNum,
             vendorCode,
             safeCode,
+            "pre_storage_price": `${onClickList[1]}`,
             "coChannel": `${infoData.coChannel}`,
-            "coUserid": `${infoData.coUserId}`,
-            // "selectGoodsId": `${selectGoodsId}`,
+            "coUserId": `${infoData.coUserId}`,
             "cityCode": "445200",
             "phoneNum": `${onClickList[0]}`,
-            "productId ": `${selectGoodsId}`,
-            "reference": `${infoData.phone}`,
+            "goodsId": `${selectGoodsId}`,
+            "productId": `${productId}`,
+            "productName": `${productName}`,
+            // "reference": `${infoData.phone}`,
             "postCityCode": `${postCityCode}`,
             "postDistrictCode": `${postDistrictCode}`,
             "postProvinceCode": `${postProvinceCode}`,
             "provinceCode": '440000',
+            "price": "0",
+            "dealPrice": "0",
+            "profit": "0"
         }
 
         // 验证码限制
@@ -193,22 +198,22 @@ export default function index(props) {
         // if (res && res.code === 200) {
         // console.log(res, '== 验证成功')
         promiseAjax(api(), query, { method: 'POST' }).then(resp => {
-            if (resp && resp.data.code === 0) {
-                Toast.show(
-                    '下单成功',
-                    2
-                )
-            } else {
-                Toast.show(
-                    '下单失败，请稍后重试!',
-                    2
-                )
-            }
-            setTimeout(() => {
-                history.push(`/CallingCard?vendorCode=${vendorCode}`)
-            }, 300)
+            const prompt = resp.message == 'success' ? '下单成功' : resp.message
+            // setTimeout(() => {
+            Toast.show(
+                `${prompt}`,
+                2
+            )
+            // }, 100)
+            // if (resp && resp.data.code === 0) {
+            //     console.log('111111111111111')
+            //     Toast.show(
+            //         '下单成功',
+            //         2
+            //     )
+            // }
+
         }).catch(message => {
-            console.log('message==', message)
         });
 
         // }
@@ -221,6 +226,11 @@ export default function index(props) {
         // });
 
         submit()
+
+        setTimeout(() => {
+            history.push(`/CallingCard?vendorCode=${vendorCode}`)
+        }, 300)
+
     }
 
     // 提交表单内容
