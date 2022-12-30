@@ -213,6 +213,13 @@ export default function index(props) {
             //     )
             // }
 
+            submit()
+            setTimeout(() => {
+                if(resp.code === 0 && resp.success){
+                    history.push(`/CheckoutSuccess?vendorCode=${vendorCode}`)
+                }
+            }, 300)
+
         }).catch(message => {
         });
 
@@ -225,11 +232,11 @@ export default function index(props) {
         //     )
         // });
 
-        submit()
 
-        setTimeout(() => {
-            history.push(`/CallingCard?vendorCode=${vendorCode}`)
-        }, 300)
+            // submit()
+        // setTimeout(() => {
+        //     history.push(`/CallingCard?vendorCode=${vendorCode}`)
+        // }, 300)
 
     }
 
@@ -452,7 +459,7 @@ export default function index(props) {
                             </Button>
                         ) :
                             (
-                                <Button width='100%' height='40px' colorScheme='gray' variant='solid' type='submit' size='sm' onClick={() => { warn() }}>
+                                <Button width='100%' height='40px' colorScheme='gray' variant='solid' type='submit' size='sm' disabled>
                                     0元申请 包邮到家
                                 </Button>
                             )
