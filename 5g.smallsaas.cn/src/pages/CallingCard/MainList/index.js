@@ -67,7 +67,7 @@ export default function Container(props) {
         setSearchNum(inputValue)
         setSearchStatua(!searchStatua)
     }
-    // console.log('inputValue =', inputValue)
+    console.log('inputValue =', inputValue)
     // console.log('searchNum =', searchNum)
 
     function getProductList() {

@@ -88,18 +88,20 @@ export default function index(props) {
                     <ItemCart>
                         {(data.level === 'GENERAL_AGENT') ? (
                             <Router items={[
-                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/Channelcode.svg", "title": "我的渠道码", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/myChannelCode?appid=${appid}&agentId=${data.agentId}` },
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/Channelcode.svg", "title": "我的渠道码", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/myChannelCode?appid=${appid}&agentId=${data.agentId}&level=${data.level}` },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/invite.svg", "title": "我的邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyInvite?level=2` },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/ThreeLevelAgent.svg", "title": "三级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyTeam?level=2" },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/SecondaryAgent.svg", "title": "二级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SecondaryAgent?level=2" },
                             ]} />
                         ) : (data.level === 'SECONDARY_AGENT') ? (
                             <Router items={[
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/Channelcode.svg", "title": "我的渠道码", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/myChannelCode?appid=${appid}&agentId=${data.agentId}&level=${data.level}` },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/invite.svg", "title": "我的邀请", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/MyInvite?level=2` },
-                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/SecondaryAgent.svg", "title": "二级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/SecondaryAgent?level=2" },
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/ThreeLevelAgent.svg", "title": "三级代理", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyTeam?level=2" },
                             ]} />
                         ) : (data.level === 'TERTIARY_AGENT') ? (
                             <Router items={[
+                                { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/Channelcode.svg", "title": "我的渠道码", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": `/my/myChannelCode?appid=${appid}&agentId=${data.agentId}&level=${data.level}` },
                                 { "icon": "http://static.smallsaas.cn/house/2022/svg/Router/ThreeLevelAgent.svg", "title": "我的团队", "nextIcon": "http://static.smallsaas.cn/house/2022/svg/Router/enter.svg", "navigation": "/my/MyTeam?level=2" },
                             ]} />
                         ) : (<></>)

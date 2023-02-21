@@ -21,8 +21,8 @@ export default function index(props) {
                 ) : (list.level === 'SECONDARY_AGENT') ? (
                     <RouterBox columns='5' items={[
                         { "title": "直推", "value": `￥${list.point || '0'}` },
-                        { "title": "代理", "value": `${list.secondaryAgentCount || '0'}` },
-                        { "title": "代理贡献", "value": `￥${list.secondaryAgentAmount || '0'}` },
+                        { "title": "代理", "value": `${list.tertiaryAgentAmount || '0'}` },
+                        { "title": "代理贡献", "value": `￥${list.tertiaryAgentAmount || '0'}` },
                     ]} />
                 ) : (list.level === 'TERTIARY_AGENT') ? (
                     <RouterBox columns='5' items={[

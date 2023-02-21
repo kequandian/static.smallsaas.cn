@@ -15,7 +15,8 @@ import TopBar from '@/components/presenter/TopBar'
 import logo from '@/assets/logo.jpg'
 import ContainerInactiveTitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerInactiveTitle'
 import { getEndpoint } from 'zero-element-boot/lib/components/config/common';
-
+import { Spin } from 'antd'
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
 // --我的邀请码页面
 export default function index(props) {
@@ -23,17 +24,15 @@ export default function index(props) {
     const queryData = useQuery(props)
     const appid = queryData.query.appid
 
-    const { pass } = props
-    // console.log('queryData===', queryData)
     const api = '/api/u/saasAgent/myAgentInfo'
 
 
     const [data] = useTokenRequest({ api });
 
-    // console.log(data, '=== data');
+    console.log(data, '=== data');
+    console.log(data.vendorCode, '=== data');
     // const channel = (data && data.length > 0) ? (data.name + '' + data.phone) : ''
-    // console.log('channel==', channel)
-
+    const vendorCodStatus = data.vendorCode ? true : false
     // 获取logo
     const endpoint = getEndpoint()
     const src = endpoint + data.logo
@@ -64,49 +63,66 @@ export default function index(props) {
         return canvas.toDataURL("image/png");
     }
 
+    console.log(data && data.length > 0, 'data && data.length > 0');
+
     return (
         // data && data.length > 0 ? (
-        <ChakraProvider>
-            <TopBar>
-                下单链接
-            </TopBar>
+            <ChakraProvider>
+                <TopBar>
+                    下单链接
+                </TopBar>
 
-            {/* {data.postCityCode || data.postDistrictCode || data.postProvinceCode ? */}
-            <CssCart backgroundColor='' margin='80px 30px' padding='80px  0px'  borderRadius='10px' boxShadow='0 0px 8px rgba(0, 0, 0, 0.18)'>
-                <>
-                    <Stack bg='#' margin='0 0 20px 0'>
-                        <Center margin=' 0 20px  20px 20px ' borderRadius='2px'>
-                            <ContainerSubtitle>
-                                扫下面的二维码进入下单页面
-                            </ContainerSubtitle>
-                        </Center>
+                {/* {data.postCityCode || data.postDistrictCode || data.postProvinceCode ? */}
+                <CssCart backgroundColor='' margin='80px 30px' padding='80px  0px' borderRadius='10px' boxShadow='0 0px 8px rgba(0, 0, 0, 0.18)'>
+                    {
+                        vendorCodStatus ?
+                            <>
+                                <Stack bg='#' margin='0 0 20px 0'>
+                                    <Center margin=' 0 20px  20px 20px ' borderRadius='2px'>
+                                        <ContainerSubtitle>
+                                            扫下面的二维码进入下单页面
+                                        </ContainerSubtitle>
+                                    </Center>
+                                    <Center onClick={clickDownLoad}>
+                                        <QRCode
+                                            id={'qrcode'}
+                                            style={{ padding: '10px', boxShadow: '0 0px 2px rgba(0, 0, 0, 0.1)', borderRadius: '2px' }}
+                                            value={`http://test.5g.smallsaas.cn/${data.vendorCode}`}
+                                            size={180} //二维码的宽高尺寸
+                                            fgColor="#222"  //二维码的颜色
+                                            imageSettings={{ // 配置二维码中间出现的logo信息
+                                                // src: `${src}`,// logo的地址 可以是在线图片也可以是本地图片 没有默认值 类型为string
+                                                src: `${logo}`,
+                                                width: 38, // logo的宽度 默认值是整个二维码的10% 类型为number
+                                                height: 38, // logo的高度 默认值是整个二维码的10% 类型为number
+                                                excavate: true, // 是否是镂空状态 默认值false 类型为boolean
+                                            }}
+                                        />
+                                    </Center>
+                                </Stack>
+                                <ContainerInactiveTitle fontSize='14px'>
+                                    这是您的专属下单二维码
+                                </ContainerInactiveTitle>
+                                <ContainerInactiveTitle fontSize='14px'>
+                                    点击可以下载到本地进一步设计与打印
+                                </ContainerInactiveTitle>
 
-                        <Center onClick={clickDownLoad}>
-                            <QRCode
-                                id={'qrcode'}
-                                style={{ padding: '10px', boxShadow: '0 0px 2px rgba(0, 0, 0, 0.1)', borderRadius: '2px' }}
-                                value={`http://test.5g.smallsaas.cn/${data.vendorCode}`}
-                                size={180} //二维码的宽高尺寸
-                                fgColor="#222"  //二维码的颜色
-                                imageSettings={{ // 配置二维码中间出现的logo信息
-                                    // src: `${src}`,// logo的地址 可以是在线图片也可以是本地图片 没有默认值 类型为string
-                                    src: `${logo}`,
-                                    width: 38, // logo的宽度 默认值是整个二维码的10% 类型为number
-                                    height: 38, // logo的高度 默认值是整个二维码的10% 类型为number
-                                    excavate: true, // 是否是镂空状态 默认值false 类型为boolean
-                                }}
-                            />
-                        </Center>
-                    </Stack>
-                    <ContainerInactiveTitle fontSize='14px'>
-                        这是您的专属下单二维码
-                    </ContainerInactiveTitle>
-                    <ContainerInactiveTitle fontSize='14px'>
-                        点击可以下载到本地进一步设计与打印
-                    </ContainerInactiveTitle>
-                </>
-            </CssCart>
-            {/* : <>
+                            </> :
+                            <>
+                                <Center>
+                                    <ContainerSubtitle>
+                                        您还没有渠道码
+                                    </ContainerSubtitle>
+                                </Center>
+                                <Center>
+                                    <ContainerSubtitle>
+                                        请联系您的邀请人为您下发渠道码
+                                    </ContainerSubtitle>
+                                </Center>
+                            </>
+                    }
+                </CssCart>
+                {/* : <>
                     <Center border='0px #3156bd solid' padding='4px 10px' margin='20px 40px ' borderRadius='2px'>
                         <ItemTitle>
                             您未设置归属地，无法邀请客户下单
@@ -120,9 +136,12 @@ export default function index(props) {
                 </>
 
             } */}
-        </ChakraProvider>
-
-        // ) : <></>
+            </ChakraProvider>
+        // ) : (
+        //     <Center h='500px'>
+        //         <CircularProgress isIndeterminate color='teal' />
+        //     </Center>
+        // )
 
     )
 

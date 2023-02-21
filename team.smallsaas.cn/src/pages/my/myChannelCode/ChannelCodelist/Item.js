@@ -17,7 +17,7 @@ import TagIndicator from 'zero-element-boot/lib/components/indicator/TagIndicato
 
 export default function index(props) {
 
-    const { icon = '', code = '', id, navigation, nextIcon = '', ownedAgentID = '', MyownAgentId, ownedAgentId, chiAgentId, chiAgentName, ownedAgentName } = props
+    const { icon = '', code = '', id, navigation, nextIcon = '', ownedAgentID = '', MyownAgentId, ownedAgentId, chiAgentId, chiAgentName, ownedAgentName, level } = props
 
     // console.log('props === ', props)
 
@@ -57,36 +57,23 @@ export default function index(props) {
                             </Center>
                         </Flex>
                     ) :
-                    chiAgentId  ? (
-                            // <Center w='300px' h='100%' padding='' borderRadius='10px' overflow="hidden" >
-                            //     <Flex>
-                            //         <CssCart height='25px' display='flex' justifyContent='center' alignContent='center' padding=' 0 4px' margin='4px 0' border='1px #97a4ae solid' borderRadius='4px' color='#97a4ae'>
-                            //             {chiAgentName}
-                            //         </CssCart>
-                            //         <Center w='70px'>
-                            //             <Text color='#949494'>
-                            //                 已下发
-                            //             </Text>
-                            //         </Center>
-                            //     </Flex>
-                            // </Center>
-                            
-                        <Flex w='320px'>
-                        <Center w=''>
-                            <CssCart overflow='hidden' width='120px' height='25px' display='flex' justifyContent='center' alignContent='center' padding='1px 4px' margin='4px 0' border='1px #97a4ae solid' borderRadius='4px' color='#97a4ae'>
-                            {chiAgentName}
-                            </CssCart>
-                        </Center>
-                        <Center w='70px'>
-                            <Text color='#949494'>
-                            已下发
-                            </Text>
-                        </Center>
-                    </Flex>
+                        chiAgentId && level === 'GENERAL_AGENT' ? (
+                            <Flex w='320px'>
+                                <Center w=''>
+                                    <CssCart overflow='hidden' width='120px' height='25px' display='flex' justifyContent='center' alignContent='center' padding='1px 4px' margin='4px 0' border='1px #97a4ae solid' borderRadius='4px' color='#97a4ae'>
+                                        {chiAgentName}
+                                    </CssCart>
+                                </Center>
+                                <Center w='70px'>
+                                    <Text color='#949494'>
+                                        已下发
+                                    </Text>
+                                </Center>
+                            </Flex>
 
                         ) :
                             (
-                                <Center h='100%' w='90px' onClick={()=> onnextClick(id)}>
+                                <Center h='100%' w='90px' onClick={() => onnextClick(id)}>
                                     {/* <TagIndicator solid >
                                         授权代理
                                     </TagIndicator> */}

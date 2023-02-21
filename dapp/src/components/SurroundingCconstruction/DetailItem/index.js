@@ -22,17 +22,17 @@ import Stack from 'zero-element-boot/lib/components/layout/Stack';
 
 export default function index(props) {
 
-    const { icon = '', title = '', navigation, nextIcon = '', text = '', space = '16px' } = props
+    const { icon = '', title = '', navigation, nextIcon = '' } = props
 
     // console.log('props === ', props)
 
     return (
 
-        <CssCart margin='0 2px' height='' borderRadius='18px' color='#555555' border='#999999 1px solid' padding='4px 2px' background='#f9f9f9'>
+        <Center margin='0 2px' h='' borderRadius='18px' color='#555555' border='#dddddd 1px solid' padding='4px 8px' bg='#f9f9f9'>
             <Center w=''>
                 {title}
             </Center>
-        </CssCart>
+        </Center>
 
 
 

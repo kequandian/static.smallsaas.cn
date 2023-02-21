@@ -21,18 +21,20 @@ export default function index(props) {
         <>
             {
                 homeData && homeData.map((item, i) => (
-                    <Cart corner='16px' padding='0'  margin='6px 2px' {...item} key={i}>
-                        <Flex>
-                            <Center w='70px' borderRight='1px #d0cdcd solid' >
-                                <ItemTitleBold >
-                                    {item.cnName || ''}
-                                </ItemTitleBold>
-                            </Center>
-                            <Center margin='8px'w='100%' >
-                                <Item items={homeData.items}  key={i}  {...item} />
-                            </Center>
-                        </Flex>
-                    </Cart>
+                    (item.cnName === '家具' || item.cnName === '家电') ?
+                        <Cart corner='16px' padding='0' margin='6px 2px' {...item} key={i} >
+                            <Flex>
+                                <Center w='70px' borderRight='1px #d0cdcd solid' >
+                                    <ItemTitleBold >
+                                        {item.cnName || ''}
+                                    </ItemTitleBold>
+                                </Center>
+                                <Center margin='8px' w='100%' >
+                                    <Item items={homeData.items} key={i}  {...item} />
+                                </Center>
+                            </Flex>
+                        </Cart>
+                        : <></>
                 )
                 )
             }

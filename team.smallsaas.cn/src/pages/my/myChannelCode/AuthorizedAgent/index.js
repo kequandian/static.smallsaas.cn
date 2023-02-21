@@ -23,8 +23,9 @@ export default function index(props) {
     const [SelectList, setSelectList] = useState([])
 
 
-    const api = `/api/u/saasAgent/myInvitationList`
+    const api = `/api/u/saasAgent/myInvitationList?pageSize=200`
     const [items, setItems] = useState([])
+    console.log('items ==', items)
 
     //获取代理列表数据
     useEffect(_ => {
@@ -102,22 +103,44 @@ export default function index(props) {
                 选择要授权或下发的代理
             </TopBar>
             <div className='Global' />
-            {queryData && queryData.query && queryData.query.SelectList ?
-                (
-                    <List items={items} cb={cb} selectedAgentId={selectedAgentId}  SelectList/>
-                ) : (
-                    <List items={items} cb={cb} selectedAgentId={selectedAgentId} />
-                )
-            }
-            <Center position='fixed'
-                bottom=' 16px'
-                left='0'
-                right=' 0'>
-                <Box padding='0 20px' margin='30px 0 0 0 ' onClick={() => onFinish()} w='100%' >
-                    <Button solid>完成</Button>
-                </Box>
-            </Center>
+            {
+                items && items.length > 0 ?
+                    <>
+                        <div style={{ padding: '0 0 110px 0' }}>
+                            {queryData && queryData.query && queryData.query.SelectList ?
+                                (
+                                    <List items={items} cb={cb} selectedAgentId={selectedAgentId} SelectList />
+                                ) : (
+                                    <List items={items} cb={cb} selectedAgentId={selectedAgentId} />
+                                )
+                            }
+                        </div>
+                        <Center position='fixed'
+                            bottom=' 16px'
+                            left='0'
+                            right=' 0'>
+                            <Box padding='0 20px' margin='30px 0 0 0 ' onClick={() => onFinish()} w='100%' >
+                                <Button solid>完成</Button>
+                            </Box>
+                        </Center>
+                    </> :
+                    <>
+                        <Center h='500px'>
+                            <ContainerSubtitle>
+                                您还没有邀请新人注册哦
+                            </ContainerSubtitle>
+                        </Center>
+                        <Center position='fixed'
+                            bottom=' 16px'
+                            left='0'
+                            right=' 0'>
+                            <Box padding='0 20px' margin='30px 0 0 0 '   w='100%'  >
+                                <Button solid  color='#b7a6fc'>完成</Button>
+                            </Box>
+                        </Center>
+                    </>
 
+            }
         </ChakraProvider>
     )
 

@@ -20,7 +20,7 @@ export default function index(props) {
     return detail && detail.map((item, i) => (
         <>
            
-            <Flex h=''>
+            <Flex h='100%'>
                 <Center bg='#f0f0f0' borderRadius='50%' padding='2px' w='32px' h='32px' marginRight='4px'>
                     <img src={detail[i].icon} width='20px' />
                 </Center>

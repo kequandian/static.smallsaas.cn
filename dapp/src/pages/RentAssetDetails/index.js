@@ -27,6 +27,7 @@ import Toast from 'antd-mobile/es/components/toast'
 import ImageViewer from 'antd-mobile/es/components/image-viewer'
 import RouterBox from 'zero-element-boot-presenter/lib/components/presenter/card/RouterBox';
 import Images from './images'
+import { history } from 'umi';
 
 export default function RentAssetDetails(props) {
   const endpoint = getEndpoint()
@@ -45,7 +46,6 @@ export default function RentAssetDetails(props) {
     promiseAjax(api).then(res => {
       setLoading(false)
       if (res.code == 200) {
-        console.log('res == ', res)
         let detailData = res.data
         setDetail(detailData)
       }
@@ -60,20 +60,33 @@ export default function RentAssetDetails(props) {
     }
   }, [])
 
-  const { title = '', price = 0, area = 0, houseAssetModel = {}, rentDescribe = '', serverAvatar = '', serverName = '', serverPhone = '' } = detail
-  const { houseType = '', floor = 0, direction = '', number, communityName = '', address } = houseAssetModel
 
+  console.log('11111111', detail)
 
+  const houseType = detail.houseType || ' -'
+  const toward = detail.toward || ' -'
+  const communityName = detail.communityName || ' -'
+  const address = detail.address || ' -'
+  const price = detail.price || '0'
+  const area = detail.area || '0'
+  const rentDescribe = detail.rentDescribe || ' -'
+  const serverAvatar = detail.serverAvatar || ' -'
+  const serverName = detail.serverName || ' -'
+  const serverPhone = detail.serverPhone || ' -'
+  const contact = detail.contact || ' -'
+  const userAppointment =detail.userAppointment || ''
   //图片格式转化为url
   function handleVrSnapshotUrl(value) {
-
-
-    return endpoint + value
+    let url = (value.indexOf('[') == -1) ? value : value.split('"')['3']
+    if ((url.indexOf('http') == -1) || (url.indexOf('https') == -1)) {
+      return endpoint + url
+    } else {
+      return url
+    }
   }
 
   //周边配套和家具家电数据
-  const facilitiesData = detail.facilities
-  console.log('facilitiesData ==', facilitiesData)
+  const facilitiesData = detail.facilities || []
   const homeData = detail.supportFacilities
 
   //照片展示的数据 转化格式
@@ -112,15 +125,24 @@ export default function RentAssetDetails(props) {
       })
   }
 
-
+  function handleViewVr() {
+    const url = detail.houseAssetModel.vrLink
+    if (url) {
+      window.location.href = `${url}`
+    } else {
+      Toast.show(
+        'VR链接跳转错误',
+        1
+      )
+    }
+  }
   // 图片展示状态
   const [visible, setVisible] = useState(false)
   return (
-
     detail && JSON.stringify(detail) != '{}' ? (
       <ChakraProvider>
         <SetBarTitle text='房屋详情' />
-        <div onClick={() => setVisible(true)} style={{
+        {/* <div onClick={() => setVisible(true)} style={{
           backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`,
           backgroundRepeat: " no-repeat",
           backgroundPosition: "center",
@@ -128,16 +150,27 @@ export default function RentAssetDetails(props) {
           width: '100%',
           height: '260px'
         }}
+        /> */}
+        <div onClick={handleViewVr}
+          style={{
+            backgroundImage: `url(${handleVrSnapshotUrl(detail.cover)})`,
+            backgroundRepeat: " no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: 'cover',
+            width: '100%',
+            height: '260px'
+          }}
         />
-        <ImageViewer
+        {/* <ImageViewer
           image={handleVrSnapshotUrl(detail.cover)}
           visible={visible}
           onClose={() => {
             setVisible(false)
           }}
-        />
+          /> */}
+
         <Stack spacing='2' padding='10px  10px 0 10px '>
-          <ContainerSubtitle>{title}</ContainerSubtitle>
+          <ContainerSubtitle>{rentDescribe}</ContainerSubtitle>
           <Flex W='100%'>
             <Flex w='88%'>
               <Center w='' h=''>
@@ -167,7 +200,7 @@ export default function RentAssetDetails(props) {
               <svg t="1659672225263" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34319" width="30" height="30"><path d="M778.24 260.608m-20.48 0a20.48 20.48 0 1 0 40.96 0 20.48 20.48 0 1 0-40.96 0Z" p-id="34320" fill="#8a8a8a"></path><path d="M479.232 904.704c7.68 10.752 19.968 16.896 32.768 16.896 13.312 0 25.088-6.144 32.768-16.896 27.648-37.376 98.816-135.68 162.304-241.152C784.896 532.992 824.32 435.2 824.32 372.736c0-11.264-9.216-20.48-20.48-20.48s-20.48 9.216-20.48 20.48c0 68.608-71.168 237.568-271.36 507.392-200.192-269.312-271.36-438.784-271.36-507.392 0-149.504 121.856-270.848 271.36-270.848 79.36 0 154.624 34.816 206.848 95.232 7.168 8.704 20.48 9.728 28.672 2.048 8.704-7.168 9.728-20.48 2.048-28.672-59.904-69.632-146.432-109.568-237.568-109.568-172.032 0-312.32 139.776-312.32 311.808 0 62.464 39.424 160.256 117.248 290.816 63.488 105.472 134.656 203.776 162.304 241.152zM688.64 936.448h-353.28c-11.264 0-20.48 9.216-20.48 20.48s9.216 20.48 20.48 20.48h353.28c11.264 0 20.48-9.216 20.48-20.48s-9.216-20.48-20.48-20.48z" p-id="34321" fill="#8a8a8a"></path><path d="M343.04 368.128c0 93.184 75.776 168.96 168.96 168.96s168.96-75.776 168.96-168.96-75.776-168.96-168.96-168.96-168.96 75.776-168.96 168.96z m296.96 0c0 70.656-57.344 128-128 128s-128-57.344-128-128 57.344-128 128-128 128 57.344 128 128z" p-id="34322" fill="#8a8a8a"></path></svg>
             </Box>
             <Center h='66px' >
-              <p style={{ fontSize: '14px', lineHeight: '26px' }}> 位于 {communityName} {address}</p>
+              <p style={{ fontSize: '14px', lineHeight: '26px' }}> 位于 {communityName} {address || '-'}</p>
             </Center>
           </Flex>
           <Spacer borderBottom='1px dashed #d6d3d3' />
@@ -180,8 +213,8 @@ export default function RentAssetDetails(props) {
         </Flex>
         <Flex display="flex" padding='0 30px' justifyContent='center' color='#8a8a8a' margin='10px 0'>
           <Box w='30%' display="flex" justifyContent='center'>{area || '0'}m²</Box>
-          <Box w='30%' display="flex" justifyContent='center'>{houseType || '0'}</Box>
-          <Box w='30%' display="flex" justifyContent='center'>{direction || '0'}</Box>
+          <Box w='30%' display="flex" justifyContent='center'>{houseType || '-'}</Box>
+          <Box w='30%' display="flex" justifyContent='center'>{toward || '-'}</Box>
         </Flex>
         {/* 
         <RouterBox columns='3' items={[
@@ -216,23 +249,37 @@ export default function RentAssetDetails(props) {
 
 
           <Flex boxShadow='0 0px 8px rgba(0, 0, 0, 0.08) ' padding='8px 0' >
-            <Avatar size='70px' url={serverAvatar} />
+            <Avatar size='70px' url={handleVrSnapshotUrl(serverAvatar)} />
             <Stack spacing='1'>
               <ItemTitleBold>
                 <>
                   {serverName}
                 </>
               </ItemTitleBold>
-              <ItemTitle>
-                <>
-                  手机号： {serverPhone}
-                </>
-              </ItemTitle>
-              <ItemTitle>
-                <>
-                  微信号： {serverPhone}
-                </>
-              </ItemTitle>
+              {
+                userAppointment ?
+                  <>
+                    <ItemTitle>
+                      <>
+                        手机号： {contact}
+                      </>
+                    </ItemTitle>
+                    <ItemTitle>
+                      <>
+                        微信号： {serverPhone}
+                      </>
+                    </ItemTitle>
+                  </>
+                  :
+                  <Center bg='' h='100%'>
+                     <ItemTitle>
+                      <>
+                      预约可查看置业顾问的联系方式
+                      </>
+                    </ItemTitle>
+                  </Center>
+              }
+
             </Stack>
           </Flex>
           <Spacer />
@@ -244,7 +291,7 @@ export default function RentAssetDetails(props) {
           }
           <Spacer />
         </Stack>
-      </ChakraProvider >
+      </ChakraProvider>
     ) : (
       <Center h='500px'>
         <Spin spinning={loading}></Spin>
