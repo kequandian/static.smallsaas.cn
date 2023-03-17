@@ -27,7 +27,7 @@
     "react-dom": "^16.8.6",
     "react-hook-form": "^7.22.2",
     "zero-element": "^1.0.0",
-    "zero-element-boot": "git+https://gitee.com/smallsaas/zero-element-boot",
+    "zero-element-boot": "git+https://gitee.com/smallsaas/zero-element-boot#master",
     "zero-element-boot-plugin-theme": "git+https://gitee.com/smallsaas/zero-element-boot-plugin-theme",
     "zero-element-boot-presenter": "git+https://gitee.com/smallsaas/zero-element-boot-presenter"
   },

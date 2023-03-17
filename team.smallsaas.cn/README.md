@@ -5,6 +5,6 @@
     "zero-element-boot-presenter": "github:kequandian/zero-element-boot-presenter"
 
 ------ 提交代码 gitee
-    "zero-element-boot": "git+https://gitee.com/smallsaas/zero-element-boot",
+    "zero-element-boot": "git+https://gitee.com/smallsaas/zero-element-boot#master",
     "zero-element-boot-plugin-theme": "git+https://gitee.com/smallsaas/zero-element-boot-plugin-theme",
     "zero-element-boot-presenter": "git+https://gitee.com/smallsaas/zero-element-boot-presenter"
