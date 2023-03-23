@@ -12,7 +12,7 @@ const promiseAjax = require('zero-element-boot/lib/components/utils/request');
 import Router from 'zero-element-boot-presenter/lib/components/presenter/card/Router';
 import ChannelCodelist from './ChannelCodelist'
 import TagIndicator from 'zero-element-boot/lib/components/indicator/TagIndicator'
-import Pages from '@/pages/SuperSettings/CGeneralAgent/ViewChannelCode/BatchGeneration/Pages'
+import Pages from '@/pages/SuperSettings/CGeneralAgent/ViewChannelCode/BatchGeneration/pages'
 
 
 export default function index(props) {

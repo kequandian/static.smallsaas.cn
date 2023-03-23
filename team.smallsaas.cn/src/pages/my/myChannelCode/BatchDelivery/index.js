@@ -12,7 +12,7 @@ import PageModuleContainer from 'zero-element-boot-plugin-theme/lib/components/C
 import ContainerSubtitle from 'zero-element-boot-plugin-theme/lib/components/text/ContainerSubtitle';
 import Button from 'zero-element-boot/lib/components/presenter/button/Button';
 import { history } from 'umi';
-import Pages from '@/pages/SuperSettings/CGeneralAgent/ViewChannelCode/BatchGeneration/Pages'
+import Pages from '@/pages/SuperSettings/CGeneralAgent/ViewChannelCode/BatchGeneration/pages'
 
 
 export default function index(props) {

@@ -1,7 +1,7 @@
 ============== package.json ===============
 ------ 本地测试 github
-    "zero-element-boot": "github:kequandian/zero-element-boot#pattern",
-    "zero-element-boot-plugin-theme": "github:kequandian/zero-element-boot-plugin-theme#master",
+    "zero-element-boot": "github:kequandian/zero-element-boot#master",
+    "zero-element-boot-plugin-theme": "github:kequandian/zero-element-boot-plugin-theme",
     "zero-element-boot-presenter": "github:kequandian/zero-element-boot-presenter"
 
 ------ 提交代码 gitee
