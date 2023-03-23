@@ -13,7 +13,7 @@ import Router from 'zero-element-boot-presenter/lib/components/presenter/card/Ro
 import ChannelCodelist from './ChannelCodelist'
 import TagIndicator from 'zero-element-boot/lib/components/indicator/TagIndicator'
 import Button from 'zero-element-boot/lib/components/presenter/button/Button';
-import Pages from './BatchGeneration/Pages'
+import Pages from './BatchGeneration/pages'
 export default function index(props) {
 
     const { agentId, appid, onNextClick } = props
