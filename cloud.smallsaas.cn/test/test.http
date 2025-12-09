@@ -1,8 +1,27 @@
 ### 示例
-GET https://example.com/topics/1 HTTP/1.1
+### swagger-ui
+GET http://localhost:8080/v2/api-docs HTTP/1.1
+GET http://localhost:8080/swagger-ui.html
+
 
 @endpoint = http://localhost:8080
-@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEwMDAwMDAwMDAwMDAwMDAwMSIsInVzZXJJZCI6Ijg3NjcwODA4MjQzNzE5NzgyNyIsInVzZXJUeXBlIjoxMDEsImJVc2VyVHlwZSI6IlNZU1RFTSIsInRlbmFudE9yZ0lkIjoxMDAwMDAwMDAwMDAwMDAwMDEsImFjY291bnQiOiJhZG1pbiIsImV4dHJhVXNlclR5cGUiOjAsImlhdCI6MTYxNTM1MTI3MCwianRpIjoiODc2NzA4MDgyNDM3MTk3ODI3Iiwic3ViIjoiYWRtaW4iLCJleHAiOjE2MTU2MTA0NzB9.yZY6QgNW-1DmJrldOQLjMAje37d3-_GQrxy-mk4_NfuZnFALdrWbbjWn_LaHk04wuIQdDw89uvj8BuSt7KMRZQ
+@token = eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6Mjk3LCJhY2NvdW50IjoiOGI5ZDEwMDJiOWI3NDFiOGJlMWQ5ZDlhYTMzMWM5ZmQiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxMzY2MjUsImFwcGlkIjoiIiwibmFtZSI6IuS4uuWfjiIsIm9yZ2FuaXphdGlvblVzZXIiOjAsInBhcnR5TWVtYmVySWQiOiIiLCJwYXJ0eU9yZ2FuaXphdGlvbklkIjoiIiwiZGV2aWNlVHlwZSI6Ik1JTklfQVBQIiwiY2xpZW50SWQiOiJlMTFkNzNhNzYxNGE0YjZhOTJkYjk4ZmYxODhiNzM0ZSIsInRva2VuVHlwZSI6InVzZXIiLCJpYXQiOjE3NjUyNTQzNjgsImp0aSI6IjI5NyIsInN1YiI6IjhiOWQxMDAyYjliNzQxYjhiZTFkOWQ5YWEzMzFjOWZkIiwiZXhwIjoxNzY1ODU5MTY4fQ.wJi67SbsHMqVin3dm9pdI7Nji64v0DkZ3I_oyRInLyD-V2eQVSZtkEXSuj9wZWen1xyrlPU76dgdijamrkvPVQ
+
+# ### 模拟微信登录
+# POST {{endpoint}}/api/oauth/wxapp/login HTTP/1.1
+# content-type: application/json
+
+# {
+#   "auth": "h5mock_1733732964123_a1b2c3",
+#   "type": 16,
+#   "app": 1
+# }
+
+### 查询banner
+GET {{endpoint}}/api/pub/cms/ad/group/home:1:30
+content-type: application/json
+Authorization: Bearer {{token}}
+
 
 ### 登录
 POST {{endpoint}}/api/sys/oauth/login HTTP/1.1

@@ -1,0 +1,66 @@
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://sh-cynosdbmysql-grp-mlyunquo.sql.cdnline.cn:25133/smallsaas?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    username: zb2014
+    password: zb2014@8888
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: log4j,wall,mergeStat
+    sql-script-encoding: UTF-8
+    schema: classpath*:sql/**/*-schema.sql
+    data: classpath*:sql/**/*-data.sql
+    initialize: false
+  # mvc:
+  #   static-path-pattern: /static/**
+  #   view:
+  #     prefix: /WEB-INF/view    
+  # resources:
+  #   static-locations: file:/images/
+  http:
+    multipart:
+      maxFileSize: 400MB
+      maxRequestSize: 400MB    
+  redis:
+    database: 0
+    host: 192.168.3.20
+    port: 6379
+    timeout: 5000
+    password: root
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+
+io:
+  # 头像配置
+  avatar-file-path: avatar  #弃用
+  default-avatar-path: avatar/default-avatar.png
+  avatar-export-endpoint: "http://202.189.7.191:9000"
+  file-upload-path: /app/upload
+  # file-host: images/avatar  #弃用
+  # minio:
+  #   export-endpoint: "http://202.189.7.191:9000"
+  #   endpoint: "http://202.189.7.191:9000"
+  #   access-key: "admin"
+  #   secret-key: "jfeat.com.24"
+
+logging:
+#  config: config/logback-spring.xml
+  logback:
+    rollingpolicy:
+      # max-file-size: 10MB
+      file-name-pattern: logs/log.%d{yyyy-MM-dd}.gz
+      max-history: 90
+  file:
+    name: logs/access.log
+  level:
+    root: INFO
+    org.springframework: ERROR
+    jdbc.connection: ERROR
+    org.apache: ERROR
+    com.alibaba: ERROR
+    com.jfeat: DEBUG
