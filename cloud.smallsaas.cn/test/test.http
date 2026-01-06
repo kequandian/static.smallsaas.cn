@@ -1,26 +1,40 @@
 ### 示例
 ### swagger-ui
-GET http://localhost:8080/v2/api-docs HTTP/1.1
-GET http://localhost:8080/swagger-ui.html
+# GET http://localhost:8080/v2/api-docs HTTP/1.1
+# GET http://localhost:8080/swagger-ui.html
 
 
 @endpoint = http://localhost:8080
+
+# @endpoint = http://static.smallsaas.cn
+
 @token = eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MzAsInVzZXJJZCI6Mjk3LCJhY2NvdW50IjoiOGI5ZDEwMDJiOWI3NDFiOGJlMWQ5ZDlhYTMzMWM5ZmQiLCJkb21haW5Vc2VySWQiOiIiLCJ0eXBlIjoxMzY2MjUsImFwcGlkIjoiIiwibmFtZSI6IuS4uuWfjiIsIm9yZ2FuaXphdGlvblVzZXIiOjAsInBhcnR5TWVtYmVySWQiOiIiLCJwYXJ0eU9yZ2FuaXphdGlvbklkIjoiIiwiZGV2aWNlVHlwZSI6Ik1JTklfQVBQIiwiY2xpZW50SWQiOiJlMTFkNzNhNzYxNGE0YjZhOTJkYjk4ZmYxODhiNzM0ZSIsInRva2VuVHlwZSI6InVzZXIiLCJpYXQiOjE3NjUyNTQzNjgsImp0aSI6IjI5NyIsInN1YiI6IjhiOWQxMDAyYjliNzQxYjhiZTFkOWQ5YWEzMzFjOWZkIiwiZXhwIjoxNzY1ODU5MTY4fQ.wJi67SbsHMqVin3dm9pdI7Nji64v0DkZ3I_oyRInLyD-V2eQVSZtkEXSuj9wZWen1xyrlPU76dgdijamrkvPVQ
 
-# ### 模拟微信登录
-# POST {{endpoint}}/api/oauth/wxapp/login HTTP/1.1
-# content-type: application/json
+### 生成nanoId
+GET {{endpoint}}/dev/nanoid/id 
+Content-Type: application/json
 
-# {
-#   "auth": "h5mock_1733732964123_a1b2c3",
-#   "type": 16,
-#   "app": 1
-# }
+
+### 模拟微信登录
+POST {{endpoint}}/api/oauth/wxapp/login HTTP/1.1
+content-type: application/json
+
+{
+  "auth": "h5mock_1733732964123_a1b2c3",
+  "type": 16,
+  "app": 1
+}
 
 ### 查询banner
 GET {{endpoint}}/api/pub/cms/ad/group/home:1:30
 content-type: application/json
 Authorization: Bearer {{token}}
+
+### 查询banner
+GET {{endpoint}}/api/pub/cms/ad/group/aG9tZToxOjMw
+content-type: application/json
+# Authorization: Bearer {{token}}
+
 
 
 ### 登录

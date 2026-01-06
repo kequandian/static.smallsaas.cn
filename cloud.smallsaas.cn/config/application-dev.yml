@@ -3,7 +3,7 @@
 spring:
   profiles: dev
   datasource:
-    url: jdbc:mysql://sh-cynosdbmysql-grp-mlyunquo.sql.cdnline.cn:25133/smallsaas?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://sh-cynosdbmysql-grp-mlyunquo.sqls.cdnline.cn:25133/smallsaas?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     username: zb2014
     password: zb2014@8888
     driver-class-name: com.mysql.cj.jdbc.Driver

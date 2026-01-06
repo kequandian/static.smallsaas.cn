@@ -55,7 +55,11 @@
             <artifactId>crud-log</artifactId>
             <version>${crud-log.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.jfeat</groupId>
+            <artifactId>avatar</artifactId>
+            <version>5.0.0</version>
+        </dependency>
 <!-- auth -->
         <dependency>
             <groupId>com.jfeat</groupId>
@@ -74,12 +78,6 @@
             <artifactId>feedback</artifactId>
             <version>1.3.0</version>
         </dependency> -->
-
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>avatar</artifactId>
-            <version>5.0.0</version>
-        </dependency>
 
 <!--zero-io-->
         <dependency>
