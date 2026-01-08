@@ -1,0 +1,11 @@
+.org {
+  // display: flex;
+  // align-items: center;
+  // width: 100%;
+  min-height: calc(100vh - 32px - 32px - 56px);
+  // background: #fff;
+}
+
+.org-tree-node-label-inner {
+  cursor: pointer;
+}

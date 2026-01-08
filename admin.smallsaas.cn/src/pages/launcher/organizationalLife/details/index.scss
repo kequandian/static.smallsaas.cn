@@ -1,0 +1,13 @@
+.activity-details-card {
+  margin-bottom: 16px;
+  .labels {
+    display: inline-block;
+    width: 100px;
+    color: #5a5a5a;
+  }
+  .value {
+    display: inline-block;
+    margin-left: 10px;
+    text-align: right;
+  }
+}

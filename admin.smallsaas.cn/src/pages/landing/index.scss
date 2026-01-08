@@ -1,0 +1,98 @@
+.loginBg {
+  height: 100vh;
+  background: linear-gradient(135deg, #00dcfa 35%, #1a5195 80%, #222675);
+}
+.login {
+  position: relative;
+  height: 100vh;
+  padding-top: calc(50vh - 200px);
+  background-image: url('../../assets/loginBackground.svg');
+}
+.ant-pro-form-login-container {
+  // position: absolute;
+  // top: 30%;
+  // right: 0;
+  // left: 0;
+  width: 400px;
+  min-width: 400px;
+  // height: 400px;
+  height: auto;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 20px 8px #6336ee0d;
+}
+
+.segmented {
+  position: absolute;
+  left: 50%;
+  z-index: 999;
+  display: flex;
+  justify-items: center;
+  background-color: transparent;
+  transform: translate(-50%); //
+}
+.flex-item {
+  width: 25%;
+}
+
+// login_2
+.login_2 {
+  height: 100vh;
+}
+.cover {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(272.65deg, #5f37ef 0.14%, #7a2de5 100%);
+
+  .login2Bg {
+    position: absolute;
+    bottom: -18%;
+  }
+}
+.cover-right {
+  background: #f4f3f5;
+  .ant-pro-form-login-header {
+    justify-content: flex-start;
+  }
+  .ant-pro-form-login-title {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .ant-btn-lg {
+    height: 48px;
+    padding: 10.428571428571429px 15px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #613eea;
+    border-radius: 2px;
+    box-shadow: 0 2px 0 rgba(88, 5, 255, 0.06);
+  }
+}
+.content-body {
+  position: absolute;
+  top: calc(50% - -10px);
+  left: 50%;
+  width: 400px;
+  padding: 0 32px;
+  transform: translate(-50%, -50%);
+}
+
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+  transition: background-color 5000s ease-out 0.5s;
+  -webkit-text-fill-color: #2a2d33;
+}
+
+.logo__BhF2t {
+  width: 152px;
+  height: 28px;
+  margin-top: 48px;
+  margin-left: 40px;
+  color: #000;
+  background-color: #fff;
+  background-size: cover;
+}

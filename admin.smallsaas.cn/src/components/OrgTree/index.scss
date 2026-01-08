@@ -1,0 +1,190 @@
+// .ant-tree {
+//   height: 100%;
+//   padding: 24px 16px;
+//   overflow: visible;
+// }
+
+// .org-tree-wrapper {
+//   height: 100%;
+//   overflow-x: auto;
+//   overflow-y: auto;
+
+//   .OrgTreeV2Tree {
+//     min-width: fit-content;
+//   }
+// }
+
+// 自定义滚动条样式
+// .org-tree-wrapper::-webkit-scrollbar {
+//   width: 6px;
+//   height: 6px;
+// }
+
+// .org-tree-wrapper::-webkit-scrollbar-thumb {
+//   background-color: #ccc;
+//   border-radius: 3px;
+// }
+
+// .org-tree-wrapper::-webkit-scrollbar-track {
+//   background-color: #f5f5f5;
+// }
+
+.org-tree-card {
+  // height: 100%;
+  // border-radius: 8px;
+  // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  // transition: box-shadow 0.3s ease;
+
+  // &:hover {
+  //   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  // }
+
+  // 卡片标题样式
+  // .ant-card-head {
+  //   min-height: 48px;
+  //   padding: 0 16px;
+  //   border-bottom: 1px solid #f0f0f0;
+
+  //   .ant-card-head-title {
+  //     padding: 12px 0;
+  //   }
+
+  //   .tree-card-title {
+  //     display: flex;
+  //     align-items: center;
+  //     font-size: 15px;
+  //     font-weight: 500;
+  //     color: #262626;
+
+  //     .anticon {
+  //       color: #1890ff;
+  //       font-size: 16px;
+  //     }
+  //   }
+  // }
+
+  .tree-container {
+    height: 100%;
+    padding: 16px 12px;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  .custom-tree {
+    min-width: fit-content; // 确保内容不会被挤压
+
+    // 覆盖默认样式
+    .ant-tree-treenode {
+      width: 100%;
+      padding: 6px 0 !important;
+      position: relative;
+
+      // 添加连接线效果
+      // &:not(:last-child)::before {
+      //   content: '';
+      //   position: absolute;
+      //   left: 9px;
+      //   top: 30px;
+      //   width: 1px;
+      //   height: calc(100% - 24px);
+      //   background-color: #e8e8e8;
+      //   z-index: 1;
+      // }
+    }
+
+    // .ant-tree-indent-unit {
+    //   &::before {
+    //     position: absolute;
+    //     top: 0;
+    //     right: 12px;
+    //     bottom: -4px;
+    //     border-right: 1px solid #e8e8e8;
+    //     content: '';
+    //   }
+    // }
+
+    // .ant-tree-switcher {
+    //   transition: all 0.2s;
+
+    //   &:hover {
+    //     background-color: #f0f0f0;
+    //     border-radius: 3px;
+    //   }
+    // }
+
+    // .ant-tree-node-content-wrapper {
+    //   display: inline-block;
+    //   min-width: 120px;
+    //   padding: 8px 12px;
+    //   border-radius: 6px;
+    //   transition: all 0.3s ease;
+    //   color: #333;
+    //   font-size: 14px;
+
+    //   &:hover {
+    //     background-color: #f5f7fa;
+    //     transform: translateX(2px);
+    //   }
+
+    //   &.ant-tree-node-selected {
+    //     background-color: #e6f7ff;
+    //     color: #1890ff;
+    //     font-weight: 500;
+    //     box-shadow: 0 2px 5px rgba(24, 144, 255, 0.1);
+    //   }
+    // }
+
+    // 树节点标题样式
+    .tree-node-title {
+      display: flex;
+      align-items: center;
+
+      .anticon {
+        flex-shrink: 0;
+      }
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    // 更好的展开/折叠图标
+    // .ant-tree-switcher-icon {
+    //   transition: transform 0.2s;
+    // }
+
+    // .ant-tree-switcher_open .ant-tree-switcher-icon {
+    //   transform: rotate(90deg);
+    // }
+  }
+}
+
+// 自定义滚动条样式
+.tree-container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.tree-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.tree-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+:where(.css-dev-only-do-not-override-nqoqt9).ant-tree .ant-tree-switcher {
+  line-height: 21px;
+}
+
+// :where(.css-dev-only-do-not-override-nqoqt9).ant-card-bordered {
+//   border: none;
+// }

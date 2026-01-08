@@ -1,0 +1,61 @@
+.meeting-status {
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+.colLeft {
+  margin-left: 20px;
+  color: #999;
+}
+.pageStart {
+  .ant-row {
+    padding: 4px;
+  }
+}
+.pageGrid {
+  margin: 20px 0;
+  text-align: center;
+  .ant-statistic {
+    padding: 12px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+}
+:where(.css-dev-only-do-not-override-17t768x).ant-list .ant-list-item .ant-list-item-meta {
+  align-items: center;
+}
+
+.ant-list-item-meta {
+  align-items: center !important;
+}
+.chatList {
+  height: 300px;
+}
+.mic {
+  // flex: 1;
+  padding: 0 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pageGrid .ant-col {
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  .anticon {
+    padding-bottom: 10px;
+    font-size: 24px;
+  }
+}
+.mic {
+  display: flex;
+  .icon {
+    padding-left: 10px;
+  }
+  i {
+    font-size: 24px;
+  }
+}

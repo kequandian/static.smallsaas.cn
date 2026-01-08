@@ -1,0 +1,13 @@
+.transfer-model {
+  .file-item {
+    .file-name {
+      display: flex;
+      flex-direction: column;
+      margin-top: 4px;
+      margin-bottom: 24px;
+      .title {
+        width: 90px;
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+// 主题覆盖
+// @import '~antd/es/style/themes/index';
+
+// - 暗黑
+//   - 主题色 #232324
+//   - 背景 rgba(0, 0, 0, 0.08)
+//   - 字体颜色 #ffffff
+//   - 菜单默认 #ebebeb
+//   - 菜单 hover rgb(232 232 232 / 5%)
+//   - 菜单激活 background-color：#151f33；color: ##4c88ff
+
+// - 默认
+//   - 主题色 #ffffff
+//   - 背景 #f2f3f5
+//   - 字体颜色 #1d2129
+//   - 菜单默认 #ebebeb
+//   - 菜单 hover rgb(46 50 56 / 5%)
+//   - 菜单激活 background-color：#eaf5ff；color: #0064fa
+
+// - 字体
+//  - 标题一 20px
+//  - 标题二 18px
+//  - 标题二 16px
+//  - 正文一 14px
+//  - 正文二 12px
+//  - 菜单字体 14px
+// @import 'antd/dist/antd.variable.min.css';
+
+html {
+  --ant-primary-color: #ca1b1b;
+  --ant-primary-color-hover: #40a9ff;
+  --ant-primary-color-active: #096dd9;
+  --ant-primary-color-outline: rgba(24, 144, 255, 0.2);
+  --ant-primary-1: #e6f7ff;
+  --ant-primary-2: #bae7ff;
+  --ant-primary-3: #91d5ff;
+  --ant-primary-4: #69c0ff;
+  --ant-primary-5: #40a9ff;
+  --ant-primary-6: #1890ff;
+  --ant-primary-7: #096dd9;
+  --ant-primary-color-deprecated-l-35: #cbe6ff;
+  --ant-primary-color-deprecated-l-20: #7ec1ff;
+  --ant-primary-color-deprecated-t-20: #46a6ff;
+  --ant-primary-color-deprecated-t-50: #8cc8ff;
+  --ant-primary-color-deprecated-f-12: rgba(24, 144, 255, 0.12);
+  --ant-primary-color-active-deprecated-f-30: rgba(230, 247, 255, 0.3);
+  --ant-primary-color-active-deprecated-d-02: #dcf4ff;
+  --ant-success-color: #52c41a;
+  --ant-success-color-hover: #73d13d;
+  --ant-success-color-active: #389e0d;
+  --ant-success-color-outline: rgba(82, 196, 26, 0.2);
+  --ant-success-color-deprecated-bg: #f6ffed;
+  --ant-success-color-deprecated-border: #b7eb8f;
+  --ant-error-color: #ff4d4f;
+  --ant-error-color-hover: #ff7875;
+  --ant-error-color-active: #d9363e;
+  --ant-error-color-outline: rgba(255, 77, 79, 0.2);
+  --ant-error-color-deprecated-bg: #fff2f0;
+  --ant-error-color-deprecated-border: #ffccc7;
+  --ant-warning-color: #faad14;
+  --ant-warning-color-hover: #ffc53d;
+  --ant-warning-color-active: #d48806;
+  --ant-warning-color-outline: rgba(250, 173, 20, 0.2);
+  --ant-warning-color-deprecated-bg: #fffbe6;
+  --ant-warning-color-deprecated-border: #ffe58f;
+  --ant-info-color: #1890ff;
+  --ant-info-color-deprecated-bg: #e6f7ff;
+  --ant-info-color-deprecated-border: #91d5ff;
+}
+
+// 修改input
+
+// .ant-input-affix-wrapper {
+//   background: #f7f8fa;
+//   border-color: #f7f8fa;
+//   border-radius: 2px;
+// }
+
+// 取消 ：
+// .ant-form-item .ant-form-item-label > label::after {
+//   content: '';
+// }
+
+//
+// .ant-pro-base-menu-horizontal .ant-pro-base-menu-horizontal-item-icon {
+//   display: none;
+// }
+// .ant-pro-base-menu-horizontal {
+//   padding-left: 50px;
+// }
+
+
+// .ant-badge-status {
+//   border-radius: 20px;
+//   border: 1px solid #000;
+//   padding: 0 8px;
+// }
+// ant-badge ant-badge-status ant-badge-not-a-wrapper css-dev-only-do-not-override-nqoqt9
+// ant-badge ant-badge-status ant-badge-not-a-wrapper css-dev-only-do-not-override-nqoqt9

@@ -1,0 +1,71 @@
+.org-manager {
+  width: 100%;
+  height: 100%;
+  // .ant-pro-grid-content {
+  //   height: calc(100% - 165px);
+  //   .ant-pro-grid-content-children {
+  //     height: 100%;
+  //     .ant-pro-page-container-children-container {
+  //       height: 100%;
+  //       padding-bottom: 0;
+  //     }
+  //   }
+  // }
+  .manager-content {
+    height: 100%;
+    overflow: auto;
+    .name-card {
+      .labels {
+        padding-right: 20px;
+        color: #4e5969;
+      }
+      .value {
+        margin-left: 20px;
+        color: #86909c;
+        font-weight: 400;
+        font-size: 12px;
+      }
+    }
+    .base-card {
+      margin-bottom: 1px;
+      .labels {
+        color: #4e5969;
+        // font-size: 14px;
+        // text-align: left;
+      }
+      .value {
+        // padding-right: 60px;
+        // color: #4e5969;
+        font-size: 14px;
+        // text-align: right;
+      }
+    }
+    .group-card {
+      margin-bottom: 16px;
+      .labels {
+        color: #4e5969;
+        font-size: 12px;
+      }
+      .value {
+        color: #4e5969;
+        font-size: 14px;
+      }
+    }
+    .ant-pro-card-title {
+      color: #1d2129;
+      font-size: 14px;
+    }
+    // .labels {
+    //   padding: 2px;
+    // }
+    // .value {
+    //   padding: 2px;
+    // }
+    .text-a {
+      color: #165dff;
+      font-size: 14px;
+      text-align: right;
+      cursor: pointer;
+    }
+  }
+}

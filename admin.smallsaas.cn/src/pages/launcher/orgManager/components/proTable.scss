@@ -1,0 +1,14 @@
+.tab-active {
+  display: block;
+}
+.tab-noactive {
+  display: none;
+}
+.org-table {
+  .ant-pro-table-list-toolbar-right {
+    justify-content: space-between;
+  }
+  .tab-group {
+    margin-left: 30px;
+  }
+}

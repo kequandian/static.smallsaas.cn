@@ -1,0 +1,53 @@
+.flow-chart-card {
+  .flow-tree-box {
+    padding: 20px;
+    overflow: auto;
+    min-height: 400px;
+    text-align: center;
+  }
+}
+
+// 组织树节点样式
+.org-tree-container {
+  .org-tree-node {
+    &.is-leaf {
+      .org-tree-node-label {
+        background-color: #f0f2f5;
+      }
+    }
+  }
+
+  // .org-tree-node-label {
+  //     display: inline-block;
+  //     padding: 6px 10px;
+  //     border: 1px solid #d9d9d9;
+  //     border-radius: 4px;
+  //     background-color: #fff;
+  //     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  // }
+
+  .org-tree-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 120px;
+
+    .name {
+      font-weight: 500;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+// 水平布局样式
+// .horizontal {
+//   .org-tree-node-children {
+//     display: flex;
+
+//     .org-tree-node {
+//       padding-top: 0;
+//       padding-left: 20px;
+//     }
+//   }
+// }

@@ -1,0 +1,1503 @@
+{
+  "info": {
+    "title": "newconf_1.0.0",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "平台-文件管理"
+    },
+    {
+      "name": "平台-议题管理"
+    },
+    {
+      "name": "平台-议题模版"
+    }
+  ],
+  "paths": {
+    "/api/adm/newconf/fileManagement/add": {
+      "post": {
+        "summary": "创建",
+        "deprecated": false,
+        "description": "创建新的文件管理记录",
+        "operationId": "addUsingPOST",
+        "tags": ["平台-文件管理"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/FileManagementReqDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABlong%C2%BB"
+            }
+          },
+          "201": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/fileManagement/delete": {
+      "delete": {
+        "summary": "删除",
+        "deprecated": false,
+        "description": "删除指定的文件管理记录",
+        "operationId": "deleteUsingDELETE_3",
+        "tags": ["平台-文件管理"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "文件ID",
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABint%C2%BB"
+            }
+          },
+          "204": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/fileManagement/get": {
+      "get": {
+        "summary": "详情",
+        "deprecated": false,
+        "description": "获取指定文件的详细信息",
+        "operationId": "getUsingGET",
+        "tags": ["平台-文件管理"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "文件ID",
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABFileManagementRespDTO%C2%BB"
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/fileManagement/page": {
+      "get": {
+        "summary": "分页查询",
+        "deprecated": false,
+        "description": "分页获取文件管理记录列表",
+        "operationId": "pageUsingGET_2",
+        "tags": ["平台-文件管理"],
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页数量",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABPageResult%C2%ABFileManagementRespDTO%C2%BB%C2%BB"
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/fileManagement/update": {
+      "put": {
+        "summary": "编辑",
+        "deprecated": false,
+        "description": "更新文件管理记录的信息",
+        "operationId": "updateUsingPUT_3",
+        "tags": ["平台-文件管理"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/FileManagementReqDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABint%C2%BB"
+            }
+          },
+          "201": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issue/add": {
+      "post": {
+        "summary": "创建议题",
+        "deprecated": false,
+        "description": "创建新的议题及其子议题",
+        "operationId": "addUsingPOST_1",
+        "tags": ["平台-议题管理"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/IssueReqDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABlong%C2%BB"
+            }
+          },
+          "201": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issue/delete": {
+      "delete": {
+        "summary": "删除议题",
+        "deprecated": false,
+        "description": "删除指定议题及其子议题",
+        "operationId": "deleteUsingDELETE_4",
+        "tags": ["平台-议题管理"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "议题ID",
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABlong%C2%BB"
+            }
+          },
+          "204": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issue/get": {
+      "get": {
+        "summary": "议题详情",
+        "deprecated": false,
+        "description": "获取指定议题的详细信息",
+        "operationId": "getUsingGET_1",
+        "tags": ["平台-议题管理"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "议题ID",
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABIssueRespDTO%C2%BB"
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issue/page": {
+      "get": {
+        "summary": "分页查询议题",
+        "deprecated": false,
+        "description": "分页获取议题列表",
+        "operationId": "pageUsingGET_3",
+        "tags": ["平台-议题管理"],
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页数量",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABPageResult%C2%ABIssueRespDTO%C2%BB%C2%BB"
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issue/update": {
+      "put": {
+        "summary": "编辑议题",
+        "deprecated": false,
+        "description": "更新议题及其子议题信息",
+        "operationId": "updateUsingPUT_4",
+        "tags": ["平台-议题管理"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/IssueReqDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABlong%C2%BB"
+            }
+          },
+          "201": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issueTemplate/add": {
+      "post": {
+        "summary": "创建议题模板",
+        "deprecated": false,
+        "description": "创建新的议题模板",
+        "operationId": "addUsingPOST_2",
+        "tags": ["平台-议题模版"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/IssueTemplateReqDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABlong%C2%BB"
+            }
+          },
+          "201": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issueTemplate/delete": {
+      "delete": {
+        "summary": "删除议题模板",
+        "deprecated": false,
+        "description": "删除指定的议题模板",
+        "operationId": "deleteUsingDELETE_5",
+        "tags": ["平台-议题模版"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "主键id",
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABint%C2%BB"
+            }
+          },
+          "204": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issueTemplate/get": {
+      "get": {
+        "summary": "议题模板详情",
+        "deprecated": false,
+        "description": "获取指定议题模板的详细信息",
+        "operationId": "getUsingGET_2",
+        "tags": ["平台-议题模版"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "主键id",
+            "required": true,
+            "format": "int64",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABIssueTemplateRespDTO%C2%BB"
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issueTemplate/page": {
+      "get": {
+        "summary": "分页查询议题模板",
+        "deprecated": false,
+        "description": "分页获取议题模板列表",
+        "operationId": "pageUsingGET_4",
+        "tags": ["平台-议题模版"],
+        "parameters": [
+          {
+            "name": "pageNum",
+            "in": "query",
+            "description": "页码",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页数量",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABPageResult%C2%ABIssueTemplateRespDTO%C2%BB%C2%BB"
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "produces": ["application/json"]
+      }
+    },
+    "/api/adm/newconf/issueTemplate/update": {
+      "put": {
+        "summary": "编辑议题模板",
+        "deprecated": false,
+        "description": "更新议题模板信息",
+        "operationId": "updateUsingPUT_5",
+        "tags": ["平台-议题模版"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/IssueTemplateReqDTO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "$ref": "#/definitions/ApiResult%C2%ABint%C2%BB"
+            }
+          },
+          "201": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "401": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "403": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          "404": {
+            "description": "",
+            "headers": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"]
+      }
+    }
+  },
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "swagger": "2.0",
+  "definitions": {
+    "ApiResult«int»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«int»"
+    },
+    "ApiResult«FileManagementRespDTO»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "$ref": "#/definitions/FileManagementRespDTO"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«FileManagementRespDTO»"
+    },
+    "FileManagementRespDTO": {
+      "type": "object",
+      "properties": {
+        "accessLevel": {
+          "type": "integer",
+          "format": "int32",
+          "description": "访问级别 0：私有的 1: 公开的"
+        },
+        "createBy": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户者"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "createUserType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "创建用户类型"
+        },
+        "fileBusinessType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "文件业务类型（根据业务进行定义）"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "文件名"
+        },
+        "fileSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "文件大小 单位b"
+        },
+        "fileType": {
+          "type": "string",
+          "description": "文件类型"
+        },
+        "fileUrl": {
+          "type": "string",
+          "description": "文件路径"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键"
+        },
+        "orgId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "组织id"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "FileManagementRespDTO",
+      "description": "FileManagement响应DTO"
+    },
+    "ApiResult«long»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«long»"
+    },
+    "ApiResult«IssueRespDTO»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "$ref": "#/definitions/IssueRespDTO"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«IssueRespDTO»"
+    },
+    "IssueRespDTO": {
+      "type": "object",
+      "properties": {
+        "approvalStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "审批状态"
+        },
+        "attachmentUrl": {
+          "type": "string",
+          "description": "附件路径"
+        },
+        "createBy": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建者id"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "createUserType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "创建者用户类型"
+        },
+        "distributeStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "分发状态"
+        },
+        "orgId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "组织id"
+        },
+        "subIssues": {
+          "type": "array",
+          "description": "子议题列表",
+          "items": {
+            "$ref": "#/definitions/SubIssueRespDTO"
+          }
+        },
+        "templateId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模版id"
+        },
+        "title": {
+          "type": "string",
+          "description": "议题主题"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "IssueRespDTO",
+      "description": "Issue响应DTO"
+    },
+    "SubIssueRespDTO": {
+      "type": "object",
+      "properties": {
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键id"
+        },
+        "issueId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "议题id"
+        },
+        "title": {
+          "type": "string",
+          "description": "子议题标题"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "SubIssueRespDTO",
+      "description": "SubIssue响应DTO"
+    },
+    "ApiResult«IssueTemplateRespDTO»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "$ref": "#/definitions/IssueTemplateRespDTO"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«IssueTemplateRespDTO»"
+    },
+    "IssueTemplateRespDTO": {
+      "type": "object",
+      "properties": {
+        "createBy": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建者"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "createUserType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "创建用户类型"
+        },
+        "fileUrl": {
+          "type": "string",
+          "description": "模版文件路径"
+        },
+        "name": {
+          "type": "string",
+          "description": "模版名称"
+        },
+        "orgId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "组织id"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "类型"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        }
+      },
+      "title": "IssueTemplateRespDTO",
+      "description": "IssueTemplate响应DTO"
+    },
+    "ApiResult«PageResult«FileManagementRespDTO»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "$ref": "#/definitions/PageResult%C2%ABFileManagementRespDTO%C2%BB"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«PageResult«FileManagementRespDTO»»"
+    },
+    "PageResult«FileManagementRespDTO»": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FileManagementRespDTO"
+          }
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "PageResult«FileManagementRespDTO»"
+    },
+    "ApiResult«PageResult«IssueRespDTO»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "$ref": "#/definitions/PageResult%C2%ABIssueRespDTO%C2%BB"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«PageResult«IssueRespDTO»»"
+    },
+    "PageResult«IssueRespDTO»": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IssueRespDTO"
+          }
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "PageResult«IssueRespDTO»"
+    },
+    "ApiResult«PageResult«IssueTemplateRespDTO»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "$ref": "#/definitions/PageResult%C2%ABIssueTemplateRespDTO%C2%BB"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiResult«PageResult«IssueTemplateRespDTO»»"
+    },
+    "PageResult«IssueTemplateRespDTO»": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IssueTemplateRespDTO"
+          }
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "PageResult«IssueTemplateRespDTO»"
+    },
+    "FileManagementReqDTO": {
+      "type": "object",
+      "required": ["fileName", "fileUrl"],
+      "properties": {
+        "accessLevel": {
+          "type": "integer",
+          "format": "int32",
+          "description": "访问级别 0：私有的 1: 公开的"
+        },
+        "fileBusinessType": {
+          "type": "integer",
+          "format": "int32",
+          "description": "文件业务类型（根据业务进行定义）"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "文件名"
+        },
+        "fileSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "文件大小 单位b"
+        },
+        "fileType": {
+          "type": "string",
+          "description": "文件类型"
+        },
+        "fileUrl": {
+          "type": "string",
+          "description": "文件路径"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键 创建的时候为空即可"
+        }
+      },
+      "title": "FileManagementReqDTO",
+      "description": "FileManagement请求DTO"
+    },
+    "IssueReqDTO": {
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "attachmentUrl": {
+          "type": "string",
+          "description": "附件路径"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键，创建时为空即可"
+        },
+        "subIssues": {
+          "type": "array",
+          "description": "子议题列表",
+          "items": {
+            "$ref": "#/definitions/SubIssueReqDTO"
+          }
+        },
+        "templateId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "模版id"
+        },
+        "title": {
+          "type": "string",
+          "description": "议题主题"
+        }
+      },
+      "title": "IssueReqDTO",
+      "description": "Issue请求DTO"
+    },
+    "SubIssueReqDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键id"
+        },
+        "title": {
+          "type": "string",
+          "description": "子议题标题"
+        }
+      },
+      "title": "SubIssueReqDTO",
+      "description": "SubIssue请求DTO"
+    },
+    "IssueTemplateReqDTO": {
+      "type": "object",
+      "required": ["fileUrl", "name"],
+      "properties": {
+        "fileUrl": {
+          "type": "string",
+          "description": "模版文件路径"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键"
+        },
+        "name": {
+          "type": "string",
+          "description": "模版名称"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int32",
+          "description": "类型"
+        }
+      },
+      "title": "IssueTemplateReqDTO",
+      "description": "IssueTemplate请求DTO"
+    }
+  },
+  "securityDefinitions": {
+    "bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "x-components": {}
+}

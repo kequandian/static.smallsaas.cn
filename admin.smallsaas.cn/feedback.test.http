@@ -1,0 +1,41 @@
+# @endpoint = http://localhost:8080
+@endpoint = http://meeting-test.xinzhisc.com
+
+### 终端用户登录
+POST {{endpoint}}/api/app/oauth/users/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "111111"
+}
+
+
+###  后台获取用户反馈列表
+GET {{endpoint}}/api/adm/cms/feedback?type=FEEDBACK&page=1&size=10&appid=wvoip
+
+
+### 用户提交反馈意思
+POST {{endpoint}}/api/cms/feedback
+Content-Type: application/json
+
+{
+    "content": "这个功能不好用"
+}
+
+### 后台提交处理意见 (指定appid)
+POST {{endpoint}}/api/cms/feedback/wvoip
+Content-Type: application/json
+
+{
+    "content": "已经解决"
+}
+
+### 后台提交处理意见
+POST {{endpoint}}/api/cms/feedback/wvoip/COMPLAIN
+Content-Type: application/json
+
+{
+    "content": "已经解决"
+}
+

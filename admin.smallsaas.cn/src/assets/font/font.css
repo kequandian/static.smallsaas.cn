@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'iconfont'; /* Project id 4597882 */
+  src: url('https://at.alicdn.com/t/c/font_4597882_2tqojao13io.woff2?t=1724982704613')
+      format('woff2'),
+    url('https://at.alicdn.com/t/c/font_4597882_2tqojao13io.woff?t=1724982704613') format('woff'),
+    url('https://at.alicdn.com/t/c/font_4597882_2tqojao13io.ttf?t=1724982704613') format('truetype');
+}
+
+.iconfont {
+  font-size: 16px;
+  font-family: 'iconfont' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-power:before {
+  content: '\ea14';
+}
+
+.icon-plus:before {
+  content: '\ea05';
+}
+
+.icon-accountcircle:before {
+  content: '\e609';
+}
+
+.icon-chemicalweapon:before {
+  content: '\e731';
+}
+
+.icon-chevronleft:before {
+  content: '\e737';
+}
+
+.icon-commentprocessingoutline:before {
+  content: '\e77b';
+}
+
+.icon-account:before {
+  content: '\e604';
+}
+
+.icon-qrcodescan:before {
+  content: '\ea22';
+}
+
+.icon-accountplus:before {
+  content: '\e600';
+}
+
+.icon-accountremove:before {
+  content: '\e601';
+}
+
+.icon-accountmultiple:before {
+  content: '\e60e';
+}
+
+.icon-dotshorizontal:before {
+  content: '\e7cd';
+}
+
+.icon-microphone:before {
+  content: '\e95e';
+}
+
+.icon-microphoneoff:before {
+  content: '\e95f';
+}
+
+.icon-video:before {
+  content: '\eb57';
+}
+
+.icon-videooff:before {
+  content: '\eb58';
+}
+
+.icon-viewquilt:before {
+  content: '\eb64';
+}
+
+.icon-volumehigh:before {
+  content: '\eb6d';
+}
+
+.icon-volumeoff:before {
+  content: '\eb70';
+}
+
+.icon-a-accountcircle:before {
+  content: '\e8be';
+}
+
+.icon-book:before {
+  content: '\e8bf';
+}
+
+.icon-message:before {
+  content: '\e8c6';
+}
+
+.icon-hujiaozhongxin-copy:before {
+  content: '\eca9';
+}
+
+.icon-huiyi:before {
+  content: '\e640';
+}
+
+.icon-gengduo:before {
+  content: '\e61d';
+}
+
+.icon-renyuanguanli:before {
+  content: '\e62e';
+}
+
+.icon-shexiangtou_guanbi:before {
+  content: '\eca5';
+}
+
+.icon-shexiangtou:before {
+  content: '\eca6';
+}
+
+.icon-ic_shared24px:before {
+  content: '\e616';
+}
+
+.icon-buju:before {
+  content: '\e80f';
+}
+
+.icon-huatong-L:before {
+  content: '\e654';
+}
+
+.icon-huatong-guan-L:before {
+  content: '\e655';
+}

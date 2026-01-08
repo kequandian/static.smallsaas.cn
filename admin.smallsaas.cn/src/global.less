@@ -1,0 +1,158 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'assets/font/font.css'; // 直接使用绝对路径
+@import 'styles/theme.scss'; // 直接使用绝对路径
+@import 'styles/markdownit.scss'; // 直接使用绝对路径
+
+
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+
+.ant-pro-layout .ant-pro-layout-content{
+  padding: 0;
+}
+
+.ant-pro-global-header-logo{
+  margin-left: 10px;
+}
+
+a{
+  color: #1677ff;
+}
+// space里的bt间距
+.ant-table-cell {
+  .ant-space-item {
+    .ant-btn-link {
+      padding: 4px 0;
+    }
+  }
+}
+
+.f10999{
+  font-size: 10px;
+  color: #999;
+}
+
+// 左侧菜单icon与文字距离
+.ant-pro-base-menu-inline-item-title{
+  gap: 12px;
+}
+
+// main区域边距
+// .ant-pro-layout .ant-pro-layout-content {
+//   padding-inline: 30px;
+//   padding-block: 20px;
+// }
+// .ant-pro-page-container .ant-pro-page-container-warp-page-header{
+//   padding-inline-start: 30px;
+//   padding-block-start: 4px;
+
+// }
+// .ant-pro-page-container-children-container{
+//   padding-inline: 30px;
+// }
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
+  left: unset;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+
+    &-thead>tr,
+    &-tbody>tr {
+
+      >th,
+      >td {
+        white-space: pre;
+
+        >span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
+//
+.f12999 {
+  color: #999;
+  font-size: 12px;
+}
+
+
+.org {
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+
+}
+.ant-pro-setting-drawer-handle{
+  z-index: 1;
+}
+// .ant-pro-layout .ant-pro-layout-bg-list{
+//     background: #f5f5f5;
+// }
+
+
+.ant-pro-base-menu-vertical.ant-pro-base-menu-vertical-collapsed .ant-menu-item, .ant-pro-base-menu-vertical.ant-pro-base-menu-vertical-collapsed .ant-menu-item-group>.ant-menu-item-group-list>.ant-menu-item, .ant-pro-base-menu-vertical.ant-pro-base-menu-vertical-collapsed .ant-menu-item-group>.ant-menu-item-group-list>.ant-menu-submenu>.ant-menu-submenu-title, .ant-pro-base-menu-vertical.ant-pro-base-menu-vertical-collapsed .ant-menu-submenu>.ant-menu-submenu-title,
+:where(.css-dev-only-do-not-override-1ycjr2y).ant-menu-inline .ant-menu-item, :where(.css-dev-only-do-not-override-1ycjr2y).ant-menu-vertical .ant-menu-item, :where(.css-dev-only-do-not-override-1ycjr2y).ant-menu-inline .ant-menu-submenu-title, :where(.css-dev-only-do-not-override-1ycjr2y).ant-menu-vertical .ant-menu-submenu-title
+{
+   margin-block:5px!important;
+}
+.markdownit{
+  p{
+    margin-bottom: 0 !important;
+  }
+}
+
+.ant-pro-top-nav-header-menu{
+  margin-left: 77px;
+}
+
+.image-100{
+  .ant-image{
+    width: 80px !important;
+  }
+  .ant-image-img{
+    border-radius: 6px;
+  }
+}

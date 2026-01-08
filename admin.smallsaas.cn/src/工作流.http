@@ -1,0 +1,69 @@
+@endpoint = http://meeting-test.xinzhisc.com
+
+# 工作流接口
+#每天token都不同 使用前请更新此处token
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxLCJkZXZVc2VyVHlwZSI6MCwiYlVzZXJUeXBlIjoiU1lTVEVNIiwiYXBwaWQiOiJzbWFydHNCaWdTY3JlZW4iLCJwYXJ0eU9yZ2FuaXphdGlvbklkIjoxLCJpYXQiOjE3NDY1MTUxNTYsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NzExOTk1Nn0.9gtFwggRYZ0oZf_KnOxOpVSq1TC4MZ2cuZFqZDWYuhJJCQPm0FGLuWE4A0f2nDlzpebACyeACSv0xUDr2ElBMg
+@processId = 4001
+
+######获取工作流列表
+GET {{endpoint}}/api/adm/wf/processes
+Accept: application/json
+Authorization: {{token}}
+
+#返回值
+#{
+#    "code": 200,
+#    "data": [
+#
+#        {
+#            "allowDelete": true,
+#            "categoryId": "20",
+#            "categoryName": null,
+#            "code": "PROC-002",
+#            "codeRule": "FIN-{YYYYMMDD}-{SEQ}",
+#            "currentUserId": "1002",
+#            "currentUserName": null,
+#            "formGroup": "FINANCE",
+#            "formName": null,
+#            "formType": "EXPENSE_REPORT",
+#            "id": "2",
+#            "name": "费用报销流程",
+#            "openTo": "USER",
+#            "openToIds": "1001,1002,1003",
+#            "orgId": "1",
+#            "status": "ENABLED",
+#            "steps": null
+#        }
+#    ],
+#    "message": "Success"
+#}
+
+### 修改工作流信息
+#processId：工作流id
+PUT {{endpoint}}/api/adm/wf/processes/{{processId}}
+Accept: application/json
+Authorization: {{token}}
+
+{
+    "currentUserId": 1,
+    "code": "PROC-001",
+    "formGroup": "HR-r",
+    "formType": "LEAVE_APPLY",
+    "name": "员工请假流程",
+    "categoryId": 10,
+    "status": "ENABLED",
+    "openTo": "DEPARTMENT",
+    "openToIds": "1,2,3",
+    "orgId": 1,
+    "codeRule": "HR-{YYYYMMDD}-{SEQ}",
+    "allowDelete": true
+}
+
+
+# 工作流end
+
+
+# 工作流步骤
+
+
+# 工作流end

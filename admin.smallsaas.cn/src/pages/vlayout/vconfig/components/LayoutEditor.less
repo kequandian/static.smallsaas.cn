@@ -1,0 +1,305 @@
+/* 单元格预览容器样式 */
+.previewContainer {
+  position: relative;
+  border: 1px solid #d9d9d9;
+  margin: 0 auto;
+  background-color: #f0f2f5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+}
+
+/* 单元格预览样式 */
+.previewCell {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.previewCell:hover {
+  border-color: #1890ff;
+  z-index: 1;
+  box-shadow: 0 2px 6px rgba(24, 144, 255, 0.2);
+}
+
+.previewCell.selected {
+  background-color: #e6f7ff;
+  border: 2px solid #1890ff;
+  z-index: 2;
+}
+
+/* 嵌套预览容器样式 - 不同级别使用不同的浅色背景 */
+.nestedPreviewContainer {
+  position: relative;
+  border: 1px solid #1890ff;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 嵌套布局预览层级背景颜色 */
+.nestLevel0 {
+  background-color: rgba(24, 144, 255, 0.05);
+}
+
+.nestLevel1 {
+  background-color: rgba(82, 196, 26, 0.05);
+}
+
+.nestLevel2 {
+  background-color: rgba(114, 46, 209, 0.05);
+}
+
+.nestLevel3 {
+  background-color: rgba(250, 140, 22, 0.05);
+}
+
+.nestLevel4 {
+  background-color: rgba(245, 34, 45, 0.05);
+}
+
+/* 嵌套布局预览层级边框颜色 */
+.nestBorder0 {
+  border-color: rgba(24, 144, 255, 0.6);
+}
+
+.nestBorder1 {
+  border-color: rgba(82, 196, 26, 0.6);
+}
+
+.nestBorder2 {
+  border-color: rgba(114, 46, 209, 0.6);
+}
+
+.nestBorder3 {
+  border-color: rgba(250, 140, 22, 0.6);
+}
+
+.nestBorder4 {
+  border-color: rgba(245, 34, 45, 0.6);
+}
+
+.nestedPreviewHeader {
+  padding: 4px 8px;
+  background-color: rgba(24, 144, 255, 0.1);
+  border-bottom: 1px solid #1890ff;
+  width: 100%;
+  font-size: 10px;
+  color: #1890ff;
+}
+
+/* 单元格卡片样式 */
+.cellCard {
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid #f0f0f0;
+}
+
+.cellCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  border-color: #d9d9d9;
+}
+
+.cellCard.selected {
+  border: 1px solid #1890ff;
+  background-color: #e6f7ff;
+}
+
+/* 嵌套布局容器样式 */
+.nestedLayoutContainer {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #fafafa;
+  border: 1px dashed #d9d9d9;
+}
+
+/* 嵌套级别样式 */
+.nestedLevel0 {
+  border-left: 3px solid #1890ff;
+}
+
+.nestedLevel1 {
+  border-left: 3px solid #52c41a;
+}
+
+.nestedLevel2 {
+  border-left: 3px solid #722ed1;
+}
+
+.nestedLevel3 {
+  border-left: 3px solid #fa8c16;
+}
+
+.nestedLevel4 {
+  border-left: 3px solid #f5222d;
+}
+
+/* 布局编辑器全屏模式 */
+.layoutEditorFullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.splitView {
+  display: flex;
+  height: calc(100% - 56px);
+}
+
+.configPanel {
+  width: 50%;
+  height: 100%;
+  border-right: 1px solid #f0f0f0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.configScrollContainer {
+  height: 100%;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.previewPanel {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #fafafa;
+}
+
+/* 预览卡片样式 */
+.previewCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.previewCard :global(.ant-card-body) {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow: auto;
+}
+
+/* 全屏预览样式 */
+.previewFullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1010;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.previewFullscreenContent {
+  background-color: #f0f2f5;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
+}
+
+.previewFullscreenControls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+/* 嵌套布局标记 */
+.nestedLayoutBadge {
+  font-size: 12px;
+  background-color: #e6f7ff;
+  color: #1890ff;
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-top: 4px;
+}
+
+/* 权重输入组样式 */
+.weightInputGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.weightLabel {
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.weightInputWrapper {
+  position: relative;
+  width: 60px;
+}
+
+.weightInput {
+  width: 60px;
+  padding-right: 22px;
+}
+
+.weightRemoveButton {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  font-size: 14px;
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 1;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  border: 1px solid #ff4d4f;
+}
+
+/* 滚动容器样式 */
+.scrollContainer {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* 单元格容器不需要滚动条 */
+.cellsContainer, .nestedCellsContainer {
+  width: 100%;
+} 
